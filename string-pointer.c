@@ -1,6 +1,6 @@
 //(▀̿Ĺ̯▀̿ ̿)
 //Referring code made by supersanta
-//Program:String optimization
+//Program:String pointer test
 //version NULL
 #include<stdio.h>
 #include<stdlib.h>
