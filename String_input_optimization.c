@@ -1,7 +1,7 @@
 //(▀̿Ĺ̯▀̿ ̿)
 //Referring code made by supersanta
-//Program:RUSSIAN ROULETTE THE GAME
-//version 2.0
+//Program:String optimization
+//version NULL
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
@@ -16,7 +16,7 @@ int main()
   for(int i = 0; i <2;i++) 
   {
     printf("Enter string: ");
-    scanf(" %[^\n]d",&temp_string);
+    scanf(" %[^\n]",&temp_string);
     string[i] = strdup(temp_string);
   }
   for(int i = 0; i <2;i++) 
