@@ -1,3 +1,13 @@
+/****************************************************************
+ A valid SIN number is the number that the last number is a check number.
+ Double the first, third, and so forth,...number leftwise.
+ The first sum is the sum of every doubled number's digit. EX: 16=1+6.
+ The second sum is the sum of every secon, fourth, and so forth.
+ Add the two sum and if the total sum plus the check number is devisible to 10, that number is a valid SIN.\n
+ Coder: Supersanta.
+ Date:14/01/2021 DD/MM/YYYY
+ ****************************************************************/
+
 #include <stdio.h>
 #include <stdlib.h>
 
