@@ -1,4 +1,9 @@
-
+/****************************************************************
+(▀̿Ĺ̯▀̿ ̿)
+Referring code made by SFMSupersanta.
+Program: PRF101
+version #
+****************************************************************/
 #include <stdio.h>
 
 long long int factorial(long long int num)
