@@ -38,7 +38,7 @@ int main( void )
 {
   printf("Probability Caculator\n=====================\n");
 
-  printf("QUantity form wich to select:  ");
+  printf("Quantity form wich to select:  ");
   long long set;
   scanf("%lld", &set);
 

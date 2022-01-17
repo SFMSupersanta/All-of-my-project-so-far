@@ -1,5 +1,4 @@
-
-#include <stdio.h>
+#include<stdio.h>
 
 long long int factorial(long long int num)
 {
@@ -31,34 +30,13 @@ long long int permutation(long long set, long long quantity)
   {
     answer*=i;
   }
+
   return answer;
 }
 
-int main( void )
+int main()
 {
-  printf("Probability Caculator\n=====================\n");
-
-  printf("QUantity form wich to select:  ");
-  long long set;
-  scanf("%lld", &set);
-
-  printf("Qantity to be selected:        ");
-  long long quantity;
-  scanf("%lld", &quantity);
-
-  printf("Does order metter (y or n) ? : ");
-  
-  char order;
-  getchar();
-  scanf("%c", &order);
-
-  if(order == 'y')
-  {
-      printf("Number of possible outcome is %lld",permutation(set, quantity)) ;
-  }else if(order == 'n')
-  {
-      printf("Number of possible outcome is %lld",combination(set, quantity)) ;
-  }
-  
-  return 0;
+    long long int fact = combination(49, 6);
+    printf("factorial: %ld\n",fact );
+    return 0;
 }

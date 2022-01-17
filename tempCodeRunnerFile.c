@@ -1,1 +1,1 @@
-ntf("%s \n",player_name[i]);
+actorial(s
