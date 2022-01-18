@@ -6,42 +6,25 @@ version #
 ****************************************************************/
 #include <stdio.h>
 
-int main()
+void simplify(long long numerator, long long denominator)
 {
-    printf("Fraction Simplifier\n");
-    printf("-------------------\n"); 
-
-    printf("Numerator:    ");
-    long long numerator ;
-    scanf("%lld", &numerator);
-    long long temp_numerator = numerator ;
-
-    printf("Denominator:  ");
-    long long denominator ;
-    scanf("%lld", &denominator);
     long long temp_denominator = denominator ;
+    long long temp_numerator = numerator ;
 
     if(numerator > denominator && numerator % denominator ==0)
     {
-       
+    
         numerator = numerator / denominator;
         denominator = 1;
-    
     }
-
-        
     else if (numerator < denominator && denominator % numerator ==0)
     {
-
         denominator = denominator / numerator;
         numerator = 1;
-        
     }
-
     else
     {
         long long devider;
-
         if(numerator > denominator)
         {
             devider = denominator/2;
@@ -50,10 +33,9 @@ int main()
         {
             devider = numerator/2;
         }
-
         for(long long i = devider; i >1 ; i--)
         {
-            printf("%lld ", i);
+            //printf("%lld ", i);
             if(numerator % i ==0 && denominator % i == 0)
             {
                 numerator /= i;
@@ -63,6 +45,22 @@ int main()
     }
 
     printf("\n%lld / %lld = %lld / %lld",temp_numerator,temp_denominator,numerator,denominator);
+}
+
+int main()
+{
+    printf("Fraction Simplifier\n");
+    printf("-------------------\n"); 
+
+    printf("Numerator:    ");
+    long long numerator ;
+    scanf("%lld", &numerator);
+
+    printf("Denominator:  ");
+    long long denominator ;
+    scanf("%lld", &denominator);
+    
+    simplify(numerator,denominator);
 
     return 0;
 

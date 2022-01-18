@@ -17,9 +17,9 @@ long long int factorial(long long int num)
 
 long long int combination(long long set, long long quantity)
 {
-    long long lg_diff ;
+    long long lg_diff ;                //larger difference
 
-    if (set - quantity > quantity) lg_diff = set - quantity;
+    if (set - quantity > quantity) lg_diff = set - quantity;     
     else if (set - quantity < quantity) lg_diff = quantity;
 
     long long upper=set;
