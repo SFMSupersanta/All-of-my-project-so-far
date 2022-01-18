@@ -28,7 +28,7 @@ double present(double principal,double rate,double year)
     double total = 1+rate;
     double temp = total;
 
-    for(int i = 1; i < year; i++) total *= -temp;
+    for(int i = 1; i < year; i++) total *= temp;
     
     double value = (1/total) * principal;
 
