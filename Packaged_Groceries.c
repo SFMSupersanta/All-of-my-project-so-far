@@ -45,24 +45,34 @@ int main()
     //barcode array input
     while (true)
     {
-      char barc_arr[11];
-      printf("Barcode  :  ");
-      barc_arr[10]='\0';
-      barc_arr[2]='\0';
-      scanf(" %[^\n]",&barc_arr);
-      if (barc_arr[0]=='0'&&barc_arr[1]=='\0')
+      while (true)
       {
-        status=false;
-        break;
-      }
-      if (barc_val(barc_arr)==true) 
-      {
-        for (int i = 0; i <10;i++) 
+        char barc_arr[11];
+        printf("Barcode  :  ");
+        barc_arr[10]='\0';
+        barc_arr[2]='\0';
+        scanf(" %[^\n]",&barc_arr);
+        if (barc_arr[0]=='0'&&barc_arr[1]=='\0')
         {
-          total_barc[total_cnt][i]= barc_arr[i];
+          status=false;
+          break;
         }
-        //total_cnt++;
+        if (barc_val(barc_arr)==true) 
+        {
+          for (int i = 0; i <10;i++) 
+          {
+            total_barc[total_cnt][i]= barc_arr[i];
+          }
+          break;
+          //total_cnt++;
+        }
+        else 
+        {
+            printf("INVALID INPUT\n");
+            continue;
+        }
       }
+      if(status == false) break;
       //test code
       /*int resume=1;
       printf("resume/quit(1,0): ");
@@ -70,17 +80,23 @@ int main()
       if (resume==0) break;
       else continue;*/
       //end of test code
+      //scan price
       printf("Price    :  ");
       scanf("%lf",&total_price[total_cnt]);
+      //printf("%6.2lf\n",total_price[total_cnt]);
+      //scan quantity
       printf("Quantity :  ");
-      scanf("%lf",&quantity[total_cnt]);
+      scanf("%lld",&quantity[total_cnt]);
+      //printf("%11lld\n",quantity[total_cnt]);
+      //caculate value
       value[total_cnt]=total_price[total_cnt]*quantity[total_cnt];
+      //printf("value: %8.2lf\n",value[total_cnt]);
       total_cnt++;
     } 
     if (status==false) break;
   }
   //print results
-  printf("            Goods in Stock\n            ==============\nBarcode    Price   Quantity   Value");
+  printf("\n            Goods in Stock\n            ==============\nBarcode    Price   Quantity   Value");
   printf("\n-----------------------------------\n");
   for(int i = 0; i < total_cnt;i++)
   {
@@ -89,10 +105,20 @@ int main()
     { 
       printf("%c", total_barc[i][j]);
     }
+    //print price
     printf("%6.2lf",total_price[i]);
+    //print quantity
     printf("%11lld",quantity[i]);
+    //print value
     printf("%8.2lf",value[i]);
     printf("\n");
   }
+  printf("                             ------\nTotal value goods in stock");
+  double total_value;
+  for(int i = 0; i <total_cnt;i++)
+  {
+      total_value+=value[i];
+  }
+  printf("%9.2lf",total_value);
   return 0;
 }
