@@ -1,3 +1,4 @@
-sume=1;
-      printf("resume/quit(1,0): ");
-      scanf("%d",
+or (int j = 0; j < 10; j++) 
+        {
+          printf("%c",temp_barc[j]);
+        }

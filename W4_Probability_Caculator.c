@@ -21,7 +21,7 @@ long long int combination(long long set, long long quantity)
 
     if (set - quantity > quantity) lg_diff = set - quantity;     
     else if (set - quantity < quantity) lg_diff = quantity;
-
+    //printf("lg_diff= %ld\n",lg_diff);
     long long upper=set;
 
     for (long long i = set-1; i > lg_diff; i--)

@@ -6,7 +6,21 @@ version #
 ****************************************************************/
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
+
+long long demic_conv(char barc_arr[])
+{
+  long long returnnum=0 ;
+  for (int i = 0; i <= 9; i++)
+  {
+    returnnum *=10;
+    returnnum += barc_arr[i]-'0'; 
+    printf("returnnum:%ld\n",returnnum);
+  }
+  return returnnum;
+}
 
 bool barc_val(char barc_arr[])
 {
@@ -95,24 +109,53 @@ int main()
     } 
     if (status==false) break;
   }
-  //print results
+//print results
   printf("\n            Goods in Stock\n            ==============\nBarcode    Price   Quantity   Value");
   printf("\n-----------------------------------\n");
-  for(int i = 0; i < total_cnt;i++)
+  
+  for (int i=0; i< total_cnt; i++)
   {
-    //print barcode
+    int max_index;
+    for (int l=0; l < total_cnt; l++)
+    {
+      char temp_barc[10];
+      long long max_value=9999999999;
+      for (int k = 0; k < 10; k++)
+      {
+        temp_barc[k]=total_barc[l][k];
+      }
+      for (int j = 0; j < 10; j++) 
+        {
+          printf("%c",temp_barc[j]);
+        }
+      printf("\n");
+      long long barc_dem = demic_conv(temp_barc);
+      printf("num: %ld\n",barc_dem);
+      if (max_value>barc_dem)
+      {
+        max_value=barc_dem;
+        //printf("\nMax value: %f\n", atoi(temp_barc));
+        max_index=l;
+      }
+    }
     for (int j = 0; j < 10; j++)
     { 
-      printf("%c", total_barc[i][j]);
+      printf("%c", total_barc[max_index][j]);
+    }
+    for (int h = 0; h < 10; h++)
+    {
+      total_barc[max_index][h]='9';
     }
     //print price
-    printf("%6.2lf",total_price[i]);
+    printf("%6.2lf",total_price[max_index]);
     //print quantity
-    printf("%11lld",quantity[i]);
+    printf("%11lld",quantity[max_index]);
     //print value
-    printf("%8.2lf",value[i]);
+    printf("%8.2lf",value[max_index]);
     printf("\n");
   }
+  
+//toal value print
   printf("                             ------\nTotal value goods in stock");
   double total_value;
   for(int i = 0; i <total_cnt;i++)
@@ -122,3 +165,43 @@ int main()
   printf("%9.2lf",total_value);
   return 0;
 }
+/*
+############################################
+6300090801
+3.25
+5
+6380613916
+4.45
+15
+6038367157
+3.95
+10
+0
+#############################################
+CTR+PASTE THE ABOVE LINES FOR INPUT
+EXAMPLE FOR SUCCESS CODE:
+#############################################
+ Packaged Goods Organizer
+ ========================
+ Barcode  :  6300090801
+ Price    :  3.25
+ Quantity :  5
+ Barcode  :  6380613916
+ Price    :  4.45
+ Quantity :  15
+ Barcode  :  6038367157
+ Price    :  3.95
+ Quantity :  10
+ Barcode  :  0
+output: 
+
+             Goods in Stock
+             ==============
+ Barcode    Price   Quantity   Value 
+ -----------------------------------
+ 6038367157  3.95         10   39.50
+ 6300090801  3.25          5   16.25
+ 6380613916  4.45         15   66.75
+                              ------
+ Total value goods in stock   122.50
+*/
