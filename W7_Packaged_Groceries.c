@@ -17,7 +17,7 @@ long long demic_conv(char barc_arr[])
   {
     returnnum *=10;
     returnnum += barc_arr[i]-'0'; 
-    printf("returnnum:%ld\n",returnnum);
+    //printf("returnnum:%lld\n",returnnum);
   }
   return returnnum;
 }
@@ -116,28 +116,29 @@ int main()
   for (int i=0; i< total_cnt; i++)
   {
     int max_index;
+    long long max_value=9999999999;
     for (int l=0; l < total_cnt; l++)
     {
       char temp_barc[10];
-      long long max_value=9999999999;
+      //get a temo string "temp_barc"
       for (int k = 0; k < 10; k++)
       {
         temp_barc[k]=total_barc[l][k];
       }
-      for (int j = 0; j < 10; j++) 
-        {
-          printf("%c",temp_barc[j]);
-        }
-      printf("\n");
+      //turn string into demical value
       long long barc_dem = demic_conv(temp_barc);
-      printf("num: %ld\n",barc_dem);
+      //test code
+      //printf("num: %lld\n",barc_dem);
+      //get the smallest value out of three
       if (max_value>barc_dem)
       {
         max_value=barc_dem;
-        //printf("\nMax value: %f\n", atoi(temp_barc));
+        //testcode
+        //printf("Max value: %lld\n", max_value);
         max_index=l;
       }
     }
+    //printf("max ind: %d\n",max_index);
     for (int j = 0; j < 10; j++)
     { 
       printf("%c", total_barc[max_index][j]);
@@ -193,7 +194,8 @@ EXAMPLE FOR SUCCESS CODE:
  Price    :  3.95
  Quantity :  10
  Barcode  :  0
-output: 
+
+-OUTPUT: 
 
              Goods in Stock
              ==============

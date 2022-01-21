@@ -11,7 +11,7 @@ void gamestart()
     // cout<<key<<endl;
     cout<<"Game is starting\n\nRandom number has been created\nWhat is your guess?\t";
     int guess;
-    int score=10;
+    int score=9;
     while(true)
     {
         cin>>guess;
@@ -25,10 +25,15 @@ void gamestart()
             }else if(score<=5)
             {
                 cout<<"Gettin' a hard time there huh";
-            }else if(score<=9)
+            }else if(score<9)
             {
                 cout<<"Great work! Keep it goin!";
-            }else
+            }
+            else if(score == 9)
+            {
+                cout<<"Your luck is unmached!!!!! YOU WIN!!!!";
+            }
+            else
             {
                 cout<<"The luck is really on your side today as well huh :/";
             }
