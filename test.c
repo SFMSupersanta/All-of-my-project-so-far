@@ -42,7 +42,7 @@ bool barc_val(char barc_arr[])
 int main()
 {
   //program name
-  printf("Packaged Goods Orgranizer\n");
+  printf("Work in Progress Organizer\n");
   printf("-------------------------\n");
   int max_items = 101;
   char total_barc [max_items][11];

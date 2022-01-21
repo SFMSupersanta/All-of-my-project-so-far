@@ -1,1 +1,1 @@
-total_barc[l][k
+char_to_ascii(str[i])
