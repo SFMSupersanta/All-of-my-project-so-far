@@ -45,7 +45,7 @@ int main()
   //program name
   printf("Packaged Goods Orgranizer\n");
   printf("-------------------------\n");
-  int max_items = 101;
+  int max_items = 101;                  //edit this statement to change the max item value
   char total_barc [max_items][11];
   double total_price [max_items];
   long long quantity[max_items];
@@ -87,24 +87,11 @@ int main()
         }
       }
       if(status == false) break;
-      //test code
-      /*int resume=1;
-      printf("resume/quit(1,0): ");
-      scanf("%d",&resume);
-      if (resume==0) break;
-      else continue;*/
-      //end of test code
-      //scan price
       printf("Price    :  ");
       scanf("%lf",&total_price[total_cnt]);
-      //printf("%6.2lf\n",total_price[total_cnt]);
-      //scan quantity
       printf("Quantity :  ");
       scanf("%lld",&quantity[total_cnt]);
-      //printf("%11lld\n",quantity[total_cnt]);
-      //caculate value
       value[total_cnt]=total_price[total_cnt]*quantity[total_cnt];
-      //printf("value: %8.2lf\n",value[total_cnt]);
       total_cnt++;
     } 
     if (status==false) break;
@@ -127,18 +114,14 @@ int main()
       }
       //turn string into demical value
       long long barc_dem = demic_conv(temp_barc);
-      //test code
-      //printf("num: %lld\n",barc_dem);
       //get the smallest value out of three
       if (max_value>barc_dem)
       {
         max_value=barc_dem;
-        //testcode
-        //printf("Max value: %lld\n", max_value);
         max_index=l;
       }
     }
-    //printf("max ind: %d\n",max_index);
+    //Print barcode
     for (int j = 0; j < 10; j++)
     { 
       printf("%c", total_barc[max_index][j]);
@@ -167,7 +150,7 @@ int main()
   return 0;
 }
 /*
-############################################
+##############################################
 6300090801
 3.25
 5
@@ -178,10 +161,11 @@ int main()
 3.95
 10
 0
-#############################################
-CTR+PASTE THE ABOVE LINES FOR INPUT
-EXAMPLE FOR SUCCESS CODE:
-#############################################
+##############################################
+#    CTR+PASTE THE ABOVE LINES FOR INPUT     #
+##############################################
+#     EXAMPLE FOR SUCCESS CODE:              #
+##############################################
  Packaged Goods Organizer
  ========================
  Barcode  :  6300090801
@@ -206,4 +190,5 @@ EXAMPLE FOR SUCCESS CODE:
  6380613916  4.45         15   66.75
                               ------
  Total value goods in stock   122.50
+##############################################
 */

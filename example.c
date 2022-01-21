@@ -11,7 +11,7 @@ long long demic_conv(char barc_arr[])
   {
     returnnum *=10;
     returnnum += barc_arr[i]-'0'; 
-    printf("returnnum:%ld\n",returnnum);
+    //printf("returnnum:%lld\n",returnnum);
   }
   return returnnum;
 }

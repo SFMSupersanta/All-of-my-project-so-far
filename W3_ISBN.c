@@ -8,15 +8,15 @@ version #
 #include <stdio.h>
 #include <stdlib.h>
 
-int numcheck(int num)
+long long  numcheck(long long num)
 {
-    int check_digit = num % 10;
+    long long  check_digit = num % 10;
     num /= 10;
-    int weighted_sum = 0;
-    int total_sum;
-    for(int i = 2; i <= 10; i++) 
+    long long weighted_sum = 0;
+    long long total_sum;
+    for(long long i = 2; i <= 10; i++) 
     {
-        int product = i * (num % 10);
+        long long product = i * (num % 10);
         num /= 10;
         weighted_sum += product;
         //printf("%d\n", product);   for debugging only
@@ -30,7 +30,7 @@ int numcheck(int num)
 
 int main()
 {
-    int num;
+    long long num;
     printf("ISBN Validator\n=============\n");
     do
     {
