@@ -42,8 +42,8 @@ long long demic_conv(char barc_arr[])
 int main()
 {
   //program name
-  printf("Books in Stock Organizer\n");
-  printf("========================\n");  
+  printf("Work in Progress Organizer\n");
+  printf("==========================\n");  
   int max_items = 101;                      //edit this statement to change the max item value
   char total_barc [max_items][5];
   double total_price [max_items];
