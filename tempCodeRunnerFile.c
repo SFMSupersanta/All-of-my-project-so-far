@@ -1,1 +1,1 @@
-char_to_ascii(str[i])
+printf("Their statistical mean is %.2lf\n",mean(data,count)
