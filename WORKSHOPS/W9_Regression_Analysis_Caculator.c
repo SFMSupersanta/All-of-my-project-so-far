@@ -9,75 +9,53 @@ version #
 #include <stdlib.h>
 #include <string.h>
 
-
-double slope(int arrx[], double arry[], int n, int Mx, double My)     //function to caculate slope
+double slope(double arrx[], double arry[], int n, double Mx, double My)     //function to caculate slope
 {
     double nominator = 0,denominator = 0;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i <= n; i++)
     {
         nominator += (arrx[i]-Mx)*(arry[i]-My);
         denominator += (arrx[i]-Mx)*(arrx[i]-Mx);
     }
     return nominator/(denominator);
 }
-
-double pmcc(int arrx[], double arry[], double n, int Mx, double My, int Dx, double Dy)//pearson or product-moment correlation coefficient
+//correlation coefficient
+double corco(double arrx[], double arry[], int n, double Mx, double My, double Dx, double Dy)
 {
     double tpros;//total product sum
-    for (int i = 0; i <n;i++)
+    for (int i = 0; i <= n;i++)
     {
-        tpros = arrx[i]*arry[i];
+        tpros += arrx[i]*arry[i];
     }
-    return ((tpros/(n-(Mx*Mx)))/(Dx*Dy));
+    return (((tpros/(n+1))-(Mx*My))/(Dx*Dy));
 }
 
 double deviation(double Sx, int n, double MxS)    
 {
-    return sqrt((Sx/n)-MxS);
+    return sqrt((Sx/(n+1))-MxS);
 }
 
 int deviationi(int Sx, int n, int MxS)    
 {
-    return sqrt((Sx/n)-MxS);
-}
-
-int meani(int data[], int size)
-{
-    int sum;
-    for (int i = 0; i < size;i++)
-    {
-        sum += data[i];
-    }
-    sum /= size;
-    return sum;
+    return sqrt((Sx/(n+1))-MxS);
 }
 
 double mean(double data[], int size)
 {
-    double sum;
-    for (int i = 0; i < size;i++)
+    double sum=0;
+    for (int i = 0; i <= size;i++)
     {
         sum += data[i];
+        
     }
-    sum /= size;
+    sum /= (size+1);
     return sum;
-}
-
-int Ssumi(int data[], int size)     //sum of squares
-{
-    int Ssum=0;                        //squared sum variable
-    for (int i = 0; i < size;i++)
-    {
-        Ssum += data[i]*data[i];
-    }
-    
-    return Ssum;
 }
 
 double Ssum(double data[], int size)     //sum of squares
 {
     double Ssum=0;                        //squared sum variable
-    for (int i = 0; i < size;i++)
+    for (int i = 0; i <= size;i++)
     {
         Ssum += data[i]*data[i];
     }
@@ -94,7 +72,7 @@ int main()
     fileP = fopen (filename,"r");
     if (fileP != NULL)
     {
-        int x_val[100];
+        double x_val[100];
         double y_val[100];
         char c;
         int rec_count = 0;                                                           //seprate variable to count in while function
@@ -109,41 +87,45 @@ int main()
 
         for (int i = 0; i <= rec_count; i++)
         {
-            fscanf(fileP, "%d", &x_val[i]);
+            fscanf(fileP, "%lf", &x_val[i]);
             fscanf(fileP, "%lf", &y_val[i]);
         }
         
-        printf("The number of data values read from this file was %d",rec_count);
+        printf("\nThe number of data values read from this file was %d\n",rec_count+1);
 
         //test code:
-        /*for(int i = 0; i <= rec_count; i++)
+        for(int i = 0; i <= rec_count; i++)
         {
-            printf("x: %lf, y: %lf", x_val[i], y_val[i]);
+            printf("x%d: %.2lf, y%d: %.2lf", i+1, x_val[i], i+1, y_val[i]);
             printf("\n");
-        }*/
+        }
         //test code end.
-        
-        int Mx = meani(x_val,rec_count);
+        //caculations and assing
+        double Mx = mean(x_val,rec_count);
         double My = mean(y_val,rec_count);
-        int Sx = Ssumi(x_val,rec_count);
+        double Sx = Ssum(x_val,rec_count);
         double Sy = Ssum(y_val,rec_count);
-        int Dx = deviationi(Sx, rec_count, Mx*Mx);
+        double Dx = deviation(Sx, rec_count, Mx*Mx);
         double Dy = deviation(Sy, rec_count, My*My);
-        /*
-        printf("Their statistical mean of the abscissa values is %.2lf\n",);
-        printf("Their standard deviation of the abscissa values is %.2lf\n",);
-        printf("Their statistical mean of the ordinate values is %.2lf\n",);
-        printf("Their standard deviation of the ordinate values is %.2lf\n",);
-        */
+        //caculations ends.
+        
+        //print caculations value
+        printf("Their statistical mean of the abscissa values is %.2lf\n",Mx);
+        printf("Their standard deviation of the abscissa values is %.2lf\n",Dx);
+        printf("Their statistical mean of the ordinate values is %.2lf\n",My);
+        printf("Their standard deviation of the ordinate values is %.2lf\n",Dy);
+        
+        //print slope, y-intercept, cc
         double t=slope(x_val,y_val,rec_count,Mx,My);
-        printf("\nThe slope of the least squares fit is %lf\n",t);
+        printf("\nThe slope of the least squares fit is %.2lf\n",t);
         printf("The y-intercept of the least squares fit is  %.2lf\n", My-t*Mx);
-        printf("The correlation coefficient is %.2lf\n", pmcc(x_val,y_val,rec_count,Mx,My,Dx,Dy));
-
+        printf("The correlation coefficient is %.2lf\n", corco(x_val,y_val,rec_count,Mx,My,Dx,Dy));
+        
+        //stopping distance caculations
         printf("\nWhat is the age of your car in months ? ");
         int age;
         scanf("%d",&age);
-        //printf("You can expect a stopping distance of ")
+        printf("You can expect a stopping distance of ");
 
         fclose(fileP);
     }
