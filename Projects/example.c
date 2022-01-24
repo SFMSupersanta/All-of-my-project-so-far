@@ -4,27 +4,12 @@
 #include <stdbool.h>
 #include <string.h>
 
-double mean(double *data, int size)
+int compare_arr(char arr1[], char arr2[], int size)
 {
-    double sum;
-    while (data)
+    for(int i = 0; i <size; i++)
     {
-        sum+= *data;
-        data++;
-    }
-    return sum/size;
-}
-
-double dev(double *data, int size, double m)
-{
-    double Ssum=0;                        //squared sum variable
-    while (data)
-    {
-        Ssum += *data* *data;
-        data++;
-    }
-    double deviation = (Ssum / size) - (m*m);
-    return sqrt(deviation);
+        if (arr1[i] != arr2[i]) return 1;
+    } return 0;
 }
 
 
@@ -32,12 +17,8 @@ double dev(double *data, int size, double m)
 int main()
 {
 
-    double arr[] = {3,4,5,3,6,2,6};
-    int size = sizeof(arr)/sizeof(arr[0]);
-    double *arrP = &arr[0];
-    *arrP++;
-    printf("arr: %.2lf", *arr);
-    //double i=mean(arr,size);
-    //printf("Result: %.2lf\n", i);
+    char arr1[] = {"134aaaa"};
+    char arr2[] = {"1234aaaa"};
+    printf("%d\n",compare_arr(arr1, arr2,8));
     return 0;
 }

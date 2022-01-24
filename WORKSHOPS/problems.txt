@@ -1,0 +1,4 @@
+ Design and code a function that searches
+ for the presence of a particular string
+ within a file and displays each record
+ that contains the search string.
