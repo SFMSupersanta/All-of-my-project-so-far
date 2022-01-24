@@ -15,6 +15,7 @@ int wordwrap(char wrapstring[], int fieldwidth)
   int count = 0;
   int track = 0;
   int reqline = 1;
+  //bug
   while(wrapstring[track]!='\0')
   {
       int status = 1;
@@ -23,7 +24,7 @@ int wordwrap(char wrapstring[], int fieldwidth)
       {
           reqline++;
           wrapstring[track] = '\n';
-          track++;
+          //track++;
           status = 0;
       }
       else if (count==fieldwidth&&wrapstring[track]!=' '&&wrapstring[track+1]!=' ')                            //2nd probability
@@ -39,7 +40,7 @@ int wordwrap(char wrapstring[], int fieldwidth)
           }
           printf("\ntrack:%d\n",track);
           wrapstring[track]='\n';
-          track++;
+          //track++;
           status= 0;
       }
       else if (count==fieldwidth&&wrapstring[track]!=' '&&wrapstring[track+1]==' ')                  //3rd probability
@@ -50,10 +51,12 @@ int wordwrap(char wrapstring[], int fieldwidth)
               track++;
           }
           wrapstring[track]='\n';
-          track++;
+          //track++;
+          status = 0;
           printf("\ntrack:%d\n",track);
       }
-      else if (count==fieldwidth&&wrapstring[track]==' '&&wrapstring[track+1]==' '&&wrapstring[track-1]==' ')
+      //bug
+      else if (count==fieldwidth&&wrapstring[track]==' '&&wrapstring[track+1]==' '&&wrapstring[track-1]==' ')   //4th probability
       {
           reqline++;
           while (wrapstring[track+1]==' ')
@@ -61,7 +64,8 @@ int wordwrap(char wrapstring[], int fieldwidth)
               track++;
           }
           wrapstring[track]='\n';
-          track++;
+          //track++;
+          status = 0;
           printf("\ntrack:%d\n",track);
       }
       printf("status:%d\n",status);
@@ -77,7 +81,7 @@ int wordwrap(char wrapstring[], int fieldwidth)
 
 int main()
 {
-    char string[] ={"This is week 13 of BTP100 "};
+    char string[] ={"This is week 13 of BTP100     i like ho tdog too"};
     int with=10;
     int lines = wordwrap(string, with);
     printf("\nNumber of lines required: %d\n", lines);
