@@ -9,7 +9,7 @@ version #
 #include <stdlib.h>
 #include <string.h>
 
-int wordwrap(char wrapstring[], int fieldwidth)
+int wordwrap(char wrapstring[], int fieldwidth)                        //This function returns a required lines value AND modify the string
 {
   fieldwidth --;
   int count = 0;
@@ -75,7 +75,7 @@ int wordwrap(char wrapstring[], int fieldwidth)
       else count++;
       track++;
   }
-  printf("\n%s\n",wrapstring);
+  //printf("\n%s\n",wrapstring);
   return reqline;
 }
 
@@ -84,6 +84,7 @@ int main()
     char string[] ={"This is week 13 of BTP100     i like ho tdog too"};
     int with=10;
     int lines = wordwrap(string, with);
+    printf("\n%s\n",string);
     printf("\nNumber of lines required: %d\n", lines);
     return 0;
 }
