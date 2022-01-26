@@ -1,54 +1,48 @@
+
 #include <stdio.h>
-#include <math.h>
-void simplyfy(int tu, int mau)
+#include <time.h>
+#include <conio.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+
+bool compare_arr(char a[], char b[])
 {
-	int i,count,a,b;
-	a=tu;b=mau;  
-	int tg=mau;
-	if (mau<0 && tu <0)
-	{
-		mau=abs(mau);
-		tu=abs(tu);
-	}
-	if (mau>tu)
-	{
-		mau=a;
-		tu=b;
-	}
-	for (i=1;i<=abs(mau);i++)
-	{
-		if (tu%i==0){
-			count=i;
-		}
-	}
-	mau=b/count;
-	tu=a/count;
-	if (a==0)
-	{
-		printf ("%d / %d = %d",tu,tg,tu);
-	}
-	else if (b==0)
-	{
-		printf("\nInvalid fraction");
-	}
-	else if (mau==1 || mau==-1)
-	{
-		printf("%d / %d = %d",a,b,a/b);
-	}	
-	else if (mau<0 && tu <0)
-	{
-		printf("%d / %d = %d / %d",a,b,abs(tu),abs(mau));
-	}
-	else
-	printf("%d / %d = %d / %d",a,b,tu,mau);
+    for(int i = 0; i <2;i++)
+    {
+        if (a[i] != b[i]) return false;
+    }
+    return true;
 }
-int main ()
+
+char rank_gen()
+{  
+    return '1';
+}
+
+int main()
 {
-	int a,b;
-	printf("Enter numerator: ");
-	scanf("%d",&a);
-	printf("Enter denominator: ");
-	scanf("%d",&b);
-	simplyfy( a, b);
-	return 0;
+    srand(time(NULL));
+	char rank_draw[2];
+    char ranktemp=rank_gen();
+        if(ranktemp=='1')
+        {
+            rank_draw[0] = '1';
+            rank_draw[1] = '0';
+            rank_draw[2] = '\0';
+        }
+        else
+        {
+            rank_draw[0] = ranktemp;
+		    rank_draw[1] = '\0';
+        }
+
+	if(compare_arr(rank_draw,"10")==true)
+	printf("true");
+	else printf("false");
+
+    //game(suit,rank);
+    
+    //main code
 }

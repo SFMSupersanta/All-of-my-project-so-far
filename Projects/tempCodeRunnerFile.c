@@ -1,1 +1,2 @@
-printf("Their statistical mean is %.2lf\n",mean(data,count)
+];
+    print

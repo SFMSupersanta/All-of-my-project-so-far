@@ -5,20 +5,22 @@ Referring code made by SFMSupersanta.
 Program: PRF101
 version #
 ****************************************************************/
-
+/*
 #include <stdio.h>
 #include <time.h>
 #include <conio.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
 
-int compare_arr(char a[], char b[])
+bool compare_arr(char a[], char b[])
 {
     for(int i = 0; i <2;i++)
     {
-        if (a[i] != b[i]) return 0;
+        if (a[i] != b[i]) return false;
     }
-    return 1;
+    return true;
 }
 
 char rank_gen()
@@ -31,8 +33,8 @@ char rank_gen()
     else if(temp == 12) rank = 'Q';
     else if(temp == 13) rank = 'K';
     else rank = temp+'0';
-    printf("rank: %d\n", temp);
     return rank;
+    return '1';
 }
 
 char suit_gen()
@@ -47,41 +49,52 @@ char suit_gen()
     return suit;
 }
 
-void game(char suit,char *rank)
+void game(char suit,char rank[])
 {
-    char req[3] = {rank,suit,};
-    int i=1;
+    printf("rank: %s\n",rank);
     int count = 0;
-    while(i=1)
+    char rank_draw[2];
+    char suit_draw;
+    while(true)
     {
         count++;
-        int decem=0;                                        //latin word for ten, this =1 means the rank is num(10)
-        char draw[3] = {rank_gen(),suit_gen(),'0'};
-        if(draw[1]=='1') decem =1;
-        printf("Result of draw %d : ", count);
-        for (int i = 0; i < 2; i++) printf("%c",draw[i]);
-        printf("\n");
-        if(compare_arr(req,draw)==1)
+        char ranktemp=rank_gen();
+        if(ranktemp=='1')
         {
-            printf("You got your result in %d draws!", count);
+            rank_draw[0] = '1';
+            rank_draw[1] = '0';
+            rank_draw[2] = '\0';
+        }
+        else
+        {
+            rank_draw[0] = ranktemp;
+            rank_draw[1] = '\0';
+        }
+        printf("rankdraw: %s\n", rank_draw);
+        suit_draw = suit_gen();
+        printf("Result of draw %d : %s", count,rank_draw);
+        printf("%c\n",suit_draw);
+        if(compare_arr(rank,rank_draw)==true&&suit==suit_draw)
+        {
+            printf("You got your result in %d draws!",count);
             break;
         }
+        //if (count==30) break;
     }
 }
 
 int main()
 {
+    srand(time(NULL));
     //print
     printf("Dice Thrower\n");
     printf("------------\n");
-    char suit, *rank;
+    char suit, rank[2];
     printf("Suit : ");
     scanf("%c",&suit);
     getchar();
     printf("Rank : ");
     scanf(" %[^\n]", rank);
-    
-    game(suit,*rank);
-    
-    //main code
-}
+    game(suit,rank);
+}*/
+// FUCK THISI QUIT
