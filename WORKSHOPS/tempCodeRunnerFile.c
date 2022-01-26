@@ -1,1 +1,1 @@
-ata[j+k]=foundarr[k
+                printf("i: %lld\n",i);

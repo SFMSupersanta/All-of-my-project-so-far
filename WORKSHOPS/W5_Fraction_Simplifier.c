@@ -1,50 +1,63 @@
 /****************************************************************
-(▀̿Ĺ̯▀̿ ̿)
+d=====(￣▽￣*)b
 Referring code made by SFMSupersanta.
 Program: PRF101
 version #
 ****************************************************************/
 #include <stdio.h>
-
-void simplify(long long numerator, long long denominator)
+#include <math.h>
+long long dev_f(long long  numerator,long long  denominator)                            // devider finder
 {
-    long long temp_denominator = denominator ;
-    long long temp_numerator = numerator ;
-
-    if(numerator > denominator && numerator % denominator ==0)
+    if(abs(numerator)>abs(denominator))
     {
-    
-        numerator = numerator / denominator;
-        denominator = 1;
-    }
-    else if (numerator < denominator && denominator % numerator ==0)
-    {
-        denominator = denominator / numerator;
-        numerator = 1;
-    }
-    else
-    {
-        long long devider;
-        if(numerator > denominator)
+        for(long long i=abs(denominator); i>0; i--)
         {
-            devider = denominator/2;
-        }
-        else 
-        {
-            devider = numerator/2;
-        }
-        for(long long i = devider; i >1 ; i--)
-        {
-            //printf("%lld ", i);
-            if(numerator % i ==0 && denominator % i == 0)
+            if(numerator%i==0&&denominator%i==0)
             {
-                numerator /= i;
-                denominator /= i;
+                return i;
+                break;
             }
         }
     }
+    else if(abs(numerator)<abs(denominator))
+    {
+        for(long long i=abs(numerator); i > 0; i--)
+        {
+            if(numerator%i==0&&denominator%i==0)
+            {
+                return i;
+                break;
+            }
+        }
+    }
+}
 
-    printf("\n%lld / %lld = %lld / %lld",temp_numerator,temp_denominator,numerator,denominator);
+int simplify(long long numerator, long long denominator,long long  *simp_deno, long long *simp_numer)
+{
+    if(denominator==0)
+    {
+        printf("Devide to 0 error");
+        return 1;
+    } 
+    if(numerator==0)
+    {
+        *simp_numer = 0;
+        *simp_deno = abs(denominator)/denominator;
+    }
+    else
+    {
+         if(numerator<0&&denominator<0)
+        {
+            *simp_numer = abs(numerator)/dev_f(numerator,denominator);
+            *simp_deno = abs(denominator)/dev_f(numerator,denominator);
+        }
+        else
+        {
+            *simp_numer = numerator/dev_f(numerator,denominator);
+            *simp_deno = denominator/dev_f(numerator,denominator);
+        }
+    }
+    return 0;
 }
 
 int main()
@@ -59,9 +72,34 @@ int main()
     printf("Denominator:  ");
     long long denominator ;
     scanf("%lld", &denominator);
+
+    long long simp_deno,simp_numer;
     
-    simplify(numerator,denominator);
-
+    if(simplify(numerator,denominator,&simp_deno,&simp_numer)==0)
+    {
+        printf("\n%lld / %lld = %lld / %lld",numerator,denominator,simp_numer,simp_deno);
+    }
     return 0;
-
 }
+/*#######################
+###################
+#TEST CASE(file)  #
+###################
+4,16
+16,4
+0,any number 
+any number,0
+-4,46
+4,-16
+-16,4
+16,-4
+###################
+#   EXAMPLE:      #
+###################
+ Fraction Simplifier
+ ===================
+ Numerator:   4
+ Denominator: 16
+
+ 4 / 16 = 1 / 4
+#########################*/

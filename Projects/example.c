@@ -1,24 +1,54 @@
 #include <stdio.h>
 #include <math.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <string.h>
-
-int compare_arr(char arr1[], char arr2[], int size)
+void simplyfy(int tu, int mau)
 {
-    for(int i = 0; i <size; i++)
-    {
-        if (arr1[i] != arr2[i]) return 1;
-    } return 0;
+	int i,count,a,b;
+	a=tu;b=mau;  
+	int tg=mau;
+	if (mau<0 && tu <0)
+	{
+		mau=abs(mau);
+		tu=abs(tu);
+	}
+	if (mau>tu)
+	{
+		mau=a;
+		tu=b;
+	}
+	for (i=1;i<=abs(mau);i++)
+	{
+		if (tu%i==0){
+			count=i;
+		}
+	}
+	mau=b/count;
+	tu=a/count;
+	if (a==0)
+	{
+		printf ("%d / %d = %d",tu,tg,tu);
+	}
+	else if (b==0)
+	{
+		printf("\nInvalid fraction");
+	}
+	else if (mau==1 || mau==-1)
+	{
+		printf("%d / %d = %d",a,b,a/b);
+	}	
+	else if (mau<0 && tu <0)
+	{
+		printf("%d / %d = %d / %d",a,b,abs(tu),abs(mau));
+	}
+	else
+	printf("%d / %d = %d / %d",a,b,tu,mau);
 }
-
-
-
-int main()
+int main ()
 {
-
-    char arr1[] = {"134aaaa"};
-    char arr2[] = {"1234aaaa"};
-    printf("%d\n",compare_arr(arr1, arr2,8));
-    return 0;
+	int a,b;
+	printf("Enter numerator: ");
+	scanf("%d",&a);
+	printf("Enter denominator: ");
+	scanf("%d",&b);
+	simplyfy( a, b);
+	return 0;
 }
