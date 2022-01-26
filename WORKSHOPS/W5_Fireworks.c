@@ -44,10 +44,13 @@ int main()
             printf("Desired height (m):                             ");
             scanf("%lf", &height);
             double height_that_never_can_be_reached = height;
+            //times 2 for how the equation works
             velocity *= 2;
-            velocity = -velocity;
             height *= 2;
+            //also because of the equation
+            velocity = -velocity;
             double delta = velocity*velocity - 4*(g*height);
+        
             time_cal(velocity, height, delta, &t1,&t2);
             if(delta >0)
             {

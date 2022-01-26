@@ -9,7 +9,7 @@ version #
 #include <stdlib.h>
 #include <string.h>
 
-double mean(double data[], int size)
+double mean(double data[], int size)               //this funtion is "mean"
 {
     double sum;
     for (int i = 0; i < size;i++)
@@ -20,7 +20,7 @@ double mean(double data[], int size)
     return sum;
 }
 
-double dev(double data[], int size, double m)
+double dev(double data[], int size, double m)         //deviation caculation hell
 {
     double Ssum=0;                        //squared sum variable
     for (int i = 0; i < size;i++)

@@ -1,6 +1,6 @@
 // toi da~ lam' qua' nhieu' game nhan pham^ roi'
 /****************************************************************
-(▀̿Ĺ̯▀̿ ̿)
+≡(▔﹏▔)≡
 Referring code made by SFMSupersanta.
 Program: PRF101
 version #
@@ -53,3 +53,21 @@ int main()
 
     return 0;
 }
+/*
+###################
+#   EXAMPLE:      #
+###################
+ Fraction Simplifier
+ ===================
+ Ball Lottery
+ ============
+ Dice Thrower
+ ============
+ Total sought : 11
+ Result of throw  1 : 1 + 3
+ Result of throw  2 : 4 + 4
+ Result of throw  3 : 6 + 2
+ Result of throw  4 : 5 + 6
+ You got your total in 4 throws!
+NOTICE: the result is differ every test
+#########################*/

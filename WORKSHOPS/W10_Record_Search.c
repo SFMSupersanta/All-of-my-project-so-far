@@ -10,7 +10,7 @@ version #
 
 #define max_string_val  1000
 
-int compare_arr(char arr1[], char arr2[], int size)  //compairing string
+int compare_arr(char arr1[], char arr2[], int size)  //compairing strings
 {
     for(int i = 0; i <size; i++)
     {
@@ -26,7 +26,7 @@ int mygrep(char filename[],char searchstring[])      //find and print lines that
     if (fileP != NULL)
     {
         int searchsize = 0;
-        while (searchstring[searchsize]!='\0') searchsize++;
+        while (searchstring[searchsize]!='\0') searchsize++; //since array decays into pointer, this is the only way
         int i =0;
 
         char data[max_string_val];
@@ -34,8 +34,9 @@ int mygrep(char filename[],char searchstring[])      //find and print lines that
         {
             data[i] = fgetc(fileP);
             i++;
-        }while(!feof(fileP));
-        for(int j = 0; j < i-1; j++)    //i-1 becaise data[i]='EOF'
+        }while(!feof(fileP));           //while the program did not encounter the EOF value
+
+        for(int j = 0; j < i-1; j++)    //i-1 because data[i]='EOF'
         {
 
             if (data[j] == searchstring[0])
@@ -55,8 +56,8 @@ int mygrep(char filename[],char searchstring[])      //find and print lines that
                         foundj--;
                     }
                     if (foundj == 0) printf("%c",data[foundj]); //in the case of foundj =0 the first character will not be printed of not for this codeline
-                    foundj++;//to skip the \n
-                    while (data[foundj] != '\n'&&data[foundj] != EOF)
+                    foundj++;//to skip the \n or the '0' value
+                    while (data[foundj] != '\n'&&data[foundj] != EOF) //while one of the two condition does not meat, the code will stop executing
                     {
                         printf("%c",data[foundj]);
                         foundj++;
@@ -73,10 +74,10 @@ int main()
 {
     printf(" BTP100 grep\n ===========\n File name : ");
     char filename[max_string_val];
-    scanf(" %[^\n]s",filename);
+    scanf(" %[^\n]s",filename);            //scaning a ling will never be this hard
     printf(" Search string : ");
     char string[max_string_val];
-    scanf(" %[^\n]s",string);
+    scanf(" %[^\n]s",string);              //this mean scaning a string until the \n value is found and then discard it  
     printf(" Lines that contain '%s'\n",string);
     if(mygrep(filename,string)==1) printf(" Found no line that contains '%s'",string);
     return 0;

@@ -67,5 +67,5 @@ int main()
  Result of picks 5 and 6 : 6 + 3
  Result of picks 7 and 8 : 5 + 6
  You got your total in 8 picks!
- NOTICE: the result differ every test
+ NOTICE: the result is differ every test
 #########################*/

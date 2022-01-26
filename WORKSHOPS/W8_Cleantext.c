@@ -12,7 +12,7 @@ version #
 function to make the text "clean"
 take a string, size of the string and a string pointer as input and assing value to the string pointer
 */
-int char_to_ascii(char i)
+int char_to_ascii(char i)       //this function is rather unnecessary but it makes the code "cleaner"
 {
     int k = i;
     return k;
@@ -60,3 +60,16 @@ int main()
     cl_text(str,/*return length value*/strlen(str),cl_str);
     printf("Cleaned string       : %s", cl_str);
 }
+/*###########################################################
+###################
+#TEST CASE(ctrc+v)#
+###################
+   BTP100   is not    that  hard!
+###################
+#   EXAMPLE:      #
+###################
+ String Cleaner
+ ==============
+ String to be cleaned :   BTP100   is not    that  hard!
+ Cleaned string       : BTP100 is not that hard!
+###########################################################*/

@@ -1,16 +1,18 @@
 /****************************************************************
-(▀̿Ĺ̯▀̿ ̿)
+o(*￣▽￣*)ブ
 Referring code made by SFMSupersanta.
 Program: PRF101
 version #
 ****************************************************************/
+
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
 
-bool  numcheck(long long num)
+//isbn validator
+bool  numcheck(long long num)                                     //this function is form workshop 4 i guess
 {
     long long  check_digit = num % 10;
     num /= 10;
@@ -30,7 +32,7 @@ bool  numcheck(long long num)
         return false;
 }
 
-long long demic_conv(char barc_arr[])
+long long demic_conv(char barc_arr[])                         //string to int magic
 {
   long long returnnum=0 ;
   for (int i = 0; i <= 9; i++)
@@ -42,7 +44,8 @@ long long demic_conv(char barc_arr[])
   return returnnum;
 }
 
-bool barc_val(char barc_arr[])
+//barcode validator
+bool barc_val(char barc_arr[])                                //type in the right thing unless youre a dumbass
 {
     //check if the first 10 value is a Number
     for (int i=0;i<10;i++)

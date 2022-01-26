@@ -1,5 +1,5 @@
 /****************************************************************
-`(*>﹏<*)′
+╰（‵□′）╯ I CAN'T BELIVE HOW THE TEACHER MADE US DO THIS
 Referring code made by SFMSupersanta.
 Program: PRF101
 version #
@@ -121,11 +121,12 @@ int main()
         printf("The y-intercept of the least squares fit is  %.2lf\n", My-t*Mx);
         printf("The correlation coefficient is %.2lf\n", corco(x_val,y_val,rec_count,Mx,My,Dx,Dy));
         
-        //stopping distance caculations
+        //FML how can i do this while the "learning website can't even tell how it works"
         printf("\nWhat is the age of your car in months ? ");
         int age;
         scanf("%d",&age);
         printf("You can expect a stopping distance of ");
+        //SEND HELP
 
         fclose(fileP);
     }

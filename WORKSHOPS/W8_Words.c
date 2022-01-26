@@ -1,5 +1,5 @@
 /****************************************************************
-(▀̿Ĺ̯▀̿ ̿)
+╰（‵□′）╯ THIS MIGHT BE THE MOST USELESS PROGRAM EVER.
 Referring code made by SFMSupersanta.
 Program: PRF101
 version #
@@ -8,7 +8,7 @@ version #
 #include <stdlib.h>
 #include <string.h>
 
-long long word_cnt(char str[], int size)
+long long word_cnt(char str[], int size)     
 {
     //printf("string: %s",str);
     int word = 0;

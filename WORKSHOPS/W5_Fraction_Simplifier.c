@@ -6,7 +6,7 @@ version #
 ****************************************************************/
 #include <stdio.h>
 #include <math.h>
-long long dev_f(long long  numerator,long long  denominator)                            // devider finder
+long long dev_f(long long  numerator,long long  denominator)                //devider finder            // devider finder
 {
     if(abs(numerator)>abs(denominator))
     {
@@ -32,21 +32,21 @@ long long dev_f(long long  numerator,long long  denominator)                    
     }
 }
 
-int simplify(long long numerator, long long denominator,long long  *simp_deno, long long *simp_numer)
+int simplify(long long numerator, long long denominator,long long  *simp_deno, long long *simp_numer)      //sometimes, things need to become a simp
 {
-    if(denominator==0)
+    if(denominator==0)                                                         //if you can do this I'll personally give you a nobel prize
     {
         printf("Devide to 0 error");
         return 1;
     } 
-    if(numerator==0)
+    if(numerator==0)                                                           //simple as eating a cake
     {
         *simp_numer = 0;
         *simp_deno = abs(denominator)/denominator;
     }
     else
     {
-         if(numerator<0&&denominator<0)
+        if(numerator<0&&denominator<0)                                         //if they both negative, the result should be positive
         {
             *simp_numer = abs(numerator)/dev_f(numerator,denominator);
             *simp_deno = abs(denominator)/dev_f(numerator,denominator);
@@ -75,7 +75,7 @@ int main()
 
     long long simp_deno,simp_numer;
     
-    if(simplify(numerator,denominator,&simp_deno,&simp_numer)==0)
+    if(simplify(numerator,denominator,&simp_deno,&simp_numer)==0)                          //things should not be printed if the math is not correct
     {
         printf("\n%lld / %lld = %lld / %lld",numerator,denominator,simp_numer,simp_deno);
     }
