@@ -1,6 +1,6 @@
 // toi da~ lam' qua' nhieu' game nhan pham^ roi'
 /****************************************************************
-(▀̿Ĺ̯▀̿ ̿)
+≡(▔﹏▔)≡
 Referring code made by SFMSupersanta.
 Program: PRF101
 version #
@@ -53,3 +53,19 @@ int main()
 
     return 0;
 }
+/*
+###################
+#   EXAMPLE:      #
+###################
+ Fraction Simplifier
+ ===================
+ Ball Lottery
+ ============
+ Total sought : 11
+ Result of picks 1 and 2 : 1 + 3
+ Result of picks 3 and 4 : 4 + 5
+ Result of picks 5 and 6 : 6 + 3
+ Result of picks 7 and 8 : 5 + 6
+ You got your total in 8 picks!
+ NOTICE: the result differ every test
+#########################*/

@@ -1,5 +1,5 @@
 /****************************************************************
-(▀̿Ĺ̯▀̿ ̿)
+[]~(￣▽￣)~*]
 Referring code made by SFMSupersanta.
 Program: PRF101
 version #
@@ -70,3 +70,39 @@ int main()
 
     return 0;
 }
+/*#######################
+###################
+#TEST CASE(ctrc+v)#
+###################
+20 10
+20 20.408163265306122
+20 21
+0
+
+###################
+#   EXAMPLE:      #
+###################
+ Fireworks
+ =========
+ Initial vertical velocity (m/sec) (0 to quit) : 20
+ Desired Height (m):                             10
+
+ Your firework will reach the desired height at times:
+   0.58 sec
+   3.50 sec
+
+ Initial vertical velocity (m/sec) (0 to quit) : 20
+ Desired Height (m):                             20.408163265306122 
+
+ Your firework will reach the desired height at time:
+   2.04 sec
+
+ Initial vertical velocity (m/sec) (0 to quit) : 20
+ Desired Height (m):                             21
+
+ Your firework will never reach 21.00 m
+
+ Initial vertical velocity (m/sec) (0 to quit) : 0
+
+ Have a Nice Day!
+#########################*/
