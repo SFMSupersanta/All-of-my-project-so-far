@@ -7,40 +7,28 @@
 #include <string.h>
 #include <stdbool.h>
 
-bool compare_arr(char a[], char b[])
+long long dev_f(long long  numerator,long long  denominator)             //a better version of dev_f function
 {
-    for(int i = 0; i <2;i++)
+    numerator = abs(numerator);
+    denominator = abs(denominator);
+    while(numerator!=denominator)
     {
-        if (a[i] != b[i]) return false;
+        if(numerator>denominator)
+        {
+            numerator-=denominator;
+        }
+        else
+        {
+            denominator-=numerator;
+        }
     }
-    return true;
-}
-
-char rank_gen()
-{  
-    return '1';
+    return numerator;
 }
 
 int main()
 {
-    srand(time(NULL));
-	char rank_draw[2];
-    char ranktemp=rank_gen();
-        if(ranktemp=='1')
-        {
-            rank_draw[0] = '1';
-            rank_draw[1] = '0';
-            rank_draw[2] = '\0';
-        }
-        else
-        {
-            rank_draw[0] = ranktemp;
-		    rank_draw[1] = '\0';
-        }
-
-	if(compare_arr(rank_draw,"10")==true)
-	printf("true");
-	else printf("false");
+    printf("result: %lld\n", dev_f(135,15));
+    return 0;
 
     //game(suit,rank);
     

@@ -6,7 +6,8 @@ version #
 ****************************************************************/
 #include <stdio.h>
 #include <math.h>
-long long dev_f(long long  numerator,long long  denominator)                //devider finder            // devider finder
+/*
+long long dev_f(long long  numerator,long long  denominator)                //devider finder
 {
     if(abs(numerator)>abs(denominator))
     {
@@ -31,7 +32,24 @@ long long dev_f(long long  numerator,long long  denominator)                //de
         }
     }
 }
-
+*/
+long long dev_f(long long  numerator,long long  denominator)             //a better version of dev_f function
+{
+    numerator = abs(numerator);
+    denominator = abs(denominator);
+    while(numerator!=denominator)
+    {
+        if(numerator>denominator)
+        {
+            numerator-=denominator;
+        }
+        else
+        {
+            denominator-=numerator;
+        }
+    }
+    return numerator;
+}
 int simplify(long long numerator, long long denominator,long long  *simp_deno, long long *simp_numer)      //sometimes, things need to become a simp
 {
     if(denominator==0)                                                         //if you can do this I'll personally give you a nobel prize
