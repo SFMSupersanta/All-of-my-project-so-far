@@ -50,17 +50,12 @@ long long dev_f(long long  numerator,long long  denominator)             //a bet
     }
     return numerator;
 }
-int simplify(long long numerator, long long denominator,long long  *simp_deno, long long *simp_numer)      //sometimes, things need to become a simp
+void simplify(long long numerator, long long denominator, long long *simp_numer, long long  *simp_deno)      //sometimes, things need to become a simp
 {
-    if(denominator==0)                                                         //if you can do this I'll personally give you a nobel prize
+    if(numerator==0||denominator==0) 
     {
-        printf("Devide to 0 error");
-        return 1;
-    } 
-    if(numerator==0)                                                           //simple as eating a cake
-    {
-        *simp_numer = 0;
-        *simp_deno = abs(denominator)/denominator;
+        *simp_numer = numerator;
+        *simp_deno = denominator;
     }
     else
     {
@@ -75,7 +70,6 @@ int simplify(long long numerator, long long denominator,long long  *simp_deno, l
             *simp_deno = denominator/dev_f(numerator,denominator);
         }
     }
-    return 0;
 }
 
 int main()
@@ -93,10 +87,8 @@ int main()
 
     long long simp_deno,simp_numer;
     
-    if(simplify(numerator,denominator,&simp_deno,&simp_numer)==0)                          //things should not be printed if the math is not correct
-    {
-        printf("\n%lld / %lld = %lld / %lld",numerator,denominator,simp_numer,simp_deno);
-    }
+    simplify(numerator,denominator,&simp_numer,&simp_deno);
+    printf("\n%lld / %lld = %lld / %lld",numerator,denominator,simp_numer,simp_deno);
     return 0;
 }
 /*#######################

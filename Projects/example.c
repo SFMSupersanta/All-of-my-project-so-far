@@ -15,11 +15,12 @@ long long dev_f(long long  numerator,long long  denominator)             //a bet
     {
         if(numerator>denominator)
         {
-            numerator-=denominator;
+            numerator%=denominator;
+            printf ("%lld numerator  %lld denominator", numerator,denominator);
         }
         else
         {
-            denominator-=numerator;
+            denominator%=numerator;
         }
     }
     return numerator;
