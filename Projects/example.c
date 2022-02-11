@@ -7,31 +7,23 @@
 #include <string.h>
 #include <stdbool.h>
 
-long long dev_f(long long  numerator,long long  denominator)             //a better version of dev_f function
+
+bool pc(long long i)
 {
-    numerator = abs(numerator);
-    denominator = abs(denominator);
-    while(numerator!=denominator)
+    for (int j = 0; j < i/2; j++)
     {
-        if(numerator>denominator)
-        {
-            numerator%=denominator;
-            printf ("%lld numerator  %lld denominator", numerator,denominator);
-        }
-        else
-        {
-            denominator%=numerator;
-        }
-    }
-    return numerator;
+        if(i%j==0)
+        return false;
+        break;
+    } return true;
 }
 
 int main()
 {
-    printf("result: %lld\n", dev_f(135,15));
-    return 0;
-
-    //game(suit,rank);
-    
-    //main code
+  long long n;
+  printf("ENTER");
+  scanf("%lld", &n);
+  printf("Retulst: %d\n", pc(n));
+  if(pc(n)==true) printf("Not Prime");
+  else printf("Prime");
 }

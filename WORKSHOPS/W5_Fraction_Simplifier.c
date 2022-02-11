@@ -59,16 +59,8 @@ void simplify(long long numerator, long long denominator, long long *simp_numer,
     }
     else
     {
-        if(numerator<0&&denominator<0)                                         //if they both negative, the result should be positive
-        {
-            *simp_numer = abs(numerator)/dev_f(numerator,denominator);
-            *simp_deno = abs(denominator)/dev_f(numerator,denominator);
-        }
-        else
-        {
-            *simp_numer = numerator/dev_f(numerator,denominator);
-            *simp_deno = denominator/dev_f(numerator,denominator);
-        }
+        *simp_numer = numerator/dev_f(numerator,denominator);
+        *simp_deno = denominator/dev_f(numerator,denominator);
     }
 }
 
@@ -97,12 +89,8 @@ int main()
 ###################
 4,16
 16,4
-0,any number 
-any number,0
--4,46
+-4,16
 4,-16
--16,4
-16,-4
 ###################
 #   EXAMPLE:      #
 ###################

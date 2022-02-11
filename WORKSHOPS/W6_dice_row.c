@@ -53,8 +53,7 @@ int main()
 
     return 0;
 }
-/*
-###################
+/*###################
 #   EXAMPLE:      #
 ###################
  Fraction Simplifier
