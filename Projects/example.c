@@ -6,24 +6,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include <math.h>
 
-
-bool pc(long long i)
-{
-    for (int j = 0; j < i/2; j++)
-    {
-        if(i%j==0)
-        return false;
-        break;
-    } return true;
-}
 
 int main()
 {
-  long long n;
-  printf("ENTER");
-  scanf("%lld", &n);
-  printf("Retulst: %d\n", pc(n));
-  if(pc(n)==true) printf("Not Prime");
-  else printf("Prime");
+  double i= 3.464;
+  printf("%.2f\n", i - 0.005);
+  return 0;
 }
