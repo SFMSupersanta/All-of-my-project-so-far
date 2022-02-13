@@ -11,9 +11,10 @@
 - Đây là code mà tôi đã mất rất nhiều thời gian làm và đã hoàn thành vào ngày 24/1 nên bất cứ ai dùng nó vào mục đích lấy điểm (trước tôi) thì cứ đợi đấy, có nghĩa là dùng sau tôi còn làm bài kiểm tra workshop thì cứ dùng.
 # Updates
 - Bài tập PE_PRF192 đã được thêm vào file PE_PRF192.
-- Welcome huynnt to our wonderful contributors team. We currently have 3 wich is SFMSupersanta,  and Huynnt.
+- Welcome huynnt to our wonderful contributors team. We currently have 3 wich is SFMSupersanta, Arcahv and Huynnt.
 - Example exercises has been added for code clearance. In Workshop exercises get the brower site and go to workshop. In PE the file is .docx
 - CodeRunner files has been added to .gitignore
+- W7 đã được thêm validation cho tất cả input
 # Support
 - Tất cả bài sau đây được đưa lên với mục đích giúp các bạn học tại trường "you know what" chuyên ngành SE lấy ví dụ để hiểu bài tốt hơn. 
   Dù không vì mục đích kinh tế nhưng tôi vẫn chỉ là một sinh viên hút tiền cha mẹ. Nếu tự dưng thấy muốn Support tôi để tiếp tục làm thêm nhiều bài trong quá trình học các bạn có thể tìm đến số Momo 0913073459 Nguyễn Ngọc Hoàng San.
