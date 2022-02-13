@@ -1,0 +1,229 @@
+
+<html lang="en-us" xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+   <title>Seneca | School of Computer Studies | Programming Fundamentals Using C</title>
+
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+   <meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+   <meta name="Copyright" content="(c) Copyright Seneca College 2004" />
+   <meta name="Description" content="Welcome to the Bachelors Degree of Software Development Program Web Site.  On this site you can find the introductory programming course.  Designed by Chris Szalwinski." />
+   <meta name="Abstract" content="This subject reviews the principles of procedural programming.  Students study the solution of problems using structured programming techniques with the C programming language.  The emphasis throughout is on the solution of small problems."/>
+   <meta name="Author" content="chris.szalwinski@senecac.on.ca"/>
+   <meta name="Keywords" content="sofware development, procedural programming, lecture notes"/>
+
+   <link rel="stylesheet" type="text/css" href="style.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/style.043.css">
+   <link rel="stylesheet" type="text/css" href="styleSPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleSPrint.043.css" media="screen">
+   <link rel="stylesheet" type="text/css" href="stylePPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/stylePPrint.043.css" media="print">
+</head>
+
+<body>
+
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC
+    '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+
+<table cellspacing="0" cellpadding="0">
+
+   <!-- Body Cell -->
+   <tr height="600">
+      <!-- Content Area -->
+      <td class="tbody" bgcolor="ffffff">
+         <table cellpadding="10" width="100%">
+            <tr>
+               <td bgcolor="ffffff" valign="top">
+               <br />
+               <center><span class=texth>Module B - Computations</span>
+               <br />
+               <br />
+               <span class=texthead>
+               Conversions</span>
+               <br />
+               <br /><span class=textagend>
+               Workshop 2</span>
+               </center>
+               <br />
+               <br />
+
+               <p>
+               In this workshop, you are to experiment with the double floating-point
+               data type.</p>
+               <br />
+
+               <p class=section>Learning Outcome</p>
+               <p>
+               Upon successful completion of this workshop, you
+               will be able to discuss different aspects of how data
+               is stored in the C double data type and converted to
+               the C int type.
+               </p>
+               <br />
+
+               <p class=section>Adding Doubles</p>
+               <p>
+               Enter, compile and run the following program for the sample data noted.&nbsp;
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ /* Working with Doubles - Adding Doubles&nbsp;
+ *  BTP100 - Workshop 2
+ *  Week 2
+ *  adding.c
+ *
+ *  sample data: 123.00 =&gt; 123.09
+ */
+
+ main() {
+
+     double price, gst, pst, total;
+
+     printf(&quot;Enter the price : &quot;);
+     scanf(&quot;%lf&quot;, &amp;price);
+
+     gst = 0.08 * price;
+     pst = 0.07 * price;
+     total = price + gst +  pst;
+
+     printf(&quot;Price : $%7.2lf\n&quot;, price);
+     printf(&quot;GST   : $%7.2lf\n&quot;, gst);
+     printf(&quot;PST   : $%7.2lf\n&quot;, pst);
+     printf(&quot;Total : $%7.2lf\n&quot;, total);
+
+     return 0;
+ }
+               </pre><br /></td></tr></table>
+               Then, do the following:
+               <ul>
+               <li>Record the output values for each test case.</li>
+               <li>Note the cases where the addition appears to be incorrect.&nbsp;</li>
+               <li>Guess the source of the inaccuracies.&nbsp;</li>
+               <li>Temporarily change the conversion specifiers to %7.3lf to
+               confirm the source of the inaccuracies, then change them back.</li>
+               <li>Modify the code to ensure correct addition in all of the test cases.</li>
+               </ul>
+               <br />
+
+               <p class=section>Rounding Doubles</p>
+               <p>
+               Enter, compile and run the following program with the sample data noted.
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ /* Working with Doubles - Rounding Doubles
+ *  BTP100 - Workshop 2
+ *  Week 2
+ *  rounding.c
+ *
+ *  test data: 12.3, 12.7, -12.3, -12.7
+ */
+
+ main() {
+
+     double value, remainder;
+     int truncated, rounded;
+
+     printf(&quot;Enter a value : &quot;);
+     scanf(&quot;%lf&quot;, &amp;value);
+
+     truncated = value;
+     remainder = value - truncated;
+     rounded = value;
+
+     printf(&quot;Value     : %10.2lf\n&quot;, value);
+     printf(&quot;Truncated : %7d\n&quot;, truncated);
+     printf(&quot;Remainder : %10.2lf\n&quot;, remainder);&nbsp;
+     printf(&quot;Rounded   : %7d\n&quot;, rounded);
+
+     return 0;
+ }
+               </pre><br /></td></tr></table>
+               Then, do the following:
+               <ul>
+               <li>Record the output values for each test case.</li>
+               <li>Note the cases where the rounding appears incorrect.&nbsp;</li>
+               <li>Rewrite the rounded = assignment statement to yield
+               the correct result for positive value.&nbsp;</li>
+               <li>Add code to yield the correct result for both positive and
+               negative values.&nbsp;</li>
+               </ul>
+               <br />
+
+               <p class=section>Input and Output using printf and scanf (Challenge)</p>
+               <p>
+               Enter, compile and run the following program with the sample data noted.
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ /* Working with Doubles - Rounding with printf and scanf&nbsp;
+ *  BTP100 - Workshop 2
+ *  Week 2
+ *  printf_scanf.c
+ *
+ *  sample data: 1.999, 1.999999999, 1.9999999999999999
+ */
+
+ main() {
+
+     double value;
+
+     printf(&quot;Enter a value : &quot;);
+     scanf(&quot;%lf&quot;, &amp;value);
+
+     printf(&quot;The value accepted was in 20.16 format&quot;
+            &quot; : %20.16lf\n&quot;, value);
+     printf(&quot;The value accepted was in 14.10 format&quot;
+            &quot; : %14.10lf\n&quot;, value);
+     printf(&quot;The value accepted was in  6.2  format&quot;
+            &quot; : %6.2lf\n&quot;, value);
+
+     return 0;
+ }
+               </pre><br /></td></tr></table>
+               Then, do the following:
+               <ul>
+               <li>Tabulate the input values, your guess of the contents of memory
+               and the output values.&nbsp;</li>
+               <li>Note the cases where the output appears incorrect.&nbsp;</li>
+               <li>Explain the results that you observe for each test case.&nbsp;</li>
+               </ul>
+               <p>
+               <br />
+               <br />
+               </td>
+            </tr>
+         </table>
+      </td>
+   </tr>
+
+   <!-- Footer -->
+   <tr>
+      <td class="tbody">
+         <table cellpadding="1" width="90%" align="center">
+            <tr>
+               <td width="50%" class="text3">
+                  <script language="javascript">
+                  var lh = document.location.href;
+                  document.write(lh)
+                  </script>&nbsp;&nbsp;
+               </td>
+               <td width="50%" align="right" class="text3">
+                  <script language="javascript">
+                  var lm = document.lastModified.slice(0,-3);
+                  document.write("Last Modified: " +lm)
+                  </script>&nbsp;&nbsp;
+               </td>
+            </tr>
+         </table>
+      </td>
+   </tr>
+</table>
+
+</body>
+</html>

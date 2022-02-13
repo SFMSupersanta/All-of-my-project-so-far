@@ -1,0 +1,29 @@
+<html>/* w13.c */
+            #include <stdio.h>
+            #include <string.h>
+
+            void fold(char s[], int k)
+            {
+                int i, j, len;
+
+                len = strlen(s);
+                for (i = 1; i + k < len; i++) {
+                    for (j = i; s[j + k]; j++)
+                        s[j] = s[j + k];
+                    s[j] = '\0';
+                    len -= k;
+                    k++;
+                }
+            }
+
+            main()
+            { 
+                char s1[31], s2[31];
+
+                strcpy(s1, "Show me less!? We always");
+                strcpy(s2, "worry:kiss and neck, or split");
+                fold(s1, 1);
+                fold(s2, 0);
+                printf("%s %s all, however\n", s1, s2);
+            }
+

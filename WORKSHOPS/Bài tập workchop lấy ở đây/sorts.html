@@ -1,0 +1,752 @@
+
+<html lang="en-us" xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+   <title>Seneca | School of Computer Studies | Programming Fundamentals Using C</title>
+
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+   <meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+   <meta name="Copyright" content="(c) Copyright Seneca College 2004" />
+   <meta name="Description" content="Welcome to the Bachelors Degree of Software Development Program Web Site.  On this site you can find the introductory programming course.  Designed by Chris Szalwinski." />
+   <meta name="Abstract" content="This subject reviews the principles of procedural programming.  Students study the solution of problems using structured programming techniques with the C programming language.  The emphasis throughout is on the solution of small problems."/>
+   <meta name="Author" content="chris.szalwinski@senecac.on.ca"/>
+   <meta name="Keywords" content="sofware development, procedural programming, lecture notes"/>
+
+   <link rel="stylesheet" type="text/css" href="style.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/style.043.css">
+   <link rel="stylesheet" type="text/css" href="styleScreen.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleScreen.043.css" media="screen">
+   <link rel="stylesheet" type="text/css" href="styleSPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleSPrint.043.css" media="print">
+   <link rel="stylesheet" type="text/css" href="styleNav.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleNav.043.css">
+</head>
+
+<body>
+
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC
+    '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+
+<table id="top" width="850" cellspacing="0" cellpadding="0">
+
+   <!-- Banner -->
+   <tr height="120">
+      <td colspan="2" class="banner">
+      <table cellspacing="0" cellpadding="0">
+         <tr>
+            <td width="250" class="banner">
+               <center><span class="text0">&nbsp;&nbsp;Software&nbsp;&nbsp;<br />
+               &nbsp;&nbsp;Development&nbsp;&nbsp;</span></center>
+            </td>
+            <td class="tbanner">
+               <img src="Banner4.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Banner4.gif" height="120" width="500" alt="Software Development" />
+            </td>
+         </tr>
+      </table>
+      </td>
+   </tr>
+
+   <!-- Navigation Bar -->
+   <tr height="20">
+      <td class="panel1" align="left" valign="bottom">
+         <ul id="tabnav">         
+         <li><a href="timeline.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/timeline.html">Timeline</a></li>
+         <li><a class="active" href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+         <li><script type="text/javascript" src="classroom_a.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_a.js"></script></li>
+         <li><script type="text/javascript" src="classroom_b.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_b.js"></script></li>
+         <li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+         <li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+         <li><a href="index-3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/instructors/index.html">Instructor</a></li>
+         <li><a href="sorts_p.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/sorts_p.html"><img align="center" src="Printer.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Printer.gif" height=15 width=10 alt="Printer Friendly Version of this Page" /></a></li>
+         </ul>
+      </td>
+      <!-- Web Site Title -->
+      <td class="panel2" width="150" align="center">
+         <span class="text1"><script type="text/javascript" src="subject.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/subject.js"></script></span>
+      </td>
+   </tr>
+
+   <!-- Body Cells -->
+   <tr height="600">
+
+      <!-- Content Area -->
+      <td class="tbody" bgcolor="ffffff" valign="top">
+         <table cellpadding="10" width="100%">
+            <tr>
+               <td bgcolor="ffffff" valign="top">
+               <br />
+               <center><span class=texth>Module F - Arrays</span>
+               <br />
+               <br />
+               <span class=texthead>
+               Mixing, Masking and Sorting Algorithms</span>
+               <br />
+               <br />
+               <span class=textagend>
+               Apply structured programming principles, including
+               single-dimensional arrays, when writing C code<br />
+               <br />
+               </span>
+               <p class=quote></p>
+               <span class=textagend>
+               <a href="#shu">Mixing</a> |
+               <a href="#mas">Masking</a> |
+               <a href="#exa">In-Class Practice</a> |
+               <a href="#sor">Sorting</a> |
+               <a href="#exe">Exercises</a>
+               </span>
+               </center>
+               <br />
+               <br />
+               <br />
+
+               <p>
+               Arrays, with their affinity for iterations,
+               are well suited for mixing, masking and sorting of elements.&nbsp;
+               </p>
+               <br />
+
+               <p id="shu" class="section">Mixing Algorithms</p>
+               <p>
+               Examples of algorithms for mixing elements
+               include ones for shuffling
+               the cards in a deck or tumbling numbered balls into a lottery chute.&nbsp;
+               Such algorithms vary in
+               the extent to which they generate a truly fair result.&nbsp;
+               </p>
+               <p class="ssection">Linear Shuffle</p>
+               <p>
+               Consider a program that shuffles a
+               deck of cards and displays the results of
+               the shuffle.&nbsp; With each iteration, the
+               program sets aside one card and shuffles the remaining cards.&nbsp;
+               This algorithm is attributed to Donald Knuth.
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ /* Card Shuffle
+ *  cardShuffle.c
+ *  BTP100
+ *  Mar 8 2005
+ */
+
+ #include &lt;stdio.h&gt;
+ #include &lt;stdlib.h&gt;
+ #include &lt;time.h&gt;
+ #define CARDS 52
+ #define SUITS 4
+ void initialize(int []);
+ <span class=high>void lShuffle(int []);</span>
+ void display(int []);
+
+ int main ( ) {
+     int card[CARDS];
+
+     srand(time(NULL));
+     initialize(card);
+     <span class=high>lShuffle(card);</span>
+     display(card);
+
+     return 0;
+ }
+
+ /* initialize sets cards to increasing order */
+ void initialize(int card[]) {
+     int i;
+
+     for (i = 0; i &lt; CARDS; i++)
+         card[i] = i;
+ }
+
+ <span class=high>/* lShuffle shuffles a deck of
+ *  cards in linear time
+ */
+ void lShuffle(int card[]) {
+     int i, cardsLeft, j, temp;
+
+     cardsLeft = CARDS;
+     for (i = 0; i &lt; CARDS; i++) {
+         j = i + rand() % cardsLeft;
+         temp = card[i];
+         card[i] = card[j];
+         card[j] = temp;
+         cardsLeft--;
+     }
+ }</span>
+
+ /* display displays cards on standard output
+ */
+ void display(int card[]) {
+     char suit, face;
+     int rank, i;
+
+     for (i = 0; i &lt; CARDS; i++) {
+         switch (card[i] / (CARDS/SUITS)) {
+         case 0:
+             suit = 'S';
+             break;
+         case 1:
+             suit = 'H';
+             break;
+         case 2:
+             suit = 'D';
+             break;
+         case 3:
+             suit = 'C';
+             break;
+         }
+         rank = card[i] % (CARDS/SUITS);
+         if (rank &lt; 8)
+             printf(&quot;%d of %c\n&quot;, rank + 2, suit);
+         else if (rank == 8)
+             printf(&quot;10 of %c\n&quot;, suit);
+         else {
+             switch (rank) {
+             case 9:
+                 face = 'J';
+                 break;
+             case 10:
+                 face = 'Q';
+                 break;
+             case 11:
+                 face = 'K';
+                 break;
+             case 12:
+                 face = 'A';
+                 break;
+             }
+             printf(&quot;%c of %c\n&quot;, face, suit);
+         }
+     }
+ }</pre><br /></td></tr></table>
+               Note also how the cards are numbered from <span class=code>0</span> to <span class=code>CARDS - 1</span>.&nbsp;
+               This keeps the initialization logic straightforward.&nbsp;
+               The program uses this internal numbering system throughout
+               and only converts to card ranks
+               and suits at the output stage.
+               <br />
+
+               <p id=mas class="section">Masking</p>
+               <p>
+               Masking is a technique where one
+               array hides or 'masks' the corresponding elements
+               of parallel arrays.&nbsp;
+               </p>
+               <p>
+               Consider the drawing of cards from a
+               shuffled deck.&nbsp; To identify a card
+               as having been drawn, let us introduce an
+               array named <span class=code>drawn</span> that is
+               parallel to <span class=code>card[]</span> and
+               initialize the elements of this masking array to <span class=code>0</span>.&nbsp;
+               For each card drawn, let us reset the corresponding
+               element in <span class=code>drawn</span> to <span class=code>1</span>.&nbsp;
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ /* Card Draw
+ *  cardDraw.c
+ *  BTP100
+ *  Mar 8 2005
+ */
+
+ #include &lt;stdio.h&gt;
+ #include &lt;stdlib.h&gt;
+ #include &lt;time.h&gt;
+ #define CARDS 52
+ #define SUITS 4
+ void initialize(int []);
+ void lShuffle(int []);
+ <span class=high>void draw(int [], int n);</span>
+ void display(int [], int []);
+
+ int main ( ) {
+     int card[CARDS], drawn[CARDS] = {0}, nDraw;
+
+     srand(time(NULL));
+     initialize(card);
+     lShuffle(card);
+
+     <span class=high>printf(&quot;Number of Cards to Draw : &quot;);
+     scanf(&quot;%d&quot;, &amp;nDraw);
+
+     draw(drawn, nDraw);</span>
+     display(card<span class=high>, drawn</span>);
+
+     return 0;
+ }
+
+ /* Initialize cards */
+ void initialize(int card[]) {
+     int i;
+
+     for (i = 0; i &lt; CARDS; i++)
+         card[i] = i;
+ }
+
+ /* lShuffle shuffles a deck of cards in linear time
+ */
+ void lShuffle(int card[]) {
+     int i, cardsLeft, j, temp;
+
+     cardsLeft = CARDS;
+     for (i = 0; i &lt; CARDS; i++) {
+         j = i + rand() % cardsLeft;
+         temp = card[i];
+         card[i] = card[j];
+         card[j] = temp;
+         cardsLeft--;
+     }
+ }
+
+ <span class=high>/* drawCards draws n cards from a deck
+ *  identifying the drawn cards by setting
+ *  drawn[i] to 1;
+ */
+ void draw(int drawn[], int nDraw) {
+     int i, j, notDrawn, card, skipped, keeplooking;
+
+     notDrawn = CARDS;
+     for (i = 0; i &lt; nDraw; i++) {
+         card = rand() % notDrawn;
+         skipped = 0;
+         keeplooking = 1;
+         for (j = 0; j &lt; CARDS &amp;&amp; keeplooking == 1; j++) {
+             if (drawn[j] == 0 &amp;&amp; skipped == card) {
+                 drawn[j] = 1;
+                 keeplooking = 0;
+             } else if (drawn[j] == 0)
+                 skipped++;
+         }
+         notDrawn--;
+     }
+ }</span>
+
+ /* display displays cards on standard output
+ */
+ void display(int card[]<span class=high>, int drawn[]</span>) {
+     char suit, face;
+     int rank, i;
+
+     for (i = 0; i &lt; CARDS; i++) {
+         <span class=high>if (drawn[i] == 1) {</span>
+             switch (card[i] / (CARDS/SUITS)) {
+             case 0:
+                 suit = 'S';
+                 break;
+             case 1:
+                 suit = 'H';
+                 break;
+             case 2:
+                 suit = 'D';
+                 break;
+             case 3:
+                 suit = 'C';
+                 break;
+             }
+             rank = card[i] % (CARDS/SUITS);
+             if (rank &lt; 8)
+                 printf(&quot;%d of %c\n&quot;, rank + 2, suit);&nbsp;
+             else if (rank == 8)
+                 printf(&quot;10 of %c\n&quot;, suit);
+             else {
+                 switch (rank) {
+                 case 9:
+                     face = 'J';
+                     break;
+                 case 10:
+                     face = 'Q';
+                     break;
+                 case 11:
+                     face = 'K';
+                     break;
+                 case 12:
+                     face = 'A';
+                     break;
+                 }
+                 printf(&quot;%c of %c\n&quot;, face, suit);
+             }
+         <span class=high>}</span>
+     }
+ }</pre><br /></td></tr></table>
+               <p class="ssection">Flagging</p>
+               <p>
+               We can use a masking array to find the subtotals
+               of common valued items in a list.&nbsp;
+               Consider the list of sku,units-sold pairs below.&nbsp;
+               </p>
+               <p>
+               <table align="center" cellspacing=1 cellpadding=1 border=1>
+               <tr class=desc><td>sku</td><td>&nbsp;Units Sold&nbsp;</td></tr>
+               <tr class=value><td align="right">&nbsp;1234&nbsp;</td><td align="right">4&nbsp;</td></tr>
+               <tr class=value><td align="right">2345&nbsp;</td><td align="right">15&nbsp;</td></tr>
+               <tr class=value><td align="right">3456&nbsp;</td><td align="right">9&nbsp;</td></tr>
+               <tr class=value><td align="right">2345&nbsp;</td><td align="right">7&nbsp;</td></tr>
+               <tr class=value><td align="right">&nbsp;1234&nbsp;</td><td align="right">6&nbsp;</td></tr>
+               <tr class=value><td align="right">3456&nbsp;</td><td align="right">3&nbsp;</td></tr>
+               <tr class=value><td align="right">2345&nbsp;</td><td align="right">3&nbsp;</td></tr>
+               <tr class=value><td align="right">3456&nbsp;</td><td align="right">12&nbsp;</td></tr>
+               <tr class=value><td align="right">&nbsp;1234&nbsp;</td><td align="right">1&nbsp;</td></tr>
+               </table>
+               We seek a technique to subtotal the units sold of each sku:
+               <p>
+               <table align="center" cellspacing=1 cellpadding=1 border=1>
+               <tr class=desc><td>sku</td><td>&nbsp;Units Sold&nbsp;</td></tr>
+               <tr class=value><td align="right">&nbsp;1234&nbsp;</td><td align="right">11&nbsp;</td></tr>
+               <tr class=value><td align="right">2345&nbsp;</td><td align="right">25&nbsp;</td></tr>
+               <tr class=value><td align="right">3456&nbsp;</td><td align="right">12&nbsp;</td></tr>
+               </table>
+               <p>
+               The skus occupy one array and the units sold a parallel array.&nbsp;
+               To obtain the total number of units sold for each
+               sku, let us introduce a parallel masking array and initialize that
+               array to indicate that each element has yet to be
+               totalled.&nbsp; Let us then select an untotalled sku from
+               the sku array, pass through the units-sold
+               array adding the units sold for that particular
+               sku and flagging the record as having been accounted for.&nbsp;
+               </p>
+               <p>
+               The code for our solution is:
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ /* Flagging Elements
+ *  flagging.c
+ *  BTP100
+ *  Mar 8 2005
+ */
+
+ #include &lt;stdio.h&gt;
+ #define MAX_SOLD 200
+
+ int main ( ) {
+     int sku[MAX_SOLD], code;
+     int units[MAX_SOLD], <span class=high>accountedFor[MAX_SOLD]</span>;
+     int i, j, nItems, total, keepreading;
+
+     printf(&quot;Enter skus and units sold\n&quot;);
+     nItems = 0;
+     keepreading = 1;
+     do {
+         printf(&quot;SKU (0 to stop) : &quot;);
+         scanf(&quot;%d&quot;, &amp;sku[nItems]);
+         if (sku[nItems] != 0) {
+             printf(&quot;Units Sold : &quot;);
+             scanf(&quot;%d&quot;, &amp;units[nItems]);
+             nItems++;
+         } else
+             keepreading = 0;
+     } while ( keepreading == 1 &amp;&amp; nItems &lt; MAX_SOLD );&nbsp;
+
+     <span class=high>/* flag all entries as uncounted */
+     for ( i = 0; i &lt; nItems; i++ )
+         accountedFor[i] = 0;</span>
+
+     printf(&quot;SKU    Units Sold\n&quot;);
+     for ( i = 0; i &lt; nItems; i++ ) {
+         <span class=high>/* consider only the unaccounted for elements */&nbsp;
+         if (accountedFor[i] != 1) {
+             /* this sku is next to be counted */
+             code = sku[i];
+             total = 0;
+             for ( j = i; j &lt; nItems; j++ ) {
+                 if (code == sku[j]) {
+                     total += units[j];
+                     /* mark j as accounted for */
+                     accountedFor[j] = 1;
+                 }
+             }
+             printf(&quot;%06d %9d\n&quot;, code, total);
+         }</span>
+     }
+
+     return 0;
+ }</pre><br /></td></tr></table>
+               Note how our program checks the <span class=code>accountedFor</span> array
+               to avoid adding units that it has already totalled.
+               <br />
+
+               <p id="exa" class="section">In-Class Practice</p>
+               <p>
+               Try the practice problem in <a href="h13.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/handouts/h13.html">Handout 12</a>.&nbsp;
+               </p>
+               <br />
+
+               <p id="sor" class="section">Sorting Algorithms</p>
+<!--
+               <p>
+
+               The following applet illustrates some of the algorithms for
+               sorting the elements of an array.&nbsp;
+               </p>
+               <p>
+               <applet archive="xSortLab.zip"
+                     code="tmcm.xSortLabApplet.class"
+                     height=380 width=500>
+               </applet>
+               <br />
+               courtesy of <a href="http://math.hws.edu/TMCM/java/index.html">David Eck</a></p>
+               <p>
+-->
+               Two common alogithms are
+               <ul>
+               <li>selection sorts</li>
+               <li>bubble sorts</li>
+               </ul>
+               <br />
+
+               <p class="ssection">Selection Sort</p>
+               <p>
+               The simplest way to sort an array is to pick a reference element, to move through the array
+               element by element looking for the element with the highest value, to swap
+               that element with the reference element, then to pick a new reference
+               element, to move through the unsorted part of the array looking for the next
+               highest value, to swap that value with the reference
+               element, and so on.&nbsp; </p>
+               <p>
+               For example, let us pick the last element in the
+               array to be sorted as the initial reference element, swap that element with the
+               largest element and then pick the second last element as the second reference
+               element, etc..
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ /* Selection Sort
+ *  selectionSort.c
+ *  BTP100
+ *  Mar 8 2005
+ */
+
+ #include &lt;stdio.h&gt;
+ #define MAX_ITEMS 3
+ #define SKU {1234, 3456, 2345}
+
+ void selectSort(int a[], int size);
+
+ int main ( ) {
+     int i, sku[MAX_ITEMS] = SKU;
+
+     selectSort( sku, MAX_ITEMS );
+     for (i = 0; i &lt; MAX_ITEMS; i++ )
+         printf(&quot;%06d\n&quot;, sku[i]);
+
+     return 0;
+ }
+
+ /* selectSort sorts the elements of a[size] in ascending order&nbsp;
+ */
+ void selectSort(int a[], int size) {
+     int i, j, jmax;
+     int max;
+
+     for (i = 0; i &lt; size - 1; i++) {
+         max = a[0];
+         jmax = 0;
+         for (j = 1; j &lt; size - i; j++)
+             if (a[j] &gt; max) {
+                 max = a[j];
+                 jmax = j;
+             }
+         if (jmax != size - i - 1) {
+             max = a[size - i - 1];
+             a[size - i - 1] = a[jmax];
+             a[jmax] = max;
+         }
+     }
+ }</pre><br /></td></tr></table>
+               <br />
+
+               <p class="ssection">Bubble Sort</p>
+               <p>
+               Another simple way to sort an array is to move through the array
+               element by element swapping elements if the subsequent one is smaller
+               than the preceding one, so that at the end of a cycle the largest
+               element is in the highest position in the array and to
+               repeat this process for each unsorted subset of the array starting
+               with the first element.&nbsp; In this method, the larger
+               elements bubble to the higher end of the array - hence the
+               name bubble sort.
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ /* Bubble Sort
+ *  bubbleSort.c
+ *  BTP100
+ *  Mar 8 2005
+ */
+
+ #include &lt;stdio.h&gt;
+ #define MAX_ITEMS 3
+ #define SKU {1234, 3456, 2345}
+
+ void bubbleSort(int a[], int size);
+
+ int main ( ) {
+     int i, sku[MAX_ITEMS] = SKU;
+
+     bubbleSort( sku, MAX_ITEMS );
+     for (i = 0; i &lt; MAX_ITEMS; i++ )
+         printf(&quot;%06d\n&quot;, sku[i]);
+
+     return 0;
+ }
+
+
+ /* bubbleSort sorts the elements of a[size] in ascending order&nbsp;
+ */
+ void bubbleSort(int a[], int size) {
+     int i, j;
+     int temp;
+
+     for (i = size - 1; i &gt; 0; i--) {
+         for (j = 0; j &lt; i; j++) {
+             if (a[j] &gt; a[j+1]) {
+                 temp = a[j];
+                 a[j] = a[j+1];
+                 a[j+1] = temp;
+             }
+         }
+     }
+ }</pre><br /></td></tr></table>
+               <br />
+
+               <p id="exe" class="section">Exercises</p>
+               <p>
+               <ul>
+               <li>complete Workshop 7 <a href="w7.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/w7.html">here</a>.</li>
+               </ul>
+               <br />
+               <br />
+               <br />
+               </td>
+            </tr>
+         </table>
+      </td>
+
+      <!-- Detail Menu -->
+      <td class="panel1" width="150" valign="top" rowspan="2">
+         <ul id="mennav">
+         <li><a href="welco.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/welco.html">Welcome</a></li>
+         <li><a class="active" href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+         <li><a href="probl.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/probl.html">&nbsp;Programming</a></li>
+         <li><a href="compu.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/compu.html">&nbsp;Memory</a></li>
+         <li><a href="compi.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/compi.html">&nbsp;Compilers</a></li>
+         <li><a href="varia.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/varia.html">&nbsp;Variables</a></li>
+         <li><a href="input.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/input.html">&nbsp;Basic Oper</a></li>
+         <li><a href="expre.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/expre.html">&nbsp;Expressions</a></li>
+         <li><a href="const.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/const.html">&nbsp;Constructs</a></li>
+         <li><a href="style.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/style.html">&nbsp;Style</a></li>
+         <li><a href="walks.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/walks.html">&nbsp;Walkthrus</a></li>
+         <li><a href="modul.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/modul.html">&nbsp;Modularity</a></li>
+         <li><a href="scope.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/scope.html">&nbsp;Scope</a></li>
+         <li><a href="point.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/point.html">&nbsp;Pointers</a></li>
+         <li><a href="formi.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/formi.html">&nbsp;Input</a></li>
+         <li><a href="formo.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/formo.html">&nbsp;Form Output</a></li>
+         <li><a href="libra.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/libra.html">&nbsp;Libraries</a></li>
+         <li><a href="array.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/array.html">&nbsp;Arrays</a></li>
+         <li><a href="searc.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/searc.html">&nbsp;Searches</a></li>
+         <li><a class="active" href="sorts.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/sorts.html">&nbsp;Sorts</a></li>
+         <li><a href="strin.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/strin.html">&nbsp;Strings</a></li>
+         <li><a href="valid.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/valid.html">&nbsp;String Inp</a></li>
+         <li><a href="sfunc.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/sfunc.html">&nbsp;String Fns</a></li>
+         <li><a href="files.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/files.html">&nbsp;Files</a></li>
+         <li><a href="table.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/table.html">&nbsp;Records</a></li>
+         <li><a href="debug.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/debug.html">&nbsp;Debugging</a></li>
+         <li><a href="devel.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/devel.html">&nbsp;Development</a></li>
+         <li><a href="stand.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/stand.html">&nbsp;Standards</a></li>
+         <li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+         <li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+         <li><a href="index-4.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/handouts/index.html">Handouts</a></li>
+         <li><a href="index-5.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/practice/index.html">Practice</a></li>
+         <li><a href="index-6.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/index.html">Resources</a></li>
+         <li><a href="glossary.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/glossary.html">Glossary</a></li>
+         </ul>
+      </td>
+   </tr>
+
+   <!-- Content Area Footer -->
+   <tr height="20">
+      <td class="panel3" align="center">
+         <table class="panel2" width="95%">
+            <tr>
+               <td align="left">
+                  &nbsp;&nbsp;<a href="sorts_p.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/sorts_p.html" class="text3">
+                  <img src="Printer.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Printer.gif" height="15" width="10" alt="Printer Friendly Version of this Page" />&nbsp;print this page</a>&nbsp;&nbsp;
+               </td>
+               <td align="right">
+                  &nbsp;&nbsp;<a href="#top" class="text3">Top&nbsp;
+                  <img src="ArrowToT.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToT.gif" height="15" width="15" alt="Go Back to the Top of this Page" /></a>
+               </td>
+            </tr>
+         </table>
+      </td>
+   </tr>
+
+   <!-- Footer -->
+   <tr>
+      <!-- Left Panel -->
+      <td class="panel1" width="700" align="center">
+         <!-- Lateral Motion Control -->
+         <table width="90%" align="center">
+            <tr>
+               <td width="50%" align="left">
+                  <a href="searc.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/searc.html" class="text3">
+                  <img src="ArrowToL.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToL.gif" height="15" width="15" class="panel1" alt="Previous Reading" />&nbsp;&nbsp;Previous: Parallel Arrays</a>
+               </td>
+               <td width="50%" align="right">
+                  <a href="strin.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/strin.html" class="text3">Next: Strings&nbsp;&nbsp;
+                  <img src="ArrowToR.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToR.gif" height="15" width="15" class="panel1" alt="Next Reading" /></a>
+               </td>
+            </tr>
+         </table>
+         <br />
+         <!-- Alternate Navigation Links -->
+         <ul id="altnav" align="center">        
+         <li><a href="timeline.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/timeline.html">Timeline&nbsp;</a></li>
+         </ul>
+         <ul id="altnav" align="center">
+         <li><a class="active" href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+         <li><script type="text/javascript" src="classroom_a.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_a.js"></script></li>
+         <li><script type="text/javascript" src="classroom_b.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_b.js"></script></li>
+         <li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+         <li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+         <li><a href="index-3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/instructors/index.html">Instructor</a></li>
+         </ul>
+         <br />
+         <!-- Bottom Line -->
+         <table cellpadding=1 width="90%">
+            <tr>
+               <td width="33%" class="text3">
+                  &nbsp;&nbsp;Designed by Chris Szalwinski&nbsp;&nbsp;
+               </td>
+               <td width="34%" align="center">
+                  <a href="copyright.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/copyright.html" class="text3">Copying From This Site</a>
+               </td>
+               <td width="33%" align="right" class="text3">
+                  <script language="javascript">
+                  var lm = document.lastModified.slice(0,-3);
+                  document.write("Last Modified: " +lm)
+                  </script>&nbsp;&nbsp;
+               </td>
+            </tr>
+         </table>
+      </td>
+
+      <!-- Logo - Right Bottom Corner -->
+      <td class=panel2 width="150" align="center">
+         <img src="Logo.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Logo.gif" height="73" width="85" />
+      </td>
+   </tr>
+</table>
+
+</body>
+</html>

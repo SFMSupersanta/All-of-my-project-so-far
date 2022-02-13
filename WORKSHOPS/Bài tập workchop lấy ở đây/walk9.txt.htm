@@ -1,0 +1,33 @@
+<html>/* w9.c */
+            #include <stdio.h>
+            #include <string.h>
+            int foo(char s1[], char s2[]);
+            main()
+            {
+                char name[21],
+                     title[21];
+                strcpy(name, "Fred");
+                strcpy(title, "Crane Operator");
+                while (1 == foo(name, title))
+                    printf("Looping...\n");
+                printf("All done\n");
+            }
+            int foo(char s1[], char s2[])
+            {
+                int num = 1;
+                printf("%s is a %s\n", s1, s2);
+                if (strcmp(s1, "Betty") == 0) {
+                    strcpy(s1, "Barney");
+                    strcpy(s2, "Programmer");
+                }
+                else if (strcmp(s1, "Fred") == 0) {
+                    strcpy(s1, "Betty");
+                    strcpy(s2, "Manager");
+                }
+                else {
+                    strcpy(s1, "Joe");
+                    strcpy(s2, "Leaf Blower");
+                    num = 0;
+                }
+                return num;
+            }

@@ -1,0 +1,577 @@
+
+<html lang="en-us" xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+	<title>Seneca | School of Computer Studies | Programming Fundamentals Using C</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+	<meta name="Copyright" content="(c) Copyright Seneca College 2004" />
+	<meta name="Description" content="Welcome to the Bachelors Degree of Software Development Program Web Site.  On this site you can find the introductory programming course.  Designed by Chris Szalwinski." />
+	<meta name="Abstract" content="This subject reviews the principles of procedural programming.  Students study the solution of problems using structured programming techniques with the C programming language.  The emphasis throughout is on the solution of small problems."/>
+	<meta name="Author" content="chris.szalwinski@senecac.on.ca"/>
+	<meta name="Keywords" content="sofware development, procedural programming, lecture notes"/>
+
+	<link rel="stylesheet" type="text/css" href="style.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/style.043.css">
+	<link rel="stylesheet" type="text/css" href="styleScreen.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleScreen.043.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="styleSPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleSPrint.043.css" media="print">
+	<link rel="stylesheet" type="text/css" href="styleNav.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleNav.043.css">
+</head>
+
+<body>
+
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC
+    '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+
+<table id="top" width="850" cellspacing="0" cellpadding="0">
+
+	<!-- Banner -->
+	<tr height="120">
+		<td colspan="2" class="banner">
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<td width="250" class="banner">
+					<center><span class="text0">&nbsp;&nbsp;Software&nbsp;&nbsp;<br />
+					&nbsp;&nbsp;Development&nbsp;&nbsp;</span></center>
+				</td>
+				<td class="tbanner">
+					<img src="Banner4.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Banner4.gif" height="120" width="500" alt="Software Development" />
+				</td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+
+	<!-- Navigation Bar -->
+	<tr height="20">
+		<td class="panel1" align="left" valign="bottom">
+			<ul id="tabnav">			
+			<li><a href="timeline.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/timeline.html">Timeline</a></li>
+			<li><a class="active" href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+			<li><script type="text/javascript" src="classroom_a.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_a.js"></script></li>
+			<li><script type="text/javascript" src="classroom_b.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_b.js"></script></li>
+			<li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+			<li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+			<li><a href="index-3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/instructors/index.html">Instructor</a></li>
+			<li><a href="strin_p.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/strin_p.html"><img align="center" src="Printer.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Printer.gif" height=15 width=10 alt="Printer Friendly Version of this Page" /></a></li>
+			</ul>
+		</td>
+		<!-- Web Site Title -->
+		<td class="panel2" width="150" align="center">
+			<span class="text1"><script type="text/javascript" src="subject.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/subject.js"></script></span>
+		</td>
+	</tr>
+
+	<!-- Body Cells -->
+	<tr height="600">
+
+		<!-- Content Area -->
+		<td class="tbody" bgcolor="ffffff" valign="top">
+			<table cellpadding="10" width="100%">
+				<tr>
+					<td bgcolor="ffffff" valign="top">
+					<br />
+					<center><span class=texth>Module G - Strings</span>
+					<br />
+					<br />
+					<span class=texthead>
+					Strings</span>
+					<br />
+					<br />
+					<span class=textagend>
+					Apply structured programming principles, including
+					single-dimensional arrays, when writing program code<br />
+					<br />
+					</span>
+					<p class=quote></p>
+					<span class=textagend>
+					<a href="#nul">Null Byte</a> |
+					<a href="#dec">Declaration</a> |
+					<a href="#ite">Iterations</a> |
+					<a href="#fun">Functions</a> |
+					<a href="#out">Output</a> |
+					<a href="#exa">In-Class Practice</a> |
+					<a href="#exe">Exercises</a>
+					</span>
+					</center>
+					<br />
+					<br />
+					<br />
+
+					<p>
+					A string is an array of characters that is terminated by a null-byte.&nbsp;
+					</p>
+					<p align="center">
+					<img src="strings.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/strings.gif" height="150" width="300" />
+					</p>
+					<br />
+
+					<p id="nul" class="section">Null Byte Terminator</p>
+					<p>
+					The null byte is the character with the value 0.&nbsp;
+					All of the bits in the null byte are 0's.&nbsp; The null byte occupies
+					the first position in the <a href="ascii.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/ascii.html">ASCII collating sequence</a>
+					and the first position in the <a href="ascii.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/ascii.html">EBCDIC collating sequence</a>.&nbsp;
+					</p>
+					<p>
+					We refer to the null byte using the escape sequence <span class=code>'\0'</span>.
+					</p>
+					<p>
+					We use the null byte to locate the last meaningful element in a string.&nbsp;
+					We store the null byte immediately after the last meaningful element.
+					</p>
+					<p>
+					<table width="90%" align=center cellspacing=1 cellpadding=1 border=1>
+					<tr class=desc>
+					<td class=code colspan=32>name</td>
+					<tr class=desc>
+					<td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
+					<td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td>
+					<td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td>
+					<td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td>
+					</tr>
+					<tr class=value>
+					<td width="3%">M</td><td width="3%">y</td><td width="3%">&nbsp; </td><td width="3%">n</td><td width="3%">a</td><td width="3%">m</td><td width="3%">e</td><td width="3%">&nbsp; </td>
+					<td width="3%">i</td><td width="3%">s</td><td width="3%">&nbsp; </td><td width="3%">A</td><td width="3%">r</td><td width="3%">n</td><td width="3%">o</td><td width="3%">l</td><td width="3%">d</td>
+					<td width="3%"><span class=high><b>\0</b></span></td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td>
+					<td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td>
+					</tr>
+					</table>
+					<p>
+					The number of elements occupied by a string is one byte more than the number
+					of non-null characters in the string.&nbsp;
+					</p>
+					<br />
+
+					<p id="dec" class="section">Declaration</p>
+					<p>
+					We declare a string in the same way that we declare a character
+					array, except that we allocate space for the terminator null byte.&nbsp;
+					For example, if we want a string to hold up to 30 non-null characters,
+					we declare
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ char name[3<span class=high>1</span>]; /* room for 30 characters */&nbsp;</pre><br /></td></tr></table>
+					To initialize a string, we follow the declaration with the
+					assignment operator and the set of initializing characters enclosed in
+					double quotes.&nbsp;
+					The compiler strips the double quotes and
+					inserts the null-byte terminator after the last character.
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ char name[31] = &quot;My name is Arnold&quot;;</pre><br /></td></tr></table>
+					is equivalent
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ char name[31] = {'M','y',' ','n','a','m','e',' ','i','s',' ',
+                      'A','r','n','o','l','d','\0'};</pre><br /></td></tr></table>
+					<br />
+
+					<p id="dec" class="section">Iterations</p>
+					In an iteration, we can check
+					for the presence of the null byte directly rather than
+					the number of characters in
+					the string.
+					<table width="95%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ /* Iterations on Strings
+ *  stringIterations.c
+ *  BTP100
+ *  Nov 9 2004
+ */
+
+ #include &lt;stdio.h&gt;
+
+ int main( ) {
+     int i;
+     char name[31] = &quot;My name is Arnold&quot;;
+
+     for ( i = 0; <span class=high>name[i] != '\0'</span>; i++ )
+         printf(&quot;%c&quot;, name[i]);
+     putchar('\n');
+
+     return 0;
+ }</pre><br /></td><td width="50%"><br />
+                    <pre class="result">
+
+
+
+
+
+
+
+
+
+
+
+
+
+ My name is Arnold
+
+
+
+
+</pre><br /></td></tr></table>
+					<br />
+
+					<p id="fun" class="section">Functions</p>
+					<p>
+					A non-terminated character array requires a separate integer
+					to hold the number of characters in the array.&nbsp;
+					For example,
+					<table width="95%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ /* Passing Arrays to a Function
+ *  charToFunction.c
+ *  BTP100
+ *  Nov 9 2004
+ */
+
+ #include &lt;stdio.h&gt;
+
+ void print( char name[], int n );
+
+ int main( ) {
+     int i;
+     char name[] = {'M','y',' ','n','a','m','e',' ','i',
+                      's',' ','A','r','n','o','l','d'};
+
+     print( name, 17 );
+
+     return 0;
+ }
+
+ void print( char name[], int n ) {
+     int i;
+
+     for ( i = 0; i &lt; n; i++ )
+         printf(&quot;%c&quot;, name[i]);
+     putchar('\n');
+ }</pre><br /></td><td width="50%"><br />
+                    <pre class="result">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ My name is Arnold&nbsp;
+
+
+</pre><br /></td></tr></table>
+					By using a string instead of a character array that
+					does not contain a terminator, we obtain
+					a more compact argument list for the function call
+					and avoid a separate integer variable to hold
+					the number of characters in the string.&nbsp;
+					For example,
+					<table width="95%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ /* Strings To Functions
+ *  strings.c
+ *  BTP100
+ *  Nov 9 2004
+ */
+
+ #include &lt;stdio.h&gt;
+
+ void print( char name[] );
+
+ int main( ) {
+     int i;
+     char name[31] = &quot;My name is Arnold&quot;;
+
+     print( <span class=high>name</span> );
+
+     return 0;
+ }
+
+ void print( <span class=high>char name[]</span> ) {
+     int i;
+
+     for ( i = 0; <span class=high>name[i] != '\0'</span>; i++ )
+         printf(&quot;%c&quot;, name[i]);
+     putchar('\n');
+ }</pre><br /></td><td width="50%"><br />
+                    <pre class="result">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ My name is Arnold
+
+
+</pre><br /></td></tr></table>
+					<br />
+
+					<p id="out" class="section">Output</p>
+					<p>
+					<span class=code>printf</span> uses the conversion
+					specifier <span class=code>%s</span> to process strings.&nbsp;
+					We pass the name of the string (its address) to
+					<span class=code>printf</span>
+					and include <span class=code>%s</span> in the format string
+					to instruct <span class=code>printf</span> to display all of
+					the characters from the address passed up to but excluding
+					the null-byte terminator
+					<table width="95%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ /* Displaying Strings
+ *  displayStrings.c
+ *  BTP100
+ *  Nov 9 2004
+ */
+
+ #include &lt;stdio.h&gt;
+
+ void print( char name[] );
+
+ int main( ) {
+     int i;
+     char name[31] = &quot;My name is Arnold&quot;;
+
+     print( <span class=high>name</span> );
+
+     return 0;
+ }
+
+ void print( <span class=high>char name[]</span> ) {
+     int i;
+
+     printf(&quot;<span class=high>%s</span>\n&quot;, <span class=high>name</span> );
+ }</pre><br /></td><td width="50%"><br />
+                    <pre class="result">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ My name is Arnold
+
+</pre><br /></td></tr></table>
+					Qualifiers on the <span class=code>%s</span> conversion specifier provide more output control.&nbsp; We use
+					<ul>
+					<li><span class=code>%20s</span> to display right justified in a field of 20,</li>
+					<li><span class=code>%-20s</span> to display left justified in a field of 20,</li>
+					<li><span class=code>%20.10s</span> to display the first 10 characters right justified in a field of 20, and</li>
+					<li><span class=code>%-20.10s</span> to display the first 10 characters left justified in a field of 20.</li>
+					</ul>
+					<br />
+
+					<p id="exa" class="section">In-Class Practice</p>
+					<p>
+					Try the practice problem in <a href="h15.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/handouts/h15.html">Handout 14</a>.&nbsp;
+					</p>
+					<br />
+
+					<p id="exe" class="section">Exercises</p>
+					<p>
+					<ul>
+					<li>Read pages 77-79 from Evan Weaver's subject notes,</li>
+					<li>Try walkthrough
+					<a href="string_4.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/practice/string_4.html">string_4.c</a> off the practice page, and</li>
+					<li>Try walkthroughs 13 and 14 on pages 111 and 112 of Evan Weaver's subject notes.</li>
+					</ul>
+					<br />
+					<br />
+					<br />
+					</td>
+				</tr>
+			</table>
+		</td>
+
+		<!-- Detail Menu -->
+		<td class="panel1" width="150" valign="top" rowspan="2">
+			<ul id="mennav">
+			<li><a href="welco.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/welco.html">Welcome</a></li>
+			<li><a class="active" href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+			<li><a href="probl.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/probl.html">&nbsp;Programming</a></li>
+			<li><a href="compu.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/compu.html">&nbsp;Memory</a></li>
+			<li><a href="compi.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/compi.html">&nbsp;Compilers</a></li>
+			<li><a href="varia.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/varia.html">&nbsp;Variables</a></li>
+			<li><a href="input.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/input.html">&nbsp;Basic Oper</a></li>
+			<li><a href="expre.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/expre.html">&nbsp;Expressions</a></li>
+			<li><a href="const.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/const.html">&nbsp;Constructs</a></li>
+			<li><a href="style.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/style.html">&nbsp;Style</a></li>
+			<li><a href="walks.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/walks.html">&nbsp;Walkthrus</a></li>
+			<li><a href="modul.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/modul.html">&nbsp;Modularity</a></li>
+			<li><a href="scope.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/scope.html">&nbsp;Scope</a></li>
+			<li><a href="point.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/point.html">&nbsp;Pointers</a></li>
+			<li><a href="formi.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/formi.html">&nbsp;Input</a></li>
+			<li><a href="formo.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/formo.html">&nbsp;Form Output</a></li>
+			<li><a href="libra.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/libra.html">&nbsp;Libraries</a></li>
+			<li><a href="array.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/array.html">&nbsp;Arrays</a></li>
+			<li><a href="searc.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/searc.html">&nbsp;Searches</a></li>
+			<li><a href="sorts.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/sorts.html">&nbsp;Sorts</a></li>
+			<li><a class="active" href="strin.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/strin.html">&nbsp;Strings</a></li>
+			<li><a href="valid.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/valid.html">&nbsp;String Inp</a></li>
+			<li><a href="sfunc.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/sfunc.html">&nbsp;String Fns</a></li>
+			<li><a href="files.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/files.html">&nbsp;Files</a></li>
+			<li><a href="table.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/table.html">&nbsp;Records</a></li>
+			<li><a href="debug.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/debug.html">&nbsp;Debugging</a></li>
+			<li><a href="devel.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/devel.html">&nbsp;Development</a></li>
+			<li><a href="stand.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/stand.html">&nbsp;Standards</a></li>
+			<li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+			<li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+			<li><a href="index-4.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/handouts/index.html">Handouts</a></li>
+			<li><a href="index-5.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/practice/index.html">Practice</a></li>
+			<li><a href="index-6.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/index.html">Resources</a></li>
+			<li><a href="glossary.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/glossary.html">Glossary</a></li>
+			</ul>
+		</td>
+	</tr>
+
+	<!-- Content Area Footer -->
+	<tr height="20">
+		<td class="panel3" align="center">
+			<table class="panel2" width="95%">
+				<tr>
+					<td align="left">
+						&nbsp;&nbsp;<a href="strin_p.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/strin_p.html" class="text3">
+						<img src="Printer.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Printer.gif" height="15" width="10" alt="Printer Friendly Version of this Page" />&nbsp;print this page</a>&nbsp;&nbsp;
+					</td>
+					<td align="right">
+						&nbsp;&nbsp;<a href="#top" class="text3">Top&nbsp;
+						<img src="ArrowToT.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToT.gif" height="15" width="15" alt="Go Back to the Top of this Page" /></a>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+
+	<!-- Footer -->
+	<tr>
+		<!-- Left Panel -->
+		<td class="panel1" width="700" align="center">
+			<!-- Lateral Motion Control -->
+			<table width="90%" align="center">
+				<tr>
+					<td width="50%" align="left">
+						<a href="javascript:if(confirm('http://cs.senecac.on.ca/~btp100/pages/content/sotrs.html  \n\nThis file was not retrieved by Teleport Pro, because the server reports that this file cannot be found.  \n\nDo you want to open it from the server?'))window.location='http://cs.senecac.on.ca/~btp100/pages/content/sotrs.html'" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/sotrs.html" class="text3">
+						<img src="ArrowToL.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToL.gif" height="15" width="15" class="panel1" alt="Previous Reading" />&nbsp;&nbsp;Previous: Sorting Array Elements</a>
+					</td>
+					<td width="50%" align="right">
+						<a href="valid.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/valid.html" class="text3">Next: String Input&nbsp;&nbsp;
+						<img src="ArrowToR.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToR.gif" height="15" width="15" class="panel1" alt="Next Reading" /></a>
+					</td>
+				</tr>
+			</table>
+			<br />
+			<!-- Alternate Navigation Links -->
+			<ul id="altnav" align="center">			
+			<li><a href="timeline.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/timeline.html">Timeline&nbsp;</a></li>
+			</ul>
+			<ul id="altnav" align="center">
+			<li><a class="active" href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+			<li><script type="text/javascript" src="classroom_a.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_a.js"></script></li>
+			<li><script type="text/javascript" src="classroom_b.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_b.js"></script></li>
+			<li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+			<li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+			<li><a href="index-3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/instructors/index.html">Instructor</a></li>
+			</ul>
+			<br />
+			<!-- Bottom Line -->
+			<table cellpadding=1 width="90%">
+				<tr>
+					<td width="33%" class="text3">
+						&nbsp;&nbsp;Designed by Chris Szalwinski&nbsp;&nbsp;
+					</td>
+					<td width="34%" align="center">
+						<a href="copyright.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/copyright.html" class="text3">Copying From This Site</a>
+					</td>
+					<td width="33%" align="right" class="text3">
+						<script language="javascript">
+						var lm = document.lastModified.slice(0,-3);
+						document.write("Last Modified: " +lm)
+						</script>&nbsp;&nbsp;
+					</td>
+				</tr>
+			</table>
+		</td>
+
+		<!-- Logo - Right Bottom Corner -->
+		<td class=panel2 width="150" align="center">
+			<img src="Logo.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Logo.gif" height="73" width="85" />
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

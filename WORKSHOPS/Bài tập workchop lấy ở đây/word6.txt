@@ -1,0 +1,52 @@
+
+
+        6.  Write a function (not a main),  with  the  following  header
+            line:
+
+                void add_a_minute(int *h, int *m, char *ap)
+
+            This function is passed two addresses of  integer  variables
+            (containing an hour [h:1-12] and a minute [m:0-59]) and  the
+            address of a character variable [ap: either 'a'  for  AM  or
+            'p'  for  PM].  The  data  pointed  to  by  the   parameters
+            represents the time on a 12-hour clock.
+
+            The function advances the time by one minute.
+
+                If this should cause the minute to be 60, then the  hour
+                should be advanced by one and the minute should be reset
+                to 0.
+
+                If, in turn, this should cause the hour to be  13,  then
+                the hour should be reset to 1.
+
+                If, in the course of changing the hour, the hour changes
+                from 11 to  12,  then  the  AM/PM  indicator  should  be
+                changed from 'a' to 'p', or vice versa, depending on its
+                current setting.
+
+            For example, if we had the following variables:
+                int hour = 11, minute = 59;
+                char am_or_pm = 'p';
+
+            then the statement:
+                add_a_minute(&hour, &minute, &am_or_pm);
+
+            would change hour to 12, minute to 0, and am_or_pm to 'a'.
+
+            Similarly, if we reset the variables:
+                hour = 12;
+                minute = 59;
+                am_or_pm = 'a';
+
+            then the statement:
+                add_a_minute(&hour, &minute, &am_or_pm);
+
+            would change hour  to  1,  change  minute  to  0  and  leave
+            am_or_pm at 'a'.
+
+            A second call:
+                add_a_minute(&hour, &minute, &am_or_pm);
+
+            would then leave hour at 1, change minute  to  1  and  leave
+            am_or_pm at 'a'.

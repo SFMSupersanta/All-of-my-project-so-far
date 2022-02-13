@@ -1,0 +1,588 @@
+
+<html lang="en-us" xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+	<title>Seneca | School of Computer Studies | Programming Fundamentals Using C</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+	<meta name="Copyright" content="(c) Copyright Seneca College 2004" />
+	<meta name="Description" content="Welcome to the Bachelors Degree of Software Development Program Web Site.  On this site you can find the introductory programming course.  Designed by Chris Szalwinski." />
+	<meta name="Abstract" content="This subject reviews the principles of procedural programming.  Students study the solution of problems using structured programming techniques with the C programming language.  The emphasis throughout is on the solution of small problems."/>
+	<meta name="Author" content="chris.szalwinski@senecac.on.ca"/>
+	<meta name="Keywords" content="sofware development, procedural programming, lecture notes"/>
+
+	<link rel="stylesheet" type="text/css" href="style.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/style.043.css">
+	<link rel="stylesheet" type="text/css" href="styleScreen.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleScreen.043.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="styleSPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleSPrint.043.css" media="print">
+	<link rel="stylesheet" type="text/css" href="styleNav.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleNav.043.css">
+</head>
+
+<body>
+
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC
+    '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+
+<table id="top" width="850" cellspacing="0" cellpadding="0">
+
+	<!-- Banner -->
+	<tr height="120">
+		<td colspan="2" class="banner">
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<td width="250" class="banner">
+					<center><span class="text0">&nbsp;&nbsp;Software&nbsp;&nbsp;<br />
+					&nbsp;&nbsp;Development&nbsp;&nbsp;</span></center>
+				</td>
+				<td class="tbanner">
+					<img src="Banner4.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Banner4.gif" height="120" width="500" alt="Software Development" />
+				</td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+
+	<!-- Navigation Bar -->
+	<tr height="20">
+		<td class="panel1" align="left" valign="bottom">
+			<ul id="tabnav">			
+			<li><a href="timeline.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/timeline.html">Timeline</a></li>
+			<li><a class="active" href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+			<li><script type="text/javascript" src="classroom_a.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_a.js"></script></li>
+			<li><script type="text/javascript" src="classroom_b.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_b.js"></script></li>
+			<li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+			<li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+			<li><a href="index-3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/instructors/index.html">Instructor</a></li>
+			<li><a href="input_p.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/input_p.html"><img align="center" src="Printer.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Printer.gif" height=15 width=10 alt="Printer Friendly Version of this Page" /></a></li>
+			</ul>
+		</td>
+		<!-- Web Site Title -->
+		<td class="panel2" width="150" align="center">
+			<span class="text1"><script type="text/javascript" src="subject.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/subject.js"></script></span>
+		</td>
+	</tr>
+
+	<!-- Body Cells -->
+	<tr height="600">
+
+		<!-- Content Cell -->
+		<td class=tbody bgcolor="ffffff" valign="top">
+			<table cellpadding=10 width="100%">
+				<tr>
+					<td bgcolor="ffffff" valign="top">
+					<br />
+					<center><span class=texth>Module B - Computations</span>
+					<br />
+					<br />
+					<span class=texthead>
+					Basic Memory Operations</span>
+					<br />
+					<br />
+					<span class=textagend>
+					Choose an appropriate data type for each variable in a program, based on
+					knowledge of the features required of the variable and the internal
+					representation of the available data type<br /><br />					</span>
+					<p class=quote>"On two occasions I have been asked [by members of Parliament], 'Pray, Mr. Babbage, if you put into the machine wrong figures, will the right answers come out?' I am not able rightly to apprehend the kind of confusion of ideas that could provoke such a question." (Charles Babbage)</p>
+					<span class=textagend>
+					<a href="#con">Constants</a> |
+					<a href="#ass">Assignment Operator</a> |
+					<a href="#out">Output</a> |
+					<a href="#inp">Input</a> |
+					<a href="#exe">Exercise</a>
+					</span>
+					</center>
+					<br />
+					<br />
+					<br />
+
+					<p>
+					The C compiler allocates space for program variables
+					in primary memory.&nbsp;  We work with variables in four
+					principal ways.&nbsp;
+					For example, we can
+					<ul>
+					<li>assign a constant value to a variable,</li>
+					<li>assign the value of another variable to a variable,</li>
+					<li>output the value of a variable,</li>
+					<li>input a fresh value into a variable's memory location.</li>
+					</ul>
+					<p align="center"><img src="inoutconstant.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/inoutconstant.gif" /></p>
+					<br />
+
+					<p id="con" class="section">Constants</p>
+					<p>
+					The compiler embeds constants directly
+					into the program instructions and does not allocate
+					memory for constants.&nbsp;
+					</p>
+
+					<p class="ssection">Numeric</p>
+					<p>
+					We identify the data type of a numeric constant by a suffix, if any, on
+					the value itself.&nbsp; Suffixes include</p>
+					<table align=center cellspacing=1 cellpadding=1 border=1>
+					<tr class=desc>
+					<td><b>Type</b></td><td align=center><b>Size</b></td>
+					<td align=center><b>&nbsp;&nbsp;Suffix&nbsp;&nbsp;</b></td><td><b>Example</b></td></tr>
+					<tr class=value>
+					<td class=code>int</td><td align=center>1 word</td>
+					<td align=center>none</td><td>1456234</td></tr>
+					<tr class=value>
+					<td class=code>long</td><td align=center>32 bits</td><td align=center class=code>L or l (ell)</td><td>75456234L</td></tr>
+					<tr class=value>
+					<td class=code>&nbsp;long&nbsp;long&nbsp;</td><td align=center>64 bits</td><td align=center class=code>&nbsp;&nbsp;LL or ll (ell ell)&nbsp;&nbsp;</td><td>&nbsp;&nbsp;75456234678LL&nbsp;&nbsp;</td></tr>
+					<tr class=value>
+					<td class=code>unsigned</td><td align=center>&nbsp;</td><td align=center class=code>u or U</td><td>75456234U</td></tr>
+					<tr class=value>
+					<td class=code>double</td><td align=center>&nbsp;&nbsp;2&nbsp;words&nbsp;&nbsp;</td>
+					<td>none</td><td>1.234</td></tr>
+					<tr class=value>
+					<td class=code>float</td><td align=center>32 bits</td><td align=center class=code>F or f</font></b></td><td>1.234F</td></tr>
+					</table>
+
+					<p class="ssection">Character</p>
+					<p>
+					We define a character constant in any one of four ways:
+					<ul>
+					<li>the character itself enclosed in single quotes - for example <span class=code>'A'</span>,</li>
+					<li>the corresponding decimal value in the
+					encoding sequence - for example <span class=code>65</span> for 'A',</li>
+					<li>the corresponding hexadecimal value in the
+					encoding sequence - for example <span class=code>0x41</span> for 'A', or</li>
+					<li>the corresponding octal value in the
+					encoding sequence - for example <span class=code>0101</span> for 'A'.</li>
+					</ul>
+					The single quotes form is preferable, since it is independent
+					of the encoding sequence of our platform.
+
+					<p class="ssection">Escape Sequences</p>
+					<p>
+					We represent special actions or characters that
+					are difficult to write directly by
+					escape sequences:
+					</p>
+					<table align=center cellspacing=1 cellpadding=1 border=1>
+					<tr class=desc>
+					<td><b>Character</b></td>
+					</td>
+					<td><b>&nbsp;&nbsp;Sequence&nbsp;&nbsp;</b>
+					</td>
+					<td><b>&nbsp;&nbsp;ASCII&nbsp;&nbsp;</b></td>
+					</td><td><b>&nbsp;&nbsp;EBCDIC&nbsp;&nbsp;</b></td>
+					</tr>
+					<tr class=value>
+					<td>alarm</td><td class=code>\a</td><td>7</td><td>47</td>
+					</tr>
+					<tr class=value>
+					<td>backspace</td><td class=code>\b</td><td>8</td><td>22</td>
+					</tr>
+					<tr class=value>
+					<td>form feed</td><td class=code>\f</td><td>12</td><td>12</td>
+					</tr>
+					<tr class=value>
+					<td>newline</td><td class=code>\n</td><td>10</td><td>37</td>
+					</tr>
+					<tr class=value>
+					<td>&nbsp;&nbsp;carriage return&nbsp;&nbsp;</td><td class=code>\r</td><td>13</td><td>13</td>
+					</tr>
+					<tr class=value>
+					<td>horizontal tab</td><td class=code>\t</td><td>9</td><td>5</td>
+					</tr>
+					<tr class=value>
+					<td>vertical tab</td><td class=code>\v</td><td>11</td><td>11</td>
+					</tr>
+					<tr class=value>
+					<td>backslash</td><td class=code>\\</td><td>92</td><td>*</td>
+					</tr>
+					<tr class=value>
+					<td>single quote</td><td class=code>\'</td><td>39</td><td>125</td>
+					</tr>
+					<tr class=value>
+					<td>double quote</td><td class=code>\"</td><td>34</td><td>127</td>
+					</tr>
+					<tr class=value>
+					<td>&nbsp;&nbsp;question mark&nbsp;&nbsp;</td><td class=code>\?</td><td>63</td><td>111</td>
+					</tr>
+					</table>
+					<p>
+					* - In the IBM reference card, System /370 Architecture
+					Reference Summary, the \ does not appear with an EBCDIC code.&nbsp;
+					The value may vary from machine to machine.
+					</p>
+					<p>
+					Note the backslash before each symbol.&nbsp;
+					The escape character sequences
+					are relatively machine independent, while the numerical values
+					may vary from encoding sequence to another.&nbsp;
+					</p>
+					<p class="ssection">Literal Strings</p>
+					<p>
+					We represent a literal string by enclosing it in double quotes.&nbsp;
+					For example,
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ &quot;This is the First Semester of the BSD Program\n&quot;</pre><br /></td></tr></table>
+					<br />
+
+					<p id=ass class=section>Assignment Operator</p>
+					<p>
+					We use the assignment operator to store a value
+					in a program variable.&nbsp;
+					The form of an assignment is</p>
+					<pre class=defin>
+ variable = variable, constant or expression</pre>
+					<span class=code>=</span> is the assignment operator.&nbsp;
+					For example, the statements
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ int age;
+ age = 18;</pre><br /></td></tr></table>
+					declare <span class=code>age</span> as a
+					variable of <span class=code>int</span> data
+					type and store the constant <span class=code>18</span>
+					in the memory location allocated to
+					variable <span class=code>age</span>.&nbsp;
+					<p>
+					The assignment operator is unidirectional.&nbsp;
+					The left operand must be a variable.&nbsp;
+					The compiler rejects
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ int age;
+ age = 18;
+ 4 = age;  /* ERROR */</pre><br /></td></tr></table>
+					which tries to set the constant 4 to 18.&nbsp;
+					<br />
+
+					<p id=out class=section>Output</p>
+					<p>
+					To output data to the standard output device,
+					we use a statement of the form
+					<pre class=defin>
+ printf( format string , variable , ... , variable );</pre>
+					<span class=code>printf</span> is a C library function.&nbsp;
+					We study functions later in the reading on <a href="modul.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/modul.html">modularity</a>
+					and library functions in the reading on <a href="libra.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/libra.html">libraries</a>.&nbsp;
+					The format string is a literal string.&nbsp;
+					After the format string, we list the variables to be
+					displayed, separated by commas.&nbsp;
+					<p>
+					The format string itself consists of the characters to be
+					displayed interspersed with conversion specifiers.&nbsp;
+					There should be as many variables
+					listed after the format string as there are conversion specifiers.&nbsp;
+					</p>
+
+					<p class=ssection>Conversion Specifiers</p>
+					<p>
+					All conversion specifiers begin with a <span class=code>%</span>
+					symbol.&nbsp;
+					Each specifier describes
+					how the corresponding variable is to be formatted on
+					display:
+					</p>
+					<table align=center cellspacing=1 cellpadding=1 border=1>
+					<tr class=desc><td align=center><b>&nbsp;&nbsp;Specifier&nbsp;&nbsp;</b></td><td><b>Output As A</td><td align=left><b>&nbsp;&nbsp;Use With Data Type</td></tr>
+					<tr class=value><td align=center class=code>%c</td><td>character</td><td class=code align=left>&nbsp;&nbsp;char</td></tr>
+					<tr class=value><td align=center class=code>%d</td><td>decimal</td><td class=code align=left>&nbsp;&nbsp;char, int</td></tr>
+					<tr class=value><td align=center class=code>%u</td><td>decimal</td><td class=code align=left>&nbsp;&nbsp;unsigned int</td></tr>
+					<tr class=value><td align=center class=code>%o</td><td>octal</td><td class=code align=left>&nbsp;&nbsp;unsigned char, int, short, long&nbsp;&nbsp;</td></tr>
+					<tr class=value><td align=center class=code>%x</td><td>hexadecimal</td><td class=code align=left>&nbsp;&nbsp;unsigned char, int, short, long&nbsp;&nbsp;</td></tr>
+					<tr class=value><td align=center class=code>%hd</td><td>short decimal</td><td class=code align=left>&nbsp;&nbsp;short</td></tr>
+					<tr class=value><td align=center class=code>%ld</td><td>long decimal</td><td class=code align=left>&nbsp;&nbsp;long</td></tr>
+					<tr class=value><td align=center class=code>%lld</td><td>&nbsp;&nbsp;very long decimal&nbsp;&nbsp;</td><td class=code align=left>&nbsp;&nbsp;long long</td></tr>
+					<tr class=value><td align=center class=code>%f</td><td>floating-point</td><td class=code align=left>&nbsp;&nbsp;float</td></tr>
+					<tr class=value><td align=center class=code>%lf</td><td>floating-point</td><td class=code align=left>&nbsp;&nbsp;double</td></tr>
+					<tr class=value><td align=center class=code>%le</td><td>exponential</td><td class=code align=left>&nbsp;&nbsp;double</td></tr>
+					</table>
+					<p>
+					For example, the following program</p>
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+/* Output Two Variables
+ * p_2.c
+ * BTP100
+ * Sep 15 2004
+ */
+
+ main() {
+     int age = 18;
+     double cashFare = 2.25;
+
+     printf(&quot;His age is %d\nThe cash fare is $%lf\n&quot;, age, cashFare);&nbsp;
+ }</pre><br /></td></tr></table>
+					displays
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ His age is 18
+ The cash fare is $2.250000</pre><br /></td></tr></table>
+					The default number of decimal places displayed by
+					<span class="code">%lf</span> is 6.
+					<br />
+
+					<p id="inp" class="section">Input</p>
+					<p>
+					To accept data from the standard input device,
+					we use a statement of the form
+					<pre class=defin>
+ scanf( format string , address , ... , address );</pre>
+					<span class=code>scanf</span> is a C library
+					function.&nbsp; The format string is a literal
+					string.&nbsp; After the format string,
+					we list the memory address of each variable
+					into which we want the input
+					stored.&nbsp; The prefix
+					<span class="code">&amp;</span> denotes
+					'address of'.&nbsp;
+					<p>
+					For example,
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ scanf( &quot;%d&quot; , &amp;age);</pre><br /></td></tr></table>
+					Note that we refer to the address of
+					<span class="code">age</span> and not to the value of <span class="code">age</span>.&nbsp;
+					Specifying the
+					value of <span class="code">age</span> will not
+					generate a compiler error,
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ scanf( &quot;%d&quot; , age);  /* ERROR will cause a segmentation fault */</pre><br /></td></tr></table>
+					but will most probably result in a run time error.&nbsp;
+					<p>
+					The format string consists of conversion specifiers.&nbsp;
+					There should be as many addresses listed after the format string
+					as there are conversion specifiers in the format string.&nbsp;
+					</p>
+
+					<p class=ssection>Conversion Specifiers</p>
+					<p>
+					The conversion specifiers begin with a <span class=code>%</span>
+					symbol.&nbsp;
+					Each specifier describes
+					how the input is to be converted before being stored
+					in the corresponding address.&nbsp;
+					</p>
+					<table align=center cellspacing=1 cellpadding=1 border=1>
+					<tr class=desc><td align=center><b>&nbsp;&nbsp;Specifier&nbsp;&nbsp;</b></td><td><b>Input A</td><td align=left><b>&nbsp;&nbsp;Use With Data Type</td></tr>
+					<tr class=value><td align=center class=code>%c</td><td>character</td><td class=code align=left>&nbsp;&nbsp;char</td></tr>
+					<tr class=value><td align=center class=code>%d</td><td>decimal</td><td class=code align=left>&nbsp;&nbsp;int, short</td></tr>
+					<tr class=value><td align=center class=code>%u</td><td>decimal</td><td class=code align=left>&nbsp;&nbsp;unsigned int, short</td></tr>
+					<tr class=value><td align=center class=code>%o</td><td>octal</td><td class=code align=left>&nbsp;&nbsp;unsigned int, short, long&nbsp;&nbsp;</td></tr>
+					<tr class=value><td align=center class=code>%x</td><td>hexadecimal</td><td class=code align=left>&nbsp;&nbsp;unsigned int, short, long&nbsp;&nbsp;</td></tr>
+					<tr class=value><td align=center class=code>%hd</td><td>short decimal</td><td class=code align=left>&nbsp;&nbsp;short</td></tr>
+					<tr class=value><td align=center class=code>%ld</td><td>long decimal</td><td class=code align=left>&nbsp;&nbsp;long</td></tr>
+					<tr class=value><td align=center class=code>%lld</td><td>&nbsp;&nbsp;very long decimal&nbsp;&nbsp;</td><td class=code align=left>&nbsp;&nbsp;long long</td></tr>
+					<tr class=value><td align=center class=code>%f</td><td>floating-point</td><td class=code align=left>&nbsp;&nbsp;float</td></tr>
+					<tr class=value><td align=center class=code>%lf</td><td>floating-point</td><td class=code align=left>&nbsp;&nbsp;double</td></tr>
+					<tr class=value><td align=center class=code>%le</td><td>exponential</td><td class=code align=left>&nbsp;&nbsp;double</td></tr>
+					</table>
+					<p>
+					For example, the following statements
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+/* Input and Output Two Variables
+ * p_3.c
+ * BTP100
+ * Sep 15 2004
+ */
+
+ main() {
+     int age;
+     double cashFare;
+
+     /* Input */
+     printf(&quot;Enter the boy\'s age : &quot;); /* prompt for age */
+     scanf(&quot;%d&quot;, &amp;age);                 /* accept age     */
+     printf(&quot;Enter the cash fare :&quot;);   /* prompt for cash fare */
+     scanf(&quot;%lf&quot;, &amp;cashFare);           /* accept cash fare     */
+
+     /* Output */
+     printf(&quot;His age is %d\nThe cash fare is $%lf\n&quot;, age, cashFare);&nbsp;
+ }</pre><br /></td></tr></table>
+					accept input for <span class=code>age</span> and <span class=code>cashFare</span> and store that input in
+					the respective memory locations.&nbsp;
+					<p>
+					<table align=center cellspacing=1 cellpadding=1 border=1>
+					<tr class=desc>
+					<td>&nbsp;<b>Variable</b>&nbsp;</td><td class=code>age</td><td class=code colspan=2>cashFare</td></tr>
+					<tr class=desc>
+					<td>&nbsp;<b>Size</b>&nbsp;</td><td width="33%">&nbsp;4 Bytes&nbsp;</td><td width="67%" colspan=2>&nbsp;8 Bytes&nbsp;</td></tr>
+					<tr class=value>
+					<td>&nbsp;<b>Value</b>&nbsp;</td><td>&nbsp;</td><td colspan=2>&nbsp;</td></tr>
+					<tr class=addre>
+					<td>&nbsp;<b>Address</b>&nbsp;</td><td>&nbsp;0x12fed8&nbsp;&nbsp;&nbsp;</td><td colspan=2>&nbsp;0x12fedc&nbsp;&nbsp;&nbsp;</td></tr>
+					</table>
+					<p>
+					In-class practice: write a program that prompts the user
+					for the amount of money in their pockets, accepts the
+					user input, and displays the amount in the
+					format shown below.&nbsp; If the user enters 4.52,
+					your program displays
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre class="result">
+ How much money do you have in your pockets ? 4.52
+ The amount of money in your pockets is $4.52</pre><br /></td></tr></table>
+					<br />
+
+					<p id="exe" class="section">Exercise</p>
+					<p>
+					<ul>
+					<li>Read pages 9-14, 63-65 from Evan Weaver's subject notes.</li>
+					</ul>
+					<br />
+					<br />
+					<br />
+					</td>
+				</tr>
+			</table>
+		</td>
+
+		<!-- Detail Menu -->
+		<td class="panel1" width="150" valign="top" rowspan="2">
+			<ul id="mennav">
+			<li><a href="welco.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/welco.html">Welcome</a></li>
+			<li><a class="active" href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+			<li><a href="probl.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/probl.html">&nbsp;Programming</a></li>
+			<li><a href="compu.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/compu.html">&nbsp;Information</a></li>
+			<li><a href="compi.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/compi.html">&nbsp;Compilers</a></li>
+			<li><a href="varia.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/varia.html">&nbsp;Variables</a></li>
+			<li><a class="active" href="input.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/input.html">&nbsp;Basic Oper</a></li>
+			<li><a href="expre.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/expre.html">&nbsp;Expressions</a></li>
+			<li><a href="const.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/const.html">&nbsp;Constructs</a></li>
+			<li><a href="style.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/style.html">&nbsp;Style</a></li>
+			<li><a href="walks.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/walks.html">&nbsp;Walkthrus</a></li>
+			<li><a href="modul.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/modul.html">&nbsp;Modularity</a></li>
+			<li><a href="scope.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/scope.html">&nbsp;Scope</a></li>
+			<li><a href="point.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/point.html">&nbsp;Pointers</a></li>
+			<li><a href="formi.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/formi.html">&nbsp;Input</a></li>
+			<li><a href="formo.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/formo.html">&nbsp;Form Output</a></li>
+			<li><a href="libra.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/libra.html">&nbsp;Libraries</a></li>
+			<li><a href="array.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/array.html">&nbsp;Arrays</a></li>
+			<li><a href="searc.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/searc.html">&nbsp;Searches</a></li>
+			<li><a href="sorts.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/sorts.html">&nbsp;Sorts</a></li>
+			<li><a href="strin.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/strin.html">&nbsp;Strings</a></li>
+			<li><a href="valid.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/valid.html">&nbsp;String Inp</a></li>
+			<li><a href="sfunc.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/sfunc.html">&nbsp;String Fns</a></li>
+			<li><a href="files.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/files.html">&nbsp;Files</a></li>
+			<li><a href="table.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/table.html">&nbsp;Records</a></li>
+			<li><a href="debug.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/debug.html">&nbsp;Debugging</a></li>
+			<li><a href="devel.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/devel.html">&nbsp;Development</a></li>
+			<li><a href="stand.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/stand.html">&nbsp;Standards</a></li>
+			<li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+			<li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+			<li><a href="index-4.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/handouts/index.html">Handouts</a></li>
+			<li><a href="index-5.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/practice/index.html">Practice</a></li>
+			<li><a href="index-6.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/index.html">Resources</a></li>
+			<li><a href="glossary.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/glossary.html">Glossary</a></li>
+			</ul>
+		</td>
+	</tr>
+
+	<!-- Content Area Footer -->
+	<tr height="20">
+		<td class="panel3" align="center">
+			<table class="panel2" width="95%">
+				<tr>
+					<td align="left">
+						&nbsp;&nbsp;<a href="input_p.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/input_p.html" class="text3">
+						<img src="Printer.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Printer.gif" height="15" width="10" alt="Printer Friendly Version of this Page" />&nbsp;print this page</a>&nbsp;&nbsp;
+					</td>
+					<td align="right">
+						&nbsp;&nbsp;<a href="#top" class="text3">Top&nbsp;
+						<img src="ArrowToT.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToT.gif" height="15" width="15" alt="Go Back to the Top of this Page" /></a>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+
+	<!-- Footer -->
+	<tr>
+		<!-- Left Panel -->
+		<td class="panel1" width="700" align="center">
+			<!-- Lateral Motion Control -->
+			<table width="90%" align="center">
+				<tr>
+					<td width="50%">
+						<span class=text3><a href="varia.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/varia.html">
+						<img src="ArrowToL.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToL.gif" height=15 width=15 class=panel1 />&nbsp;&nbsp;Previous: Variables
+						</a></span>
+					</td>
+					<td width="50%" align=right>
+						<span class=text3><a href="expre.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/expre.html">Next: Expressions&nbsp;&nbsp;
+						<img src="ArrowToR.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToR.gif" height=15 width=15 class=panel1 />
+						</a></span>
+					</td>
+				</tr>
+			</table>
+			<br />
+			<!-- Alternate Navigation Links -->
+			<ul id="altnav" align="center">			
+			<li><a href="timeline.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/timeline.html">Timeline&nbsp;</a></li>
+			</ul>
+			<ul id="altnav" align="center">
+			<li><a class="active" href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+			<li><script type="text/javascript" src="classroom_a.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_a.js"></script></li>
+			<li><script type="text/javascript" src="classroom_b.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_b.js"></script></li>
+			<li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+			<li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+			<li><a href="index-3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/instructors/index.html">Instructor</a></li>
+			</ul>
+			<br />
+			<!-- Bottom Line -->
+			<table cellpadding=1 width="90%">
+				<tr>
+					<td width="33%" class="text3">
+						&nbsp;&nbsp;Designed by Chris Szalwinski&nbsp;&nbsp;
+					</td>
+					<td width="34%" align="center">
+						<a href="copyright.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/copyright.html" class="text3">Copying From This Site</a>
+					</td>
+					<td width="33%" align="right" class="text3">
+						<script language="javascript">
+						var lm = document.lastModified.slice(0,-3);
+						document.write("Last Modified: " +lm)
+						</script>&nbsp;&nbsp;
+					</td>
+				</tr>
+			</table>
+		</td>
+
+		<!-- Logo - Right Bottom Corner -->
+		<td class=panel2 width="150" align="center">
+			<img src="Logo.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Logo.gif" height="73" width="85" />
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

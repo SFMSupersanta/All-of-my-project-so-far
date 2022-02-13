@@ -1,0 +1,130 @@
+
+<html lang="en-us" xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+	<title>Seneca | School of Computer Studies | Programming Fundamentals Using C</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+	<meta name="Copyright" content="(c) Copyright Seneca College 2005" />
+	<meta name="Description" content="Welcome to the Bachelors Degree of Software Development Program Web Site.  On this site you can find the introductory programming course.  Designed by Chris Szalwinski." />
+	<meta name="Abstract" content="This subject reviews the principles of procedural programming.  Students study the solution of problems using structured programming techniques with the C programming language.  The emphasis throughout is on the solution of small problems."/>
+	<meta name="Author" content="chris.szalwinski@senecac.on.ca"/>
+	<meta name="Keywords" content="software development, procedural programming, lecture notes"/>
+
+	<link rel="stylesheet" type="text/css" href="style.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/style.043.css">
+	<link rel="stylesheet" type="text/css" href="styleSPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleSPrint.043.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="stylePPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/stylePPrint.043.css" media="print">
+</head>
+
+<body>
+
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC
+    '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+
+<table cellspacing="0" cellpadding="0">
+
+	<!-- Body Cell -->
+	<tr height="600">
+		<!-- Content Area -->
+		<td class="tbody" bgcolor="ffffff">
+			<table cellpadding="10" width="100%">
+				<tr>
+					<td bgcolor="ffffff" valign="top">
+
+					<span class=texthead>
+					<center>Quiz 2</center>
+					</span>
+					<br />
+					<br />
+
+					<p>
+					What is the exact output of the following program?
+					<pre>
+ #include &lt;stdio.h&gt;
+ #define INITIAL {'U','N','I','X'}
+ #define WORDSIZE 2
+ #define WORDS 2
+
+ void convert(char [], int, int);
+
+ int main() {
+     int i;
+     char word[WORDSIZE * WORDS] = INITIAL;
+
+     printf(&quot;Start with  &quot;);
+     for (i = 0; i &lt; WORDSIZE * WORDS; i++)
+         printf(&quot;%c&quot;, word[i]);
+     printf(&quot;\n&quot;);
+     convert(word, WORDSIZE, WORDS);
+     printf(&quot;This is the &quot;);
+     for (i = 0; i &lt; WORDSIZE * WORDS; i++)
+         printf(&quot;%c&quot;, word[i]);
+     printf(&quot; problem\n&quot;);
+     convert(word, WORDSIZE, WORDS);
+     printf(&quot;Finish with &quot;);
+     for (i = 0; i &lt; WORDSIZE * WORDS; i++)
+         printf(&quot;%c&quot;, word[i]);
+     printf(&quot;\n&quot;);
+
+     return 0;
+ }
+
+ void convert(char word[], int wordSize, int nWords) {
+     int i, j, k, m, n;
+     char temp;
+
+     k = wordSize / 2;
+     for (i = 0; i &lt; wordSize * nWords; i += wordSize) {&nbsp;
+         n = i + wordSize - 1;
+         m = i;
+         for (j = 0; j &lt; k; j++) {
+             temp = word[m];
+             word[m++] = word[n];
+             word[n--] = temp;
+         }
+     }
+ }</pre>
+					    Show your output here:
+					    <br />
+					    <br />
+					    <hr>
+					    <br />
+					    <hr>
+					    <br />
+					    <hr>
+					    <br />
+					    Show your rough work on a separate page.
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+
+	<!-- Footer -->
+	<tr>
+		<td class="tbody">
+			<table cellpadding="1" width="90%" align="center">
+				<tr>
+					<td width="50%" class="text3">
+						<script language="javascript">
+						var lh = document.location.href;
+						document.write(lh)
+						</script>&nbsp;&nbsp;
+					</td>
+					<td width="50%" align="right" class="text3">
+						<script language="javascript">
+						var lm = document.lastModified.slice(0,-3);
+						document.write("Last Modified: " +lm)
+						</script>&nbsp;&nbsp;
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,648 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC
+    '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html lang="en-us" xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+	<title>Seneca | School of Computer Studies | Programming Fundamentals Using C</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+	<meta name="Copyright" content="(c) Copyright Seneca College 2004" />
+	<meta name="Description" content="Welcome to the Bachelors Degree of Software Development Program Web Site.  On this site you can find the introductory programming course.  Designed by Chris Szalwinski." />
+	<meta name="Abstract" content="This subject reviews the principles of procedural programming.  Students study the solution of problems using structured programming techniques with the C programming language.  The emphasis throughout is on the solution of small problems."/>
+	<meta name="Author" content="chris.szalwinski@senecac.on.ca"/>
+	<meta name="Keywords" content="sofware development, procedural programming, lecture notes"/>
+
+	<link rel="stylesheet" type="text/css" href="style.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/style.043.css">
+	<link rel="stylesheet" type="text/css" href="styleSPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleSPrint.043.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="stylePPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/stylePPrint.043.css" media="print">
+</head>
+
+<body>
+
+<table cellspacing="0" cellpadding="0">
+
+	<!-- Body Cell -->
+	<tr height="600">
+		<!-- Content Area -->
+		<td class="tbody" bgcolor="ffffff">
+			<table cellpadding="10" width="100%">
+				<tr>
+					<td bgcolor="ffffff" valign="top">
+					<br />
+					<center><span class=texth>Module E - Standard Libraries</span>
+					<br />
+					<br />
+					<span class=texthead>
+					Input and Validation</span>
+					<br />
+					<br />
+					<span class=textagend>
+					Design algorithms to solve small problems using robust user input validation.
+					<br /><br />
+					</span>
+					<p class=quote></p>
+					<span class=textagend>
+					<a href="#typ">Types of Input</a> |
+					<a href="#get">getchar</a> |
+					<a href="#sca">scanf</a> |
+					<a href="#val">Validation</a> |
+					<a href="#exa">In-Class Practice</a> |
+					<a href="#exe">Exercises</a>
+					</span>
+					</center>
+					<br />
+					<br />
+
+					<p>
+					Each C compiler comes with its own copy of the C standard libraries.&nbsp;
+					These libraries include functions for accepting data values from
+					the standard input stream (typically, the keyboard).&nbsp;
+					The system file <span class=code>&lt;stdio.h&gt;</span> contains the
+					prototypes for these functions.&nbsp;
+					</p>
+					<br />
+
+					<p id="typ" class="section">Types of Input</p>
+					<p>
+					Input to a program may be unbuffered or buffered.&nbsp;
+					A fully interactive program uses unbuffered input.&nbsp;
+					The program can respond to each and every keystroke
+					directly.&nbsp;
+					Buffered input enables data editing before
+					submission to a program.&nbsp; That is, the
+					program accepts one complete input record at a time
+					rather than one keystroke at a time.&nbsp;
+					A buffer is a region of memory that collects
+					and holds data temporarily.&nbsp;
+					</p>
+					<p align="center"><img src="buffers.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/buffers.gif" height="150" width="300" /></p>
+					<p>
+					We focus on buffered input is this course.&nbsp;
+					</p>
+					<p class="ssection">Buffered Input</p>
+					<p>
+					The input buffer empties when it
+					receives a newline character (<span class=code>'\n'</span>)
+					or is filled.&nbsp; In other words, to
+					transfer the contents of a buffer to a program
+					the user must press the <span class=cde>'\n'</span>
+					character (or fill the buffer completely).&nbsp;
+					</p>
+					<p>
+					Two C functions provide buffered input facilities
+					on the standard input stream:
+					<ul>
+					<li class=code>getchar</li>
+					<li class=code>scanf</li>
+					</ul>
+					</p>
+					<br />
+
+					<p id="get" class="section">getchar</p>
+					<p>
+					<span class=code>getchar</span> retrieves a single
+					character from the standard input stream buffer
+					without translating the input.&nbsp;
+					The prototype for <span class=code>getchar</span> is
+					<pre class=defin>
+ int getchar ( void );</pre>
+					<span class=code>getchar</span> returns either
+					<ul>
+					<li>the character code for the retrieved character or</li>
+					<li><span class=code>EOF</span>.&nbsp;</li>
+					</ul>
+					</p>
+					<p align="center"><img src="getchar.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/getchar.gif" height="150" width="300" /></p>
+					<p>
+					The character code depends upon the encoding sequence
+					used on the host machine.&nbsp; Typically, this is
+					the <a href="ascii.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/ascii.html">ASCII collating sequence</a>.&nbsp;
+					For example, if the encoding sequence
+					is ASCII and the next character in the buffer is
+					<span class=code>j</span>, then the value
+					returned by <span class=code>getchar()</span> is 106.&nbsp;
+					</p>
+					<p>
+					<span class=code>EOF</span> is the symbolic name
+					for end of data.&nbsp; The
+					header file <span class=code>&lt;stdio.h&gt;</span>
+					typically assigns the value of <span class=code>-1</span>
+					to <span class=code>EOF</span>.&nbsp;
+					On Windows systems, the user enters the end of
+					data character by pressing <span class=code>Ctrl-Z</span>, while on UNIX
+					systems, by pressing <span class=code>Ctrl-D</span>.&nbsp;
+					</p>
+					<p class="ssection">Clearing the buffer</p>
+					<p>
+					To synchronize user input with program
+					execution, we clear the input buffer of any characters
+					that the user has entered and have remained in the buffer.&nbsp;
+					For example, we use the <span class=code>getchar</span> function
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ /* clear empties input buffer */&nbsp;
+ void clear (void) {
+
+     while ( getchar() != '\n' )
+         ;  /* null statement intentional */&nbsp;
+ }</pre><br /></td></tr></table>
+					The iteration continues until <span class=code>getchar</span>
+					reads a <span class=code>'\n'</span>, at which point the buffer is
+					empty.
+					</p>
+					<p class="ssection">Pausing Execution</p>
+					<p>
+					To pause the execution of a program at a
+					certain point, we can insert the
+					statements
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ printf("Press enter to continue ...");
+ while (getchar() != '\n')
+     ; /* null statement intentional */</pre><br /></td></tr></table>
+					The
+					program will remain idle, until the user presses <span class=code>'\n'</span>.
+					</p>
+					<br />
+
+					<p id="sca" class="section">scanf</p>
+					<p>
+					<span class=code>scanf</span> retrieves
+					data values from the standard input stream buffer under
+					format control.&nbsp; The syntax of a call to
+					<span class=code>scanf</span> is
+					<pre class=defin>
+ scanf( format string, &amp;identifier , ... )</pre>
+					Here, the ellipsis identify optional arguments.&nbsp;
+					The format string is a literal string that contains
+					one or more of the conversion specifiers listed below.&nbsp;
+					</p>
+					<p>
+					<span class=code>scanf</span> extracts data values from
+					the standard input stream buffer until <span class=code>scanf</span> has
+					<ul>
+					<li>interpreted and processed the entire format string,</li>
+					<li>found a character that does not meet the next conversion specification
+					in the format string, in which case
+					<span class=code>scanf</span> leaves the offending character in the buffer,
+					or</li>
+					<li>emptied the buffer, in which case <span class=code>scanf</span>
+					waits until the user adds more data values.&nbsp;</li>
+					</ul>
+					</p>
+					<p>
+					The conversion specifiers describe how
+					<span class=code>scanf</span> is to
+					interpret each data value before storing
+					it in the appropriate address.&nbsp;
+					We provide as many conversion specifiers
+					as there are address arguments (see the exception below) in the
+					call to <span class=code>scanf</span>.&nbsp;
+					</p>
+					<p align="center"><img src="scanf.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/scanf.gif" height="150" width="300" /></p>
+
+					<p class="ssection">Conversion Specifiers</p>
+					<p>
+					Each conversion specifier begins with a <span class=code>%</span>
+					symbol and ends with a conversion character.&nbsp;
+					The conversion character, which we may preceded by a size
+					specifier, describes the data type to which <span class=code>scanf</span>
+					should convert the input field.&nbsp;
+					</p>
+					<table align=center cellspacing=1 cellpadding=1 border=1>
+					<tr class=desc><td align=center><b>&nbsp;&nbsp;Specifier&nbsp;&nbsp;</b></td><td><b>Input Value</td><td align=left><b>&nbsp;&nbsp;Use With</td></tr>
+					<tr class=value><td align=center class=code>%c</td><td>character</td><td class=code align=left>&nbsp;&nbsp;char</td></tr>
+					<tr class=value><td align=center class=code>%d</td><td>decimal</td><td class=code align=left>&nbsp;&nbsp;char, int, short, long, long long&nbsp;&nbsp;</td></tr>
+					<tr class=value><td align=center class=code>%u</td><td>decimal</td><td class=code align=left>&nbsp;&nbsp;unsigned int, char, short, long, long long&nbsp;&nbsp;</td></tr>
+					<tr class=value><td align=center class=code>%o</td><td>octal</td><td class=code align=left>&nbsp;&nbsp;unsigned int, char, short, long, long long&nbsp;&nbsp;</td></tr>
+					<tr class=value><td align=center class=code>%x</td><td>hexadecimal</td><td class=code align=left>&nbsp;&nbsp;unsigned int, char, short, long, long long&nbsp;&nbsp;</td></tr>
+					<tr class=value><td align=center class=code>%f</td><td>&nbsp;floating-point&nbsp;</td><td class=code align=left>&nbsp;&nbsp;float, double, long double</td></tr>
+					</table>
+					<p>
+					For example, the following code converts the input into an <span class=code>int</span>
+					and a <span class=code>float</span>:
+					<table width="95%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ int items;
+ float price;
+ printf("Enter items, price : ");
+ scanf("%d%f", &items, &price);</pre><br /></td>
+					<td width="50%">
+					<br />
+					<pre class=result>
+ &nbsp;
+ &nbsp;
+ Enter items, price : 4 39.99
+ &nbsp;</pre><br /></td></tr></table>
+ 					<span class=code>scanf</span> treats the whitespace
+ 					between the input values as a separator.&nbsp;
+ 					There is no need to place a blank character
+ 					between the conversion specifiers.&nbsp;
+ 					</p>
+					<table align=center cellspacing=1 cellpadding=1 border=1>
+					<tr class=desc>
+					<td class=code>items</td><td class=code>price</td></tr>
+					<tr class=desc>
+					<td width="50%">&nbsp;4 Bytes&nbsp;</td><td width="50%">&nbsp;4 Bytes&nbsp;</td></tr>
+					<tr class=value>
+					<td align=center>4</td><td align=center>39.99</td></tr>
+					<tr class=addre>
+					<td>&nbsp;0x2ff2fed8&nbsp;&nbsp;&nbsp;</td><td>&nbsp;0x2ff2fedc&nbsp;&nbsp;&nbsp;</td></tr>
+					</table>
+					<p>
+					Between the <span class=code>%</span> and the
+					<span class=code>conversion character</span>, we may insert
+					<pre class=defin>
+ <span class=code>%</span> * width size <span class=code>conversion_character</span></pre>
+					<ul>
+					<li><span class=code>*</span> suppresses storage of the data value
+					<li><span class=code>width</span> - sets the maximum number of characters to be read</li>
+					<li><span class=code>size</span> - identifies the size of data type where the value is to be stored.&nbsp;
+					<br />
+					For integer values:
+					<br />
+					<table align=center cellspacing=1 cellpadding=1 border=1>
+					<tr class=desc><td align=center><b>&nbsp;&nbsp;Size Specifier&nbsp;&nbsp;</b></td><td align=left><b>&nbsp;&nbsp;Use With</td></tr>
+					<tr class=value><td align=center>none</td><td class=code align=left>&nbsp;&nbsp;int</td></tr>
+					<tr class=value><td align=center class=code>hh</td><td class=code align=left>&nbsp;&nbsp;char</td></tr>
+					<tr class=value><td align=center class=code>h</td><td class=code align=left>&nbsp;&nbsp;short</td></tr>
+					<tr class=value><td align=center class=code>l</td><td class=code align=left>&nbsp;&nbsp;long</td></tr>
+					<tr class=value><td align=center class=code>ll</td><td class=code align=left>&nbsp;&nbsp;long long&nbsp;&nbsp;</td></tr>
+					</table>
+					<br />
+					For floating-point values:
+					<br />
+					<table align=center cellspacing=1 cellpadding=1 border=1>
+					<tr class=desc><td align=center><b>&nbsp;&nbsp;Size Specifier&nbsp;&nbsp;</b></td><td align=left><b>&nbsp;&nbsp;Use With</td></tr>
+					<tr class=value><td align=center>none</td><td class=code align=left>&nbsp;&nbsp;float</td></tr>
+					<tr class=value><td align=center class=code>l</td><td class=code align=left>&nbsp;&nbsp;double</td></tr>
+					<tr class=value><td align=center class=code>L</td><td class=code align=left>&nbsp;&nbsp;long double&nbsp;&nbsp;</td></tr>
+					</table>
+					</li>
+					</ul>
+					</p>
+					<p>
+					Each conversion specifier that includes an <span class=code>*</span>
+					does not have a corresponding address in the <span class=code>scanf</span> argument list.&nbsp;
+					This is the exception to the matching conversion-specifier/address-argument
+					rule.
+					</p>
+					<p class="ssection">Non-conversion-specifier characters</p>
+					<p>
+					Characters in the format string other than conversion
+					specifiers require precise duplication by the user.&nbsp;
+					If the format string contains a non conversion specifier
+					character amd <span class=code>scanf</span>
+					encounters a character other than that character,
+					<span class=code>scanf</span> abandons
+					further interpretation.&nbsp; <span class=code>%%</span>
+					in the format string reads the <span class=code>%</span>
+					symbol from the input stream.&nbsp;</p>
+					<p>
+					A space before a conversion specifier tells <span class=code>scanf</span>
+					to skip all leading whitespace before performing the next conversion.&nbsp;
+					<span class=code>scanf</span> skips whitespace automatically
+					with numeric input and, therefore, a space before a numeric
+					conversion specifier is redundant.&nbsp; However, a
+					space preceding the <span class=code>%c</span>
+					conversion specifier tells <span class=code>scanf</span>
+					to skip whitespace before reading the next character.</p>
+					<p>
+					Problems arise with the <span class=code>%c</span> conversion
+					specifier because <span class=code>scanf</span> only
+					processes input that it needs and leaves the rest
+					in the buffer.&nbsp; For example, on reading an integer
+					value, <span class=code>scanf</span> leaves the newline
+					character in the buffer.&nbsp;
+					<span class=code>scanf</span>
+					can stall on character input due to an unprocessed
+					<span class=code>\n</span> from a previous <span class=code>scanf</span>.&nbsp;
+					For example, the following code produces the output shown
+					on the right
+					<table width="95%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ /* scanf with %c Specification
+  * scanfc.c
+  * BTP100
+  * Oct 20 2005
+  */
+
+ #include &lt;stdio.h&gt;
+ int main (void) {
+     int items;
+     char tax;
+     printf("Number of items : ");
+     scanf("%d", &amp;items);
+     printf("Tax Status : ");
+     scanf("%c", &amp;tax);   <span class=high>/* ERROR reads \n */</span>
+     printf("%d items (tax status %c)\n", items, tax);&nbsp;
+     return 0;
+ }</pre><br /></td>
+					<td width="50%">
+					<br />
+					<pre class=result>
+
+
+
+
+
+
+
+
+
+
+
+  Number of items : 25
+  Tax status : <span class=high>25 items (taxable status
+  )</span>
+  &nbsp;
+  &nbsp;
+  &nbsp;</pre><br /></td></tr></table>
+					There are several ways to handle unprocessed <span class=code>\n</span>'s
+					<pre class=defin>
+      scanf("%d", &amp;itmes);
+      scanf("%c%c", &amp;junk, &amp;tax); /* store one character in junk first */
+
+      scanf("%d", &amp;items);
+      scanf("%*c%c", &amp;tax); /* swallow one character first */
+
+      scanf("%d", &amp;items);
+      scanf(" %c", &amp;tax);   /* skip all whitespace first */
+
+      scanf("%d%*c", &amp;items); /* swallow newline */
+      scanf("%c", &amp;tax);
+
+      scanf("%d", &amp;items);
+      clear();                /* clear the buffer */
+      scanf("%c", &amp;tax);</pre>
+					<span class=code>"%*c%c"</span> swallows one
+					character and accepts the next.&nbsp;
+					<span class=code>" %c"</span> swallows all whitespace
+					before the next non-whitespace character.&nbsp;
+					For example,
+					<table width="95%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ /* scanf with %c Specification
+  * scanfc.c
+  * BTP100
+  * Oct 20 2005
+  */
+
+ #include &lt;stdio.h&gt;
+ int main (void) {
+     int items;
+     char tax;
+     printf("Number of items : ");
+     scanf("%d", &amp;items);
+     printf("Tax Status : ");
+     scanf(" %c", &amp;tax);   <span class=high>/* note space before %c */</span>
+     printf("%d items (tax status %c)\n", items, tax);&nbsp;
+     return 0;
+ }</pre><br /></td>
+					<td width="50%">
+					<br />
+					<pre class=result>
+
+
+
+
+
+
+
+
+
+
+
+  Number of items : 25
+  Tax status : g
+  25 items (taxable status g)
+  &nbsp;
+  &nbsp;
+  &nbsp;</pre><br /></td></tr></table>
+					</p>
+					<p class="sssection">Return Values</p>
+					<p>
+					<span class=code>scanf</span> returns the number of addresses
+					successfully filled or <span class=code>EOF</span>.&nbsp;
+					A return value of
+					<ul>
+					<li>0 indicates that <span class=code>scanf</span> did not fill any address,</li>
+					<li>1 indicates that <span class=code>scanf</span> filled the first address successfully,</li>
+					<li>2 indicates that <span class=code>scanf</span> filled the first and second addresses successfully,</li>
+					<li>...</li>
+					<li><span class=code>EOF</span> indicates that <span class=code>scanf</span> did not fill any address
+					AND encountered an end of data character.</li>
+					</ul>
+					The return code from <span class=code>scanf</span> does not reflect
+					success of <span class=code>%*</span> conversions
+					or successful reading of non conversion specifier characters
+					in the format string.</p>
+					<br />
+
+					<p id=val class="section">Validation</p>
+					<p>
+					We cannot predict how the user
+					will input the data values: whether the user
+					will enter them as requested or not.&nbsp; One user
+					may make a mistake.&nbsp; Another user
+					may simply try to break the program.&nbsp; In
+					any event, we write the program so that it traps
+					all erroneous input, which includes:
+					<ul>
+					<li>invalid characters</li>
+					<li>trailing characters</li>
+					<li>out-of-range input</li>
+					<li>incorrect number of input fields</li>
+					</ul>
+					We call code that covers each
+					eventuality robust user validation.&nbsp;
+					</p>
+					<p>
+					The following program includes a function that contains
+					robust input validation for integer input
+					<table width="95%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ /* Robust Input Validation
+ *  getInt.c
+ *  Oct 6 2004
+ *  BTP100
+ */
+ #include &lt;stdio.h&gt;
+ int getInt(int min, int max);
+ void clear(void);
+ #define MIN 3
+ #define MAX 15
+
+ int main( ) {
+     int input;
+
+     input = getInt(MIN, MAX);
+     printf("\nProgram accepted %d\n", input);
+
+     return 0;
+ }
+
+ /* getInt accepts from the standard input
+ *  stream an int between min and max inclusive,
+ *  returns the value of the int accepted
+ */
+ int getInt(int min, int max) {
+     int value, keeptrying = 1, rc;
+     char after;
+
+     do {
+         printf("Enter a whole number\n"
+                "in the range [%d,%d] : ",
+                min, max);
+         rc = scanf("%d%c", &value, &after);
+         if (rc == 0) {
+             printf("**No input accepted!**\n\n");
+             clear();
+         } else if (after != '\n') {
+             printf("**Trailing characters!**\n\n");&nbsp;
+             clear();
+         } else if (value &lt; min || value &gt; max) {
+             printf("**Out of range!**\n\n");
+         } else
+             keeptrying = 0;
+     } while (keeptrying == 1);
+
+     return value;
+ }
+
+ /* clear empties input buffer of characters */&nbsp;
+ void clear (void) {
+
+     while ( getchar() != '\n' )
+         ;  /* null statement intentional */
+ }</pre><br /></td>
+					<td width="50%">
+					<br />
+					<pre class=result>
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ Enter a whole number
+ in the range [3,15] : we34
+ **No input accepted!**
+ &nbsp;
+ Enter a whole number
+ in the range [3,15] : 34.4&nbsp;
+ **Trailing characters!**&nbsp;
+ &nbsp;
+ Enter a whole number
+ in the range [3,15] : 345
+ **Out of range!**
+ &nbsp;
+ Enter a whole number
+ in the range [3,15] : 14
+ &nbsp;
+ Program accepted 14
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;</pre><br /></td></tr></table>
+ 					</p>
+					<br />
+
+					<p id="exa" class="section">In-Class Practice</p>
+					<p>
+					Try the practice problem in <a href="h8.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/handouts/h8.html">Handout 8</a>.&nbsp;
+					</p>
+					<br />
+
+					<p id="exe" class="section">Exercises</p>
+					<p>
+					<ul>
+					<li>Experiment with different ways of handling an
+					unprocessed <span class=code>'\n'</span> before reading
+					a character from the input stream, and</li>
+					<li>Read pages 66-70 from Evan Weaver's subject notes.</li>
+					</ul>
+					</p>
+					<br />
+					<br />
+					<br />
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+
+	<!-- Footer -->
+	<tr>
+		<td class="tbody">
+			<table cellpadding="1" width="90%" align="center">
+				<tr>
+					<td width="50%" class="text3">
+						<script language="javascript">
+						var lh = document.location.href;
+						document.write(lh)
+						</script>&nbsp;&nbsp;
+					</td>
+					<td width="50%" align="right" class="text3">
+						<script language="javascript">
+						var lm = document.lastModified.slice(0,-3);
+						document.write("Last Modified: " +lm)
+						</script>&nbsp;&nbsp;
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

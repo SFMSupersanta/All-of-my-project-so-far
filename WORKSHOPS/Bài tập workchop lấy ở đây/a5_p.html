@@ -1,0 +1,355 @@
+
+<html lang="en-us" xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+   <title>Seneca | School of Computer Studies | Programming Fundamentals Using C</title>
+
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+   <meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+   <meta name="Copyright" content="(c) Copyright Seneca College 2005" />
+   <meta name="Description" content="Welcome to the Bachelors Degree of Software Development Program Web Site.  On this site you can find the introductory programming course.  Designed by Chris Szalwinski." />
+   <meta name="Abstract" content="This subject reviews the principles of procedural programming.  Students study the solution of problems using structured programming techniques with the C programming language.  The emphasis throughout is on the solution of small problems."/>
+   <meta name="Author" content="chris.szalwinski@senecac.on.ca"/>
+   <meta name="Keywords" content="sofware development, procedural programming, lecture notes"/>
+
+   <link rel="stylesheet" type="text/css" href="style.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/style.043.css">
+   <link rel="stylesheet" type="text/css" href="styleSPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleSPrint.043.css" media="screen">
+   <link rel="stylesheet" type="text/css" href="stylePPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/stylePPrint.043.css" media="print">
+</head>
+
+<body>
+
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC
+    '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+
+<table cellspacing="0" cellpadding="0">
+
+   <!-- Body Cell -->
+   <tr height="600">
+      <!-- Content Area -->
+      <td class="tbody" bgcolor="ffffff" valign="top">
+         <table cellpadding="10" width="100%">
+            <tr>
+               <td bgcolor="ffffff" valign="top">
+               <br />
+               <center>
+               <span class=texth>Assignment 5<br />
+               Version 1.0
+               </span>
+               <br />
+               <br />
+               <span class=texthead>
+               Income Statement and Balance Sheet
+               </span>
+               <br />
+               <br />
+               <span class=texth>
+               <br />             </span>
+               </center>
+               <br />
+               <br />
+
+               <p>
+               As your fifth assignment this semester, you are to upgrade your
+               balance sheet program to accomodate an income statement and
+               transaction and account descriptions.&nbsp;
+               </p>
+               <br />
+
+               <p class="section">Learning Outcome</p>
+               <p>
+               Upon successful completion of this assignment, you
+               will have demonstrated the ability to use
+               one-dimensional array data structures, including strings.
+               </p>
+               <br />
+
+               <p class="section">Problem Analysis</p>
+               <p>
+               For an introduction to bookkeeping programs and balance sheet accounts, see the background section of
+               <a href="a4.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/a4.html">assignment 4</a>.</p>
+               <p>
+               A financial report for a company includes not only a balance sheet, but also
+               an income statement.&nbsp; The income statement summarizes the amounts earned
+               and the amounts spent over the accounting period since the most recent balance.&nbsp;
+               The difference between the amounts earned for the period and the
+               amounts spent to earn that income is the gross profit for that
+               accounting period.</p>
+               <p>
+               The accounts that track income are called "revenue" accounts.&nbsp;
+               Examples of revenue accounts are service
+               fees billed and sales made.</p>
+               <p>
+               The accounts that track spending are called "expense" accounts.&nbsp;
+               Examples of
+               expense accounts are rent, salaries and supplies.</p>
+               <p>
+               Changes to revenue or expense accounts are recorded through transactions.&nbsp;
+               For example, recording an office supplies' purchase involves two transactions:
+               one crediting the bank account, and the other debiting the office supplies account
+               (which is an expense account).&nbsp; Recording a sale involves two transactions:
+               one debiting the bank account, and the other crediting the sales account
+               (which is a revenue account).&nbsp;</p>
+               <p>
+               Crediting a revenue account increases its (credit) balance, while debiting a
+               revenue account decreases its (credit) balance.&nbsp; Conversely, debiting an
+               expense account increases its (debit) balance, while crediting an expense decreases
+               its (debit) balance.&nbsp; The relationships of transaction debits and credits to
+               increases and decreases in account balances for the different account types are:
+               </p>
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+                           ---------Transaction---------
+ Account       Balance        Credit              Debit
+ -------------------------------------------------------
+ Asset         Debit         decrease           increase
+ Expense       Debit         decrease           increase
+ Liability     Credit        increase           decrease
+ Revenue       Credit        increase           decrease
+ Equity        Credit        increase           decrease&nbsp;</pre><br /></td></tr></table>
+               <br />
+
+               <p class="section">Specifications</p>
+               <p>
+               Your income statement and balance sheet program can
+               <ul>
+               <li>process transaction entries to revenue and expense accounts, </li>
+               <li>display an income statement, </li>
+               <li>accept and display transaction descriptions, and</li>
+               <li>accept and display account titles</li>
+               </ul>
+               Account numbers from 4000 to 4999 identify revenue accounts.&nbsp;
+               Account number from 5000 to 5999 identify expense accounts.
+               <p>
+               Your program should display a menu that offers the user five options:
+               <ul>
+               <li>enter a transaction</li>
+               <li>view the general <font color=blue><font color=blue>journal</font></font></li>
+               <li>view the balance sheet</li>
+               <li>view the income statement &lt;== NEW</li>
+               <li>quit the program</li>
+               </ul>
+               If the user chooses to enter a transaction, your program
+               prompts the user for
+               <ul>
+               <li>an account number (between 1000 and <font color=blue><b>5</b></font>999)</li>
+               <li>a brief description of the transaction (30 characters maximum) &lt;== NEW</li>
+               <li>whether the transaction is a debit or a credit</li>
+               <li>the amount of the transaction (always a positive number)</li>
+               </ul>
+               If the user has entered the account number for the first time, your
+               program
+               <ul>
+               <li>creates the new account and </li>
+               <li>prompts the user to enter a brief
+               (also 30 characters maximum) title for that account.&nbsp; &lt;== NEW</li>
+               </ul>
+               Once the
+               user has entered the transaction amount, your program returns
+               to the menu.
+               <p>
+               If the user chooses to view the general journal, then your program
+               displays all transactions that have been entered, in the order entered
+               and includes their descriptions.&nbsp; The format of the general journal
+               matches this sample:
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+                        General Journal
+ Account Description                         Debit     Credit&nbsp;
+ ------- ------------------------------ ---------- ----------
+    1000 Common Shares Issued              4000.00
+    3000 Investor #2314                               4000.00
+    1400 Office Equipment                  2100.99
+    2000 Future Shop                                  2100.99
+    2100 Royal Bank                                   3500.00
+    1000 Long Term Loan                    3500.00
+    5100 York Properties                   3000.00
+    1000 Rent                                         3000.00
+    5400 Office Supplies                    569.90
+    2000 Staples                                       569.90
+    1000 Royal Bank Visa                              2100.99
+    2000 Settlement                        2100.99
+    4000 Client #23185                                6000.00
+    1100 Professional Services             6000.00</pre><br /></td></tr></table>
+               If the user chooses to display the income statement, your program
+               displays the balances for all revenue and expense accounts for which
+               transactions have been entered.&nbsp; Your program calculates each
+               account balance by starting at zero and accumulating all of the transaction amounts
+               for that account.&nbsp; The format for the income statement
+               matches the following sample:
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+                       Income Statement
+ Account Description                         Debit     Credit&nbsp;
+ ------- ------------------------------ ---------- ----------
+    4000 Professional Services                        6000.00
+                                        ---------- ----------
+             Total Revenues                           6000.00
+
+    5100 Rent                              3000.00
+    5400 Office Supplies                    569.90
+                                        ---------- ----------
+             Total Expenses                3569.90
+
+                                        ---------- ----------
+             Net Income                               2430.10</pre><br /></td></tr></table>
+               Note how subtotals are shown for the revenue and expenses account types
+               and the net income is the difference between total revenues and total
+               expenses.
+               <p>
+               To close the company books for an accounting period
+               the user enters transactions that bring the revenue and
+               expense account balances to 0.00 and adds the net
+               income to the retained earnings account:
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ Account Description                         Debit     Credit&nbsp;
+ ------- ------------------------------ ---------- ----------
+    4000 Close Professional Services       6000.00
+    5100 Close Rent                                   3000.00
+    5400 Close Office Supplies                         569.90
+    3200 Net Income                                   2430.10</pre><br /></td></tr></table>
+               If the user chooses to display the balance sheet, your program displays
+               the balances for all asset, liability and equity accounts
+               along with the account descriptions.&nbsp; The format for the
+               balance sheet matches the following sample:
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+                          Balance Sheet
+ Account Description                         Debit     Credit
+ ------- ------------------------------ ---------- ----------&nbsp;
+    1000 Cash                              2399.01
+    1400 Office Equipment                  2100.99
+    1100 Accounts Receivable               6000.00
+                                        ---------- ----------
+             Total Assets                 10500.00
+
+    2000 Credit Card Payable                           569.90
+    2100 Long Term Debt                               3500.00
+                                        ---------- ----------
+             Total Liabilities                        4069.90
+
+    3000 Common Shares Outstanding                    4000.00
+    3200 Retained Earnings                            2430.10
+                                        ---------- ----------
+             Total Equity                             6430.10
+                                        ---------- ----------
+             Total Liabilities and Equity            10500.00</pre><br /></td></tr></table>
+               <p>
+               Here is a sample run showing the new error messages as well as general journals, balance sheets, and income statements:
+               <a href="a5Sample.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/a5Sample.html">Sample run</a>
+               </p>
+               <br />
+
+               <p class="section">Submission Requirements</p>
+               <p>At the beginning of your program, include comments with the following information formatted neatly, and reflecting
+         accurate information for you.
+<pre>
+/* Assignment 5                                                                 */
+/* Course:                BTP100                                                */
+/* Family Name:           Student                                               */
+/* Given Name:            John                                                  */
+/* Student Number:        123-456-789                                           */
+/* Login name:            jstudent                                              */
+/* Professor:             Les Czegel                                            */
+/* Due Date:              November 26, 2006                                     */
+/*                                                                              */
+/* I declare that the attached assignment is my own work in accordance with     */
+/* Seneca Academic Policy.  No part of this assignment has been copied manually */
+/* or electronically from any other source (including web sites) or distributed */
+/* to other students                                                            */
+</pre>
+               <P>
+               This assignment is worth 3% of your final mark.
+               </P>
+               <P>
+               Assignments that are not submitted by the due date will receive a 10% late
+               penalty per school day to a maximum of 50%.
+               </P>
+               <!--<P>
+               Any bonus mark that you earn increases your assignment mark to a maximum
+               for all quiz and assignment marks taken together of 25% of your final mark.
+               </P>-->
+               <P>
+               If you submit an assignment that does not pass all of the tests, you will
+               be asked to fix your code and to resubmit it, in which case you will
+               receive an assignment mark no higher than 1.5% of your final mark (that is,
+               one half of the highest possible assignment mark<!-- before any bonuses-->).
+               </P>
+               <P>
+               Regardless of how long it takes you to complete this assignment, you still
+               need to submit a completed working version in order to pass this subject.
+               </P>
+               <p>
+               </p>
+               <br />
+               <br />
+               <br />
+               </td>
+            </tr>
+         </table>
+      </td>
+
+      <!-- Detail Menu -->
+      <td class="panel1" width="150" valign="top" rowspan="2">
+         <ul id="mennav">
+         <li><a href="welco.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/welco.html">Welcome</a></li>
+         <li><a href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+         <li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+         <li><a class="active" href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+         <li><a href="a1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/a1.html">&nbsp;Assign 1</a></li>
+         <li><a href="a2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/a2.html">&nbsp;Assign 2</a></li>
+         <li><a href="a3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/a3.html">&nbsp;Assign 3</a></li>
+         <li><a href="a4.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/a4.html">&nbsp;Assign 4</a></li>
+         <li><a class="active" href="a5.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/a5.html">&nbsp;Assign 5</a></li>
+         <li><a href="a6.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/a6.html">&nbsp;Assign 6</a></li>
+         <li><a href="index-4.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/handouts/index.html">Handouts</a></li>
+         <li><a href="index-5.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/practice/index.html">Practice</a></li>
+         <li><a href="index-6.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/index.html">Resources</a></li>
+         <li><a href="glossary.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/glossary.html">Glossary</a></li>
+         </ul>
+      </td>
+   </tr>
+
+   <!-- Footer -->
+   <tr>
+      <td class="tbody">
+         <table cellpadding="1" width="90%" align="center">
+            <tr>
+               <td width="50%" class="text3">
+                  <script language="javascript">
+                  var lh = document.location.href;
+                  document.write(lh)
+                  </script>&nbsp;&nbsp;
+               </td>
+               <td width="50%" align="right" class="text3">
+                  <script language="javascript">
+                  var lm = document.lastModified.slice(0,-3);
+                  document.write("Last Modified: " +lm)
+                  </script>&nbsp;&nbsp;
+               </td>
+            </tr>
+         </table>
+      </td>
+   </tr>
+</table>
+
+</body>
+</html>

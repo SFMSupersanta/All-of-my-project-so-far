@@ -1,0 +1,335 @@
+
+<html lang="en-us" xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+   <title>Seneca | School of Computer Studies | Programming Fundamentals Using C</title>
+
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+   <meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+   <meta name="Copyright" content="(c) Copyright Seneca College 2005" />
+   <meta name="Description" content="Welcome to the Bachelors Degree of Software Development Program Web Site.  On this site you can find the introductory programming course.  Designed by Chris Szalwinski." />
+   <meta name="Abstract" content="This subject reviews the principles of procedural programming.  Students study the solution of problems using structured programming techniques with the C programming language.  The emphasis throughout is on the solution of small problems."/>
+   <meta name="Author" content="chris.szalwinski@senecac.on.ca"/>
+   <meta name="Keywords" content="sofware development, procedural programming, lecture notes"/>
+
+   <link rel="stylesheet" type="text/css" href="style.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/style.043.css">
+   <link rel="stylesheet" type="text/css" href="styleSPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleSPrint.043.css" media="screen">
+   <link rel="stylesheet" type="text/css" href="stylePPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/stylePPrint.043.css" media="print">
+</head>
+
+<body>
+
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC
+    '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+
+<table cellspacing="0" cellpadding="0">
+
+   <!-- Body Cell -->
+   <tr height="600">
+      <!-- Content Area -->
+      <td class="tbody" bgcolor="ffffff" valign="top">
+         <table cellpadding="10" width="100%">
+            <tr>
+               <td bgcolor="ffffff" valign="top">
+               <br />
+               <center>
+               <span class=texth>Assignment 4<br />
+               Version 1.0
+               </span>
+               <br />
+               <br />
+               <span class=texthead>
+               Balance Sheet
+               </span>
+               <br />
+               <br />
+               </center>
+               <br />
+               <br />
+
+               <p>
+               As your fourth assignment this semester, you are to write a C
+               program that tracks a company's finances and summarizes the
+               state of those finances in a balance sheet.&nbsp;
+               </p>
+               <br />
+
+               <p class="section">Learning Outcome</p>
+               <p>
+               Upon successful completion of this assignment, you
+               will have demonstrated the ability to use
+               one-dimensional array data structures.
+               </p>
+               <br />
+
+               <p class="section">Background</p>
+               <p>
+               A large percentage of the programs written for business are concerned with
+               managing a company's finances.&nbsp; The basis for financial recordkeeping is a
+               "chart" of accounts.&nbsp; Accounts are categories that track monetary amounts.&nbsp;
+               The accounts in the chart include a bank account, accounts that
+               track investments (such as equipment or real estate), accounts that
+               track obligations to outside agencies (such as loans) and accounts that
+               track investors' interest in the company.&nbsp;
+               </p>
+               <p>
+               The accounts that track cash on hand and company investments are called
+               "assets".&nbsp; An asset is anything that has value that might be realized.&nbsp;
+               Examples of asset accounts include cash, equipment, inventory and real estate.&nbsp;
+               </p>
+               <p>
+               The accounts that track obligations are called "liabilities".&nbsp; A
+               liability is anything that decreases the total value of the assets.&nbsp;
+               Examples of liability accounts are credit-card balances and long-term debt.&nbsp;
+               </p>
+               <p>
+               The accounts that track investors' interest are called "equity"
+               accounts.&nbsp; Examples of equity accounts are outstanding
+               common shares and retained earnings.&nbsp; </p>
+               <p>
+               At any one time, each account has a "balance".&nbsp; In accounting, it is
+               conventional to work with positive amounts throughout, regardless of the
+               account type.&nbsp; This is achieved by introducing the terms "debit" and "credit"
+               <font color=blue>to
+               describe the various account balances</font>.&nbsp; Asset accounts are said to have
+               debit balances, while liability and equity accounts credit balances.&nbsp;</p>
+               <p>
+               Each day, "transactions" are recorded that change some account balances.&nbsp;
+               Each transaction is coupled to at least one other transaction.&nbsp;
+               For example, recording a computer purchase introduces a transaction pair:
+               one transaction to decrease the cash account (which is an asset account),
+               and a second transaction
+               to increase the equipment account (which is also an asset account).&nbsp;
+               <font color=blue>In accounting terminology, recording the purchase credits
+               the cash account and debits the equipment account.&nbsp;
+               Recording a bank loan would debit the cash account and
+               credit the debt account (which is a liability).&nbsp;</font>
+               Each recording involves at least one debit transaction and one credit
+               transaction.
+               </p>
+               <p>
+               Debiting an asset account increases its (debit) balance, while crediting an
+               asset account decreases its (debit) balance.&nbsp; Conversely, debiting a
+               liability account decreases its (credit) balance, while crediting increases
+               its (credit) balance.</p>
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+                           ---------Transaction---------
+ Account       Balance        Credit              Debit
+ -------------------------------------------------------
+ Asset         Debit         decrease           increase
+ Liability     Credit        increase           decrease
+ Equity        Credit        increase           decrease&nbsp;</pre><br /></td></tr></table>
+               <p>
+               The total of all transactions that occur over some period of time should
+               involve equal debit and credit totals; that is, that the total
+               (debit) balances of all asset accounts should equal
+               the total (credit) balances of the liability and equity accounts.&nbsp; If these
+               two totals differ, the company books are said to be "out of
+               balance", and some adjustment transaction(s) must be entered to rectify
+               that imbalance.&nbsp;</p>
+               <p>
+               The complete list of transactions for a period of time is called a "general journal"
+               and documents the business activity that has occured over that period.&nbsp; The list
+               showing the balances of each account at any one time is called the "balance
+               sheet" and documents the health of the company's finances.&nbsp;
+               </p>
+               <br />
+
+               <p class="section">Specifications</p>
+               <p>
+               You are to write a very basic bookkeeping program that allows the user to
+               enter a series of transactions and to display both a
+               general journal and a balance sheet.
+               </p>
+               <p>
+               Your program identifies account numbers from 1000 to 1999 as asset accounts, from 2000 to
+               2999 as liability accounts, and from 3000 to 3999 as equity accounts.
+               </p>
+               <p>
+               Your program displays a menu that offers the user four options:
+               <ul>
+               <li>enter a transaction</li>
+               <li>view the general journal</li>
+               <li>view the balance sheet</li>
+               <li>quit the program</li>
+               </ul>
+               If the user chooses to enter a transaction, then your program
+               prompts the user for
+               <ul>
+               <li>an account number (between 1000 and 3999)</li>
+               <li>the transaction type - whether the transaction is a debit or a credit</li>
+               <li>the amount of the transaction (always a positive number)</li>
+               </ul>
+               If the user enters the account number for the very first time, your
+               program adds the new account to the chart of accounts.&nbsp;
+               Once the user has entered the transaction details, your program returns
+               to the menu.
+               <p>
+               If the user chooses to view the general journal, then your program
+               displays all transactions that have been entered, in the order
+               entered.&nbsp; The format of the general journal is as follows:
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre class="result">
+                         General Journal
+ Account Description                         Debit     Credit&nbsp;
+ ------- ------------------------------ ---------- ----------
+    1400                                   3500.00
+    2100                                              3500.00
+    1000                                   3000.00
+    1100                                   1000.00
+    1400                                              2000.00
+    3100                                              4000.00
+    3200                                   2000.00
+    1000                                              2100.99
+    1300                                   2100.99</pre><br /></td></tr></table>
+               There are 30 blank spaces for each transaction description.
+               <p>
+               If the user chooses to display the balance sheet, then your program displays
+               the balances for all accounts for which transactions have been entered.&nbsp;
+               Your program calculates each account balance by starting at zero and
+               accumulating for that account the amount from each transaction in the
+               general journal.&nbsp; The format for the
+               balance sheet is as follows:
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre class="result">
+                          Balance Sheet
+ Account Description                         Debit     Credit&nbsp;
+ ------- ------------------------------ ---------- ----------
+    1400                                   1500.00
+    1000                                    899.01
+    1100                                   1000.00
+    1300                                   2100.99
+                                        ---------- ----------
+             Total Assets                  5500.00
+
+    2100                                              3500.00
+                                        ---------- ----------
+             Total Liabilities                        3500.00
+
+    3100                                              4000.00
+    3200                                   2000.00
+                                        ---------- ----------
+             Total Equity                             2000.00
+                                        ---------- ----------
+             Total Liabilities and Equity             5500.00</pre><br /></td></tr></table>
+               There are 30 blank spaces for each account description.
+               <p>
+               Note the subtotals for the account types - assets, liabilities and
+               equity - and the sum of the liability and equity accounts.
+               </p>
+               <p>
+               You may assume a maximum of 20 transactions and a maximum of 10
+               different accounts.&nbsp; These limits will allow you to display each of the
+               general journal and the balance sheet on a 24-line screen.&nbsp;
+               </p>
+               <p>
+               Your program allows for gaps in the account numbering, has
+               good error checking, and prompts the user to re-enter
+               unacceptable data (such as non-numeric input for numeric fields or account
+               numbers outside the range 1000-3999).&nbsp; Your program is also well
+               modularized, well commented and readily open to changes in the account type
+               ranges, the maximum number of transactions and the maximum number of
+               accounts.
+               </p>
+               <p>
+               [Hint: one way to store transaction amounts is to store
+               the debit amounts as negative numbers and the credit amounts
+               as positive numbers.&nbsp; This technique simplifies coding
+               by removing the need to track separately the debit or
+               credit nature of each transaction entry.&nbsp; An alternative
+               way to store transaction amounts is to store all amounts
+               as positive values and to use a parallel array to track
+               the debit or credit nature of the transaction amount.]
+               </p>
+               <p>
+               Here is a sample run showing error messages as well as general journals and balance sheets:
+               <a href="a4Sample.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/a4Sample.html">Sample run</a>
+               </p>
+               <br />
+
+               <p class="section">Submission Requirements</p>
+               <p>At the beginning of your program, include comments with the following information formatted neatly, and reflecting
+         accurate information for you.
+<pre>
+/* Assignment 4                                                                 */
+/* Course:                BTP100                                                */
+/* Family Name:           Student                                               */
+/* Given Name:            John                                                  */
+/* Student Number:        123-456-789                                           */
+/* Login name:            jstudent                                              */
+/* Professor:             Les Czegel                                            */
+/* Due Date:              November 19, 2006                                     */
+/*                                                                              */
+/* I declare that the attached assignment is my own work in accordance with     */
+/* Seneca Academic Policy.  No part of this assignment has been copied manually */
+/* or electronically from any other source (including web sites) or distributed */
+/* to other students                                                            */
+</pre>
+               <P>
+               This assignment is worth 4% of your final mark.
+               </P>
+               <P>
+               Assignments that are not submitted by the due date will attract a 10% late
+               penalty per school day to a maximum of 50%.
+               </P>
+               <!--<P>
+               Any bonus mark that you earn increases your assignment mark to a maximum
+               for all quiz and assignment marks taken together of 25% of your final mark.
+               </P>-->
+               <P>
+               If you submit an assignment that does not pass all of the tests, you will
+               be asked to fix your code and to resubmit it, in which case you will
+               receive an assignment mark no higher than 2% of your final mark (that is,
+               one half of the highest possible assignment mark<!-- before any bonuses-->).
+               </P>
+               <P>
+               Regardless of how long it takes you to complete this assignment, you still
+               need to submit a completed working version in order to pass this subject.
+               </P>
+               <p>
+               </p>
+               <br />
+               <br />
+               <br />
+               </td>
+            </tr>
+         </table>
+      </td>
+
+   <!-- Footer -->
+   <tr>
+      <td class="tbody">
+         <table cellpadding="1" width="90%" align="center">
+            <tr>
+               <td width="50%" class="text3">
+                  <script language="javascript">
+                  var lh = document.location.href;
+                  document.write(lh)
+                  </script>&nbsp;&nbsp;
+               </td>
+               <td width="50%" align="right" class="text3">
+                  <script language="javascript">
+                  var lm = document.lastModified.slice(0,-3);
+                  document.write("Last Modified: " +lm)
+                  </script>&nbsp;&nbsp;
+               </td>
+            </tr>
+         </table>
+      </td>
+   </tr>
+</table>
+
+</body>
+</html>

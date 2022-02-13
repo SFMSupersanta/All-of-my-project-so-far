@@ -1,0 +1,16 @@
+
+        5.  Write a function
+                void histogram(int array[], int count)
+            which is passed an  array  of  numbers  and  the  number  of
+            elements in the array, and then displays a histogram of that
+            array using asterisks. For example,  if  an  array  named  x
+            contained the six values  {  5,  1,  2,  4,  3,  4  },  then
+            histogram(x, 6) would output:
+                    *****
+                    *
+                    **
+                    ****
+                    ***
+                    ****
+            (If a value is 0 or less, output  an  empty  line  for  that
+            value)

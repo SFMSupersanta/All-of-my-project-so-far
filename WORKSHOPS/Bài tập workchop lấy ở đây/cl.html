@@ -1,0 +1,239 @@
+
+<html lang="en-us" xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+	<title>Seneca | School of Computer Studies | Programming Fundamentals Using C</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+	<meta name="Copyright" content="(c) Copyright Seneca College 2004" />
+	<meta name="Description" content="Welcome to the Bachelors Degree of Software Development Program Web Site.  On this site you can find the introductory programming course.  Designed by Chris Szalwinski." />
+	<meta name="Abstract" content="This subject reviews the principles of procedural programming.  Students study the solution of problems using structured programming techniques with the C programming language.  The emphasis throughout is on the solution of small problems."/>
+	<meta name="Author" content="chris.szalwinski@senecac.on.ca"/>
+	<meta name="Keywords" content="sofware development, procedural programming, lecture notes"/>
+
+	<link rel="stylesheet" type="text/css" href="style.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/style.043.css">
+	<link rel="stylesheet" type="text/css" href="styleScreen.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleScreen.043.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="styleSPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleSPrint.043.css" media="print">
+	<link rel="stylesheet" type="text/css" href="styleNav.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleNav.043.css">
+</head>
+
+<body>
+
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC
+    '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+
+<table id="top" width="850" cellspacing="0" cellpadding="0">
+
+	<!-- Banner -->
+	<tr height="120">
+		<td colspan="2" class="banner">
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<td width="250" class="banner">
+					<center><span class="text0">&nbsp;&nbsp;Software&nbsp;&nbsp;<br />
+					&nbsp;&nbsp;Development&nbsp;&nbsp;</span></center>
+				</td>
+				<td class="tbanner">
+					<img src="Banner4.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Banner4.gif" height="120" width="500" alt="Software Development" />
+				</td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+
+	<!-- Navigation Bar -->
+	<tr height="20">
+		<td class="panel1" align="left" valign="bottom">
+			<ul id="tabnav">			
+			<li><a href="timeline.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/timeline.html">Timeline</a></li>
+			<li><a href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+			<li><script type="text/javascript" src="classroom_a.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_a.js"></script></li>
+			<li><script type="text/javascript" src="classroom_b.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_b.js"></script></li>
+			<li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+			<li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+			<li><a href="index-3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/instructors/index.html">Instructor</a></li>
+			<li><a href="cl_p.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/cl_p.html"><img align="center" src="Printer.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Printer.gif" height=15 width=10 alt="Printer Friendly Version of this Page" /></a></li>
+			</ul>
+		</td>
+		<!-- Web Site Title -->
+		<td class="panel2" width="150" align="center">
+			<span class="text1"><script type="text/javascript" src="subject.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/subject.js"></script></span>
+		</td>
+	</tr>
+
+	<!-- Body Cells -->
+	<tr height="600">
+
+		<!-- Content Area -->
+		<td class="tbody" bgcolor="ffffff" valign="top">
+			<table cellpadding="10" width="100%">
+				<tr>
+					<td bgcolor="ffffff" valign=top>
+					<br />
+					<center><span class=texth>Resources</span>
+					<br />
+					<br />
+					<span class=texthead>
+					Visual Studio .net 2003 Compiler</span>
+					</center>
+					<br />
+					<br />
+					<br />
+
+					<p>
+					The Visual Studio .net 2003 compiler is a command line version of the
+					same compiler that ships with Visual Studio .net 2003 Professional.&nbsp;
+					The command line compiler is available for free and can be downloaded
+					from the <a href="javascript:if(confirm('http://msdn.microsoft.com/visualc/vctoolkit2003/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://msdn.microsoft.com/visualc/vctoolkit2003/'" tppabs="http://msdn.microsoft.com/visualc/vctoolkit2003/">Microsoft Development Center</a>.&nbsp;
+					The Toolkit includes the core tools needed to compile and run source
+					code on a Windows platform, such as the C runtime library.&nbsp;
+					To install the compiler, execute the download and follow the instructions.&nbsp;
+					</p>
+					<p>
+					Once you have installed the compiler, you can access it by
+					opening a command window from the <span class=code>Start</span>
+					menu at <span class=code>All Programs/Microsoft Visual C++ Toolkit 2003/Visual C++ Toolkit Command Prompt</span>
+					and typing
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ cl /?</pre><br /></td></tr></table>
+ 					at the command line prompt.&nbsp;  This command will list
+ 					all of the compiler options.&nbsp;
+ 					<p>
+ 					To compile a file named <span class=code>myFile.c</span>
+ 					follow the <span class=code>cl</span> command by the source
+ 					file name
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ cl myFile.c</pre><br /></td></tr></table>
+ 					If your source code compiles successfully, this will produce
+ 					an executable file named <span class=code>myFile.exe</span>.&nbsp;
+ 					To execute this file, enter
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ myFile</pre><br /></td></tr></table>
+					Note that the command window for the <span class=code>cl</span>
+					compiler differs from the normal command window.&nbsp;
+					</td>
+				</tr>
+			</table>
+		</td>
+
+		<!-- Detail Menu -->
+		<td class="panel1" width="150" valign="top" rowspan="2">
+			<ul id="mennav">
+			<li><a href="welco.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/welco.html">Welcome</a></li>
+			<li><a href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+			<li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+			<li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+			<li><a href="index-4.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/handouts/index.html">Handouts</a></li>
+			<li><a href="index-5.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/practice/index.html">Practice</a></li>
+			<li><a class="active" href="index-6.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/index.html">Resources</a></li>
+			<li><a href="reference.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/reference.html">&nbsp;Texts</a></li>
+			<li><a href="tutorials.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/tutorials.html">&nbsp;Tutorials</a></li>
+			<li><a href="Borland 5.5 Installation.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/Borland 5.5 Installation.html">&nbsp;Borland</a></li>
+			<li><a class="active" href="cl.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/cl.html">&nbsp;cl</a></li>
+			<li><a href="putty.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/putty.html">&nbsp;PuTTY</a></li>
+			<li><a href="ftp.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/ftp.html">&nbsp;ftp</a></li>
+			<li><a href="ascii.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/ascii.html">&nbsp;ASCII</a></li>
+			<li><a href="ebcdic.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/ebcdic.html">&nbsp;EBCDIC</a></li>
+			<li><a href="escape.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/escape.html">&nbsp;Escape</a></li>
+			<li><a href="operators.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/operators.html">&nbsp;Precedence</a></li>
+			<li><a href="javascript:if(confirm('http://www.infosys.utas.edu.au/info/documentation/C/CStdLib.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.infosys.utas.edu.au/info/documentation/C/CStdLib.html'" tppabs="http://www.infosys.utas.edu.au/info/documentation/C/CStdLib.html">&nbsp;C Library</a></li>
+			<li><a href="dbx_notes.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/dbx_notes.html">&nbsp;dbx</a></li>
+			<li><a href="history.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/history.html">&nbsp;History</a></li>
+			<li><a href="glossary.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/glossary.html">Glossary</a></li>
+			</ul>
+		</td>
+	</tr>
+
+	<!-- Content Area Footer -->
+	<tr height="20">
+		<td class="panel3" align="center">
+			<table class="panel2" width="95%">
+				<tr>
+					<td align="left">
+						&nbsp;&nbsp;<a href="cl_p.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/cl_p.html" class="text3">
+						<img src="Printer.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Printer.gif" height="15" width="10" alt="Printer Friendly Version of this Page" />&nbsp;print this page</a>&nbsp;&nbsp;
+					</td>
+					<td align="right">
+						&nbsp;&nbsp;<a href="#top" class="text3">Top&nbsp;
+						<img src="ArrowToT.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToT.gif" height="15" width="15" alt="Go Back to the Top of this Page" /></a>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+
+	<!-- Footer -->
+	<tr>
+		<!-- Left Panel -->
+		<td class="panel1" width="700" align="center">
+			<!-- Lateral Motion Control -->
+			<!--<table width="90%" align="center">
+				<tr>
+					<td width="50%" align="left">
+						<a href="datat.html" class="text3">
+						<img src="../images/ArrowToL.gif" height="15" width="15" class="panel1" alt="Previous Reading" />&nbsp;&nbsp;Previous: Primitive Data Types</a>
+					</td>
+					<td width="50%" align="right">
+						<a href="modul.html" class="text3">Next: Modular Programs&nbsp;&nbsp;
+						<img src="../images/ArrowToR.gif" height="15" width="15" class="panel1" alt="Next Reading" /></a>
+					</td>
+				</tr>
+			</table>-->
+			<br />
+			<br />
+			<!-- Alternate Navigation Links -->
+			<ul id="altnav" align="center">			
+			<li><a href="timeline.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/timeline.html">Timeline&nbsp;</a></li>
+			</ul>
+			<ul id="altnav" align="center">
+			<li><a href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+			<li><script type="text/javascript" src="classroom_a.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_a.js"></script></li>
+			<li><script type="text/javascript" src="classroom_b.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_b.js"></script></li>
+			<li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+			<li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+			<li><a href="index-3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/instructors/index.html">Instructor</a></li>
+			</ul>
+			<br />
+			<!-- Bottom Line -->
+			<table cellpadding=1 width="90%">
+				<tr>
+					<td width="33%" class="text3">
+						&nbsp;&nbsp;Designed by Chris Szalwinski&nbsp;&nbsp;
+					</td>
+					<td width="34%" align="center">
+						<a href="copyright.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/copyright.html" class="text3">Copying From This Site</a>
+					</td>
+					<td width="33%" align="right" class="text3">
+						<script language="javascript">
+						var lm = document.lastModified.slice(0,-3);
+						document.write("Last Modified: " +lm)
+						</script>&nbsp;&nbsp;
+					</td>
+				</tr>
+			</table>
+		</td>
+
+		<!-- Logo - Right Bottom Corner -->
+		<td class=panel2 width="150" align="center">
+			<img src="Logo.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Logo.gif" height="73" width="85" />
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

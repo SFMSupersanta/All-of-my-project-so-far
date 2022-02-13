@@ -1,0 +1,33 @@
+<html>/* w15.c */
+            #include <stdio.h>
+
+            int did(int x[])
+            {
+                int i=1, j=2, t=0;
+
+                while ((i + j) < 10)
+                    t += x[i++] + x[j++];
+                return t;
+            }
+
+            int didnot(int x[])
+            {
+                int i, j=1, t=0;
+
+                for (i=2; i<10; j=i) {
+                    t += x[i];
+                    i+=j;
+                }
+                return t;
+            }
+
+            main()
+            {
+                int n[10], i;
+         
+                for (i = 0; i < 10; i++)
+                    n[i] = 101 * (i + 1);
+                printf("Did O.J. do it? %d say yes, %d say no!\n",
+                  did(n), didnot(n));
+            }
+

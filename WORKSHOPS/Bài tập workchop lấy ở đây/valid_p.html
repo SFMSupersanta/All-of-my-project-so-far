@@ -1,0 +1,480 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC
+    '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html lang="en-us" xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+	<title>Seneca | School of Computer Studies | Foundations of Programming Using C and C++</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+	<meta name="Copyright" content="(c) Copyright Seneca College 2004" />
+	<meta name="Description" content="Welcome to the Bachelors Degree of Software Development Bridging Program Web Site.  On this site you can find the bridging course into the Degree Program at Seneca College.  Designed by Chris Szalwinski." />
+	<meta name="Abstract" content="This subject reviews the principles of both procedural and object-oriented programming.  Students study the solution of problems using structured programming techniques with the C programming language and design and build reusable objects, making use of encapsulation, inheritance and polymorphism as available in the C++ programming language.  The emphasis throughout is on the solution of small problems."/>
+	<meta name="Author" content="chris.szalwinski@senecac.on.ca"/>
+	<meta name="Keywords" content="sofware development, procedural programming, object-oriented programming, lecture notes"/>
+
+	<link rel="stylesheet" type="text/css" href="style.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/style.043.css">
+	<link rel="stylesheet" type="text/css" href="styleSPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleSPrint.043.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="stylePPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/stylePPrint.043.css" media="print">
+</head>
+
+<body>
+
+<table cellspacing="0" cellpadding="0">
+
+	<!-- Body Cell -->
+	<tr height="600">
+		<!-- Content Area -->
+		<td class="tbody" bgcolor="ffffff">
+			<table cellpadding="10" width="100%">
+				<tr>
+					<td bgcolor="ffffff" valign="top">
+					<br />
+					<center><span class=texth>Module G - Strings</span>
+					<br />
+					<br />
+					<span class=texthead>
+					String Input</span>
+					<br />
+					<br />
+					<span class=textagend>
+					Apply structured programming principles, including
+					single-dimensional arrays, when writing program code<br />
+					<br />
+					</span>
+					<p class=quote></p>
+					<span class=textagend>
+					<a href="#sca">scanf</a> |
+					<a href="#get">gets</a> |
+					<a href="#str">custom</a> |
+					<a href="#exa">In-Class Practice</a> |
+					<a href="#exe">Exercises</a>
+					</span>
+					</center>
+					<br />
+					<br />
+					<br />
+
+					<p>
+					Common functions for accepting string data from standard input include:
+					<ul>
+					<li><span class=code>scanf</span>,</li>
+					<li><span class=code>gets</span>, and</li>
+					<li>a custom function using <span class=code>getchar()</span>.</li>
+					</ul>
+					</p>
+					<br />
+
+					<p id="sca" class="section">scanf</p>
+					<p>
+					For strings, <span class=code>scanf</span>
+					accepts two conversion specifiers in the format string:
+					<ul>
+					<li><span class=code>%s</span></li>
+					<li>
+					<span class=code>%[]</span></li>
+					</ul>
+					</p>
+					<p class="ssection">%s</p>
+					<p>
+					The <span class=code>%s</span> conversion specifier
+					<ul>
+					<li>reads all characters until the first whitespace character, </li>
+					<li>stores the characters read in memory locations starting
+					with the address passed to <span class=code>scanf</span>,</li>
+					<li>stores the null byte in the memory byte following the
+					last character accepted and </li>
+					<li>leaves the delimiting whitespace plus any subsequent characters
+					in the input buffer.&nbsp;</li>
+					</ul>
+					For example,
+					<table width="95%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ scanf("<span class=high>%s</span>", <span class=high>name</span> );</pre><br /></td><td width="50%"><br />
+                    <pre class="result">
+ My name is Arnold</pre><br /></td></tr></table>
+ 					stores
+ 					</p>
+ 					<p>
+					<table width="90%" align=center cellspacing=1 cellpadding=1 border=1>
+					<tr class=desc>
+					<td class=code colspan=32>name</td>
+					<tr class=desc>
+					<td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
+					<td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td>
+					<td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td>
+					<td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td>
+					</tr>
+					<tr class=value>
+					<td width="3%">M</td><td width="3%">y</td><td width="3%"><span class=high><b>\0</b></span></td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td>
+					<td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td>
+					<td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td>
+					<td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td>
+					</tr>
+					</table>
+ 					</p>
+ 					<p>
+					in <span class=code>name</span> and leaves the
+					characters <span class=code>' name is Arnold'</span>
+					in the input buffer.
+					</p>
+					<p>
+					A conversion qualifier limits the number of characters accepted.&nbsp;
+					<span class=code>%10s</span> reads no more than the
+					first 10 characters.&nbsp;
+					</p>
+					<p>
+					For example,
+					<table width="95%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ scanf("<span class=high>%10s</span>", <span class=high>name</span> );</pre><br /></td><td width="50%"><br />
+                    <pre class="result">
+ Schwartzenegger</pre><br /></td></tr></table>
+ 					stores
+ 					</p>
+ 					<p>
+					<table width="90%" align=center cellspacing=1 cellpadding=1 border=1>
+					<tr class=desc>
+					<td class=code colspan=32>name</td>
+					<tr class=desc>
+					<td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
+					<td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td>
+					<td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td>
+					<td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td>
+					</tr>
+					<tr class=value>
+					<td width="3%">S</td><td width="3%">c</td>
+					<td width="3%">h</td><td width="3%">w</td><td width="3%">a</td><td width="3%">r</td><td width="3%">t</td><td width="3%">z</td><td width="3%">e</td><td width="3%">n</td>
+					<td width="3%"><span class=high><b>\0</b></span></td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td>
+					<td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td>
+					<td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td>
+					</tr>
+					</table>
+ 					</p>
+ 					<p>
+					We specify the maximum
+					number of characters to be read to ensure that
+					<span class=code>scanf</span> does not exceed the
+					memory allocated for the string during input.
+					</p>
+					<p>
+					<span class=code>%s</span> ignores any leading
+					whitespace characters.
+					</p>
+					<p>
+					For example,
+					<table width="95%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ scanf("<span class=high>%10s</span>", <span class=high>name</span> );</pre><br /></td><td width="50%"><br />
+                    <pre class="result">
+             Schwartzenegger</pre><br /></td></tr></table>
+ 					stores
+ 					</p>
+ 					<p>
+					<table width="90%" align=center cellspacing=1 cellpadding=1 border=1>
+					<tr class=desc>
+					<td class=code colspan=32>name</td>
+					<tr class=desc>
+					<td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
+					<td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td>
+					<td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td>
+					<td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td>
+					</tr>
+					<tr class=value>
+					<td width="3%">S</td><td width="3%">c</td>
+					<td width="3%">h</td><td width="3%">w</td><td width="3%">a</td><td width="3%">r</td><td width="3%">t</td><td width="3%">z</td><td width="3%">e</td><td width="3%">n</td>
+					<td width="3%"><span class=high><b>\0</b></span></td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td>
+					<td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td>
+					<td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td>
+					</tr>
+					</table>
+ 					</p>
+ 					<p>
+					<span class=code>%s</span> cannot accept an empty
+					string; that is, <span class=code>%s</span> cannot treat
+					a sole <span class=code>'\n'</span> in the input buffer.&nbsp;
+					If the input buffer only contains <span class=code>'\n'</span>,
+					<span class=code>scanf("%10s", name)</span>
+					waits until the user enters some input followed by <span class=code>'\n'</span>.
+					</p>
+					<p class="ssection">%[ ]</p>
+					<p>
+					The <span class=code>%[^\n]</span> conversion specifier
+					<ul>
+					<li>reads all characters until the newline (<span class=code>'\n'</span>), </li>
+					<li>stores the characters read in memory locations starting with the
+					address passed to <span class=code>scanf</span>,</li>
+					<li>stores the null byte in the byte following that
+					where <span class=code>scanf</span> stored the last character
+					and</li>
+					<li>leaves the delimiting character (here, <span class=code>'\n'</span>)
+					in the input buffer.&nbsp;</li>
+					</ul>
+					The brackets contain the acceptable characters,
+					the <span class=code>^</span> symbol prefaces the terminator characters
+					and the <span class=code>-</span> symbol identifies
+					a range of characters.&nbsp;
+					</p>
+					<p>
+					For example,
+					<table width="95%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ scanf("<span class=high>%[^\n]</span>", <span class=high>name</span> );</pre><br /></td><td width="50%"><br />
+                    <pre class="result">
+ My name is Arnold</pre><br /></td></tr></table>
+ 					stores
+ 					</p>
+ 					<p>
+					<table width="90%" align=center cellspacing=1 cellpadding=1 border=1>
+					<tr class=desc>
+					<td class=code colspan=32>name</td>
+					<tr class=desc>
+					<td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
+					<td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td>
+					<td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td>
+					<td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td>
+					</tr>
+					<tr class=value>
+					<td width="3%">M</td><td width="3%">y</td>
+					<td width="3%">&nbsp; </td><td width="3%">n</td><td width="3%">a</td><td width="3%">m</td><td width="3%">e</td><td width="3%">&nbsp; </td><td width="3%">i</td><td width="3%">s</td>
+					<td width="3%">&nbsp; </td><td width="3%">A</td><td width="3%">r</td><td width="3%">n</td><td width="3%">o</td><td width="3%">l</td><td width="3%">d</td>
+					<td width="3%"><span class=high><b>\0</b></span></td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td>
+					<td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td>
+					</tr>
+					</table>
+ 					</p>
+ 					<p>
+					A conversion qualifier limits the number of characters accepted.&nbsp;
+					<span class=code>%10[^\n]</span> reads no more than the
+					first 10 characters.&nbsp;
+					</p>
+					<p>
+					For example,
+					<table width="95%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ scanf("<span class=high>%10[^\n]</span>", <span class=high>name</span> );</pre><br /></td><td width="50%"><br />
+                    <pre class="result">
+ My name is Arnold</pre><br /></td></tr></table>
+ 					stores
+ 					</p>
+ 					<p>
+					<table width="90%" align=center cellspacing=1 cellpadding=1 border=1>
+					<tr class=desc>
+					<td class=code colspan=32>name</td>
+					<tr class=desc>
+					<td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
+					<td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td>
+					<td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td>
+					<td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td>
+					</tr>
+					<tr class=value>
+					<td width="3%">M</td><td width="3%">y</td>
+					<td width="3%">&nbsp; </td><td width="3%">n</td><td width="3%">a</td><td width="3%">m</td><td width="3%">e</td><td width="3%">&nbsp; </td><td width="3%">i</td><td width="3%">s</td>
+					<td width="3%"><span class=high><b>\0</b></span></td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td>
+					<td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td>
+					<td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td>
+					</tr>
+					</table>
+ 					</p>
+ 					<p>
+					We specify the maximum number of characters to be accepted to ensure that
+					<span class=code>scanf</span> does not stores more
+					characters than the room allocated.
+					</p>
+					<p>
+					<span class=code>%[ ]</span> ignores any leading
+					whitespace characters.
+					</p>
+					<p>
+					For example,
+					<table width="95%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ scanf("<span class=high>%10[^\n]</span>", <span class=high>name</span> );</pre><br /></td><td width="50%"><br />
+                    <pre class="result">
+             My name is Arnold</pre><br /></td></tr></table>
+ 					stores
+ 					</p>
+ 					<p>
+					<table width="90%" align=center cellspacing=1 cellpadding=1 border=1>
+					<tr class=desc>
+					<td class=code colspan=32>name</td>
+					<tr class=desc>
+					<td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
+					<td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td>
+					<td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td>
+					<td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td>
+					</tr>
+					<tr class=value>
+					<td width="3%">M</td><td width="3%">y</td>
+					<td width="3%">&nbsp; </td><td width="3%">n</td><td width="3%">a</td><td width="3%">m</td><td width="3%">e</td><td width="3%">&nbsp; </td><td width="3%">i</td><td width="3%">s</td>
+					<td width="3%"><span class=high><b>\0</b></span></td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td>
+					<td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td>
+					<td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td><td width="3%">&nbsp; </td>
+					</tr>
+					</table>
+ 					</p>
+ 					<p>
+					<span class=code>%[ ]</span> cannot accept an empty
+					string.&nbsp; If the input string is empty,
+					<span class=code>scanf("%10[^\n]", name)</span>
+					returns 0 and leaves <span class=code>name</span> unchanged.
+					</p>
+					<br />
+
+					<p id="get" class="section">gets</p>
+					<p>
+					<span class=code>gets</span> is a standard library function
+					that
+					<ul>
+					<li>accepts an empty string</li>
+					<li>uses the <span class=code>'\n'</span> as the delimiter</li>
+					<li>throws away the delimiter after accepting the string</li>
+					<li>appends the null byte to the end of the set stored</li>
+					</ul>
+					The prototype for <span class=code>gets</span> is
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ char* gets(char []);</pre><br /></td></tr></table>
+					<span class=code>gets</span> is dangerous.&nbsp; It can fill beyond the
+					memory that allocated for the string.&nbsp; Nevertheless, <span class=code>gets</span>
+					is an excellent tool for quick and dirty input.
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ char name[31];
+
+ gets( name );</pre><br /></td></tr></table>
+					</p>
+					<br />
+
+					<p id="str" class="section">custom</p>
+					<p>
+					The alternative to <span class=code>scanf</span> and <span class=code>gets</span>
+					is a custom function that uses <span class=code>getchar()</span>.&nbsp; Let us
+					call our function <span class=code>getstr</span>.&nbsp;
+					Our function addresses the deficiencies of both <span class=code>scanf</span> and <span class=code>gets</span>
+					<ul>
+					<li>accepts characters only to a specified maximum number</li>
+					<li>accepts an empty string</li>
+					<li>uses the <span class=code>'\n'</span> as a delimiter</li>
+					<li>throws away the delimiting character</li>
+					<li>appends the null byte to the set of characters stored</li>
+					</ul>
+					Consider the following code
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ /* String Input Function
+ *  getstr.c
+ *  BTP100
+ *  Mar 15 2004
+ */
+
+ #define MAX 30
+ #include &lt;stdio.h&gt;
+
+ void getstr( char s[], int max);
+
+ int main ( ) {
+     char string[MAX+1];
+
+     do {
+         printf("Enter a string (empty to quit) : ");
+         getstr(string, MAX);
+         printf("You entered ==&gt;%s&lt;==\n", string);
+     } while (string[0] != '\0');
+
+     return 0;
+ }
+
+ <span class=high>/* getstr accepts a newline terminated string s of up&nbsp;
+ *  to max characters, appends a null byte and throws
+ *  away the terminating character
+ */
+ void getstr(char s[], int max) {
+     int i, c;
+
+     i = 0;
+     while((c = getchar()) != '\n' &amp;&amp; c != EOF)
+         if (i &lt; max)
+             s[i++] = (char) c;
+     s[i] = '\0';
+ }</span></pre><br /></td></tr></table>
+					</p>
+					<br />
+
+					<p id="exa" class="section">In-Class Practice</p>
+					<p>
+					Try the practice problem in <a href="h16.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/handouts/h16.html">Handout 15</a>.&nbsp;
+					</p>
+					<br />
+
+					<p id="exe" class="section">Exercises</p>
+					<p>
+					<ul>
+					<li>Read pages 81-83 from Evan Weaver's subject notes,</li>
+					<li>Try word problem <a href="string-6.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/practice/string-6.html">Employee Data</a> and
+					<li>Complete Workshop 8 <a href="w8.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/w8.html">here</a>.</li>
+					</ul>
+					</p>
+					<br />
+					<br />
+					<br />
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+
+	<!-- Footer -->
+	<tr>
+		<td class="tbody">
+			<table cellpadding="1" width="90%" align="center">
+				<tr>
+					<td width="50%" class="text3">
+						<script language="javascript">
+						var lh = document.location.href;
+						document.write(lh)
+						</script>&nbsp;&nbsp;
+					</td>
+					<td width="50%" align="right" class="text3">
+						<script language="javascript">
+						var lm = document.lastModified.slice(0,-3);
+						document.write("Last Modified: " +lm)
+						</script>&nbsp;&nbsp;
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

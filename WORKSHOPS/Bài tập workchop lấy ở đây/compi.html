@@ -1,0 +1,636 @@
+
+<html lang="en-us" xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+	<title>Seneca | School of Computer Studies | Programming Fundamentals Using C</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+	<meta name="Copyright" content="(c) Copyright Seneca College 2004" />
+	<meta name="Description" content="Welcome to the Bachelors Degree of Software Development Program Web Site.  On this site you can find the introductory programming course.  Designed by Chris Szalwinski." />
+	<meta name="Abstract" content="This subject reviews the principles of procedural programming.  Students study the solution of problems using structured programming techniques with the C programming language.  The emphasis throughout is on the solution of small problems."/>
+	<meta name="Author" content="chris.szalwinski@senecac.on.ca"/>
+	<meta name="Keywords" content="sofware development, procedural programming, lecture notes"/>
+
+	<link rel="stylesheet" type="text/css" href="style.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/style.043.css">
+	<link rel="stylesheet" type="text/css" href="styleScreen.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleScreen.043.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="styleSPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleSPrint.043.css" media="print">
+	<link rel="stylesheet" type="text/css" href="styleNav.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleNav.043.css">
+</head>
+
+<body>
+
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC
+    '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+
+<table id="top" width="850" cellspacing="0" cellpadding="0">
+
+	<!-- Banner -->
+	<tr height="120">
+		<td colspan="2" class="banner">
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<td width="250" class="banner">
+					<center><span class="text0">&nbsp;&nbsp;Software&nbsp;&nbsp;<br />
+					&nbsp;&nbsp;Development&nbsp;&nbsp;</span></center>
+				</td>
+				<td class="tbanner">
+					<img src="Banner4.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Banner4.gif" height="120" width="500" alt="Software Development" />
+				</td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+
+	<!-- Navigation Bar -->
+	<tr height="20">
+		<td class="panel1" align="left" valign="bottom">
+			<ul id="tabnav">			
+			<li><a href="timeline.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/timeline.html">Timeline</a></li>
+			<li><a class="active" href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+			<li><script type="text/javascript" src="classroom_a.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_a.js"></script></li>
+			<li><script type="text/javascript" src="classroom_b.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_b.js"></script></li>
+			<li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+			<li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+			<li><a href="index-3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/instructors/index.html">Instructor</a></li>
+			<li><a href="compi_p.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/compi_p.html"><img align="center" src="Printer.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Printer.gif" height=15 width=10 alt="Printer Friendly Version of this Page" /></a></li>
+			</ul>
+		</td>
+		<!-- Web Site Title -->
+		<td class="panel2" width="150" align="center">
+			<span class="text1"><script type="text/javascript" src="subject.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/subject.js"></script></span>
+		</td>
+	</tr>
+
+	<!-- Body Cells -->
+	<tr height="600">
+
+		<!-- Content Area -->
+		<td class="tbody" bgcolor="ffffff" valign="top">
+			<table cellpadding="10" width="100%">
+				<tr>
+					<td bgcolor="ffffff" valign=top>
+					<br />
+					<center><span class=texth>Module A - Introduction</span>
+					<br />
+					<br />
+					<span class=texthead>
+					Languages and C Compilers</span><br />
+					<br />
+					<span class=textagend>
+					Use operating system utilities to edit, compile and run programs
+					</span>
+					<br />
+					<p class=quote>"C is quirky, flawed and an enormous success." (Dennis Ritchie)</p>
+					<span class=textagend>
+					<a href="#lan">Languages</a> |
+					<a href="#why">Why C First?</a> |
+					<a href="#hig">Compiling C</a> |
+					<a href="#fea">C Features</a> |
+					<a href="#exe">Exercises</a>
+					</span>
+					</center>
+					<br />
+					<br />
+					<br />
+
+					<p>
+					Programs that perform relatively simple tasks and are written
+					in assembly language contain a large number of statements.&nbsp;
+					Assembly language is a low-level language.&nbsp; That is, it is
+					close to the hardware.&nbsp; To make our programs shorter, we
+					use higher-level languages.&nbsp;
+					</p>
+					<br />
+
+					<p id="lan" class="section">Programming Languages</p>
+					<p>
+					Hardware can only interpret its own native
+					machine language.&nbsp; The continuum between
+					hardware and human languages is occupied by a variety
+					of programming languages of different levels.&nbsp;
+					</p>
+					<p align="center">
+					<img src="prog_languages.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/prog_languages.gif" />
+					</p>
+					We can group the programming languages into five distinct generations:
+					<ol>
+					<li>
+					Machine languages.&nbsp; These are the native
+					languages that host hardware processes.&nbsp; Each manufacturer
+					has its own unique set of instructions.&nbsp; </li>
+					<li>
+					Assembly languages.&nbsp; These are readable
+					versions of the native machine languages.&nbsp; The manufacturer
+					supplies an assembly language for its machines.&nbsp; Assembly
+					languages simplify coding considerably.&nbsp;</li>
+					<li>
+					Third-generation languages.&nbsp; These are languages with instructions that
+					describe how a result is to be obtained.&nbsp; The instructions
+					are NOT tied to any particular machine.</li>
+					<li>
+					Fourth-generation languages.&nbsp; These
+					are languages with instructions
+					that describe what is to be done without
+					specifying how it is to be done.&nbsp; These instructions
+					are NOT tied to any particular machine.</li>
+					<li>
+					Fifth-generation languages are the closest to human
+					languages.&nbsp; They are used for artificial intelligence, fuzzy sets, and neural
+					networks. &nbsp;</li>
+					</ol>
+					The first three generations are procedural.&nbsp;
+					We use them to specify the instructions to be
+					executed.&nbsp;
+					The fourth and fifth generation languages are declarative: we use them
+					to specify what is to be done without specifying how.&nbsp;
+					<p>
+					The third, fourth and fifth generation languages are high-level languages: they
+					have no direct connection to the machine languages.&nbsp;
+					To make our programs portable and maintainable,
+					we resort to higher-level languages.&nbsp;
+					Their instructions are more English-like than machine-like.&nbsp;
+					Each third generation language statement is equivalent to about 5-10 machine language
+					statements.&nbsp; Each fourth generation language statement is equivalent to about
+					30-40 machine language statements.</p>
+					<p>
+					The higher the level, the closer to the human languages and
+					the further from native machine langauges.&nbsp;
+					Popular third generation languages over the years
+					have been Fortran, Cobol, Algol, Visual Basic, Pascal, C, C++ and Java.&nbsp;
+					C++ and Java are built upon C syntax.&nbsp; Popular fourth generation languages include SQL,
+					Prolog and Matlab.&nbsp;</p>
+					<p align="center">
+					<img src="languages.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/languages.gif" width=300 height=150 />
+					</p>
+					<p>
+					<a href="javascript:if(confirm('http://www.levenez.com/lang/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.levenez.com/lang/'" tppabs="http://www.levenez.com/lang/">Eric Levenez</a> maintains an up-to-date map of
+					about 50 of the more popular languages.&nbsp;
+					O'Reilly has a <a href="javascript:if(confirm('http://www.oreilly.com/pub/a/oreilly/news/languageposter_0504.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.oreilly.com/pub/a/oreilly/news/languageposter_0504.html'" tppabs="http://www.oreilly.com/pub/a/oreilly/news/languageposter_0504.html">color version</a>.
+					</p>
+					<p class="ssection">Interpreters and Compilers</p>
+					<p>
+					When we code a program in a high level
+					language, we write source code.&nbsp;
+					We translate this code into machine language
+					statements using either
+					<ul>
+					<li>an interpreter, or</li>
+					<li>a compiler.</li>
+					</ul>
+					Interpreters translate and execute each high level statement,
+					one statement at a time.&nbsp; Interpreters execute
+					the corresponding set of machine language statements
+					immediately upon translation.&nbsp;
+					<p>
+					Compilers are more complicated.&nbsp;
+					They translate the entire set of high level statements
+					into an equivalent set of machine language statements
+					(without executing any of the statements) and
+					produce a separate executable file.&nbsp;
+					We execute that file separately afterwards.&nbsp;
+					Compilers can produce optimized results.&nbsp;
+					To create a machine language program from C source
+					code, we use a compiler.&nbsp;
+					</p>
+ 					<p align="center"><img src="compiling.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/compiling.gif" width=300 height=150 /></p>
+					<br />
+
+					<p id="why" class="section">Why C as a First Language?</p>
+					<p>
+					C is one of the most popular languages in use globally.&nbsp;
+					<a href="javascript:if(confirm('http://www.tiobe.com/tpci.htm  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.tiobe.com/tpci.htm'" tppabs="http://www.tiobe.com/tpci.htm">TIOBE Software</a> tracks the currently most popular languages
+					and long-term trends based on world-wide availability of software engineers
+					as calculated from Google, Yahoo! and MSN search engines.&nbsp;
+					</p>
+					<p>
+					Some reasons for learning programming using the
+					C language include:
+					<ul>
+					<li>C is English-like,</li>
+					<li>C is quite compact - has a small number of keywords,</li>
+					<li>A large number of C programs need to be maintained,</li>
+					<li>C is the lowest in level of the high-level languages,&nbsp;</li>
+					<li>C is faster and more powerful than other high-level languages, and&nbsp;</li>
+					<li>The UNIX, Linux and Windows operating systems are written in C and C++.</li>
+					</ul>
+					<p>
+					Comparative times for a Sieve of Eratosthenes test
+					(after Hergert and Thibeault, 1998)
+					</p>
+					<p>
+					<table align=center border=1>
+					<tr>
+					<td>&nbsp;Language&nbsp;</td>
+					<td>&nbsp;Time to Run&nbsp;</td>
+					</tr>
+					<tr>
+					<td>&nbsp;Assembler&nbsp;</td>
+					<td>&nbsp;0.18 seconds&nbsp;</td>
+					</tr>
+					<tr>
+					<td>&nbsp;C&nbsp;</td>
+					<td>&nbsp;2.7 seconds&nbsp;</td>
+					</tr>
+					<tr>
+					<td>&nbsp;Basic&nbsp;</td>
+					<td>&nbsp;10 seconds&nbsp;</td>
+					</tr>
+					</table>
+					<br />
+
+					<p id="hig" class="section">Compiling C Programs</p>
+					<p>
+					Let us write a simple C program that displays the phrase
+					<span class=code>"This is BTP100"</span> and name our
+					source file <span class=code>p_1.c</span>.&nbsp;
+					Then, let us compile our source code using three
+					different compilers.&nbsp;
+					</p>
+					<p class="ssection">phobos (AIX operating system)</p>
+					<p>
+					On <span class=code>phobos</span>, we use the
+					<span class=code>cc</span> compiler and suffix
+					the source file name with '<span class=code>.c</span>'.&nbsp;
+					</p>
+					<p>
+					To create the source file, login to
+					<span class=code>phobos</span> and start the
+					<span class=code>nled</span> text editor using
+					the command</p>
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ nled p_1.c</pre><br /></td></tr></table>
+					Once the editor window opens, we enter the following statements:
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ /* My first program        */
+ /* p_1.c                   */
+ /* Author your name here...*/
+ /* Date Dec 5 2004         */
+
+ main() {
+     printf(&quot;This is BTP100\n&quot;);
+ }</pre><br /></td></tr></table>
+					To exit <span class=code>nled</span>, we press
+					<span class=code>Esc Q</span>.
+					<p>
+					To create a machine language version of our
+					program, we use the <span class=code>cc</span> compiler
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ cc p_1.c</pre><br /></td></tr></table>
+					<p align="center"><img src="compiler.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/compiler.gif" width=300 height=150 /></p>
+					<p>
+					The <span class=code>a.out</span> file contains the machine language version of our program.&nbsp;
+ 					(Interestingly, <span class=code>a.out</span> stands for the output file from
+ 					the assembler.)
+ 					</p>
+					<p>
+					To run the machine language version of our program, we enter</p>
+					<table width="95%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ a.out</pre><br /></td><td width="50%">
+					<br />
+					<pre class="result">
+ This is BTP100</pre><br /></td></tr></table>
+					<p class="ssection">Borland</p>
+					<p>
+					Now, let us compile our source code on our local computer using the Borland command
+					line compiler.&nbsp; To install this compiler on your local computer, see
+					the resources page <a href="Borland 5.5 Installation.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/Borland 5.5 Installation.html">here</a>.&nbsp;
+					</p>
+					<p>
+					To move our program from <span class=code>phobos</span> to the <span class=code>\temp</span> directory of
+					our local computer, we use the <span class=code>ftp</span> service.&nbsp; See the
+					resources page <a href="ftp.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/ftp.html">here</a> for detailed information on
+					<span class=code>ftp</span>ing files.&nbsp;
+					</p>
+					<p>
+					To access the Borland compiler, select the bcc icon
+					on the Desktop.&nbsp; To find our file, we move to
+					the <span class=code>\temp</span> directory.&nbsp;
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ cd \temp</pre><br /></td></tr></table>
+					To create a machine language version of our
+					program, we use the <span class=code>bcc32</span> command
+					followed by the file name
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ bcc32 p_1.c</pre><br /></td></tr></table>
+					<p align="center"><img src="compiler_b.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/compiler_b.gif" width=300 height=150 /></p>
+					<p>
+					The compiler produces a file named <span class=code>p_1 (p_1.exe)</span>
+					that contains the machine language version
+					of our source code.&nbsp;
+					To execute this machine language version, we enter
+					<table width="95%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ p_1</pre><br /></td><td width="50%">
+					<br />
+					<pre class="result">
+ This is BTP100</pre><br /></td></tr></table>
+					<p class="ssection">cl</p>
+					<p>
+					Finally, let us compile the same source code on our local computer using the Microsoft
+					.net compiler.&nbsp;
+					</p>
+					<p>
+					To access the .net <span class=code>cl</span> compiler,
+					select the Visual Studio .net 2003 Command Prompt icon
+					on the Desktop or select
+					<span class=code>Start &gt; All Programs &gt; Visual Studio .NET &gt; Visual Studio .NET Tools &gt; Visual Studio .NET Command Prompt</span>&nbsp;&nbsp;
+					At the prompt, we enter
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ cd \temp</pre><br /></td></tr></table>
+					To create a machine language version of our
+					program, we use the <span class=code>cl</span> command followed by the file name
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ cl p_1.c</pre><br /></td></tr></table>
+					<p align="center"><img src="compiler_n.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/compiler_n.gif" width=300 height=150 /></p>
+					<p>
+					The compiler produces a file named <span class=code>p_1 (p_1.exe)</span>
+					that contains the machine language version of our source
+					code.&nbsp;
+					To execute this machine language version, we enter
+					<table width="95%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ p_1</pre><br /></td><td width="50%">
+					<br />
+					<pre class="result">
+ This is BTP100</pre><br /></td></tr></table>
+					<p class="ssection">File Sizes</p>
+					<p>
+					The sizes of the machine language files produced by the three
+					compilers differ,
+					even though the source code remains the same across the
+					different platforms.&nbsp; Note the considerable variation.&nbsp;
+					</p>
+					<p class="ssection">Standards</p>
+					<p>
+					From time to time compiler writers agree to follow certain standards in order
+					to facilitate source code portability across different platforms.
+					The most recent standard to which C compiler writers try to adhere
+					is ANSI/ISO 9899-1999 or C99 for short.&nbsp; If we write our
+					source code to this standard or even better the earlier C89, we can expect our
+					code to compile on most platforms.
+					</p>
+					<br />
+
+					<p id="fea" class="section">Some Notable Features</p>
+					<p>
+					Let us dissect the source code for our first program.&nbsp;
+					</p>
+					<p class="ssection">Comments</p>
+					<p>
+					The source code includes some comments.&nbsp;
+					We use the pair <span class=code>/*</span> and <span class=code>*/</span> to
+					surround our comments.&nbsp; In these comments, we may
+					include any characters and may span any number
+					of lines, but may not include other
+					<span class=code>/*</span> sequences.
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ /* My first program        */
+ /* p_1.c                   */
+ /* Author your name here...*/
+ /* Date Dec 5 2004         */</pre><br /></td></tr></table>
+					We use comments to document our programs and
+					to enhance their readability.&nbsp;
+					C compilers ignore all comments.&nbsp;
+
+					<p id="whi" class="ssection">Whitespace</p>
+					<p>
+					Our source code includes whitespace.&nbsp;
+					The term whitespace refers to any of:
+					<ul>
+					<li>blank space</li>
+					<li>newline</li>
+					<li>horizontal tab</li>
+					<li>vertical tab</li>
+					<li>form feed</li>
+					<li>comments</li>
+					</ul>
+					We use whitespace to improve program readability
+					and to display the structure of our program's logic.&nbsp;
+					<p>
+					C compilers ignore all whitespace.&nbsp;
+					We may introduce whitespace anywhere except within a literal
+					string or an identifier.&nbsp; In our source code,
+					the literal string is the set of characters enclosed
+					in double quotes ("This...100\n").&nbsp; The names
+					<span class="code">main</span> and <span class="code">printf</span>
+					are identifiers:
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+
+ main() {
+     printf(&quot;This is BTP100\n&quot;);&nbsp;
+ }</pre><br /></td></tr></table>
+					By introducing whitespace into our source code - that is, by
+					indenting the <span class="code">printf</span> statement and placing each statement on a
+					separate line - we have shown that <span class="code">printf</span>
+					is part of the logic of something larger, which we have
+					called <span class="code">main</span>.&nbsp; By preceding
+					all of these statements with a blank line, we have distinguished
+					the header comments from the body of our program.
+
+					<p id="cas" class="ssection">Case Sensitivity</p>
+					<p>
+					The C language is case sensitive.&nbsp;
+					C compilers treat the character 'A'
+					as different from the character 'a'.&nbsp;
+					Try to change the identifier
+					<span class=code>printf</span> to
+					<span class=code>PRINTF</span> and recompile.&nbsp;
+					Note the error message.&nbsp; Now,
+					fix this error and change
+					<span class=code>"This</span> to <span class=code>"THIS</span>
+					and recompile.&nbsp; Note how we can change
+					the case of a literal string or a comment
+					without introducing an error.&nbsp;</p>
+					<p>
+					A compiler's ability to trap our mistakes
+					is rather important in testing and debugging.&nbsp;
+					The mistakes that compilers trap
+					do not make it through
+					to the production version of a program.
+					</p>
+					<br />
+
+					<p id="exe" class="section">Exercises</p>
+					<p>
+					<ul>
+					<li>Complete Workshop 1 - <a href="w1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/w1.html">Getting Started</a> - in the workshop period,</li>
+					<li>Install the <a href="Borland 5.5 Installation.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/Borland 5.5 Installation.html">Borland compiler</a> on your home computer,</li>
+					<li>Install the .net compiler on your home computer,</li>
+					<li>Read pages 1-10 from Evan Weaver's subject notes, and</li>
+					<li>Continue checking out this web site.</li>
+					</ul>
+					<br />
+					<br />
+					<br />
+					</td>
+				</tr>
+			</table>
+		</td>
+
+		<!-- Detail Menu -->
+		<td class="panel1" width="150" valign="top" rowspan="2">
+			<ul id="mennav">
+			<li><a href="welco.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/welco.html">Welcome</a></li>
+			<li><a class="active" href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+			<li><a href="probl.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/probl.html">&nbsp;Programming</a></li>
+			<li><a href="compu.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/compu.html">&nbsp;Information</a></li>
+			<li><a class="active" href="compi.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/compi.html">&nbsp;Compilers</a></li>
+			<li><a href="varia.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/varia.html">&nbsp;Variables</a></li>
+			<li><a href="input.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/input.html">&nbsp;Basic Oper</a></li>
+			<li><a href="expre.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/expre.html">&nbsp;Expressions</a></li>
+			<li><a href="const.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/const.html">&nbsp;Constructs</a></li>
+			<li><a href="style.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/style.html">&nbsp;Style</a></li>
+			<li><a href="walks.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/walks.html">&nbsp;Walkthrus</a></li>
+			<li><a href="modul.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/modul.html">&nbsp;Modularity</a></li>
+			<li><a href="scope.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/scope.html">&nbsp;Scope</a></li>
+			<li><a href="point.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/point.html">&nbsp;Pointers</a></li>
+			<li><a href="formi.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/formi.html">&nbsp;Input</a></li>
+			<li><a href="formo.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/formo.html">&nbsp;Form Output</a></li>
+			<li><a href="libra.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/libra.html">&nbsp;Libraries</a></li>
+			<li><a href="array.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/array.html">&nbsp;Arrays</a></li>
+			<li><a href="searc.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/searc.html">&nbsp;Searches</a></li>
+			<li><a href="sorts.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/sorts.html">&nbsp;Sorts</a></li>
+			<li><a href="strin.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/strin.html">&nbsp;Strings</a></li>
+			<li><a href="valid.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/valid.html">&nbsp;String Inp</a></li>
+			<li><a href="sfunc.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/sfunc.html">&nbsp;String Fns</a></li>
+			<li><a href="files.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/files.html">&nbsp;Files</a></li>
+			<li><a href="table.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/table.html">&nbsp;Records</a></li>
+			<li><a href="debug.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/debug.html">&nbsp;Debugging</a></li>
+			<li><a href="devel.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/devel.html">&nbsp;Development</a></li>
+			<li><a href="stand.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/stand.html">&nbsp;Standards</a></li>
+			<li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+			<li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+			<li><a href="index-4.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/handouts/index.html">Handouts</a></li>
+			<li><a href="index-5.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/practice/index.html">Practice</a></li>
+			<li><a href="index-6.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/index.html">Resources</a></li>
+			<li><a href="glossary.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/glossary.html">Glossary</a></li>
+			</ul>
+		</td>
+	</tr>
+
+	<!-- Content Area Footer -->
+	<tr height="20">
+		<td class="panel3" align="center">
+			<table class="panel2" width="95%">
+				<tr>
+					<td align="left">
+						&nbsp;&nbsp;<a href="compi_p.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/compi_p.html" class="text3">
+						<img src="Printer.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Printer.gif" height="15" width="10" alt="Printer Friendly Version of this Page" />&nbsp;print this page</a>&nbsp;&nbsp;
+					</td>
+					<td align="right">
+						&nbsp;&nbsp;<a href="#top" class="text3">Top&nbsp;
+						<img src="ArrowToT.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToT.gif" height="15" width="15" alt="Go Back to the Top of this Page" /></a>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+
+	<!-- Footer -->
+	<tr>
+		<!-- Left Panel -->
+		<td class="panel1" width="700" align="center">
+			<!-- Lateral Motion Control -->
+			<table width="90%" align="center">
+				<tr>
+					<td width="50%" align="left">
+						<a href="compu.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/compu.html" class="text3">
+						<img src="ArrowToL.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToL.gif" height="15" width="15" class="panel1" alt="Previous Reading" />&nbsp;&nbsp;Previous: Information</a>
+					</td>
+					<td width="50%" align="right">
+						<a href="varia.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/varia.html" class="text3">Next: Variables&nbsp;&nbsp;
+						<img src="ArrowToR.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToR.gif" height="15" width="15" class="panel1" alt="Next Reading" /></a>
+					</td>
+				</tr>
+			</table>
+			<br />
+			<!-- Alternate Navigation Links -->
+			<ul id="altnav" align="center">			
+			<li><a href="timeline.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/timeline.html">Timeline&nbsp;</a></li>
+			</ul>
+			<ul id="altnav" align="center">
+			<li><a class="active" href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+			<li><script type="text/javascript" src="classroom_a.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_a.js"></script></li>
+			<li><script type="text/javascript" src="classroom_b.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_b.js"></script></li>
+			<li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+			<li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+			<li><a href="index-3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/instructors/index.html">Instructor</a></li>
+			</ul>
+			<br />
+			<!-- Bottom Line -->
+			<table cellpadding=1 width="90%">
+				<tr>
+					<td width="33%" class="text3">
+						&nbsp;&nbsp;Designed by Chris Szalwinski&nbsp;&nbsp;
+					</td>
+					<td width="34%" align="center">
+						<a href="copyright.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/copyright.html" class="text3">Copying From This Site</a>
+					</td>
+					<td width="33%" align="right" class="text3">
+						<script language="javascript">
+						var lm = document.lastModified.slice(0,-3);
+						document.write("Last Modified: " +lm)
+						</script>&nbsp;&nbsp;
+					</td>
+				</tr>
+			</table>
+		</td>
+
+		<!-- Logo - Right Bottom Corner -->
+		<td class=panel2 width="150" align="center">
+			<img src="Logo.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Logo.gif" height="73" width="85" />
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,621 @@
+
+<html lang="en-us" xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+   <title>Seneca | School of Computer Studies | Programming Fundamentals Using C</title>
+
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+   <meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+   <meta name="Copyright" content="(c) Copyright Seneca College 2004" />
+   <meta name="Description" content="Welcome to the Bachelors Degree of Software Development Program Web Site.  On this site you can find the introductory programming course.  Designed by Chris Szalwinski." />
+   <meta name="Abstract" content="This subject reviews the principles of procedural programming.  Students study the solution of problems using structured programming techniques with the C programming language.  The emphasis throughout is on the solution of small problems."/>
+   <meta name="Author" content="chris.szalwinski@senecac.on.ca"/>
+   <meta name="Keywords" content="sofware development, procedural programming, lecture notes"/>
+
+   <link rel="stylesheet" type="text/css" href="style.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/style.043.css">
+   <link rel="stylesheet" type="text/css" href="styleScreen.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleScreen.043.css" media="screen">
+   <link rel="stylesheet" type="text/css" href="styleSPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleSPrint.043.css" media="print">
+   <link rel="stylesheet" type="text/css" href="styleNav.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleNav.043.css">
+</head>
+
+<body>
+
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC
+    '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+
+<table id="top" width="850" cellspacing="0" cellpadding="0">
+
+   <!-- Banner -->
+   <tr height="120">
+      <td colspan="2" class="banner">
+      <table cellspacing="0" cellpadding="0">
+         <tr>
+            <td width="250" class="banner">
+               <center><span class="text0">&nbsp;&nbsp;Software&nbsp;&nbsp;<br />
+               &nbsp;&nbsp;Development&nbsp;&nbsp;</span></center>
+            </td>
+            <td class="tbanner">
+               <img src="Banner4.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Banner4.gif" height="120" width="500" alt="Software Development" />
+            </td>
+         </tr>
+      </table>
+      </td>
+   </tr>
+
+   <!-- Navigation Bar -->
+   <tr height="20">
+      <td class="panel1" align="left" valign="bottom">
+         <ul id="tabnav">         
+         <li><a href="timeline.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/timeline.html">Timeline</a></li>
+         <li><a href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+         <li><script type="text/javascript" src="classroom_a.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_a.js"></script></li>
+         <li><script type="text/javascript" src="classroom_b.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_b.js"></script></li>
+         <li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+         <li><a class="active" href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+         <li><a href="index-3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/instructors/index.html">Instructor</a></li>
+         <li><a href="a1_p.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/a1_p.html"><img align="center" src="Printer.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Printer.gif" height=15 width=10 alt="Printer Friendly Version of this Page" /></a></li>
+         </ul>
+      </td>
+      <!-- Web Site Title -->
+      <td class="panel2" width="150" align="center">
+         <span class="text1"><script type="text/javascript" src="subject.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/subject.js"></script></span>
+      </td>
+   </tr>
+
+   <!-- Body Cells -->
+   <tr height="600">
+
+      <!-- Content Area -->
+      <td class="tbody" bgcolor="ffffff" valign="top">
+         <table cellpadding="10" width="100%">
+            <tr>
+               <td bgcolor="ffffff" valign="top">
+               <br />
+               <center>
+               <span class=texth>Assignment 1<br />
+               Version 1.0
+               </span>
+               <br />
+               <br />
+               <span class=texthead>
+               Payroll Deductions</span>
+               <br />
+               <br />
+               </center>
+               <br />
+               <br />
+
+               <p>
+               As your first assignment this semester, you are to write a C
+               program that calculates the amounts that an Ontario employer
+               should deduct from an employee's salary and remit to the Canada
+               Customs and Revenue Agency.&nbsp;
+               </p>
+               <br />
+
+               <p class="section">Learning Outcome</p>
+               <p>
+               Upon successful completion of this assignment, you
+               will have demonstrated the ability to use
+               sequence and selection constructs.
+               </p>
+               <br />
+
+               <p class="section">Introduction</p>
+               <p>
+               The Canada Customs and Revenue Agency (CCRA) lists the
+               <a href="javascript:if(confirm('http://www.ccra-adrc.gc.ca/tax/business/topics/payroll/formulas-e.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ccra-adrc.gc.ca/tax/business/topics/payroll/formulas-e.html'" tppabs="http://www.ccra-adrc.gc.ca/tax/business/topics/payroll/formulas-e.html"
+               target="_top"><u>formulas</u></a> for
+               designing payroll deduction programs along with examples of
+               how to apply those formulas (if you want to match these with the assignment,
+               make sure you view the PDF file from January 2005).&nbsp;
+               The CCRA payroll deductions include
+               <ul>
+               <li>income tax withholdings,</li>
+               <li>Canada Pension Plan (CPP) contributions and</li>
+               <li>Employment Insurance (EI) premiums.&nbsp;</li>
+               </ul>
+               To calculate these deductions, the employer uses
+               the employee's gross salary, the number of pay periods in
+               the calendar year, the amounts shown on the employee's federal
+               and provincial personal tax credit returns and the year-to-date
+               CCP contributions and EI premiums.
+               <p>
+               The income tax deduction consists of separate federal and
+               provincial components, each of which is based upon an
+               estimate of the employee's annual taxable income.&nbsp; The employer
+               estimates this annual income by subtracting any eligible deductions
+               such as RRSP contributions and union dues from the gross income for
+               the pay period,
+               by multiplying this net income by the number of pay
+               periods in the year and finally by subtracting any authourized
+               annual deductions.&nbsp;
+               <p>
+               The employer calculates the federal and provincial taxes
+               using rates and overcharge constants that increase
+               with the amount of taxable income itself.&nbsp; The higher
+               the income, the higher the rate and the overcharge constant.&nbsp;
+               This is known as a progressive tax regime.&nbsp;
+               </p>
+               <p>
+               The figures noted below are valid for 2005.&nbsp; These figures are indexed
+               from year to year.&nbsp;
+               That is, they are subject to annual adjustment
+               in accord with changes in the consumer price index.
+               </p>
+               <p class="ssection">Federal</p>
+               <p>
+               For 2005, the federal government identifies four tax brackets:
+               <ul>
+               <li>taxable income of $35,595 or less attracts tax at 16%
+               <li>taxable income of more than $35,595 and not more than $71,190
+               attracts tax at 22% less $2,136;
+               <li>taxable income of more than $71,190 and not more than $115,739
+               attracts tax at 26% less $4,983; and
+               <li>taxable income of more than $115,739 attracts tax at 29% less
+               $8,455.
+               </ul>
+               <p>
+               The employer calculates the federal tax using the appropriate bracket
+               values.&nbsp;
+               The employer then calculates the non-refundable personal tax credits, the CPP
+               credits, the EI credits and any labour-sponsored share purchase credit.&nbsp;
+               The non-refundable personal credits are the federal credits claimed
+               by the employee multiplied by the lowest federal tax rate.&nbsp; The
+               CPP and EI credits are the pay period CPP and EI amounts multiplied
+               by the lowest federal tax rate.&nbsp; However, the pay period amounts when
+               multiplied by the number of pay periods do not exceed the CPP and
+               EI annual maximums.
+               </p>
+               <p>
+               The employer deducts CPP contributions at 4.95% of
+               the gross income for the pay period less the
+               pro-rated annual exemption of $3,500.&nbsp;
+               For 2005, the upper limit on annual CPP contributions is $1,861.20.
+               </p>
+               <p>
+               The employer deducts EI premiums at 1.95% of
+               the gross income for the pay period.&nbsp;
+               For 2005, the upper limit on EI premiums is $760.50.
+               </p>
+               <p>
+               The federal government allows an annual credit
+               for labour-sponsored share purchases.&nbsp; This credit
+               is the lesser of
+               <ul>
+               <li>$750 and
+               <li>15% of the amount deducted or withheld during the year for
+               acquisition by the employee of approved labour-sponsored shares
+               </ul>
+               The employer obtains the basic federal tax by subtracting from the
+               federal tax, the non-refundable personal tax credits, the CPP credits
+               and the EI credits.&nbsp; The employer then obtains the annual federal
+               tax deduction by subtracting from the basic federal tax the annual credit
+               for labour-sponsored share purchases.&nbsp;
+               <p>
+               The federal tax deduction is this annual federal
+               tax deduction divided by the number of pay periods.
+               </p>
+               <p>
+               You can find a template to help you organize the calculations
+               <a href="a1-work.doc" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/a1-work.doc"><u>here</u></a>.
+               </p>
+               <p class="ssection">Provincial</p>
+               <p>
+               For 2005, the Ontario government identifies three tax brackets:
+               <ul>
+               <li>taxable income of $34,010 or less attracts tax at 6.05%
+               <li>taxable income more than $34,010 and not more than $68,020
+               attracts tax at 9.15% less $1,054;
+               <li>taxable income more than $68,020 attracts tax at
+               11.16% less $2,422.
+               </ul>
+               <p>
+               The employer calculates the provincial tax using the appropriate
+               bracket formula.&nbsp; The employer then calculates the non-refundable
+               personal tax credits, the CPP credits, the EI credits, any surtaxes,
+               any tax reduction, any health premium and any labour-sponsored share
+               purchase credit.&nbsp; The non-refundable personal tax credits
+               are the provincial credits claimed by the employee multiplied by
+               the lowest provincial tax rate.&nbsp; The CPP and EI credits are
+               the pay period CPP and EI amounts multiplied by the lowest provincial
+               tax rate.&nbsp; However, the pay period amount when multiplied by the
+               number of pay period do not exceed the CPP and EI annual maximums.
+               </p>
+               <p>
+               The basic provincial tax is the provincial tax less the non-refundable
+               tax credits, the CPP credits and the EI credits.
+               </p>
+               <p>
+               The Ontario government levies two surtaxes on the
+               basic provincial tax.&nbsp;  The surtax formulas for 2005 are
+               <ul>
+               <li>20% of (basic Ontario Tax less $3,929) plus
+               <li>36% of (basic Ontario Tax less $4,957)
+               </ul>
+               The Ontario government allows a tax reduction.&nbsp; The
+               tax reduction is the lesser of
+               <ul>
+               <li>the basic provincial tax plus the surtax and
+               <li>2 times ($190 + $350 times the number of dependants under the age of 18)
+               less the sum of the basic provincial tax and the surtax (but not less than zero)
+               </ul>
+               The Ontario government also levies an Ontario Health
+               Premium on the annual taxable income:&nbsp;
+               <ul>
+               <li>taxable income of $20,000 or less attracts a premium of $0;</li>
+               <li>taxable income of more than $20,000 and not more than $36,000
+               attracts a premium equal to the lesser of $300 and 6% of taxable
+               income greater than $20,000;</li>
+               <li>taxable income of more than $36,000 and not more than $48,000
+               attracts a premium equal to the lesser of $450 and $300 plus 6% of taxable
+               income greater than $36,000;</li>
+               <li>taxable income of more than $48,000 and not more than $72,000
+               attracts a premium equal to the lesser of $600 and $450 plus 25% of taxable
+               income greater than $48,000;</li>
+               <li>taxable income of more than $72,000 and not more than $200,000
+               attracts a premium equal to the lesser of $750 and $600 plus 25% of taxable
+               income greater than $72,000;</li>
+               <li>taxable income of more than $200,000
+               attracts a premium equal to the lesser of $900 and $750 plus 25% of taxable
+               income greater than $200,000;</li>
+               </ul>
+               Moreover, the Ontario government allows an annual credit
+               for labour-sponsored share purchases.&nbsp; This credit
+               is the lesser of
+               <ul>
+               <li>$750 and
+               <li>15% of the amount deducted or withheld during the year for
+               acquisition by the employee of approved labour-sponsored share purchases
+               </ul>
+               The employer obtains the annual provincial tax deduction by subtracting
+               from the sum of the basic provincial tax, the surtax and the health premium,
+               the tax reduction and the credit for labour-sponsored share purchases.&nbsp;
+               <p>
+               The provincial tax deduction is the annual provincial tax deduction divided
+               by the number of pay periods.
+               </p>
+               <p>
+               You can find a template to help you organize the calculations
+               <a href="a1-work.doc" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/a1-work.doc"><u>here</u></a>.
+               </p>
+               <br />
+
+               <p class="section">Specifications</p>
+               <p>Do <u>not</u> use any functions apart from &lt;stdio.h&gt; functions.</p>
+               <p>
+               Your program prompts for and accepts the following
+               information:
+               <ul>
+               <li>The income earned by the employee for the pay period
+               <li>Registered pension plan contributions for the pay period
+               <li>Union dues for the pay period
+               <li>Number of pay periods in the year
+               <li>Federal personal tax credits
+               <li>Provincial personal tax credits
+               <li>Labour-sponsored share purchases
+               <li>Number of dependants under the age of 18
+               <li>Authourized annual deductions
+               <li>Year-to-date Canada Pension Plan contributions
+               <li>Year-to-date Employment Insurance premiums
+               </ul>
+               <p>
+               You may assume that the user shall input this information
+               correctly.
+               </p>
+               <p>
+               Design your program so that, whereever appropriate, it adjusts
+               the results of any calculations that are negative, to be zero.&nbsp;
+               For example, taxable income is never less than zero; the tax reduction
+               is also never less than zero.
+               </p>
+               <p>
+               Your program calculates the payroll deductions and
+               displays them in the following format (try to match this format <u>exactly</u>):
+               </p>
+               <p>
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre class="result">
+ Payroll Deduction Calculator
+ ============================
+
+ Please enter the employee's pay period information :
+  Income for the current pay period     : 1600.00
+  Registered Pension Plan contributions : 57.00
+  Union dues for the current pay period : 7.00
+ Please enter the employee's annual information :
+  Number of pay periods this year       : 26
+  Federal tax credits (as per TD1 form) : 8148.00
+  Ontario tax credits (as per TD1 form) : 8196.00
+  Number of Dependants &lt; 18 years old   : 2
+  Labour-sponsored share purchases      : 0
+  Authorized deductions                 : 0
+ Please enter the employee's year-to-date information :&nbsp;
+  CPP contributions year-to-date        : 500.00
+  EI premiums paid year-to-date         : 200.00
+
+ Gross Income                 1600.00
+ Deductions:
+   Federal Tax                 189.49
+   Provincial Tax               92.14
+   Canada Pension Plan          72.54
+   Employment Insurance         31.20
+   RRSP Contributions           57.00
+   Union Dues                    7.00
+   Total Deductions            449.37
+ Net Income                   1150.63</pre><br /></td></tr></table>
+               Make sure that the deductions add up to the total deduction
+               displayed.&nbsp; (If not, refer to your solution for
+               <a href="w2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/w2.html">Workshop 2</a>).&nbsp;
+               <p>
+               Design your program so that all of the constants for
+               2005 can be changed for subsequent years with minimal
+               effort and a single recompilation.
+               </p>
+               <p>
+               When you are fairly certain that your program is working
+               correctly, test it for the following set of input values
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+Gross   RRSP  Union  #Per  F_Pers  P_Pers  #Dep  Shares  Author  CCPytd   EIytd      Net
+========================================================================================
+1600.00  57.00  7.00  26   8300    8300      2        0      0   500.00  200.00  1151.80
+1023.45 850.00 85.00  26   8148    8196      0        0      0   450.00  203.00    24.49
+1023.45   0    85.00  26   8148    8196      0        0      0   450.45  203.46   740.72
+2023.71   0    25.00  26   8148    8196      0        0      0  1800.00  800.00  1497.23
+3067.23 200.45  0     26   8148    8196      3        0      0  1609.34  798.78  1982.26
+ 950.56   0     0     26   8148    8196      4        0      0    56.78   21.34   788.23
+ 950.56   0     0     26   8148    8196      2        0      0    56.78   21.34   786.95
+2056.78  45.00 34.21  26   8300    8400      5  2300.00 400.00   123.21   50.21  1485.97
+4503.67   0     0     26   8148    8196      2        0      0  1861.20  760.50  3033.95</pre><br /></td></tr></table>
+               You can find sample outputs for each of these test cases
+               <a href="a1Solutions.doc" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/a1Solutions.doc"><u>here</u></a>.
+               Once your program yields correct results for each
+               test case, your program is ready to be submitted.
+               <br />
+
+               <p class="section">Technical Notes</p>
+               <p class="ssection">Conversion Specifiers</p>
+               <p>
+               By default, the <span class="code">%lf</span> printf conversion specification displays six
+               (6) decimal places without leading spaces.&nbsp;  To limit the number
+               of decimal places to two (2), use <span class="code">%.2lf</span> instead of
+               <span class="code">%lf</span>. To
+               display the number right-justified in a field of 10 columns,
+               use <span class="code">%10.2lf</span>.&nbsp; This will align
+               the decimal points on your output.&nbsp;
+               </p>
+               <p class="ssection">Program Constants</p>
+               <p>
+               To define 'constants' that may change from year to year, use
+               the preprocessor directive
+               <pre class="defin">
+ #define SYMBOLIC_NAME VALUE</pre>
+               Place this directive before your main program and after your
+               header comments.&nbsp; Use the SYMBOLIC_NAME within your
+               program code and set the VALUE in the preprocessor
+               statement.&nbsp; For example, for 2005
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ .... */
+
+ <span class="high">#define CPP_LIMIT     1861.20
+ #define CPP_RATE       0.0495
+ #define CPP_EXEMPTION 3500.00</span>
+
+ main() {
+     double income, cpp;
+
+     printf(&quot;Enter income : &quot;);
+     scanf(&quot;%lf&quot;, &amp;income);
+     cpp = CPP_RATE * (income - CPP_EXEMPTION);
+     if (cpp &gt; CPP_LIMIT)
+         cpp = CPP_LIMIT;
+     printf(&quot;CPP Deduction is %10.2lf\n&quot;, cpp);&nbsp;
+ }</pre>
+               <pre>
+</pre>
+               </td></tr></table>
+               <br />
+
+               <!--p class="section">Glossary</p>
+               <pre class="defin">
+ basic exemption     the exemption for the necessities of life
+                     used to calculate tax credits. Federal and
+                     provincial government amounts differ
+ balance owing       the net amount owed by the taxpayer
+ federal tax         the amount of federal tax that the taxable
+                     income has attracted before any federal tax
+                     credits are applied
+ income tax deducted income tax deducted from regular pay and
+                     already remitted to the government.
+ net federal tax     federal tax less federal tax credits
+ net income          that portion of total income that excludes
+                     professional and union dues
+ net provincial tax  provincial tax less provincial tax credits
+ provincial tax      the amount of provincial tax that taxable
+                     income has attracted before any provincial
+                     tax credits are applied
+ refund              the net amount owed to the taxpayer
+ taxable income      the portion of net income that excludes
+                     stock options and shares
+ tax credit          total exemptions multiplied by lowest tax
+                     rate for the government in question
+ total tax payable   sum of net federal and net provincial
+                     taxes
+ total credits       sum of the income tax already paid and any
+                     CPP or EI overpayment
+ total exemptions    sum of basic exemption, CPP contributions
+                     and EI premiums
+ total income        income earned as shown on the T4 slip
+ T4 slip             the slip that the taxpayer receives from
+                     her or his employer summarizing the total
+                     income and all deductions from that income
+                     throughout the year.
+               </pre>
+               <br /-->
+
+               <p class="section">Submission Requirements</p>
+               <p>
+               Test your program in as many C environments as are readily
+               available to you.&nbsp;&nbsp;
+               </p>
+               <p>At the beginning of your program, include comments with the following information formatted neatly, and reflecting
+         accurate information for you.
+<pre>
+/* Assignment 1                                                                 */
+/* Course:                BTP100                                                */
+/* Family Name:           Student                                               */
+/* Given Name:            John                                                  */
+/* Student Number:        123-456-789                                           */
+/* Login name:            jstudent                                              */
+/* Professor:             Les Czegel                                            */
+/* Due Date:              October 1, 2006                                       */
+/*                                                                              */
+/* I declare that the attached assignment is my own work in accordance with     */
+/* Seneca Academic Policy.  No part of this assignment has been copied manually */
+/* or electronically from any other source (including web sites) or distributed */
+/* to other students                                                            */
+</pre>
+               <P>
+               This assignment is worth 4% of your final mark.
+               </P>
+               <P>
+               If you submit your assignment after the due date, your assignment will
+               attract a 10% late penalty per school day to a maximum
+               of 50%.
+               </P>
+               <!--<P>
+               Any bonus mark that you earn increases your assignment mark to a maximum
+               for all quiz and assignment marks taken together of 25% of your final mark.
+               </P>-->
+               <P>
+               If you submit an assignment that does not pass all of the tests, you will
+               be asked to fix your code and to resubmit it, in which case you will
+               receive an assignment mark no higher than 2% of your final mark (that is,
+               one half of the highest possible assignment mark<!-- before any bonuses-->).
+               </P>
+               <P>
+               Regardless of how long it takes you to complete this assignment, you still
+               need to submit a completed working version in order to pass this subject.
+               </P>
+               <p>
+               </p>
+               <br />
+               <br />
+               <br />
+               </td>
+            </tr>
+         </table>
+      </td>
+
+      <!-- Detail Menu -->
+      <td class="panel1" width="150" valign="top" rowspan="2">
+         <ul id="mennav">
+         <li><a href="welco.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/welco.html">Welcome</a></li>
+         <li><a href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+         <li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+         <li><a class="active" href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+         <li><a class="active" href="a1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/a1.html">&nbsp;Assign 1</a></li>
+         <li><a href="a2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/a2.html">&nbsp;Assign 2</a></li>
+         <li><a href="a3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/a3.html">&nbsp;Assign 3</a></li>
+         <li><a href="a4.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/a4.html">&nbsp;Assign 4</a></li>
+         <li><a href="a5.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/a5.html">&nbsp;Assign 5</a></li>
+         <li><a href="a6.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/a6.html">&nbsp;Assign 6</a></li>
+         <li><a href="index-4.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/handouts/index.html">Handouts</a></li>
+         <li><a href="index-5.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/practice/index.html">Practice</a></li>
+         <li><a href="index-6.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/index.html">Resources</a></li>
+         <li><a href="glossary.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/glossary.html">Glossary</a></li>
+         </ul>
+      </td>
+   </tr>
+
+   <!-- Content Area Footer -->
+   <tr height="20">
+      <td class="panel3" align="center">
+         <table class="panel2" width="95%">
+            <tr>
+               <td align="left">
+                  &nbsp;&nbsp;<a href="a1_p.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/a1_p.html" class="text3">
+                  <img src="Printer.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Printer.gif" height="15" width="10" alt="Printer Friendly Version of this Page" />&nbsp;print this page</a>&nbsp;&nbsp;
+               </td>
+               <td align="right">
+                  &nbsp;&nbsp;<a href="#top" class="text3">Top&nbsp;
+                  <img src="ArrowToT.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToT.gif" height="15" width="15" alt="Go Back to the Top of this Page" /></a>
+               </td>
+            </tr>
+         </table>
+      </td>
+   </tr>
+
+   <!-- Footer -->
+   <tr>
+      <!-- Left Panel -->
+      <td class="panel1" width="700" align="center">
+         <!-- Lateral Motion Control -->
+         <!--<table width="90%" align="center">
+            <tr>
+               <td width="50%" align="left">
+                  <a href="datat.html" class="text3">
+                  <img src="../images/ArrowToL.gif" height="15" width="15" class="panel1" alt="Previous Reading" />&nbsp;&nbsp;Previous: Primitive Data Types</a>
+               </td>
+               <td width="50%" align="right">
+                  <a href="modul.html" class="text3">Next: Modular Programs&nbsp;&nbsp;
+                  <img src="../images/ArrowToR.gif" height="15" width="15" class="panel1" alt="Next Reading" /></a>
+               </td>
+            </tr>
+         </table>-->
+         <br />
+         <br />
+         <!-- Alternate Navigation Links -->
+         <ul id="altnav" align="center">        
+         <li><a href="timeline.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/timeline.html">Timeline&nbsp;</a></li>
+         </ul>
+         <ul id="altnav" align="center">
+         <li><a href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+         <li><script type="text/javascript" src="classroom_a.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_a.js"></script></li>
+         <li><script type="text/javascript" src="classroom_b.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_b.js"></script></li>
+         <li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+         <li><a class="active" href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+         <li><a href="index-3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/instructors/index.html">Instructor</a></li>
+         </ul>
+         <br />
+         <!-- Bottom Line -->
+         <table cellpadding=1 width="90%">
+            <tr>
+               <td width="33%" class="text3">
+                  &nbsp;&nbsp;Designed by Chris Szalwinski&nbsp;&nbsp;
+               </td>
+               <td width="34%" align="center">
+                  <a href="copyright.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/copyright.html" class="text3">Copying From This Site</a>
+               </td>
+               <td width="33%" align="right" class="text3">
+                  <script language="javascript">
+                  var lm = document.lastModified.slice(0,-3);
+                  document.write("Last Modified: " +lm)
+                  </script>&nbsp;&nbsp;
+               </td>
+            </tr>
+         </table>
+      </td>
+
+      <!-- Logo - Right Bottom Corner -->
+      <td class=panel2 width="150" align="center">
+         <img src="Logo.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Logo.gif" height="73" width="85" />
+      </td>
+   </tr>
+</table>
+
+</body>
+</html>

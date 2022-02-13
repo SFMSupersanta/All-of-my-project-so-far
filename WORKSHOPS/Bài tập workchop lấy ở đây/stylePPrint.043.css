@@ -1,0 +1,14 @@
+/* stylePPrint.043.css */
+
+/* include style.043.css */
+
+a	{ 
+	text-decoration: none; 
+	vertical-align: top;
+	}
+.texthead { 
+	font-family: "Times New Roman", serif; 
+	font-size: x-large; 
+	font-weight: bold; 
+	color: red;
+	}

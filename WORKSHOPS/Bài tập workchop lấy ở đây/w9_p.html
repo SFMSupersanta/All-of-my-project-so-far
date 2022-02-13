@@ -1,0 +1,252 @@
+
+<html lang="en-us" xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+   <title>Seneca | School of Computer Studies | Foundations of Programming Using C and C++</title>
+
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+   <meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+   <meta name="Copyright" content="(c) Copyright Seneca College 2004" />
+   <meta name="Description" content="Welcome to the Bachelors Degree of Software Development Bridging Program Web Site.  On this site you can find the bridging course into the Degree Program at Seneca College.  Designed by Chris Szalwinski." />
+   <meta name="Abstract" content="This subject reviews the principles of both procedural and object-oriented programming.  Students study the solution of problems using structured programming techniques with the C programming language and design and build reusable objects, making use of encapsulation, inheritance and polymorphism as available in the C++ programming language.  The emphasis throughout is on the solution of small problems."/>
+   <meta name="Author" content="chris.szalwinski@senecac.on.ca"/>
+   <meta name="Keywords" content="sofware development, procedural programming, object-oriented programming, lecture notes"/>
+
+   <link rel="stylesheet" type="text/css" href="style.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/style.043.css">
+   <link rel="stylesheet" type="text/css" href="styleSPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleSPrint.043.css" media="screen">
+   <link rel="stylesheet" type="text/css" href="stylePPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/stylePPrint.043.css" media="print">
+</head>
+
+<body>
+
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC
+    '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+
+<table cellspacing="0" cellpadding="0">
+
+   <!-- Body Cell -->
+   <tr height="600">
+      <!-- Content Area -->
+      <td class="tbody" bgcolor="ffffff">
+         <table cellpadding="10" width="100%">
+            <tr>
+               <td bgcolor="ffffff" valign="top">
+               <br />
+               <center><span class=texth>Module H - Files</span>
+               <br />
+               <br />
+               <span class=texthead>
+               Statistics</span>
+               <br />
+               <br /><span class=textagend>
+               Workshop 9</span>
+               </center>
+               <br />
+               <br />
+
+               <p>
+               In this workshop, you are to work with data values stored in a file.&nbsp;</p>
+               <br />
+
+               <p class=section>Learning Outcome</p>
+               <p>
+               Upon successful completion of this workshop, you
+               will have demonstrated the ability to read sequential
+               text files.
+               </p>
+               <br />
+
+               <p class=section>Introduction</p>
+               <p>
+               Statistics helps summarize data in interesting and meaningful ways.&nbsp;
+               The data may consist of values from a variety of sources.&nbsp;
+               Statistics identifies what is common and the degree of
+               variation about what is common.&nbsp; In cases where a
+               data set has several aspects, statistics
+               determines the extent to which one aspect of the set is
+               related to another aspect of the set.&nbsp;
+               </p>
+               <p>
+               For example, consider a video store with a
+               large selection of rental videos at various
+               prices.&nbsp; We determine the average
+               price of a video in the store, the degree of
+               price variation about this average and then
+               infer something about the clientele who rent
+               videos from that store.&nbsp; </p>
+               <p>
+               If we suspect that the price of
+               each video was determined by the date of its
+               original release, we use statistics
+               to determine numerically if there is indeed any
+               correlation between the rental price and the
+               original release date.&nbsp; Moreover, we
+               determine the degree of any such correlation.&nbsp;
+               </p>
+               <br />
+
+               <p class=section>Statistics Calculator</p>
+               <p>
+               Design and code a program that calculates statistical
+               measures for a set of data values stored in a file.&nbsp;
+               The program prompts for and accepts the name of the data file
+               and reads each record in the file, calculating the mean and
+               the standard deviation of the data values.&nbsp;
+               The data file contains one floating point value per
+               record.&nbsp; Each record is delimited by a newline.</p>
+               <p>
+               For a sample containing n values, the key statistical indicators include
+               <ul>
+               <li>mean
+               <pre class=defin>
+ m = ( a<sub>1</sub> + a<sub>2</sub> + a<sub>3</sub> + ... + a<sub>n</sub> ) / n
+               </pre>
+               </li>
+               <li>sum of the squares of the values
+               <pre class=defin>
+ s = a<sub>1</sub><sup>2</sup> + a<sub>2</sub><sup>2</sup> + a<sub>3</sub><sup>2</sup> + ... + a<sub>n</sub><sup>2</sup>
+               </pre>
+               </li>
+               <li>standard deviation (d)
+               <pre class=defin>
+ d<sup>2</sup> = ( s / n ) - m<sup>2</sup></pre>
+               </li>
+               </ul>
+               <p>
+               The program output might look something like:&nbsp;
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre class=result>
+ Statistics Calculator
+ =====================
+ Enter the name of the data file : sample_1.dat&nbsp;
+
+ The number of data values read from this file was 39&nbsp;
+ Their statistical mean is 8.08
+ Their standard deviation is 2.15</pre><br /></td></tr></table>
+               A copy of the sample file named "sample_1.dat" is <a href="sample_1.dat" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/sample_1.dat"><u>here</u></a>.&nbsp;
+               <br />
+
+               <p class=section>Regression Analysis Calculator</p>
+               <p>
+               Design and code a program that prompts for and accepts the name
+               of a data file and then reads data value pairs from the file,
+               while performing a linear regression
+               analysis on the set of data value pairs.&nbsp;
+               </p>
+               <p>
+               The data file contains two values per record, with
+               the two fields delimited by whitespace and each
+               record delimited by a newline.</p>
+               <p>
+               Linear regression analysis models the statistical relationship
+               between two sets of data values.&nbsp;
+               Typically, we use the method of least squares
+               to determine the line that best fits the
+               scatter of data points on an x-y graph.&nbsp;
+               The formulas for the line are:
+               <ul>
+               <li>slope (t)
+               <pre class=defin>
+ t = [ (x<sub>1</sub> - m<sub>x</sub>)(y<sub>1</sub> - m<sub>y</sub>) + (x<sub>2</sub> - m<sub>x</sub>)(y<sub>2</sub> - m<sub>y</sub>) +
+      ... + (x<sub>n</sub> - m<sub>x</sub>)(y<sub>n</sub> - m<sub>y</sub>)] /
+    [ (x<sub>1</sub> - m<sub>x</sub>)<sup>2</sup> + (x<sub>2</sub> - m<sub>x</sub>)<sup>2</sup> + ... + (x<sub>n</sub> - m<sub>x</sub>)<sup>2</sup>]
+               </pre>
+               </li>
+               <li>y-intercept (b)
+               <pre class=defin>
+ b = m<sub>y</sub> - t m<sub>x</sub></pre>
+               </li>
+               </ul>
+               where m denotes the mean, which is given by
+               <pre class=defin>
+ m<sub>x</sub> = ( x<sub>1</sub> + x<sub>2</sub> + x<sub>3</sub> + ... + x<sub>n</sub> ) / n
+ m<sub>y</sub> = ( y<sub>1</sub> + y<sub>2</sub> + y<sub>3</sub> + ... + y<sub>n</sub> ) / n
+               </pre>
+               The statistical measure that indicates how well our best fit line models the
+               relationship between the variables is called the
+               correlation coefficient (Pearson or Product-Moment Correlation Coefficient)
+               and is given by the formula
+               <pre class=defin>
+ r = { [ (x<sub>1</sub>y<sub>1</sub>) + (x<sub>2</sub>y<sub>2</sub>) + ... + (x<sub>n</sub>y<sub>n</sub>) ] / n - m<sub>x</sub> m<sub>y</sub>} / [ d<sub>x</sub> d<sub>y</sub> ]</pre>
+               where d denotes the standard deviation, which is given by
+               <pre class=defin>
+ (d<sub>x</sub>)<sup>2</sup> = ( s<sub>x</sub> / n ) - m<sub>x</sub><sup>2</sup>
+ (d<sub>y</sub>)<sup>2</sup> = ( s<sub>y</sub> / n ) - m<sub>y</sub><sup>2</sup>
+               </pre>
+               where s denotes the sum of the squares, which is
+               given by
+               <pre class=defin>
+ s<sub>x</sub> = x<sub>1</sub><sup>2</sup> + x<sub>2</sub><sup>2</sup> + x<sub>3</sub><sup>2</sup> + ... + x<sub>n</sub><sup>2</sup>
+ s<sub>y</sub> = y<sub>1</sub><sup>2</sup> + y<sub>2</sub><sup>2</sup> + y<sub>3</sub><sup>2</sup> + ... + y<sub>n</sub><sup>2</sup>
+               </pre>
+               <p>
+               Your program output might look something like:&nbsp;
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre class=result>
+ Regression Analysis
+ ===================
+ Enter the name of the data file : sample_2.dat
+
+ The number of data values read from this file was 10
+ Their statistical mean of the abscissa values is 41.50
+ Their standard deviation of the abscissa values is 20.98&nbsp;
+ Their statistical mean of the ordinate values is 37.56
+ Their standard deviation of the ordinate values is 5.92
+
+ The slope of the least squares fit is 0.26
+ The y-intercept of the least squares fit is 26.94
+ The correlation coefficient is 0.91
+
+ What is the age of your car in months ? 32
+ You can expect a stopping distance of 35.13 metres</pre><br /></td></tr></table>
+               A copy of the sample file named "sample_2.dat" is <a href="sample_2.dat" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/sample_2.dat"><u>here</u></a>.&nbsp;
+               This data represents the minimum stopping distance in metres
+               of cars aged between 9 months and 76 months travelling at
+               40kph.
+               <p>
+               <a href="javascript:if(confirm('http://www.bized.ac.uk/timeweb/crunching/crunch_relate_illus.htm  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.bized.ac.uk/timeweb/crunching/crunch_relate_illus.htm'" tppabs="http://www.bized.ac.uk/timeweb/crunching/crunch_relate_illus.htm"><u>Here</u></a>
+               is the link to the source of this data and an explanation of the
+               calculations.&nbsp; <a href="javascript:if(confirm('http://www.ruf.rice.edu/~lane/stat_sim/index.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ruf.rice.edu/~lane/stat_sim/index.html'" tppabs="http://www.ruf.rice.edu/~lane/stat_sim/index.html"><u>Here</u></a>
+               is another reference to some statistical simulations.
+               <br />
+               <br />
+               </p>
+               </td>
+            </tr>
+         </table>
+      </td>
+   </tr>
+
+   <!-- Footer -->
+   <tr>
+      <td class="tbody">
+         <table cellpadding="1" width="90%" align="center">
+            <tr>
+               <td width="50%" class="text3">
+                  <script language="javascript">
+                  var lh = document.location.href;
+                  document.write(lh)
+                  </script>&nbsp;&nbsp;
+               </td>
+               <td width="50%" align="right" class="text3">
+                  <script language="javascript">
+                  var lm = document.lastModified.slice(0,-3);
+                  document.write("Last Modified: " +lm)
+                  </script>&nbsp;&nbsp;
+               </td>
+            </tr>
+         </table>
+      </td>
+   </tr>
+</table>
+
+</body>
+</html>

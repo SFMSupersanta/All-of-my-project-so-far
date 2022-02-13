@@ -1,0 +1,435 @@
+
+<html lang="en-us" xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+   <title>Seneca | School of Computer Studies | Programming Fundamentals Using C</title>
+
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+   <meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+   <meta name="Copyright" content="(c) Copyright Seneca College 2004" />
+   <meta name="Description" content="Welcome to the Bachelors Degree of Software Development Program Web Site.  On this site you can find the introductory programming course.  Designed by Chris Szalwinski." />
+   <meta name="Abstract" content="This subject reviews the principles of procedural programming.  Students study the solution of problems using structured programming techniques with the C programming language.  The emphasis throughout is on the solution of small problems."/>
+   <meta name="Author" content="chris.szalwinski@senecac.on.ca"/>
+   <meta name="Keywords" content="sofware development, procedural programming, lecture notes"/>
+
+   <link rel="stylesheet" type="text/css" href="style.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/style.043.css">
+   <link rel="stylesheet" type="text/css" href="styleScreen.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleScreen.043.css" media="screen">
+   <link rel="stylesheet" type="text/css" href="styleSPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleSPrint.043.css" media="print">
+   <link rel="stylesheet" type="text/css" href="styleNav.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleNav.043.css">
+</head>
+
+<body>
+
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC
+    '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+
+<table id="top" width="850" cellspacing="0" cellpadding="0">
+
+   <!-- Banner -->
+   <tr height="120">
+      <td colspan="2" class="banner">
+      <table cellspacing="0" cellpadding="0">
+         <tr>
+            <td width="250" class="banner">
+               <center><span class="text0">&nbsp;&nbsp;Software&nbsp;&nbsp;<br />
+               &nbsp;&nbsp;Development&nbsp;&nbsp;</span></center>
+            </td>
+            <td class="tbanner">
+               <img src="Banner4.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Banner4.gif" height="120" width="500" alt="Software Development" />
+            </td>
+         </tr>
+      </table>
+      </td>
+   </tr>
+
+   <!-- Navigation Bar -->
+   <tr height="20">
+      <td class="panel1" align="left" valign="bottom">
+         <ul id="tabnav">         
+         <li><a href="timeline.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/timeline.html">Timeline</a></li>
+         <li><a href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+         <li><script type="text/javascript" src="classroom_a.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_a.js"></script></li>
+         <li><script type="text/javascript" src="classroom_b.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_b.js"></script></li>
+         <li><a class="active" href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+         <li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+         <li><a href="index-3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/instructors/index.html">Instructor</a></li>
+         <li><a href="w3_p.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/w3_p.html"><img align="center" src="Printer.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Printer.gif" height=15 width=10 alt="Printer Friendly Version of this Page" /></a></li>
+         </ul>
+      </td>
+      <!-- Web Site Title -->
+      <td class="panel2" width="150" align="center">
+         <span class="text1"><script type="text/javascript" src="subject.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/subject.js"></script></span>
+      </td>
+   </tr>
+
+   <!-- Body Cells -->
+   <tr height="600">
+
+      <!-- Content Area -->
+      <td class="tbody" bgcolor="ffffff" valign="top">
+         <table cellpadding="10" width="95%">
+            <tr>
+               <td bgcolor="ffffff" valign="top">
+               <br />
+               <center><span class=texth>Module C - Logic</span>
+               <br />
+               <br />
+               <span class=texthead>
+               Check Digits</span>
+               <br />
+               <br /><span class=textagend>
+               Workshop 3</span>
+               </center>
+               <br />
+               <br />
+
+               <p>
+               In this workshop, you are to experiment with integer
+               variables, where the values themselves contain
+               the means of confirming their own validity.</p>
+               <br />
+
+               <p class=section>Learning Outcome</p>
+               <p>
+               Upon successful completion of this workshop, you
+               will have demonstrated the ability to
+               <ul>
+               <li>to use the modulus operator,</li>
+               <li>to design an algorithm to check the validity of a
+               number, and</li>
+               <li>to write code to implement your solution.</li>
+               </ul>
+               <br />
+
+               <p id="sin" class=section>SIN Validator</p>
+               <p class="ssection">Background</p>
+               <p>
+               A Canadian SIN has nine digits.&nbsp; The right-most digit is
+               a check digit that enables validation.&nbsp;
+               For the whole number to be a valid SIN, a weighted sum of
+               the other digits plus this check digit must be divisible by 10.&nbsp;</p>
+               <p>
+               To obtain the weighted sum, take the digit to the left of the
+               check digit and then every second digit leftwards.&nbsp;
+               Add each of these digits to itself.&nbsp; Then, add each digit
+               of each sum to form the weighted sum of the even positioned
+               digits.&nbsp; Add each of the remaining SIN digits
+               (except the check digit) to form the sum of the odd positioned
+               digits.&nbsp; Add the two sums and subtract the next highest
+               number ending in zero from their total.&nbsp; If this number
+               is the check digit, the whole number is a valid SIN;
+               otherwise, the whole number is not a valid SIN.
+               </p>
+               <p>
+               Consider the following example:
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ SIN  193 456 787
+                |
+ check digit is 7
+ add first set of alternates to themselves&nbsp;
+   9  4  6  8
+  <u> 9  4  6  8</u>
+  18  8 12 16
+ add the digits of each sum 1+8+8+1+2+1+6 = 27
+ add the other alternates   1+3+5+7       = <u>16</u>
+ total                                    = 43
+ Next highest integer multiple of 10      = <u>50</u>
+ Difference                               =  7
+ Matches the check digit, therefore this SIN is valid&nbsp;</pre><br /></td></tr></table>
+               <p class="ssection">Specifications</p>
+               <p>
+               Design a program that validates a Canadian
+               Social Insurance Number (SIN).&nbsp;
+               Your program keeps accepting a whole number and determining
+               if that whole number is a valid SIN.&nbsp; Your program terminates
+               when the user enters 0 as the whole number.&nbsp; The output from
+               your program looks something like:
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre class=result>
+ SIN Validator
+ =============
+ SIN (0 to quit): 193456787
+ This is a valid SIN.
+ SIN (0 to quit): 193456788
+ This is not a valid SIN.
+ SIN (0 to quit): 0
+ Have a Nice Day!</pre><br /></td></tr></table>
+               <br />
+
+               <p id="isb" class=section>ISBN</p>
+               <p>
+               This problem is slightly more difficult than the above problem.&nbsp;
+               This one requires a data type that stores 10 digits.
+               </p>
+               <p class="ssection">Background</p>
+               <p>
+               Publishers and bookstores use a number system called the
+               International Standard Book Number (ISBN) system to identify
+               books.&nbsp; At the start of publication, each book is
+               assigned a unique ISBN.&nbsp;
+               An ISBN, once assigned, can never be re-used.&nbsp;
+               Click <a href="javascript:if(confirm('http://www.isbn-international.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.isbn-international.org/'" tppabs="http://www.isbn-international.org/" target="_top"><u>here</u></a>
+               for detailed information on this numbering system.&nbsp;
+               </p>
+               <p>
+               An ISBN consists of exactly 10 digits.&nbsp;
+               The rightmost digit is the check digit.&nbsp;
+               The check digit is validated modulo 11.&nbsp;
+               <ul>
+               <li>multiply each digit from the first to the ninth by
+               a weight from 10 to 2 respectively (the first digit
+               by 10, the second by 9,..., the ninth by 2).&nbsp;</li>
+               <li>the sum of the products plus the check digit should
+               be divisible without remainder by 11.&nbsp; </li>
+               <li>if there is a remainder, the whole number is
+               not a valid ISBN.&nbsp;</li>
+               </ul>
+               Consider the following example:
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ ISBN  0003194876
+                |
+ check digit is 6
+ add first set of alternates to themselves&nbsp;
+   0  0  0  3  1  9  4  8  7
+  10  9  8  7  6  5  4  3  2
+   0  0  0 21  6 45 16 24 14 = 126
+ add check digit                 6
+ total                         132
+ divide by 11                   12
+ remainder                       0
+ Therefore this ISBN is valid</pre><br /></td></tr></table>
+               <p class="ssection">Specifications</p>
+               <p>
+               Design a program that validates an ISBN.&nbsp;
+               Your program keeps accepting a whole number and determining
+               if that whole number is a valid ISBN.&nbsp; Your program terminates
+               when the user enters 0 as the whole number.&nbsp;
+               </p>
+               <p>
+               The output from your program looks something like:
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre class=result>
+ ISBN Validator
+ ==============
+ ISBN (0 to quit): 0003194876&nbsp;
+ This is a valid ISBN.
+ ISBN (0 to quit): 0003194875
+ This is not a valid ISBN.
+ ISBN (0 to quit): 0
+ Have a Nice Day!</pre><br /></td></tr></table>
+               The data type <span class=code>long</span> only guarantees room
+               for 9 digits.&nbsp; The data type <span class=code>long long</span>
+               guarantees room for an integer with well over 12 digits (at least
+               64 bits of precision).&nbsp; The conversion specifier for a
+               <span class=code>long long</span> integer is <span class=code>%lld</span>.&nbsp;
+               The Borland 5.5 compiler does not include the <span class=code>long long</span>
+               data type, but instead provides <span class=code>__int64</span> and
+               <span class=code>%I64d</span> instead of <span class=code>%lld</span>
+               as the conversion specifier.&nbsp;
+               <br />
+
+               <p id="upc" class=section>Barcode Interpreter</p>
+               <p>
+               This problem is moderately more difficult than the above problems.&nbsp;
+               This one requires a data type that stores 12 digits and
+               involves a further decomposition.
+               </p>
+               <p class="ssection">Background</p>
+               <p>
+               A Universal Product Code (UPC) bar code consists of 12-digits.&nbsp; The first 6 digits represent
+               the company that produces the product, the next 5 digits represent a
+               unique item number that that company has assigned to the product and the
+               last digit is a check digit.&nbsp; The check digit is used to
+               determine if the code has been properly interpreted by the scanning
+               device.&nbsp;
+               </p>
+               <p>
+               To determine the expected value of the check digit, use the weighted sum of
+               the other digits:
+               <ul>
+               <li>multiply the sum of the 1st, 3rd, etc. digits in the code by 3</li>
+               <li>add the sum of the 2nd, 4th, etc digits (excluding the check digit)</li>
+               <li>add the two sums together to obtain the weighted total</li>
+               <li>the expected check digit is the digit that when added to the weighted total
+               results in a number that is divisible by 10</li>
+               </ul>
+               Consider the following example:
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ UPC  067800001019
+                 |
+ check digit is  9
+ add 1st, 3rd, ..., 11th digits&nbsp;
+      0 7 0 0 1 1    =  9
+ multiply by 3       = 27
+ add 2nd, 4th, ..., 10th digits
+       6 8 0 0 0     = <u>14</u>
+ add weighted sum    = 41
+ add check digit        9
+ total                 50
+ divide by 10           5
+ remainder              0
+ Therefore this is a valid UPC</pre><br /></td></tr></table>
+               <p class="ssection">Specifications</p>
+               <p>
+               Design a program that validates a UPC
+               and displays the company and product numbers separately.&nbsp;
+               Your program keeps accepting a whole number and determining
+               if that whole number is a valid UPC.&nbsp; Your program terminates
+               when the user enters 0 as the whole number.&nbsp;
+               </p>
+               <p>
+               The output from your program looks something like:
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre class=result>
+ UPC Validator
+ =============
+ UPC (0 to quit): 067800001019&nbsp;
+ This is a valid UPC.
+ The company code is 067800.
+ The prduct code is   00101.
+ UPC (0 to quit): 067800001018
+ This is not a valid UPC.
+ UPC (0 to quit): 0
+ Have a Nice Day!</pre><br /></td></tr></table>
+               The data type <span class=code>long</span> only guarantees room
+               for 9 digits.&nbsp; The data type <span class=code>long long</span>
+               guarantees room for an integer with well over 12 digits (at least
+               64 bits of precision).&nbsp; The conversion specifier for a
+               <span class=code>long long</span> integer is <span class=code>%lld</span>.&nbsp;
+               The Borland 5.5 compiler does not include the <span class=code>long long</span>
+               data type, but instead provides <span class=code>__int64</span> and
+               <span class=code>%I64d</span> instead of <span class=code>%lld</span>
+               as the conversion specifier.&nbsp;
+               <br />
+               <br />
+               </td>
+            </tr>
+         </table>
+      </td>
+
+      <!-- Detail Menu -->
+      <td class="panel1" width="150" valign="top" rowspan="2">
+         <ul id="mennav">
+         <li><a href="welco.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/welco.html">Welcome</a></li>
+         <li><a href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+         <li><a class="active" href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+         <li><a href="w1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/w1.html">&nbsp;Start</a></li>
+         <li><a href="w2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/w2.html">&nbsp;Conversions</a></li>
+         <li><a class="active" href="w3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/w3.html">&nbsp;Check&nbsp;Digits</a></li>
+         <li><a href="w4.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/w4.html">&nbsp;Simple Fns</a></li>
+         <li><a href="w5.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/w5.html">&nbsp;Multiple</a></li>
+         <li><a href="w6.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/w6.html">&nbsp;Games</a></li>
+         <li><a href="w7.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/w7.html">&nbsp;Assets</a></li>
+         <li><a href="w8.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/w8.html">&nbsp;Words</a></li>
+         <li><a href="w9.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/w9.html">&nbsp;Statistics</a></li>
+         <li><a href="w10.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/w10.html">&nbsp;Assorted</a></li>
+         <li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+         <li><a href="index-4.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/handouts/index.html">Handouts</a></li>
+         <li><a href="index-5.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/practice/index.html">Practice</a></li>
+         <li><a href="index-6.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/index.html">Resources</a></li>
+         <li><a href="glossary.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/glossary.html">Glossary</a></li>
+         </ul>
+      </td>
+   </tr>
+
+   <!-- Content Area Footer -->
+   <tr height="20">
+      <td class="panel3" align="center">
+         <table class="panel2" width="95%">
+            <tr>
+               <td align="left">
+                  &nbsp;&nbsp;<a href="w3_p.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/w3_p.html" class="text3">
+                  <img src="Printer.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Printer.gif" height="15" width="10" alt="Printer Friendly Version of this Page" />&nbsp;print this page</a>&nbsp;&nbsp;
+               </td>
+               <td align="right">
+                  &nbsp;&nbsp;<a href="#top" class="text3">Top&nbsp;
+                  <img src="ArrowToT.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToT.gif" height="15" width="15" alt="Go Back to the Top of this Page" /></a>
+               </td>
+            </tr>
+         </table>
+      </td>
+   </tr>
+
+   <!-- Footer -->
+   <tr>
+      <!-- Left Panel -->
+      <td class="panel1" width="700" align="center">
+         <!-- Lateral Motion Control -->
+         <!--<table width="90%" align="center">
+            <tr>
+               <td width="50%" align="left">
+                  <a href="datat.html" class="text3">
+                  <img src="../images/ArrowToL.gif" height="15" width="15" class="panel1" alt="Previous Reading" />&nbsp;&nbsp;Previous: Primitive Data Types</a>
+               </td>
+               <td width="50%" align="right">
+                  <a href="modul.html" class="text3">Next: Modular Programs&nbsp;&nbsp;
+                  <img src="../images/ArrowToR.gif" height="15" width="15" class="panel1" alt="Next Reading" /></a>
+               </td>
+            </tr>
+         </table>-->
+         <br />
+         <br />
+         <!-- Alternate Navigation Links -->
+         <ul id="altnav" align="center">        
+         <li><a href="timeline.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/timeline.html">Timeline&nbsp;</a></li>
+         </ul>
+         <ul id="altnav" align="center">
+         <li><a href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+         <li><script type="text/javascript" src="classroom_a.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_a.js"></script></li>
+         <li><script type="text/javascript" src="classroom_b.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_b.js"></script></li>
+         <li><a class="active" href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+         <li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+         <li><a href="index-3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/instructors/index.html">Instructor</a></li>
+         </ul>
+         <br />
+         <!-- Bottom Line -->
+         <table cellpadding=1 width="90%">
+            <tr>
+               <td width="33%" class="text3">
+                  &nbsp;&nbsp;Designed by Chris Szalwinski&nbsp;&nbsp;
+               </td>
+               <td width="34%" align="center">
+                  <a href="copyright.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/copyright.html" class="text3">Copying From This Site</a>
+               </td>
+               <td width="33%" align="right" class="text3">
+                  <script language="javascript">
+                  var lm = document.lastModified.slice(0,-3);
+                  document.write("Last Modified: " +lm)
+                  </script>&nbsp;&nbsp;
+               </td>
+            </tr>
+         </table>
+      </td>
+
+      <!-- Logo - Right Bottom Corner -->
+      <td class=panel2 width="150" align="center">
+         <img src="Logo.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Logo.gif" height="73" width="85" />
+      </td>
+   </tr>
+</table>
+
+</body>
+</html>

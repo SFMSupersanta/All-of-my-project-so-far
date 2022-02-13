@@ -1,0 +1,285 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC
+    '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html lang="en-us" xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+   <title>Seneca | School of Computer Studies | Programming Fundamentals Using C</title>
+
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+   <meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+   <meta name="Copyright" content="(c) Copyright Seneca College 2004" />
+   <meta name="Description" content="Welcome to the Bachelors Degree of Software Development Program Web Site.  On this site you can find the introductory programming course.  Designed by Chris Szalwinski." />
+   <meta name="Abstract" content="This subject reviews the principles of procedural programming.  Students study the solution of problems using structured programming techniques with the C programming language.  The emphasis throughout is on the solution of small problems."/>
+   <meta name="Author" content="chris.szalwinski@senecac.on.ca"/>
+   <meta name="Keywords" content="sofware development, procedural programming, lecture notes"/>
+
+   <link rel="stylesheet" type="text/css" href="style.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/style.043.css">
+   <link rel="stylesheet" type="text/css" href="styleSPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleSPrint.043.css" media="screen">
+   <link rel="stylesheet" type="text/css" href="stylePPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/stylePPrint.043.css" media="print">
+</head>
+
+<body>
+
+<table cellspacing="0" cellpadding="0">
+
+   <!-- Body Cell -->
+   <tr height="600">
+      <!-- Content Area -->
+      <td class="tbody" bgcolor="ffffff">
+         <table cellpadding="10" width="100%">
+            <tr>
+               <td bgcolor="ffffff" valign="top">
+               <br />
+               <center><span class=texth>Module I - Design</span>
+               <br />
+               <br />
+               <span class=texthead>
+               Testing and Debugging Programs</span>
+               <br />
+               <br />
+               <span class=textagend>
+               Methodically test and debug C programs.<br />
+               <br />
+               </span>
+               <p class=quote></p>
+               <span class=textagend>
+               <a href="#tes">Testing</a> |
+               <a href="#syn">Synatical Errors</a> |
+               <a href="#sem">Semantic Errors</a> |
+               <a href="#exe">Exercises</a>
+               </span>
+               </center>
+               <br />
+               <br />
+               <br />
+
+               <p>
+               "Even professional programmers delude themselves.&nbsp;
+               In an experiment, 32 NASA programmers
+               applied 3 different testing techniques to a few
+               small programs.&nbsp; They were
+               asked to assess what proportion of bugs they
+               thought were found by each method.&nbsp; Their
+               intuitions turned out to be wrong.&nbsp; They
+               thought black-box testing based on specs was
+               the most effective, but in fact code reading
+               was more effective (even though the code
+               was uncommented).&nbsp; By reading code, they
+               found errors 50% faster!"<br /><br />
+               Victor R. Basili and Richard W. Selby.&nbsp;
+               Comparing the Effectiveness of Software Testing Strategies.&nbsp;
+               IEEE Transactions on Software Engineering. Vol. SE-13, No. 12, December 1987, pp.
+               1278-1296.&nbsp;
+               </p>
+               <br />
+
+               <p id="tes" class="section">Testing</p>
+               <p class="ssection">Black Box</p>
+               <p>
+               External factors are determinant.&nbsp; Internal structure is irrelevant.
+               <ul>
+               <li>testing to specifications</li>
+               <li>input-output driven</li>
+               <li>data driven</li>
+               </ul>
+               The number of possibilities to be tested
+               may be too great.&nbsp;</p>
+               <p class="sssection">Equivalence Classes</p>
+               <p>
+               Develop a manageable set of test cases.&nbsp;
+               Create equivalence classes with boundary values.&nbsp;
+               An equivalence class is a set where testwise any member is
+               as good as any other (for example, &lt;1, 1...25, &gt;25).&nbsp;</p>
+               <p>
+               Experience suggests that faults frequently exist at and on
+               boundaries.&nbsp; Test either side of the boundaries
+               of the equivalence class as well as on the
+               boundary itself (for example, 0, 1, 2, 17, 24, 25, 26).&nbsp; </p>
+               <p>
+               Repeat for output equivalence classes.</p>
+               <p class="ssection">White Box</p>
+               <p>
+               Internal structure is determinant.
+               <ul>
+               <li>glass box</li>
+               <li>logic-driven</li>
+               <li>path-oriented</li>
+               </ul>
+               Each possible path through the code is executed at least
+               once.&nbsp; The number of paths may be too
+               great to test.&nbsp;</p>
+               <p class="sssection">Flow Graphs</p>
+               <p>
+               Develop a control flow graph that represents the
+               sequences, selections and iterations in the
+               program.&nbsp; Each flow graph node represents
+               one or more sequence statements.&nbsp; The edges
+               (or arrows) between the nodes represent flow of
+               control.&nbsp; Consider the following code
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ /* Testing - Flow Graph
+ *  flowGraph.c
+ *  Nov 26 2004
+ *  BTP100
+ */
+ #include&lt;stdio.h&gt;
+
+ int main(void) {
+     int total, value, count;
+
+     /* Start Node 1 */
+     total = 0;
+     count = 0;
+     /* End   Node 1 */
+     do {
+         /* Start Node 2 */
+         scanf("%d", &amp;value);
+         /* End   Node 2 */
+         if (value &lt; 0) {
+             /* Start Node 3 */
+             total -= value;
+             count++;
+             /* End   Node 3 */
+         } else if (value &gt; 0) {
+             /* Start Node 4 */
+             total += value;
+             count++;
+             /* End   Node 4 */
+         }
+     /* Start Node 5 */
+     } while (value != 0);
+     /* End   Node 5 */
+     if (count &gt; 0)
+         /* Start Node 6 */
+         printf("The average value is %.2lf\n",&nbsp;
+                (double)total/count);
+         /* End   Node 6 */
+
+     /* Start Node 7 */
+     return 0;
+ }</pre><br /></td></tr></table>
+               The flow graph for this code is:
+               <p align="center"><img src="flowg.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/flowg.gif" width=200 height=150 /></p>
+               <p class="sssection">Criteria</p>
+               <p>
+               <ul>
+               <li>statement coverage - every elementary statement is
+               executed at least once</li>
+               <li>edge coverage - every edge is traversed at least once</li>
+               <li>condition coverage - all possible values of the
+               constituents of each compound condition are exercised
+               at least once</li>
+               <li>path coverage - all paths from initial node to
+               final node are traversed at least once.</li>
+               </ul>
+               </p>
+               <p class="sssection">Iterations</p>
+               <ul>
+               <li>skip the iteration entirely</li>
+               <li>pass through the iteration once</li>
+               <li>pass through the iteration less than the specified
+               number of times</li>
+               <li>pass through the iteration the specified number of times</li>
+               <li>pass through the iteration once more than the specified
+               number of times</li>
+               </ul>
+               <p class="sssection">Compound Conditions</p>
+               <ul>
+               <li>break into simple conditions</li>
+               </ul>
+               <br />
+
+               <p id="syn" class="section">Syntactical Errors</p>
+               <p>
+               <ul>
+               <li>manual tracing</li>
+               <li>using different compilers</li>
+               <li>common errors</li>
+               <ul>
+               <li>missing semi-colon</li>
+               <li>undeclared variable name</li>
+               <li>unmatched parentheses</li>
+               <li>left-side of assignment is not an l-value</li>
+               <li>return statement missing</li>
+               </ul>
+               </ul>
+               </p>
+               <br />
+
+               <p id="sem" class="section">Semantic Errors</p>
+               <p>
+               <ul>
+               <li>vocalization</li>
+               <li>manual tracing</li>
+               <li>intermediate output</li>
+               <li>interactive tracing</li>
+               <ul>
+               <li><a href="dbx_notes.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/dbx_notes.html" target="new">dbx</a></li>
+               <li>Visual Studio C++ 6.0</li>
+               <li>Visual Studio .net</li>
+               </ul>
+               <li>common errors</li>
+               <ul>
+               <li>= instead of ==</li>
+               <li>iteration has no body</li>
+               <li>uninitialized variable</li>
+               <li>infinite iteration</li>
+               <li>operator precedence</li>
+               <li>dangling else</li>
+               <li>off-by-one iteration</li>
+               <li>integer division</li>
+               <li>mismatched data types</li>
+               <li>&amp; instead of &amp;&amp;</li>
+               </ul>
+               </ul>
+               </p>
+               <br />
+
+               <p id="exe" class="section">Exercises</p>
+               <p>
+               <ul>
+               <li>Trace the values of the variables <span class="code">d, i, j, k, x</span>
+               in walkthrough <a href="compu_4.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/practice/compu_4.html">compu_4.c</a> using the
+               <a href="dbx_notes.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/dbx_notes.html">dbx</a> debugger.</li>
+               </ul>
+               </p>
+               <br />
+               <br />
+               <br />
+               </td>
+            </tr>
+         </table>
+      </td>
+   </tr>
+
+   <!-- Footer -->
+   <tr>
+      <td class="tbody">
+         <table cellpadding="1" width="90%" align="center">
+            <tr>
+               <td width="50%" class="text3">
+                  <script language="javascript">
+                  var lh = document.location.href;
+                  document.write(lh)
+                  </script>&nbsp;&nbsp;
+               </td>
+               <td width="50%" align="right" class="text3">
+                  <script language="javascript">
+                  var lm = document.lastModified.slice(0,-3);
+                  document.write("Last Modified: " +lm)
+                  </script>&nbsp;&nbsp;
+               </td>
+            </tr>
+         </table>
+      </td>
+   </tr>
+</table>
+
+</body>
+</html>

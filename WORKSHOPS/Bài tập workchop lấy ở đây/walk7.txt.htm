@@ -1,0 +1,40 @@
+<html>/* w7.c */
+            #include <stdio.h>
+
+            double foo(int a, char *p);
+
+            main()
+            {
+                double x;
+                int i;
+                char c = 'a';
+
+                for (i = 0; i < 4; i++)
+                    x = foo(i, &c);
+                printf("one:%c two:%.1lf three:%d\n", c, x, i);
+            }
+
+            double foo(int a, char *p)
+            {
+                double d;
+
+                printf("%c ", *p);
+                switch (*p) {
+                  case 'a':
+                    *p = 'c';
+                    d = a * 0.5;
+                    break;
+                  case 'b':
+                    *p = 'a';
+                    d = a * 1.5;
+                    break;
+                  case 'c':
+                    *p = 'b';
+                    d = a * 0.1;
+                    break;
+                  default:
+                    d = 1.7;
+                }
+                printf("%.1lf\n", d);
+                return d;
+            }

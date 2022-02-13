@@ -1,0 +1,15 @@
+
+        9.  Write a function
+
+                int trim(char str1[])
+
+            that removes  all  leading  and  trailing  spaces  from  the
+            null-terminated string in "str1" and returns the new  length
+            of the string.
+
+            Hint: Move through "str1" looking for the  first  non-blank.
+            Once you find it, move it  to  position  0,  move  the  next
+            character to position 1, and so on until the null  byte  has
+            been moved back. Then, keep moving the null byte back  until
+            the character before it is non-blank. The final position  of
+            the null byte is the new length.

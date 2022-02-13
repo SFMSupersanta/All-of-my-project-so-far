@@ -1,0 +1,739 @@
+
+<html lang="en-us" xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+	<title>Seneca | School of Computer Studies | Programming Fundamentals Using C</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+	<meta name="Copyright" content="(c) Copyright Seneca College 2004" />
+	<meta name="Description" content="Welcome to the Bachelors Degree of Software Development Program Web Site.  On this site you can find the introductory programming course.  Designed by Chris Szalwinski." />
+	<meta name="Abstract" content="This subject reviews the principles of procedural programming.  Students study the solution of problems using structured programming techniques with the C programming language.  The emphasis throughout is on the solution of small problems."/>
+	<meta name="Author" content="chris.szalwinski@senecac.on.ca"/>
+	<meta name="Keywords" content="sofware development, procedural programming, lecture notes"/>
+
+	<link rel="stylesheet" type="text/css" href="style.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/style.043.css">
+	<link rel="stylesheet" type="text/css" href="styleScreen.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleScreen.043.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="styleSPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleSPrint.043.css" media="print">
+	<link rel="stylesheet" type="text/css" href="styleNav.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleNav.043.css">
+</head>
+
+<body>
+
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC
+    '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+
+<table id="top" width="850" cellspacing="0" cellpadding="0">
+
+	<!-- Banner -->
+	<tr height="120">
+		<td colspan="2" class="banner">
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<td width="250" class="banner">
+					<center><span class="text0">&nbsp;&nbsp;Software&nbsp;&nbsp;<br />
+					&nbsp;&nbsp;Development&nbsp;&nbsp;</span></center>
+				</td>
+				<td class="tbanner">
+					<img src="Banner4.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Banner4.gif" height="120" width="500" alt="Software Development" />
+				</td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+
+	<!-- Navigation Bar -->
+	<tr height="20">
+		<td class="panel1" align="left" valign="bottom">
+			<ul id="tabnav">			
+			<li><a href="timeline.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/timeline.html">Timeline</a></li>
+			<li><a class="active" href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+			<li><script type="text/javascript" src="classroom_a.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_a.js"></script></li>
+			<li><script type="text/javascript" src="classroom_b.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_b.js"></script></li>
+			<li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+			<li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+			<li><a href="index-3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/instructors/index.html">Instructor</a></li>
+			<li><a href="files_p.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/files_p.html"><img align="center" src="Printer.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Printer.gif" height=15 width=10 alt="Printer Friendly Version of this Page" /></a></li>
+			</ul>
+		</td>
+		<!-- Web Site Title -->
+		<td class="panel2" width="150" align="center">
+			<span class="text1"><script type="text/javascript" src="subject.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/subject.js"></script></span>
+		</td>
+	</tr>
+
+	<!-- Body Cells -->
+	<tr height="600">
+
+		<!-- Content Area -->
+		<td class="tbody" bgcolor="ffffff" valign="top">
+			<table cellpadding="10" width="100%">
+				<tr>
+					<td bgcolor="ffffff" valign="top">
+					<br />
+					<center><span class=texth>Module H - Files</span>
+					<br />
+					<br />
+					<span class=texthead>
+					Sequential Text Files</span>
+					<br />
+					<br />
+					<span class=textagend>
+					Create C programs to implement solutions using
+					sequential text files.<br />
+					<br />
+					</span>
+					<p class=quote></p>
+					<span class=textagend>
+					<a href="#byt">Bytes</a> |
+					<a href="#for">Format</a> |
+					<a href="#acc">Access</a> |
+					<a href="#con">Connecting</a> |
+					<a href="#ope">Opening</a> |
+					<a href="#clo">Closing</a> |
+					<a href="#wri">Writing To</a>
+					<br />
+					<a href="#rea">Reading From</a> |
+					<a href="#rew">Rewinding</a> |
+					<a href="#eof">End of File</a> |
+					<a href="#com">File I/O vs Std I/O</a> |
+					<a href="#exa">In-Class Practice</a> |
+					<a href="#exe">Exercises</a>
+					</span>
+					</center>
+					<br />
+					<br />
+					<br />
+
+					<p>
+					A file is a named area of secondary storage.&nbsp;
+					Secondary storage is permanent.&nbsp;
+					Unlike the contents of primary memory, which is volatile,
+					the contents of a file is accessible after we have turned
+					the power off and back on at a later time.&nbsp;
+					</p>
+					<p>
+					A file is not necessarily stored contiguously on a
+					secondary storage device.&nbsp; The file may be fragmented.&nbsp;
+					The operating system controls the fragmentation,
+					if any.&nbsp;
+					</p>
+					<p align="center"><img src="files.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/files.gif" height="150" width="300" /></p>
+					<br />
+
+					<p id="byt" class="section">Bytes</p>
+					<p>
+					The fundamental unit of a file is a byte.&nbsp; We say that
+					a file is a stream of bytes.&nbsp; A file concludes with a
+					special mark called the end of file mark.&nbsp; This mark
+					is defined as <span class=code>EOF</span>, typically with
+					a value of <span class=code>-1</span>.&nbsp; Under
+					the C standard, the end of file mark may be any negative
+					integer value.
+					</p>
+					<br />
+
+					<p id="for" class="section">Format</p>
+					<p>
+					We store data in a file in either of two formats:
+					<ul>
+					<li>binary format, or</li>
+					<li>text format.</li>
+					</ul>
+					In binary format, the data on the file is identical to the
+					data stored in primary memory.&nbsp; Each byte on the file
+					is a direct image of the corresponding byte in memory.&nbsp;
+					In other words, there is no translation.&nbsp;
+					<p>
+					In text format, the data on the file is in a form that
+					we can display and modify using a text editor.&nbsp; The
+					data on the file is a translated form of the data stored
+					in primary memory.&nbsp; In text format, we introduce some
+					approximation.&nbsp; For instance, consider the floating-point number
+					12.345678901234 stored as a <span class=code>double</span> in
+					memory.&nbsp; Let us convert this value using the <span class=code>%.2lf</span>
+					specifier.&nbsp; The converted value is 12.35.&nbsp; This is the
+					value that we might store on the file.&nbsp; If subsequently we read 12.35
+					from the file under the <span class=code>%lf</span> conversion specifier, we
+					store the value in primary memory as 12.350000000000.&nbsp; The
+					value stored in primary memory is clearly different from the original
+					12.345678901234!&nbsp;
+					In other words, although with text format we do gain the ability to edit
+					text we also lose accuracy with floating point numbers.&nbsp;
+					</p>
+					<p>
+					Aside from readability, another advantage of text format
+					is portability.&nbsp;
+					We can move the data from one platform to another
+					as long as the characters in the file belong to a
+					standard character set shared by the platforms.&nbsp; The
+					standard character set (IEC/ISO 646-1083 Invariant Code Set)
+					consists of
+					<ul>
+					<li>52 upper and lower case alphabetic characters</li>
+					<li>10 digits</li>
+					<li>space</li>
+					<li>horizontal tab, vertical tab and form feed</li>
+					<li>29 graphic characters: ! # % ^ &amp; * ( _ ) - + = ~ [ ] ' | \ ; : " { } , . &lt; &gt; / ?</li>
+					</ul>
+					<br />
+
+					<p id="acc" class="section">Access</p>
+					<p>
+					Typically, a file consists of records that we can access in either of two ways
+					<ul>
+					<li>randomly (like CD's) or</li>
+					<li>sequentially (like Cassette Tapes).</li>
+					</ul>
+					To access records randomly, we fix their size.&nbsp;
+					With the record sizes fixed, we can determine the location of the
+					record that we are seeking, jump to that location and access that record directly.&nbsp;
+					In other words, we can skip the intervening records without reading them.&nbsp;
+					<p>
+					Under sequential access, we access the records in the order in which they were
+					created.&nbsp; In this case, the records can vary in size.&nbsp; We do not need
+					to know their sizes beforehand.&nbsp;
+					</p>
+					<p>
+					In this subject, we focus on sequential text files.
+					</p>
+					<br />
+
+					<p id="con" class="section">Connecting</p>
+					<p>
+					We connect a file to our program using
+					a <span class=high>FILE</span> data structure.&nbsp; This
+					data structure holds the connection information for the
+					file.
+					</p>
+					<p align="center"><img src="fopen.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/fopen.gif" height="150" width="300" /></p>
+					<p>
+					We allocate space for the address of this data structure in a
+					declaration of the form
+					<pre class=defin>
+ FILE *identifier;</pre>
+					<span class=high>identifer</span> is the name of a
+					pointer that will hold the address of the data
+					structure.&nbsp;
+					The type <span class=code>FILE</span> is defined in
+					<span class=code>&lt;stdio.h&gt;</span>.&nbsp;
+					<p>
+					For example, to allocate memory for the address
+					of a file data structure, we write
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ #include &lt;stdio.h&gt;
+
+ FILE *fp = NULL;</pre><br /></td></tr></table>
+					In this example, we initialize the pointer <span class=code>fp</span>
+					to <span class=code>NULL</span> as a precaution against inadvertent
+					premature dereferencing.&nbsp; If, for some
+					reason, our program tries to access data at <span class=code>fp</span>
+					before our program has assigned an address to <span class=code>fp</span>,
+					our program will fail because dereferencing a <span class=code>NULL</span>
+					address is prohibited.&nbsp; <span class=code>NULL</span>
+					is defined in <span class=code>&lt;stdio.h&gt;</span>.
+					<br />
+
+					<p id="ope" class="section">Opening</p>
+					<p>
+					The library function <span class=code>fopen</span>
+					connects a specific file to a program.&nbsp; <span class=code>fopen</span>
+					returns the address of the file connection data
+					structure for the named file.&nbsp;
+					The prototype for <span class=code>fopen</span> is
+					<pre class=defin>
+ FILE *fopen(char file_name[], char mode[]);</pre>
+					The first parameter is a null-byte terminated string containing
+					the name of the file.&nbsp; The second parameter
+					is a null-byte terminated string containing the connection mode.&nbsp;
+					<p>
+					The most common connection modes are
+					<ul>
+					<li> <span class=code>"r"</span> - read from the file,</li>
+					<li> <span class=code>"w"</span> - write to the file: if the file exists,
+					truncate its contents and then write; if the file
+					does not exist, create a new file and then write to that file,</li>
+					<li> <span class=code>"a"</span> - write to the end of the file: if the file
+					exists, append to the end of the file; if the file
+					does not exist, create it and then write.</li>
+					</ul>
+					The mode parameter is a null-byte terminated string (NOT A CHARACTER).&nbsp;
+					<p>
+					The other connection modes for text files are
+					<ul>
+					<li> <span class=code>"r+"</span> - opens the file for reading and possibly writing,</li>
+					<li> <span class=code>"w+"</span> - opens the file for writing and possibly reading; if the file exists,
+					truncates its contents and then writes to the file; if the file
+					does not exist, creates a new file and then writes to that file,</li>
+					<li> <span class=code>"a+"</span> - opens the file for writing to the end of the file
+					and possibly reading; if the file
+					exists, appends to the end of the file; if the file
+					does not exist, creates it and then writes to the file.</li>
+					</ul>
+					<span class=code>fopen</span> returns <span class=code>NULL</span>
+					if the attempt to connect to the file fails.&nbsp;
+					<span class=code>fopen</span> can fail for lack of permission, premature
+					removal of the secondary storage medium, device full, etc.&nbsp;
+					<br />
+
+					<p id="clo" class="section">Closing</p>
+					<p>
+					The library function <span class=code>fclose</span>
+					disconnects a file from a program.&nbsp; <span class=code>fclose</span>
+					takes as its only parameter the address of the file
+					data structure.&nbsp;
+					The prototype for <span class=code>fclose</span> is
+					<pre class=defin>
+ int fclose(FILE *);</pre>
+					If the program opened the file for writing, <span class=code>fclose</span>
+					writes any data remaining in the file stream's buffer
+					to the file and concludes by appending an end of
+					file mark immediately after the last character.&nbsp; If the
+					program opened the file for
+					reading, <span class=code>fclose</span> ignores any data
+					left in the file stream's buffer and closes the connection.&nbsp;
+					<p>
+					For example, to open a file named <span class=code>alpha.txt</span>
+					for writing and then to close the file, we write
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ /* Opening and closing a file
+ *  openCloseFile.c
+ *  Mar 21 2005
+ *  BTP100
+ */
+
+ #include &lt;stdio.h&gt;
+
+ int main( ) {
+     FILE *fp = NULL;
+
+     <span class=high>fp = fopen(&quot;alpha.txt&quot;,&quot;w&quot;);&nbsp;
+     if (fp != NULL) {
+         /* we will add statements here later */&nbsp;
+         fclose(fp);
+     } else
+         printf(&quot;Failed to open file\n&quot;);
+     </span>
+     return 0;
+ }</pre><br /></td></tr></table>
+					<span class=code>fclose</span> returns 0 if successful, <span class=code>EOF</span>
+					if unsuccessful.&nbsp; <span class=code>fclose</span> can
+					fail if the secondary storage medium is
+					full, an I/O error occurs or the medium has been prematurely removed.&nbsp;
+					<br />
+
+					<p id="wri" class="section">Writing To a File</p>
+					<p>
+					The library function <span class=code>fprintf</span> sends data from
+					primary memory to a connected file under format control.&nbsp;
+					The prototype for <span class=code>fprintf</span> is
+					<pre class=defin>
+ int fprintf(FILE *, char [], ...);</pre>
+					The first parameter receives the
+					address of the file connection data structure.&nbsp; The second
+					parameter is the format string containing the text to be written
+					directly to the file and the conversion specifiers, if any, to be
+					applied to the data values received in the parameters following
+					the format string.&nbsp; Note the similarity between the <span class=code>fprintf</span>
+					and the <span class=code>printf</span> library functions.
+					<p>
+					For example:
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ /* Writing to a File
+ *  writeToFile.c
+ *  Mar 21 2005
+ *  BTP100
+ */
+
+ #include &lt;stdio.h&gt;
+
+ int main( ) {
+     FILE *fp = NULL;
+     char phrase[] = &quot;My name is Arnold&quot;;&nbsp;
+
+     fp = fopen(&quot;alpha.txt&quot;,&quot;w&quot;);
+     if (fp != NULL) {
+         <span class=high>fprintf</span>(<span class=high>fp,</span> &quot;%s\n&quot;, phrase);
+         fclose(fp);
+     } else
+         printf(&quot;Failed to open file\n&quot;);
+
+     return 0;
+ }</pre><br /></td></tr></table>
+					The library function <span class=code>fputc</span> writes a single
+					character to a file.&nbsp; The prototype for <span class=code>fputc</span>
+					is:
+					<pre class=defin>
+ int fputc(int ch, FILE *fp);</pre>
+					<span class=code>ch</span> is the character to be written and <span class=code>fp</span>
+					is the address of the connection data structure for the destination file.&nbsp;
+					<span class=code>fputc</span> returns the character written, or
+					<span class=code>EOF</span> in the event of an error.
+					<p>
+					The library function <span class=code>fputs</span> writes a null-byte terminated
+					character to a file.&nbsp; The prototype for <span class=code>fputs</span>
+					is:
+					<pre class=defin>
+ int fputs(char str[], FILE *fp);</pre>
+					<span class=code>str</span> is the string to be written and
+					<span class=code>fp</span> is the address of the connection data structure
+					for the destination file.&nbsp;
+					<span class=code>fputs</span> returns a non-negative value if successful,
+					or <span class=code>EOF</span> in the event of an error.
+					<br />
+
+					<p id="rea" class="section">Reading From</p>
+					<p>
+					The library function <span class=code>fscanf</span> reads a sequence of
+					bytes from a connected file into primary memory under format control.&nbsp;
+					The prototype for <span class=code>fscanf</span> is
+					<pre class=defin>
+ int fscanf(FILE *, char [], ...);</pre>
+					The first parameter receives the
+					address of the file connection data structure.&nbsp; The second
+					parameter is the format string containing the
+					conversion specifiers to be applied to the subsequent
+					parameters while converting the byte subsets into specific
+					data types.
+					<p>
+					For example:
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ /* Reading from a File
+ *  readFromFile.c
+ *  Nov 16 2004
+ *  BTP100
+ */
+
+ #include &lt;stdio.h&gt;
+
+ int main( ) {
+     FILE *fp = NULL;
+     char phrase[61];
+
+     fp = fopen(&quot;alpha.txt&quot;,&quot;r&quot;);
+     if (fp != NULL) {
+         <span class=high>fscanf</span>(<span class=high>fp,</span> &quot;%60[^\n]\n&quot;, phrase);
+         printf(&quot;You read : %s\n&quot;, phrase);&nbsp;
+         fclose(fp);
+     } else
+         printf(&quot;Failed to open file\n&quot;);
+
+     return 0;
+ }</pre><br /></td></tr></table>
+					The library function <span class=code>fgetc</span> extracts a
+					single character from a file.&nbsp; The prototype for
+					<span class=code>fgetc</span> is
+					<pre class=defin>
+ int fgetc(FILE *fp);</pre>
+					<span class=code>fp</span> is the address of the connection data structure
+					for the file.&nbsp; <span class=code>fgetc</span> returns the next character
+					from <span class=code>fp</span>, or
+					<span class=code>EOF</span> in the event of an error.
+					<p>
+					The library function <span class=code>fgets</span> extracts a
+					contiguous series of bytes from a file.&nbsp; The prototype for
+					<span class=code>fgets</span> is
+					<pre class=defin>
+ char* fgets(char str[], int max, FILE *fp);</pre>
+					The string <span class=code>str</span> will hold the set of bytes ending in
+					a newline character up to <span class=code>max-1</span>
+					bytes from <span class=code>fp</span>.&nbsp;
+					<span class=code>fgets</span> appends the null byte to the
+					string stored in primary memory.&nbsp;
+					<span class=code>fgets</span> returns the address of <span class=code>str</span>,
+					or <span class=code>NULL</span> in the event of an end of file or an I/O error.
+					<br />
+
+					<p id="rew" class="section">Rewinding</p>
+					<p>
+					The library function <span class=code>rewind</span> resets the pointer
+					to the next record to be read or written to the first record in a file.&nbsp;
+					In other words, to jump to the beginning of a file we do not need to
+					disconnect and re-connect the file.&nbsp; We can simply call this function.&nbsp;
+					The prototype is
+					<pre class=defin>
+ void rewind(FILE *fp);</pre>
+					The file connection data structure at <span class=code>fp</span>
+					contains the position in the file of the next
+					byte to be accessed.&nbsp; <span class=code>rewind</span> resets this position to
+					the initial byte in the file.&nbsp;
+					<p>
+					Consider a text file named <span class=code>spring.txt</span>
+					that contains the following lines
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ Light Jacket
+ Long-Sleeved Shirts with a Print Pattern&nbsp;
+ Large Skateboards</pre><br /></td></tr></table>
+ 					A program that reads and displays these three lines,
+ 					rewinds the file and reads and displays them again is
+					<table width="95%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ /* Reading from a file
+ *  readFromFile.c
+ *  Nov 16 2004
+ *  BTP100
+ */
+
+ #include &lt;stdio.h&gt;
+
+ int main( ) {
+     FILE *fp = NULL;
+     char phrase[61];
+
+     fp = fopen(&quot;spring.txt&quot;,&quot;r&quot;);
+     if (fp != NULL) {
+         while (fscanf(fp, &quot;%60[^\n]%*c&quot;,
+                phrase) != EOF)&nbsp;
+             printf(&quot;%s\n&quot;, phrase);
+         <span class=high>rewind(fp);</span>
+         while (fscanf(fp, &quot;%60[^\n]%*c&quot;,
+                phrase) != EOF)
+             printf(&quot;%s\n&quot;, phrase);
+
+         fclose(fp);
+     } else
+         printf(&quot;Failed to open file\n&quot;);
+
+     return 0;
+ }</pre><br /></td>
+ 					<td>
+					<br />
+					<pre class=result>
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ Light Jacket
+ Long-Sleeved Shirts with a Print Pattern&nbsp;
+ Large Skateboards
+ &nbsp;
+ &nbsp;
+ Light Jacket
+ Long-Sleeved Shirts with a Print Pattern
+ Large Skateboards
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;</pre><br /></td></tr></table>
+
+					<p id="eof" class="section">End of File</p>
+					<p>
+					The library function <span class=code>feof</span>
+					indicates whether or not a program has attempted to read beyond
+					the last character in a file.&nbsp;
+					The prototype for <span class=code>foef</span> is
+					<pre class=defin>
+ int feof(FILE *fp);</pre>
+					<span class=code>feof</span> returns false (0) if
+					our program has not attempted to read the
+					end of file mark.&nbsp;
+					If the file connection data structure is ready to read the end of
+					file mark but has not read it (that
+					is, has just read the last character in the file),
+					<span class=code>feof</span> returns
+					false.&nbsp; For <span class=code>feof</span> to return true,
+					the file connection data structure must have
+					attempted to read the end of file mark.
+					<br />
+
+					<p id="com" class="section">Comparison</p>
+					<p>
+					The library functions for file I/O share some common properties with
+					the standard I/O library functions, but also some differences.
+					</p>
+					<table width="100%">
+					<tr class=desc>
+					<td width="15%" align=left>&nbsp;Type</td><td width="15%" align=left>&nbsp;Standard I/O</td><td width="20%" align=left>&nbsp;File I/O</td><td width="50%">Comments</td>
+					</tr>
+					<tr>
+					<td valign="top" class=code>int</td><td valign="top" class=code>getchar()</td><td valign="top" class=code>fgetc(fp)</td><td>in both cases, check to see if the return value is <span class=code>EOF</span>,
+					before converting it to a <span class=code>char</span> data type</td>
+					</tr>
+					<tr>
+					<td valign="top" class=code>int</td><td valign="top" class=code>putchar(ch)</td><td valign="top" class=code>fputc(ch, fp)</td><td>in both cases, check to see if the return value is <span class=code>EOF</span></td>
+					</tr>
+					<tr>
+					<td valign="top" class=code>char *</td><td valign="top" class=code>gets(str)</td><td valign="top" class=code>fgets(str, max, fp)</td><td>both functions add the <span class=code>'\0'</span> byte; <span class=code>gets</span> discards the <span class=code>'\n'</span> delimiter; <span class=code>fgets</span>
+					returns <span class=code>NULL</span> on encountering an end of file mark</td>
+					</tr>
+					<tr>
+					<td valign="top" class=code>int</td><td valign="top" class=code>puts(str)</td><td valign="top" class=code>fputs(str, fp)</td><td><span class=code>puts</span> adds <span class=code>'\n'</span> to the file; <span class=code>fputs</span> does not add <span class=code>'\n'</span> to the file; </td>
+					</tr>
+					</table>
+					<br />
+
+					<p id="exa" class="section">In-Class Practice</p>
+					<p>
+					Try the practice problem in <a href="h18.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/handouts/h18.html">Handout 17</a>.&nbsp;
+					</p>
+					<br />
+
+					<p id="exe" class="section">Exercises</p>
+					<p>
+					<ul>
+					<li>Read pages 89-93 from Evan Weaver's subject notes,</li>
+					<li>Try walkthrough <a href="string_3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/practice/string_3.html">string_3.c</a> and</li>
+					<li>Try word problem <a href="files-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/practice/files-1.html">validName</a>.</li>
+					</ul>
+					<br />
+					<br />
+					<br />
+					</td>
+				</tr>
+			</table>
+		</td>
+
+		<!-- Detail Menu -->
+		<td class="panel1" width="150" valign="top" rowspan="2">
+			<ul id="mennav">
+			<li><a href="welco.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/welco.html">Welcome</a></li>
+			<li><a class="active" href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+			<li><a href="probl.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/probl.html">&nbsp;Programming</a></li>
+			<li><a href="compu.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/compu.html">&nbsp;Memory</a></li>
+			<li><a href="compi.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/compi.html">&nbsp;Compilers</a></li>
+			<li><a href="varia.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/varia.html">&nbsp;Variables</a></li>
+			<li><a href="input.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/input.html">&nbsp;Basic Oper</a></li>
+			<li><a href="expre.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/expre.html">&nbsp;Expressions</a></li>
+			<li><a href="const.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/const.html">&nbsp;Constructs</a></li>
+			<li><a href="style.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/style.html">&nbsp;Style</a></li>
+			<li><a href="walks.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/walks.html">&nbsp;Walkthrus</a></li>
+			<li><a href="modul.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/modul.html">&nbsp;Modularity</a></li>
+			<li><a href="scope.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/scope.html">&nbsp;Scope</a></li>
+			<li><a href="point.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/point.html">&nbsp;Pointers</a></li>
+			<li><a href="formi.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/formi.html">&nbsp;Input</a></li>
+			<li><a href="formo.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/formo.html">&nbsp;Form Output</a></li>
+			<li><a href="libra.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/libra.html">&nbsp;Libraries</a></li>
+			<li><a href="array.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/array.html">&nbsp;Arrays</a></li>
+			<li><a href="searc.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/searc.html">&nbsp;Searches</a></li>
+			<li><a href="sorts.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/sorts.html">&nbsp;Sorts</a></li>
+			<li><a href="strin.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/strin.html">&nbsp;Strings</a></li>
+			<li><a href="valid.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/valid.html">&nbsp;String Inp</a></li>
+			<li><a href="sfunc.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/sfunc.html">&nbsp;String Fns</a></li>
+			<li><a class="active" href="files.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/files.html">&nbsp;Files</a></li>
+			<li><a href="table.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/table.html">&nbsp;Records</a></li>
+			<li><a href="debug.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/debug.html">&nbsp;Debugging</a></li>
+			<li><a href="devel.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/devel.html">&nbsp;Development</a></li>
+			<li><a href="stand.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/stand.html">&nbsp;Standards</a></li>
+			<li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+			<li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+			<li><a href="index-4.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/handouts/index.html">Handouts</a></li>
+			<li><a href="index-5.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/practice/index.html">Practice</a></li>
+			<li><a href="index-6.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/index.html">Resources</a></li>
+			<li><a href="glossary.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/glossary.html">Glossary</a></li>
+			</ul>
+		</td>
+	</tr>
+
+	<!-- Content Area Footer -->
+	<tr height="20">
+		<td class="panel3" align="center">
+			<table class="panel2" width="95%">
+				<tr>
+					<td align="left">
+						&nbsp;&nbsp;<a href="files_p.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/files_p.html" class="text3">
+						<img src="Printer.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Printer.gif" height="15" width="10" alt="Printer Friendly Version of this Page" />&nbsp;print this page</a>&nbsp;&nbsp;
+					</td>
+					<td align="right">
+						&nbsp;&nbsp;<a href="#top" class="text3">Top&nbsp;
+						<img src="ArrowToT.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToT.gif" height="15" width="15" alt="Go Back to the Top of this Page" /></a>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+
+	<!-- Footer -->
+	<tr>
+		<!-- Left Panel -->
+		<td class="panel1" width="700" align="center">
+			<!-- Lateral Motion Control -->
+			<table width="90%" align="center">
+				<tr>
+					<td width="50%" align="left">
+						<a href="sfunc.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/sfunc.html" class="text3">
+						<img src="ArrowToL.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToL.gif" height="15" width="15" class="panel1" alt="Previous Reading" />&nbsp;&nbsp;Previous: String Functions and Arrays of Strings</a>
+					</td>
+					<td width="50%" align="right">
+						<a href="table.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/table.html" class="text3">Next: Records and Tables&nbsp;&nbsp;
+						<img src="ArrowToR.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToR.gif" height="15" width="15" class="panel1" alt="Next Reading" /></a>
+					</td>
+				</tr>
+			</table>
+			<br />
+			<!-- Alternate Navigation Links -->
+			<ul id="altnav" align="center">			
+			<li><a href="timeline.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/timeline.html">Timeline&nbsp;</a></li>
+			</ul>
+			<ul id="altnav" align="center">
+			<li><a class="active" href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+			<li><script type="text/javascript" src="classroom_a.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_a.js"></script></li>
+			<li><script type="text/javascript" src="classroom_b.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_b.js"></script></li>
+			<li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+			<li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+			<li><a href="index-3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/instructors/index.html">Instructor</a></li>
+			</ul>
+			<br />
+			<!-- Bottom Line -->
+			<table cellpadding=1 width="90%">
+				<tr>
+					<td width="33%" class="text3">
+						&nbsp;&nbsp;Designed by Chris Szalwinski&nbsp;&nbsp;
+					</td>
+					<td width="34%" align="center">
+						<a href="copyright.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/copyright.html" class="text3">Copying From This Site</a>
+					</td>
+					<td width="33%" align="right" class="text3">
+						<script language="javascript">
+						var lm = document.lastModified.slice(0,-3);
+						document.write("Last Modified: " +lm)
+						</script>&nbsp;&nbsp;
+					</td>
+				</tr>
+			</table>
+		</td>
+
+		<!-- Logo - Right Bottom Corner -->
+		<td class=panel2 width="150" align="center">
+			<img src="Logo.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Logo.gif" height="73" width="85" />
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

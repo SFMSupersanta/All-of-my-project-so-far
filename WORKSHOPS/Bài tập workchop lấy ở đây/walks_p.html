@@ -1,0 +1,309 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC
+    '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html lang="en-us" xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+	<title>Seneca | School of Computer Studies | Programming Fundamentals Using C</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+	<meta name="Copyright" content="(c) Copyright Seneca College 2004" />
+	<meta name="Description" content="Welcome to the Bachelors Degree of Software Development Program Web Site.  On this site you can find the introductory programming course.  Designed by Chris Szalwinski." />
+	<meta name="Abstract" content="This subject reviews the principles of procedural programming.  Students study the solution of problems using structured programming techniques with the C programming language.  The emphasis throughout is on the solution of small problems."/>
+	<meta name="Author" content="chris.szalwinski@senecac.on.ca"/>
+	<meta name="Keywords" content="sofware development, procedural programming, lecture notes"/>
+
+	<link rel="stylesheet" type="text/css" href="style.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/style.043.css">
+	<link rel="stylesheet" type="text/css" href="styleSPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleSPrint.043.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="stylePPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/stylePPrint.043.css" media="print">
+</head>
+
+<body>
+
+<table cellspacing="0" cellpadding="0">
+
+	<!-- Body Cell -->
+	<tr height="600">
+		<!-- Content Area -->
+		<td class="tbody" bgcolor="ffffff">
+			<table cellpadding="10" width="100%">
+				<tr>
+					<td bgcolor="ffffff" valign="top">
+					<br />
+					<center><span class=texth>Module C - Logic</span>
+					<br />
+					<br />
+					<span class=texthead>
+					Walkthroughs</span>
+					<br />
+					<br />
+					<span class=textagend>
+					Trace the execution of program logic to determine what a
+					program does, or to validate the correctness of a program<br /><br />
+					</span>
+					<p class=quote>"To program well, you must be able to focus on what you are doing and shut out everything else, just as a dog becomes very single-minded about the food dish at supper time." (Peter van der Linden)</p>
+					<span class=textagend>
+					<a href="#mem">Memory Map</a> |
+					<a href="#wal">Walkthrough Table</a> |
+					<a href="#exa">Example</a> |
+					<a href="#exe">Exercises</a>
+					</span>
+					</center>
+					<br />
+					<br />
+					<br />
+
+					<p>
+					A walkthrough is
+					<ul>
+					<li>a record of the changes
+					that occur in the values of program variables
+					as a program executes and </li>
+					<li>a listing of the output, if any,
+					produced by the program.&nbsp;</li>
+					</ul>
+					</p>
+					<br />
+
+					<p id="mem" class="section">Memory Map</p>
+					<p>
+					The compiler allocates space for the local variables of a program
+					on the stack segment.&nbsp;
+					Consider the following program
+					and note the addresses within the different areas for the
+					different compilers:
+					<table width="95%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ /* Memory Map
+ *  - noting where local variables of a
+ *  - program are stored in primary memory
+ *  memoryMap.c
+ *  Sep 24 2004
+ *  BTP100
+ */
+
+ #define ADULT_FARE 2.25
+
+ main() {
+    int passengers;
+    double total;
+
+    printf("Enter the number of passengers : ");
+    scanf("%d", &amp;passengers);
+
+    total = passengers * ADULT_FARE;
+    printf("passengers is at address %p\n", &amp;passengers);&nbsp;
+    printf("total      is at address %p\n", &amp;total);
+    printf("total fare is %.2lf\n", total);
+ }</pre><br /></td>
+ 					<td>
+					<br />
+					<pre class=result>
+
+
+
+
+
+
+
+
+ phobos Compiler
+ &nbsp;
+ Enter the number of passengers : 3
+ passengers is at address 2ff22b60
+ total      is at address 2ff22b68
+ total fare is 6.75
+ &nbsp;
+ .net Compiler
+ &nbsp;
+ Enter the number of passengers : 3
+ passengers is at address 0012FEE0
+ total      is at address 0012FED4
+ total fare is 6.75
+ </pre><br /></td></tr></table>
+					The specifier <span class=code>%p</span> converts
+					the value of an address to an implementation dependent format,
+					typically, hexadecimal.&nbsp; Each compiler allocates
+					memory differently.
+					</p>
+					<p>
+					phobos Compiler<br />&nbsp;
+					<table align=center width="80%" cellpadding=1 cellspacing=1 border=1>
+					<tr class=desc>
+					<td align=center>Code</td>
+					<td align=center>Data</td>
+					<td colspan=2 align=center>Stack</td></tr>
+					<tr class=desc>
+					<td width="25%" class=code align=center>&nbsp;</td>
+					<td width="25%" class=code align=center>&nbsp;</td>
+					<td width="25%" class=code align=center>passengers</td>
+					<td width="25%" class=code align=center>total</td>
+					</tr>
+					<tr class=desc>
+					<td class=code align=center>&nbsp;</td>
+					<td class=code align=center>&nbsp;</td>
+					<td class=code align=center>2ff22b60</td>
+					<td class=code align=center>2ff22b68</td>
+					</tr>
+					</table>
+					</p>
+					<p>
+					.net Compiler<br />&nbsp;
+					<table align=center width="80%" cellpadding=1 cellspacing=1 border=1>
+					<tr class=desc>
+					<td colspan=2 align=center>Stack</td>
+					<td align=center>Code</td>
+					<td align=center>Data</td></tr>
+					<tr class=desc>
+					<td width="25%" class=code align=center>total</td>
+					<td width="25%" class=code align=center>passengers</td>
+					<td width="25%" class=code align=center>&nbsp;</td>
+					<td width="25%" class=code align=center>&nbsp;</td>
+					</tr>
+					<tr class=desc>
+					<td class=code align=center>0012FED4</td>
+					<td class=code align=center>0012FEE0</td>
+					<td class=code align=center>&nbsp;</td>
+					<td class=code align=center>&nbsp;</td>
+					</tr>
+					</table>
+					</p>
+					<br />
+
+					<p id="wal" class="section">Walkthrough Tables</p>
+					<p>
+					To prepare a walkthrough of a program, construct an abstract memory map
+					with sufficient room to tabulate the value of each program variable:
+					</p>
+					<p>
+					<table align=center width="80%" cellpadding=1 cellspacing=1 border=1>
+					<tr class=desc><td colspan=4 align=center><center>-- write program name here --</center></td></tr>
+					<tr class=desc><td align=center width="30%">data type</td><td align=center width="30%">data type</td><td>...</td><td align=center width="30%">data type</td></tr>
+					<tr class=desc><td align=center>variable z</td><td align=center>variable y</td><td>...</td><td align=center>variable a</td></tr>
+					</table>
+					<hr width="80%" />
+					<table align=center width="80%" cellpadding=1 cellspacing=1 border=1>
+					<tr class=value><td align=center width="30%">initial value</td><td align=center width="30%">initial value</td><td>...</td><td align=center width="30%">initial value</td></tr>
+					<tr class=value><td align=center>next value</td><td align=center>next value</td><td>...</td><td align=center>next value</td></tr>
+					<tr class=value><td align=center>next value</td><td align=center>next value</td><td>...</td><td align=center>next value</td></tr>
+					<tr class=value><td align=center>next value</td><td align=center>next value</td><td>...</td><td align=center>next value</td></tr>
+					<tr class=value><td align=center>next value</td><td align=center>next value</td><td>...</td><td align=center>next value</td></tr>
+					</table>
+					<hr width="80%" />
+					<table align=center width="80%">
+					<tr><td>
+					Output:
+					write the output here<br />line by line</td></tr>
+					</table>
+					</p>
+					<p id="exa" class="section">Example</p>
+					<p>
+					Consider the first problem from the subject notes:
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ main()
+ {
+     int a;
+     double b, c;
+
+     a = 6;
+     b = 0.7;
+     while (a &lt; 10 &amp;&amp; b &lt; 3.0) {
+         if (a &lt; 8) {
+             a = a + 1;
+             b = b * 2;
+             c = a - b;
+         }
+         else {
+             a = a - 2;
+             b = b + 0.8;
+         }
+         c = a - b;
+         printf("%.2lf-%d-%.2lf\n", c, a, b);&nbsp;
+     }
+ }</pre><br /></td></tr></table>
+					Prepare the table:
+					<ul>
+					<li>show the name of the program</li>
+					<li>show the data type of each variable</li>
+					<li>show the name of each variable</li>
+					<li>optionally, show the address of each variable</li>
+					</ul>
+					</p>
+					<table align=center width="80%" cellpadding=1 cellspacing=1 border=1>
+					<tr class=desc><td colspan=3 align=center class=code>main( )</td></tr>
+					<tr class=desc><td align=center class=code>double</td><td align=center class=code>double</center></td><td align=center class=code>int</td></tr>
+					<tr class=desc><td width="40%" align=center class=code>c</td><td width="40%" align=center class=code>b</td><td width="20%" align=center class=code>a</td></tr>
+					</table>
+					<hr width="80%">
+					<table align=center width="80%" cellpadding=1 cellspacing=1 border=1>
+					<tr class=value><td align=center width="40%"></td><td align=center width="40%"></td><td align=center width="20%"></td></tr>
+					<tr class=value><td align=center>&nbsp; </td><td align=center>&nbsp; </td><td align=center>&nbsp; </td></tr>
+					<tr class=value><td align=center>&nbsp; </td><td align=center>&nbsp; </td><td align=center>&nbsp; </td></tr>
+					<tr class=value><td align=center>&nbsp; </td><td align=center>&nbsp; </td><td align=center>&nbsp; </td></tr>
+					<tr class=value><td align=center>&nbsp; </td><td align=center>&nbsp; </td><td align=center>&nbsp; </td></tr>
+					<tr class=value><td align=center>&nbsp; </td><td align=center>&nbsp; </td><td align=center>&nbsp; </td></tr>
+					</table>
+					<hr width="80%">
+					<p>
+					Output:
+					<hr width="80%">
+					<br />
+					<hr width="80%">
+					<br />
+					<hr width="80%">
+					<br />
+					<hr width="80%">
+					</p>
+					<br />
+
+					<p id="exe" class="section">Exercises</p>
+					<p>
+					<ul>
+					<li>Complete <a href="w3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/w3.html">workshop 3</a> on Check Digits, </li>
+					<li>Try walkthrough compu_4.c on the <a href="index-5.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/practice/index.html">Practice Pages</a>, and</li>
+					<li>Try the walkthroughs on pages 102-103 of Evan Weaver's subject notes.</li>
+					</ul>
+					</p>
+					<br />
+					<br />
+					<br />
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+
+	<!-- Footer -->
+	<tr>
+		<td class="tbody">
+			<table cellpadding="1" width="90%" align="center">
+				<tr>
+					<td width="50%" class="text3">
+						<script language="javascript">
+						var lh = document.location.href;
+						document.write(lh)
+						</script>&nbsp;&nbsp;
+					</td>
+					<td width="50%" align="right" class="text3">
+						<script language="javascript">
+						var lm = document.lastModified.slice(0,-3);
+						document.write("Last Modified: " +lm)
+						</script>&nbsp;&nbsp;
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,821 @@
+
+<html lang="en-us" xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+	<title>Seneca | School of Computer Studies | Programming Fundamentals Using C</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+	<meta name="Copyright" content="(c) Copyright Seneca College 2004" />
+	<meta name="Description" content="Welcome to the Bachelors Degree of Software Development Program Web Site.  On this site you can find the introductory programming course.  Designed by Chris Szalwinski." />
+	<meta name="Abstract" content="This subject reviews the principles of procedural programming.  Students study the solution of problems using structured programming techniques with the C programming language.  The emphasis throughout is on the solution of small problems."/>
+	<meta name="Author" content="chris.szalwinski@senecac.on.ca"/>
+	<meta name="Keywords" content="sofware development, procedural programming, lecture notes"/>
+
+	<link rel="stylesheet" type="text/css" href="style.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/style.043.css">
+	<link rel="stylesheet" type="text/css" href="styleScreen.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleScreen.043.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="styleSPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleSPrint.043.css" media="print">
+	<link rel="stylesheet" type="text/css" href="styleNav.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleNav.043.css">
+</head>
+
+<body>
+
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC
+    '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+
+<table id="top" width="850" cellspacing="0" cellpadding="0">
+
+	<!-- Banner -->
+	<tr height="120">
+		<td colspan="2" class="banner">
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<td width="250" class="banner">
+					<center><span class="text0">&nbsp;&nbsp;Software&nbsp;&nbsp;<br />
+					&nbsp;&nbsp;Development&nbsp;&nbsp;</span></center>
+				</td>
+				<td class="tbanner">
+					<img src="Banner4.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Banner4.gif" height="120" width="500" alt="Software Development" />
+				</td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+
+	<!-- Navigation Bar -->
+	<tr height="20">
+		<td class="panel1" align="left" valign="bottom">
+			<ul id="tabnav">			
+			<li><a href="timeline.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/timeline.html">Timeline</a></li>
+			<li><a class="active" href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+			<li><script type="text/javascript" src="classroom_a.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_a.js"></script></li>
+			<li><script type="text/javascript" src="classroom_b.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_b.js"></script></li>
+			<li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+			<li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+			<li><a href="index-3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/instructors/index.html">Instructor</a></li>
+			<li><a href="compu_p.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/compu_p.html"><img align="center" src="Printer.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Printer.gif" height=15 width=10 alt="Printer Friendly Version of this Page" /></a></li>
+			</ul>
+		</td>
+		<!-- Web Site Title -->
+		<td class="panel2" width="150" align="center">
+			<span class="text1"><script type="text/javascript" src="subject.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/subject.js"></script></span>
+		</td>
+	</tr>
+
+	<!-- Body Cells -->
+	<tr height="600">
+
+		<!-- Content Area -->
+		<td class="tbody" bgcolor="ffffff" valign="top">
+			<table cellpadding="10" width="100%">
+				<tr>
+					<td bgcolor="ffffff" valign=top>
+					<br />
+					<center><span class=texth>Module A - Introduction</span>
+					<br />
+					<br />
+					<span class=texthead>
+					Information</span><br />
+					<br />
+					<span class=textagend>
+					Summarize the low-level features of programming
+					</span>
+					<br />
+					<p class=quote>"Why would you want more than machine language?" (John von Neumann)</p>
+					<span class=textagend>
+					<a href="#mem">Fundamental Units</a> |
+					<a href="#con">Representations</a> |
+					<a href="#add">Addresses</a> |
+					<a href="#ass">Instructions</a> |
+					<a href="#exe">Exercises</a>
+					</span>
+					</center>
+					<br />
+					<br />
+					<br />
+
+					<p>
+					Program information consists of instructions and data.&nbsp;
+					How is this information stored?&nbsp;
+					What does a program instruction look like?&nbsp;
+					How do we make program instructions readable?&nbsp;
+					</p>
+					<br />
+
+					<p id="mem" class=section>Fundamental Units</p>
+					<p>
+					<p>
+					John von Neumann selected binary (base 2) digits as
+					the EDVAC's fundamental unit, arguing that elementary operations
+					are easier to perform in binary.&nbsp; The vast majority of modern
+					computers process and store information in binary
+					digits.&nbsp;
+					We call a <u>bi</u>nary digi<u>t</u> a bit.&nbsp;
+					A bit is either off or on.&nbsp; We the value 0 for off;
+					and the value 1 for on.
+					</p>
+					<p>
+					The fundamental addressable unit of primary memory
+					is the byte.&nbsp; Typically, one byte consists of
+					2 nibbles.&nbsp; One nibble consists of
+					4 consecutive bits
+					</p>
+					<p>
+					<table align="center" cellspacing=1 cellpadding=3 border=1>
+					<tr class="value">
+					<td colspan="8" align="center">Byte</td>
+					</tr>
+					<tr class="value">
+					<td align="center" colspan="4">Nibble</td>
+					<td align="center" colspan="4">Nibble</td>
+					</tr>
+					<tr class="value">
+					<td align="center">Bit</td>
+					<td align="center">Bit</td>
+					<td align="center">Bit</td>
+					<td align="center">Bit</td>
+					<td align="center">Bit</td>
+					<td align="center">Bit</td>
+					<td align="center">Bit</td>
+					<td align="center">Bit</td>
+					</tr>
+					</table>
+					<p>
+					One byte can store any one of 256 (2<sup>8</sup>)
+					possible values.&nbsp;
+					<table align="center">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ 00000000 &lt;- possibility 0
+ 00000001 &lt;- possibility 1
+ 00000010 &lt;- possibility 2
+ 00000011 &lt;- possibility 3
+ 00000100 &lt;- possibility 4
+ ...
+ 00111000 &lt;- possibility 104
+ ...
+ 11111111 &lt;- possibility 255</pre><br /></td></tr></table>
+					Note that we start counting from 0.&nbsp;
+					<p>
+					The natural unit of the CPU is a word.&nbsp; A word
+					is the size of the general registers - the unit of
+					memory within the CPU.&nbsp;
+					A word consists of an integral number of bytes.&nbsp;
+					Word size varies from manufacturer to manufacturer.&nbsp;
+					On 16-bit machines, a word is 2 bytes.&nbsp;
+					On 32-bit machines, a word is 4 bytes.&nbsp;
+					On Pentium 4 machines, the general registers contain 32
+					bits and the word size is 4 bytes.&nbsp;
+					On Itanium 2 machines, the general registers contain 64
+					bits and the word size is 8 bytes.
+					</p>
+					<br />
+
+					<p id="con" class="section">Representations</p>
+					<p>
+					Bits are cumbersome to use individually (unless
+					of course, you are like John von Neumann).&nbsp;
+					We use hexadecimal and octal representations of
+					sets of bits.&nbsp; These representations are
+					considerably shorter and more convenient.&nbsp;
+					</p>
+					<p class="ssection">Hexadecimal Representation</p>
+					<p>
+					We represent the contents of one byte
+					using two hexadecimal (base 16) digits.&nbsp; Each
+					hexadecimal digit represents
+					4 bits of information.&nbsp; For example,
+					we write the binary number 01011100<sub>2</sub>
+					in hexadecimal representation as 0x5C.&nbsp; The 0x prefix
+					identifies the number as a hexadecimal number
+					(rather than a decimal number).&nbsp;
+					We use the characters A through F to denote
+					the values 10 through 15 respectively.
+					</p>
+					<p>
+					To convert a binary number to its hexadecimal equivalent:
+					<ul>
+					<li>group the bits into nibbles,</li>
+					<li>assign powers of 2 to the different bits in each nibble,</li>
+					<li>multiply each bit value by the corresponding power of 2,</li>
+					<li>add the products together for each nibble separately, and</li>
+					<li>concatenate the nibble results</li>
+					</ul>
+					Consider the 8-bit number 01011100<sub>2</sub>:
+					<table align="center" cellspacing=1 cellpadding=1 border=1>
+					<tr class=desc>
+					<td width="20%"><b>Nibble # </b></td>
+					<td colspan=4>1</td><td colspan=4>0</td>
+					</tr>
+					<tr class=desc>
+					<td width="20%"><b>Bit # </b></td>
+					<td align=center width="10%">7</td><td align=center width="10%">6</td><td align=center width="10%">5</td><td align=center width="10%">4</td><td align=center width="10%">3</td><td align=center width="10%">2</td><td align=center width="10%">1</td><td align=center width="10%">0</td>
+					</tr>
+					<tr class=desc>
+					<td><b>Multiplier </b></td>
+					<td>8</td><td>4</td><td>2</td><td>1</td><td>8</td><td>4</td><td>2</td><td>1</td>
+					</tr>
+					<tr class=value>
+					<td width="20%"><b>Contents</b></td>
+					<td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td>
+					</tr>
+					<tr class=value>
+					<td><b>&nbsp;Nibble&nbsp;Values&nbsp;</b></td>
+					<td colspan=4>0*8 + 1*4 + 0*2 + 1*1 = 0x5</td>
+					<td colspan=4>1*8 + 1*4 + 0*2 + 1*0 = 0xC</td>
+					</tr>
+					<tr class=addrec>
+					<td><b>Byte Value </b></td>
+					<td colspan=8>0x5C</td>
+					</tr>
+					</table>
+					<p>
+					To convert a hexadecimal number into its binary equivalent, identify the lowest order bit
+					as the first target bit, then
+					<ul>
+					<li>divide by 2,</li>
+					<li>put the remainder into the target bit, </li>
+					<li>change the target to the next higher order bit, and</li>
+					<li>repeat the above</li>
+					</ul>
+					Consider the hexadecimal number 0x5C:
+					<ul>
+					<li>Identify the first target bit as bit 0</li>
+					<li>Divide the number (0x5C) into left and right hexadecimal digits
+					<li>Take the right digit (0xC), divide it by 2 and put the remainder (0) in bit 0
+					<li>Take the result (0x6), divide it by 2 and put the remainder (0) in bit 1
+					<li>Take the result (0x3), divide it by 2 and put the remainder (1) in bit 2
+					<li>Take the result (0x1), divide it by 2 and put the remainder (1) in bit 3
+					<li>Take the left hexadecimal digit (0x5), divide it by 2 and put the remainder (1) in bit 4
+					<li>Take the result (0x2), divide it by 2 and put the remainder (0) in bit 5
+					<li>Take the result (0x1), divide it by 2 and put the remainder (1) in bit 6
+					<li>Take the result (0x0), divide it by 2 and put the remainder (0) in bit 7
+					</ul>
+					<table align=center cellspacing=1 cellpadding=1 border=1>
+					<tr class=desc>
+					<td width="20%"><b>Bit # </b></td>
+					<td width="10%">7</td><td width="10%">6</td><td width="10%">5</td><td width="10%">4</td><td width="10%">3</td><td width="10%">2</td><td width="10%">1</td><td width="10%">0</td>
+					</tr>
+					<tr class=value>
+					<td><b>Byte Value</b></td>
+					<td colspan=8><center>0x5C</center></td>
+					</tr>
+					<tr class=value>
+					<td width="20%"><b>&nbsp;Nibble&nbsp;Values&nbsp;</b></td>
+					<td colspan=4>0x5</td><td colspan=4>0xC</td>
+					</tr>
+					<tr class=value>
+					<td><b>Divide by 2 </b></td>
+					<td>0</td><td>0</td><td>1</td><td>2</td><td>0</td><td>1</td><td>3</td><td>6</td>
+					</tr>
+					<tr class=addrec>
+					<td><b>Bit Values </b></td>
+					<td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td>
+					</tr>
+					</table>
+
+					<p class="ssection">Octal Representation</p>
+					<p>
+					An alternative to hexadecimal representation is octal
+					(base 8) representation.&nbsp; In octal
+					representation, each set of 3 consecutive bits
+					forms an octal digit.&nbsp; For example,
+					we represent the binary number 011010001<sub>2</sub>
+					by its octal equivalent 0541.&nbsp; The prefix 0
+					identifies the number as an octal number (rather than a decimal - base 10 - number).&nbsp;
+					We use octal representation
+					on small and older devices that don't support the alphabet or on
+					older computers in which primary memory is organized in
+					9-bit rather than 8-bit bytes.&nbsp;
+					</p>
+					<p>
+					To convert a binary number to its octal equivalent:
+					<ul>
+					<li>divide the binary number into groups of three starting from the rightmost digit</li>
+					<li>assign powers of 2 to the three different bits in each group</li>
+					<li>multiply each bit value by the corresponding power of 2</li>
+					<li>add the products together for each group</li>
+					<li>concatenate the group results</li>
+					</ul>
+					Consider the 9-bit binary number 011010001<sub>2</sub>:
+					<table align=center cellspacing=1 cellpadding=1 border=1>
+					<tr class=desc>
+					<td width="20%"><b>Group # </b></td>
+					<td colspan=3>0</td><td colspan=3>1</td><td colspan=3>2</td>
+					</tr>
+					<tr class=desc>
+					<td width="20%"><b>Bit # </b></td>
+					<td width="10%">8</td><td width="9%">7</td><td width="9%">6</td><td width="9%">5</td><td width="9%">4</td><td width="9%">3</td><td width="9%">2</td><td width="9%">1</td><td width="9%">0</td>
+					</tr>
+					<tr class=desc>
+					<td><b>Multiplier </b></td>
+					<td>4</td><td>2</td><td>1</td><td>4</td><td>2</td><td>1</td><td>4</td><td>2</td><td>1</td>
+					</tr>
+					<tr class=value>
+					<td width="20%"><b>Contents </b></td>
+					<td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td>
+					</tr>
+					<tr class=value>
+					<td><b>&nbsp;Group&nbsp;Values&nbsp;</b></td>
+					<td colspan=3>1*4&nbsp;+&nbsp;0*2&nbsp;+&nbsp;1*1&nbsp;=&nbsp;05</td>
+					<td colspan=3>1*4&nbsp;+&nbsp;0*2&nbsp;+&nbsp;0*1&nbsp;=&nbsp;04</td>
+					<td colspan=3>0*4&nbsp;+&nbsp;0*2&nbsp;+&nbsp;1*1&nbsp;=&nbsp;01</td>
+					</tr>
+					<tr class=addrec>
+					<td><b>Byte Value</b></td>
+					<td colspan=9>0541</td>
+					</tr>
+					</table>
+					<p>
+					To convert an octal number into its binary equivalent, keep
+					<ul>
+					<li>dividing by 2,</li>
+					<li>putting the remainder in the next rightmost bit and </li>
+					<li>shifting your target bit left by 1 bit.</li>
+					</ul>
+					Consider the octal number 0541:
+					<ul>
+					<li>Divide the number (0541) into octal digits</li>
+					<li>Take the right digit (01), divide it by 2 and put the remainder (1) in bit 0</li>
+					<li>Take the result (00), divide it by 2 and put the remainder (0) in bit 1</li>
+					<li>Take the result (00), divide it by 2 and put the remainder (0) in bit 2</li>
+					<li>Take the next digit (04), divide it by 2 and put the remainder (0) in bit 3</li>
+					<li>Take the result (02), divide it by 2 and put the remainder (0) in bit 4</li>
+					<li>Take the result (01), divide it by 2 and put the remainder (1) in bit 5</li>
+					<li>Take the left digit (05), divide it by 2 and put the remainder (1) in bit 6</li>
+					<li>Take the result (02), divide it by 2 and put the remainder (0) in bit 7</li>
+					<li>Take the result (01), divide it by 2 and put the remainder (1) in bit 8</li>
+					</ul>
+					<table align=center cellspacing=1 cellpadding=1 border=1>
+					<tr class=desc>
+					<td width="20%"><b>Bit # </b></td>
+					<td width="10%">8</td><td width="9%">7</td><td width="9%">6</td><td width="9%">5</td><td width="9%">4</td><td width="9%">3</td><td width="9%">2</td><td width="9%">1</td><td width="9%">0</td>
+					</tr>
+					<tr class=value>
+					<td><b>Octal Value </b></td>
+					<td colspan=9><center>0541</center></td>
+					</tr>
+					<tr class=value>
+					<td width="20%"><b>&nbsp;Digit&nbsp;Values&nbsp;</b></td>
+					<td colspan=3>05</td><td colspan=3>04</td><td colspan=3>01</td>
+					</tr>
+					<tr class=value>
+					<td><b>Divide by 2 </b></td>
+					<td>0</td><td>0</td><td>2</td><td>0</td><td>0</td><td>2</td><td>0</td><td>0</td><td>0</td>
+					</tr>
+					<tr class=addrec>
+					<td><b>Bit Values </b></td>
+					<td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td>
+					</tr>
+					</table>
+
+					<p id="add" class="section">Addressing Information</p>
+					<p>
+					To access data in primary memory, program instructions
+					refer to the addresses where that data is stored.&nbsp;
+					Each byte of primary memory has a unique address.&nbsp; Addressing
+					starts at zero, is sequential and ends at the size of primary memory less 1.&nbsp;
+					For example, primary memory of 256M bytes
+					<ul>
+					<li>consists of 2048M (= 256M * 8) bits,</li>
+					<li>has a low address of 0x0000000, and</li>
+					<li>has a high address of 0xFFFFFFFFF.</li>
+					</ul>
+					<table align=center width="500" cellspacing=3 cellpadding=3 border=3>
+					<tr class=desc>
+					<td><b>Size: </b></td>
+					<td colspan=8><center>1 Byte</center></td>
+					<td colspan=8><center>1 Byte</center></td>
+					<td colspan=8><center>1 Byte</center></td>
+					<td>...</td>
+					<td colspan=8><center>1 Byte</center></td>
+					</tr>
+					<tr class=desc>
+					<td><b>Hex: </b></td>
+					<td colspan=4>1&nbsp;Nibble</td><td colspan=4>1&nbsp;Nibble</td>
+					<td colspan=4>1&nbsp;Nibble</td><td colspan=4>1&nbsp;Nibble</td>
+					<td colspan=4>1&nbsp;Nibble</td><td colspan=4>1&nbsp;Nibble</td>
+					<td>...</td>
+					<td colspan=4>1&nbsp;Nibble</td><td colspan=4>1&nbsp;Nibble</td>
+					</tr>
+					<tr class=value>
+					<td><b>Contents: </b></td>
+					<td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td>
+					<td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td>
+					<td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td>
+					<td>...</td>
+					<td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td><td>&nbsp; </td>
+					</tr>
+					<tr class=addre>
+					<td><b>Binary: </b></td>
+					<td colspan=8>00000000<sub>2</sub></td>
+					<td colspan=8>00000001<sub>2</sub></td>
+					<td colspan=8>00000010<sub>2</sub></td>
+					<td>...</td>
+					<td colspan=8>1...111111111<sub>2</sub></td>
+					</tr>
+					<tr class=addre>
+					<td><b>Hex: </b></td>
+					<td colspan=8>0x0000000</td>
+					<td colspan=8>0x0000001</td>
+					<td colspan=8>0x0000002</td>
+					<td>...</td>
+					<td colspan=8>0xFFFFFFF</td>
+					</tr>
+					</table>
+					<p>
+					Note that each byte, and not each bit, has its own address.&nbsp;
+					We refer to large blocks of primary memory using size qualifiers:
+					<ul>
+					<li>Kilo or k (=1024): 1 Kilobyte = 1024 bytes
+					<li>Mega or M (=1024k): 1 Megabyte = 1024 * 1024 bytes
+					<li>Giga or G (=1024M): 1 Gigabyte = 1024 * 1024 * 1024 bytes
+					<li>Tera or T (=1024G): 1 Terabyte = 1024 * 1024 * 1024 * 1024 bytes
+					<li>Peta or P (=1024T): 1 Petabyte = 1024 * 1024 * 1024 * 1024 * 1024 bytes
+					<li>Exa or E (=1024P): 1 Exabyte = 1024 * 1024 * 1024 * 1024 * 1024 * 1024 bytes
+					</ul>
+					1024 bytes is 2<sup>10</sup> bytes.&nbsp;
+					<p>
+					When we start executing a program, the operating
+					system loads it into primary
+					memory (from one of the devices).&nbsp;
+					The operating system stores each segment
+					of program information in a dedicated area.&nbsp;
+					</p>
+					<table align=center width="500" cellspacing=3 cellpadding=3 border=3>
+					<tr class=desc>
+					<td>Segment: </td>
+					<td colspan=8><center>Code</center></td>
+					<td colspan=8><center>Data</center></td>
+					<td colspan=8><center>Stack</center></td>
+					</tr>
+					<tr class=addrec>
+					<td>Segment Symbol: </td></td>
+					<td colspan=8><center>CS</center></td>
+					<td colspan=8><center>DS</center></td>
+					<td colspan=8><center>SS</center></td>
+					</tr>
+					<tr class=addrec>
+					<td>Segment Address: </td></td>
+					<td colspan=8>0x0100</td>
+					<td colspan=8>0xD3A0</td>
+					<td colspan=8>0xF5B0</td>
+					</tr>
+					</table>
+					<p>
+					We express the address of a byte of the loaded program
+					in segment:offset notation
+					<br />
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ 0100:006A</pre><br /></td></tr></table>
+					The trailing zero of the segment address is assumed.&nbsp;
+					The absolute address is the completed segment
+					address plus the offset: 0x0100 * 0x10 + 0x006A = 0x0106A.
+					<p>
+					The BIU holds the segment addresses in the CS, DS, ES, ... registers.&nbsp; The EU holds
+					the offset of the next instruction to be
+					executed in the EIP register.&nbsp;
+					</p>
+					<p class="ssection">Addressible Memory</p>
+					<p>
+					The maximum size of addressable primary memory depends upon the size of the
+					address registers.&nbsp; The highest
+					address that is accessible is the address represented by
+					all bits on.&nbsp; This highest
+					address is limited by the total number of bits
+					that an address register can hold.&nbsp;
+					<ul>
+					<li>
+					On Pentium machines where the address registers
+					hold 32 bits the maximum size of addressable memory is
+					4 GB (Gigabytes) (addresses can range from 0 to 2<sup>32</sup>-1, that is 0 to
+					4,294,967,295).&nbsp;</li>
+					<li>
+					On Pentium machines where the address registers
+					hold 36 bits the maximum size of addressable memory is
+					64 GB (Gigabytes) (addresses can range from 0 to 2<sup>36</sup>-1, that is 0 to
+					68,719,476,735).&nbsp;</li>
+					<li>
+					On Itanium 2 machines where the address registers
+					hold 64 bits the maximum size of addressable memory is
+					16 EB (Exabytes) (addresses can range from 0 to 2<sup>64</sup>-1, that is 0 to
+					18,446,744,073,709,551,615).&nbsp;
+					</li>
+					</ul>
+					<br />
+
+					<p id="ass" class=section>Program Instructions</p>
+					<p>
+					Each program instruction consists of an
+					operation and operands, if any.&nbsp; The
+					CPU performs the operation on the values stored as
+					operands or on the values stored in the operand addresses.&nbsp; The
+					addresses are either register
+					names or primary memory addresses.
+					</p>
+					<p align="center"><img src="instructions.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/instructions.gif" width=300 height=50 /></p>
+					<p>
+ 					Let us write a machine language program that
+ 					displays the sentence "This is BTP100"
+ 					on a Windows XP machine.&nbsp; The machine language program
+ 					looks like
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ 10110100 00001001
+ 10111010 00001001 00000001
+ 11001101 00100001
+ 11001101 00100000
+ 01010100
+ 01101000
+ 01101001
+ 01110011
+ 00100000
+ 01101001
+ 01110011
+ 00100000
+ 01000010
+ 01010100
+ 01010000
+ 00110001
+ 00110000
+ 00110000
+ 00100100</pre><br /></td></tr></table>
+ 					The hexadecimal representation of this program is
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ B409
+ BA0901
+ CD21
+ CD20
+ 54
+ 68
+ 69
+ 73
+ 20
+ 69
+ 73
+ 20
+ 42
+ 54
+ 50
+ 31
+ 30
+ 30
+ 24</pre><br /></td></tr></table>
+ 					The first line moves the value 09 into the AH register.&nbsp;
+ 					The value 09 identifies the instruction that displays
+ 					the characters starting at the offset stored in the DX register.&nbsp;
+ 					The second line moves the offset value 0109 into the DX register.&nbsp;
+ 					The third line executes the instructions stored in
+ 					the AH register: displays the characters starting at offset
+ 					0109.&nbsp;
+ 					The fourth line stops execution.&nbsp; The fifth
+ 					through eighteenth lines hold the characters to be displayed.&nbsp;
+ 					The nineteenth line holds the terminator that identifies the
+ 					end of the set of characters to be displayed.&nbsp;
+ 					<p>
+ 					To make this machine language program more readable,
+ 					we rewrite it in assembly language.&nbsp;
+ 					Assembly language consists of symbols and values.&nbsp;
+ 					The assembly language version of our program looks like
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ MOV AH,09
+ MOV DX,0109
+ INT 21
+ INT 20
+ DB 'T'
+ DB 'h'
+ DB 'i'
+ DB 's'
+ DB ' '
+ DB 'i'
+ DB 's'
+ DB ' '
+ DB 'B'
+ DB 'T'
+ DB 'P'
+ DB '1'
+ DB '0'
+ DB '0'
+ DB '$'</pre><br /></td></tr></table>
+ 					We enter an assembly language program directly
+ 					at the Windows command line using the <span class="code">debug</span>
+ 					program&nbsp;
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ debug
+ <span class="high">-</span>a100
+ <span class="high">1456:0100</span> MOV AH,09   ;move code for displaying text into register AH&nbsp;
+ <span class="high">1456:0102</span> MOV DX,0109 ;move text address offset into register DX&nbsp;
+ <span class="high">1456:0105</span> INT 21      ;call the interrupt stored in register AH
+ <span class="high">1456:0107</span> INT 20      ;stop execution
+ <span class="high">1456:0109</span> DB 'T'      ;text
+ <span class="high">1456:010A</span> DB 'h'      ;...
+ <span class="high">1456:010B</span> DB 'i'      ;to
+ <span class="high">1456:010C</span> DB 's'      ;...
+ <span class="high">1456:010D</span> DB ' '      ;be
+ <span class="high">1456:010E</span> DB 'i'      ;...
+ <span class="high">1456:010F</span> DB 's'      ;displayed
+ <span class="high">1456:0110</span> DB ' '      ;...
+ <span class="high">1456:0111</span> DB 'B'
+ <span class="high">1456:0112</span> DB 'T'
+ <span class="high">1456:0113</span> DB 'P'
+ <span class="high">1456:0114</span> DB '1'
+ <span class="high">1456:0115</span> DB '0'
+ <span class="high">1456:0116</span> DB '0'      ;...
+ <span class="high">1456:0117</span> DB '$'      ;terminator character
+ <span class="high">1456:0118</span>
+ <span class="high">-</span></pre><br /></td></tr></table>
+ 					The first entry on each line is the primary memory address
+ 					in segment:offset form.&nbsp; In
+ 					this case (<span class="code">debug</span>
+ 					applications), the code, data and stack segment
+ 					addresses are the same (14560).&nbsp;
+ 					The semi-colon refers to the end of a statement and the
+ 					start of programmer comments.
+ 					<p>
+ 					To execute this program, we enter
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre class="result">
+ <span class="high">-</span>g
+ This is BTP100&nbsp;
+ Program terminated normally
+ <span class="high">-</span></pre><br /></td></tr></table>
+ 					To quit the <span class="code">debug</span> program,
+ 					we enter
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre class="result">
+ <span class="high">-</span>q</pre><br /></td></tr></table>
+ 					<p class="ssection">Assemblers</p>
+ 					<p>
+ 					We use an operating system program called an assembler
+ 					to convert the assembly language
+ 					program into its machine language equivalent:
+ 					</p>
+ 					<p align="center"><img src="assembling.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/assembling.gif" width=300 height=150 /></p>
+ 					We did this implicitly by typing "a100" ('a' for assembler) as the input
+ 					option to the <span class="code">debug</span> program.&nbsp; The value
+ 					"100" identifies the offset where the assembly language information
+ 					starts.
+					<br />
+
+					<p id="exe" class="section">Exercises</p>
+					<p>
+					<ul>
+					<li>Practice converting binary data to and from hexadecimal representation,</li>
+					<li>Read pages 126-127 from Evan Weaver's subject notes, and</li>
+					<li>Continue checking out this web site.</li>
+					</ul>
+					<br />
+					<br />
+					<br />
+					</td>
+				</tr>
+			</table>
+		</td>
+
+		<!-- Detail Menu -->
+		<td class="panel1" width="150" valign="top" rowspan="2">
+			<ul id="mennav">
+			<li><a href="welco.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/welco.html">Welcome</a></li>
+			<li><a class="active" href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+			<li><a href="probl.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/probl.html">&nbsp;Programming</a></li>
+			<li><a class="active" href="compu.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/compu.html">&nbsp;Information</a></li>
+			<li><a href="compi.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/compi.html">&nbsp;Compilers</a></li>
+			<li><a href="varia.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/varia.html">&nbsp;Variables</a></li>
+			<li><a href="input.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/input.html">&nbsp;Basic Oper</a></li>
+			<li><a href="expre.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/expre.html">&nbsp;Expressions</a></li>
+			<li><a href="const.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/const.html">&nbsp;Constructs</a></li>
+			<li><a href="style.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/style.html">&nbsp;Style</a></li>
+			<li><a href="walks.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/walks.html">&nbsp;Walkthrus</a></li>
+			<li><a href="modul.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/modul.html">&nbsp;Modularity</a></li>
+			<li><a href="scope.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/scope.html">&nbsp;Scope</a></li>
+			<li><a href="point.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/point.html">&nbsp;Pointers</a></li>
+			<li><a href="formi.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/formi.html">&nbsp;Input</a></li>
+			<li><a href="formo.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/formo.html">&nbsp;Form Output</a></li>
+			<li><a href="libra.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/libra.html">&nbsp;Libraries</a></li>
+			<li><a href="array.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/array.html">&nbsp;Arrays</a></li>
+			<li><a href="searc.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/searc.html">&nbsp;Searches</a></li>
+			<li><a href="sorts.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/sorts.html">&nbsp;Sorts</a></li>
+			<li><a href="strin.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/strin.html">&nbsp;Strings</a></li>
+			<li><a href="valid.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/valid.html">&nbsp;String Inp</a></li>
+			<li><a href="sfunc.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/sfunc.html">&nbsp;String Fns</a></li>
+			<li><a href="files.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/files.html">&nbsp;Files</a></li>
+			<li><a href="table.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/table.html">&nbsp;Records</a></li>
+			<li><a href="debug.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/debug.html">&nbsp;Debugging</a></li>
+			<li><a href="devel.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/devel.html">&nbsp;Development</a></li>
+			<li><a href="stand.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/stand.html">&nbsp;Standards</a></li>
+			<li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+			<li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+			<li><a href="index-4.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/handouts/index.html">Handouts</a></li>
+			<li><a href="index-5.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/practice/index.html">Practice</a></li>
+			<li><a href="index-6.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/index.html">Resources</a></li>
+			<li><a href="glossary.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/glossary.html">Glossary</a></li>
+			</ul>
+		</td>
+	</tr>
+
+	<!-- Content Area Footer -->
+	<tr height="20">
+		<td class="panel3" align="center">
+			<table class="panel2" width="95%">
+				<tr>
+					<td align="left">
+						&nbsp;&nbsp;<a href="compu_p.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/compu_p.html" class="text3">
+						<img src="Printer.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Printer.gif" height="15" width="10" alt="Printer Friendly Version of this Page" />&nbsp;print this page</a>&nbsp;&nbsp;
+					</td>
+					<td align="right">
+						&nbsp;&nbsp;<a href="#top" class="text3">Top&nbsp;
+						<img src="ArrowToT.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToT.gif" height="15" width="15" alt="Go Back to the Top of this Page" /></a>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+
+	<!-- Footer -->
+	<tr>
+		<!-- Left Panel -->
+		<td class="panel1" width="700" align="center">
+			<!-- Lateral Motion Control -->
+			<table width="90%" align="center">
+				<tr>
+					<td width="50%" align="left">
+						<a href="probl.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/probl.html" class="text3">
+						<img src="ArrowToL.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToL.gif" height="15" width="15" class="panel1" alt="Previous Reading" />&nbsp;&nbsp;Previous: Programming with Computers</a>
+					</td>
+					<td width="50%" align="right">
+						<a href="compi.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/compi.html" class="text3">Next: Compilers&nbsp;&nbsp;
+						<img src="ArrowToR.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToR.gif" height="15" width="15" class="panel1" alt="Next Reading" /></a>
+					</td>
+				</tr>
+			</table>
+			<br />
+			<!-- Alternate Navigation Links -->
+			<ul id="altnav" align="center">			
+			<li><a href="timeline.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/timeline.html">Timeline&nbsp;</a></li>
+			</ul>
+			<ul id="altnav" align="center">
+			<li><a class="active" href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+			<li><script type="text/javascript" src="classroom_a.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_a.js"></script></li>
+			<li><script type="text/javascript" src="classroom_b.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_b.js"></script></li>
+			<li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+			<li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+			<li><a href="index-3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/instructors/index.html">Instructor</a></li>
+			</ul>
+			<br />
+			<!-- Bottom Line -->
+			<table cellpadding=1 width="90%">
+				<tr>
+					<td width="33%" class="text3">
+						&nbsp;&nbsp;Designed by Chris Szalwinski&nbsp;&nbsp;
+					</td>
+					<td width="34%" align="center">
+						<a href="copyright.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/copyright.html" class="text3">Copying From This Site</a>
+					</td>
+					<td width="33%" align="right" class="text3">
+						<script language="javascript">
+						var lm = document.lastModified.slice(0,-3);
+						document.write("Last Modified: " +lm)
+						</script>&nbsp;&nbsp;
+					</td>
+				</tr>
+			</table>
+		</td>
+
+		<!-- Logo - Right Bottom Corner -->
+		<td class=panel2 width="150" align="center">
+			<img src="Logo.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Logo.gif" height="73" width="85" />
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

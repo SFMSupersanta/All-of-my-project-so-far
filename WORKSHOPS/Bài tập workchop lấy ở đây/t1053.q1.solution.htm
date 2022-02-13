@@ -1,0 +1,27 @@
+<html>/* Average Number of Immigrants
+ * Test 1 - Question 1
+ * immigrants.c
+ * BTP100
+ * Oct 20 2005
+ */
+ 
+#include <stdio.h>
+
+int main(void) {
+    int immigrants, total = 0, months = 0;
+    
+    do {
+        printf("Number of immigrants in a month (0 to quit) : ");
+        scanf("%d", &immigrants);
+        if (immigrants != 0) {
+            total = total + immigrants;
+            months++;
+        }
+    } while (immigrants != 0);
+    
+    if (months > 0)
+        printf("The average monthly immigration is (%d/%d) = %.1lf\n",
+            total, months, total / (double) months);
+    
+    return 0;
+}

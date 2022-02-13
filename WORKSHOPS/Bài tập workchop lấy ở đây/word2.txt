@@ -1,0 +1,21 @@
+
+
+        2.  Write a program that helps a cook  "resize"  a  recipe.  The
+            program first asks for a factor (for example, 0.5 to  cut  a
+            recipe in half or 3 to triple a recipe), and then repeatedly
+            asks for an  amount.  After  each  amount  is  entered,  the
+            program displays that amount multiplied by the  factor.  The
+            program stops when an amount of 0 is entered. The  following
+            shows a "sample" run of the program:
+                ***Recipe Resizer***
+                Enter the factor: 2
+                Enter an amount (or 0 to stop): 1.5
+                You should use 3.00 instead.
+                Enter an amount (or 0 to stop): 4
+                You should use 8.00 instead.
+                Enter an amount (or 0 to stop): 13
+                You should use 26.00 instead.
+                Enter an amount (or 0 to stop): 0
+            (Notes: (1) these value are just examples;  any  factor  and
+            any amount should work!  (2)  make  your  output  match  the
+            format of this sample as closely as possible.)

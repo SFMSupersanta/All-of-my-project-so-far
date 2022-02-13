@@ -1,0 +1,21 @@
+
+        13. Write a function
+
+                void firstword(char word[], char sentence[])
+
+            that copies the first word  of  the  null-terminated  string
+            "sentence" into the null-terminated string "word". If  there
+            are no words in "sentence"  (because  it  is  empty  or  all
+            blanks) then "word" should be set to be empty. Assume that a
+            word is simply a series of non-blank  characters,  separated
+            from other words by blanks. Thus, for example,
+                firstword(x, "This is a sentence");
+
+            would copy "This" into the array x, and
+                firstword(x, " and$%^# so is this");
+
+            would copy "and$%^#" into x.
+
+               (Hint: find the position of  the  first  non-blank,  then
+               copy things over until you hit a blank or the end of  the
+               string).

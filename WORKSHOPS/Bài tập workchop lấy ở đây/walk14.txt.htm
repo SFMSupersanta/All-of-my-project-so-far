@@ -1,0 +1,37 @@
+<html>/* w14.c */
+            #include <stdio.h>
+            #include <string.h>
+
+            void disp1(char str[])
+            {
+                int i = 1, oldi = 1, newi;
+
+                while (i < 10) {
+                    putchar(str[i-1]);
+                    newi = i + oldi;
+                    oldi = i;
+                    i = newi;
+                }
+                putchar('\n');
+            }
+
+            void disp2(char str[])
+            {
+                int i, j;
+
+                for(i = 0; i < 6; i++) {
+                    for (j = 0; j <= i; j++)
+                        putchar(' ');
+                    printf("%c\n", str[1+(4*i)]);
+                }
+            }
+
+            main()
+            {
+                char s[30];
+
+                strcpy(s, "dirutawy5prefeghmr8jks");
+                puts("babies!");
+                disp1(s);
+                disp2(s);
+            }

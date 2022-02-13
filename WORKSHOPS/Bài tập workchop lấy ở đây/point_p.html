@@ -1,0 +1,626 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC
+    '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html lang="en-us" xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+	<title>Seneca | School of Computer Studies | Programming Fundamentals Using C</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+	<meta name="Copyright" content="(c) Copyright Seneca College 2004" />
+	<meta name="Description" content="Welcome to the Bachelors Degree of Software Development Program Web Site.  On this site you can find the introductory programming course.  Designed by Chris Szalwinski." />
+	<meta name="Abstract" content="This subject reviews the principles of procedural programming.  Students study the solution of problems using structured programming techniques with the C programming language.  The emphasis throughout is on the solution of small problems."/>
+	<meta name="Author" content="chris.szalwinski@senecac.on.ca"/>
+	<meta name="Keywords" content="sofware development, procedural programming, lecture notes"/>
+
+	<link rel="stylesheet" type="text/css" href="style.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/style.043.css">
+	<link rel="stylesheet" type="text/css" href="styleSPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleSPrint.043.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="stylePPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/stylePPrint.043.css" media="print">
+</head>
+
+<body>
+
+<table cellspacing="0" cellpadding="0">
+
+	<!-- Body Cell -->
+	<tr height="600">
+		<!-- Content Area -->
+		<td class="tbody" bgcolor="ffffff">
+			<table cellpadding="10" width="100%">
+				<tr>
+					<td bgcolor="ffffff" valign=top>
+					<br />
+					<center><span class=texth>Module D - Functions</span>
+					<br />
+					<br />
+					<span class=texthead>
+					Pointers</span>
+					<br />
+					<br />
+					<span class=textagend>
+					Choose an appropriate data type for each variable in a
+					program, based on knowledge of the features required
+					of the variable<br />
+					</span>
+					<p class=quote>"Pointers are like jumps, leading wildly from
+					one part of the data structure to another." (Tony Hoare)</p>
+					<span class=textagend>
+					<a href="#pro">In-Class Problem</a> |
+					<a href="#sca">Receiving Addresses</a> |
+					<a href="#sol">Solution</a> |
+					<a href="#poi">Pointer Data Types</a> |
+					<a href="#exa">In-Class Practice</a> |
+					<a href="#exe">Exercises</a>
+					</span>
+					</center>
+					<br />
+					<br />
+
+					<p>
+					A function can accept many arguments but can only return a single value!&nbsp;
+					</p>
+					<p align="center"><img src="pointers.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/pointers.gif" height="150" width="300" /></p>
+					<p>
+					To get a function to return the values of
+					several variables, we use pointers.&nbsp;
+					</p>
+					<br />
+
+					<p id="pro" class="section">In-Class Problem - Swapping Two Values</p>
+					<p>
+					Consider a function designed to swap the values in two variables that is
+					called from the following <span class=code>main</span> function:
+					<table width="95%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ /* Failing to swap with a function
+ *  swapBad.c  (first attempt - faulty code)
+ *  BTP100
+ *  Oct 7 2005
+ */
+
+ #include&lt;stdio.h&gt;
+ void swap ( int a, int b );
+
+ int main ( ) {
+     int inLeftHand;
+     int inRightHand;
+
+     printf("inLeftHand  are ");
+     scanf("%d", &amp;inLeftHand);
+     printf("inRightHand are ");
+     scanf("%d", &amp;inRightHand);
+
+     swap( inLeftHand, inRightHand );
+
+     printf("After swap:\n"
+            "inLeftHand  are %d\n"
+            "inRightHand are %d\n",
+            inLeftHand, inRightHand);
+
+     return 0;
+ }
+
+ void swap ( int a, int b ) { <span class=high>/* DOESN'T WORK */</span>
+     int c;
+
+     printf("In swap a is %d, b is %d\n", a, b);&nbsp;
+
+     c = a;
+     a = b;
+     b = c;
+
+     printf("In swap a is %d, b is %d\n", a, b);
+}</pre><br /></td><td width="50%">
+					<br />
+					<pre class=result>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+ inLeftHand  are 5
+&nbsp;
+ inRightHand are 6&nbsp;
+&nbsp;
+&nbsp;
+ In swap a is 5, b is 6&nbsp;
+ In swap a is 6, b is 5
+&nbsp;
+ After swap:
+ inLeftHand  are 5
+ inRightHand are 6
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;</pre><br /></td></tr></table>
+					Note that <span class=code>swap</span> does exchange the values in
+					<span class=code>a</span> and <span class=code>b</span>.&nbsp;
+					However, <span class=code>swap</span> does not reach so far as to
+					exchange the original values in <span class=code>main</span>!&nbsp;
+					Those values remain unaltered.&nbsp;
+					</p>
+					<p>
+					The memory changes are as follows
+					</p>
+					<p>
+					<table align="center" width="80%" cellpadding=3 cellspacing=1 border=1>
+					<tr class=desc>
+					<td colspan=3 align="center"><span class=code>void swap( int a, int b )</span></td>
+					<td colspan=2 align="center"><span class=code>int main( )</span></td></tr>
+					<tr class=desc>
+					<td class=code align="center">int</td>
+					<td class=code align="center">int</td>
+					<td class=code align="center">int</td>
+					<td class=code align="center">int</td>
+					<td class=code align="center">int</td>
+					</tr>
+					<tr class=desc>
+					<td width="20%" class=code align="center">a</td>
+					<td width="20%" class=code align="center">b</td>
+					<td width="20%" class=code align="center">c</td>
+					<td width="20%" class=code align="center">inLeftHand</td>
+					<td width="20%" class=code align="center">inRightHand</td>
+					</tr>
+					<tr class=addre>
+					<td width="20%" class=code align="center">0x0012FF78</td>
+					<td width="20%" class=code align="center">0x0012FF7C</td>
+					<td width="20%" class=code align="center">0x0012FF6C</td>
+					<td width="20%" class=code align="center">0x0012FF88</td>
+					<td width="20%" class=code align="center">0x0012FF84</td>
+					</tr>
+					</table>
+					<hr width="80%">
+					<table align=center width="80%" cellpadding=1 cellspacing=1 border=1>
+					<tr class=value>
+					<td width="20%" class="white" align="center">?</td>
+					<td width="20%" class="white" align="center">?</td>
+					<td width="20%" class="white" align="center">?</td>
+					<td width="20%" align="center">5</td>
+					<td width="20%" align="center">6</td>
+					</tr>
+					<tr class=value><td align="center">5</td><td align="center">6</td><td align="center">?</td><td class="white" align="center">5</td><td class="white" align="center">6</td></tr>
+					<tr class=value><td align="center">5</td><td align="center">6</td><td align="center">5</td><td class="white" align="center">5</td><td class="white" align="center">6</td></tr>
+					<tr class=value><td align="center">6</td><td align="center">6</td><td align="center">5</td><td class="white" align="center">5</td><td class="white" align="center">6</td></tr>
+					<tr class=value><td align="center">6</td><td align="center">5</td><td align="center">5</td><td class="white" align="center">5</td><td class="white" align="center">6</td></tr>
+					<tr class=value><td class="white" align="center">6</td><td class="white" align="center">5</td><td class="white" align="center">5</td><td>5</td><td align="center">6</td></tr>
+					</table>
+					</p>
+					<p>
+					The hexadecimal numbers below the variable names refer to addresses in
+					primary memory.&nbsp;
+					</p>
+					<p>
+					The values in <span class=code>main</span>
+					do not change because of the pass by value
+					mechanism implemented in the function call.&nbsp;
+					The compiler applies the argument values (<span class=code>inLeftHand</span>
+					and <span class=code>inRightHand</span>) as initial values of the parameters
+					<span class=code>a</span> and <span class=code>b</span>.&nbsp;
+					The parameters themselves occupy memory locations that are distinct from
+					<span class=code>&amp;inLeftHand</span> and <span class=code>&amp;inRightHand</span>.&nbsp;
+					Only the copies in the parameter locations undergo the swapping.&nbsp;
+					</p>
+					<p class="ssection">Towards a Solution</p>
+					<p>
+					Note the use of <span class=code>scanf</span> in
+					the above example.&nbsp;
+					The statement
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ scanf("%d", &amp;inLeftHand);</pre><br /></td></tr></table>
+					places user input in the memory address allocated to
+					the variable <span class=code>inLeftHand</span>.&nbsp;
+					By passing the address of <span class=code>inLeftHand</span>
+					rather than its value to <span class=code>scanf</span>,
+					we provide <span class=code>scanf</span> with sufficient
+					information to store a value in <span class=code>&amp;inLeftHand</span>.
+					</p>
+					<p>
+					Moreover, we can pass more than one address to <span class=code>scanf</span>.&nbsp;
+					For instance,
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ scanf("%d%d", &amp;inLeftHand, &amp;inRightHand);</pre><br /></td></tr></table>
+					places the first user input in the memory
+					address allocated to the variable
+					<span class=code>inLeftHand</span> and the second user input
+					in the memory address allocated to the variable
+					<span class=code>inRightHand</span>.&nbsp;
+					</p>
+					<p>
+					By passing several addresses to
+					a function, we enable that function to
+					fill each of those addresses with distinct values.&nbsp;
+					</p>
+					<br />
+
+					<p id="sca" class="section">Receiving Addresses</p>
+					<p>
+					A C function can receive
+					<ul>
+					<li>the value of an external variable, or</li>
+					<li>the address of an external variable.&nbsp;</li>
+					</ul>
+					The syntax of a function definition that includes a parameter
+					that receives an address is
+					<pre class=defin>
+ returnDataType functionId (..., dataType *parameterId, ... ) {
+
+     /* function body here */
+
+ }</pre>
+					The <span class=defin>*</span> between
+					<span class=defin>dataType</span> and
+					<span class=defin>parameterId</span>
+					is the dereferencing or indirection operator.&nbsp;
+					The term indirection simply refers to the
+					indirect accessing of a value.&nbsp;
+					</p>
+					<p>
+					The operator <span class=defin>*</span>
+					reads as 'the data at address'.&nbsp;
+					For example, we read the parameters in the function header
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ void swap ( int *a, int *b )</pre><br /></td></tr></table>
+					as 'the data at address <span class=code>a</span> is an <span class=code>int</span>'
+					and 'the data at address <span class=code>b</span> is an <span class=code>int</span>'.&nbsp;
+					</p>
+					<p class="ssection">Accessing Values</p>
+					<p>
+					Any parameter that stores an address is a pointer.&nbsp;
+					Applying the dereferencing (or indirection) operator to a pointer accesses
+					the data value at the address stored in that pointer.&nbsp; For example,
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ c = *a;</pre><br /></td></tr></table>
+					stores 'the data at address <span class=code>a</span>' in the variable <span class=code>c</span>.&nbsp;
+					</p>
+					<p>
+					The dereferencing operator can solve our
+					swapping problem.&nbsp;
+					Let <span class=code>swap</span>
+					receive the addresses of the two variables to
+					be swapped,
+					in two pointer parameters.&nbsp;
+					The dereferencing operator applied to
+					these pointers accesses the values pointed to by the
+					pointers and enables the storing of new values in the
+					addresses pointed to by these pointers
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ void swap ( int <span class=high>*</span>a, int <span class=high>*</span>b ) { <span class=high>/* THIS WORKS */&nbsp;</span>
+     int c;
+
+     c = *a;
+     <span class=high>*</span>a = <span class=high>*</span>b;
+     <span class=high>*</span>b = c;
+ }</pre><br /></td></tr></table>
+					</p>
+					<br />
+
+					<p id="sol" class="section">Solution</p>
+					<p>
+					To complete our solution, we pass
+					the addresses of the two variables in <span class=code>main</span> to
+					<span class=code>swap</span>.&nbsp;
+					<table width="95%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ /* Swapping values with a function
+ *  swapGood.c
+ *  BTP100
+ *  Oct 7 2005
+ */
+
+ #include&lt;stdio.h&gt;
+ void swap ( int <span class=high>*</span>a, int <span class=high>*</span>b );
+
+ int main ( ) {
+     int inLeftHand;
+     int inRightHand;
+
+     printf("inLeftHand  are ");
+     scanf("%d", &amp;inLeftHand);
+     printf("inRightHand are ");
+     scanf("%d", &amp;inRightHand);
+
+     swap( <span class=high>&amp;</span>inLeftHand, <span class=high>&amp;</span>inRightHand );&nbsp;
+
+     printf("After swap:\n"
+            "inLeftHand  are %d\n"
+            "inRightHand are %d\n",
+            inLeftHand, inRightHand);
+
+     return 0;
+ }
+
+ void swap ( int <span class=high>*</span>a, int <span class=high>*</span>b ) {
+     int c;
+
+     c = *a;
+     <span class=high>*</span>a = <span class=high>*</span>b;
+     <span class=high>*</span>b = c;
+}</pre><br /></td><td width="50%">
+					<br />
+					<pre class=result>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+ inLeftHand  are 5
+&nbsp;
+ inRightHand are 6&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+ After swap:
+ inLeftHand  are <span class=high>6</span>
+ inRightHand are <span class=high>5</span>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;</pre><br /></td></tr></table>
+					In pointer applications, we trace the memory changes using either symbolic
+					notation or addresses.&nbsp; A walkthrough table using symbolic notation looks
+					something like:
+					</p>
+					<p>
+					<table align="center" width="90%" cellpadding=1 cellspacing=1 border=1>
+					<tr class=desc>
+					<td colspan=3 align="center"><span class=code>void swap( int *a, int *b )</span></td>
+					<td colspan=2 align="center"><span class=code>int main( )</span></td></tr>
+					<tr class=desc>
+					<td class=code align="center">int</td>
+					<td class=code align="center">int *</td>
+					<td class=code align="center">int *</td>
+					<td class=code align="center">int</td>
+					<td class=code align="center">int</td>
+					</tr>
+					<tr class=desc>
+					<td width="20%" class=code align="center">c</td>
+					<td width="20%" class=code align="center">a</td>
+					<td width="20%" class=code align="center">b</td>
+					<td width="20%" class=code align="center">inLeftHand</td>
+					<td width="20%" class=code align="center">inRightHand</td>
+					</tr>
+					</table>
+					<hr width="90%">
+					<table align=center width="90%" cellpadding=1 cellspacing=1 border=1>
+					<tr class=value>
+					<td width="20%" class="white" align="center">?</td>
+					<td width="20%" class="white" align="center">?</td>
+					<td width="20%" class="white" align="center">?</td>
+					<td width="20%">5</td>
+					<td width="20%" align="center">6</td>
+					</tr>
+					<tr class=value><td align="center">?</td><td align="center">&nbsp;main::inLeftHand&nbsp;</td><td align="center">&nbsp;main::inRightHand&nbsp;</td><td class="white" align="center">5</td><td class="white" align="center">6</td></tr>
+					<tr class=value><td align="center">5</td><td align="center">&nbsp;main::inLeftHand&nbsp;</td><td align="center">&nbsp;main::inRightHand&nbsp;</td><td class="white" align="center">5</td><td class="white" align="center">6</td></tr>
+					<tr class=value><td align="center">5</td><td align="center">&nbsp;main::inLeftHand&nbsp;</td><td align="center">&nbsp;main::inRightHand&nbsp;</td><td class="white" align="center">6</td><td class="white" align="center">6</td></tr>
+					<tr class=value><td align="center">5</td><td align="center">&nbsp;main::inLeftHand&nbsp;</td><td align="center">&nbsp;main::inRightHand&nbsp;</td><td class="white" align="center">6</td><td class="white" align="center">5</td></tr>
+					<tr class=value><td class="white" align="center">5</td><td class="white" align="center">&nbsp;main::inLeftHand&nbsp;</td><td class="white" align="center">&nbsp;main::inRightHand&nbsp;</td><td>6</td><td align="center">5</td></tr>
+					</table>
+					</p>
+					<p>
+					The symbol <span class=code>main::inLeftHand</span> refers to the local
+					variable <span class=code>inLeftHand</span> in the function <span class=code>main</span>.&nbsp;
+					</p>
+					<p>
+					A walkthrough table using addresses directly looks something like:</p>
+					<p>
+					<table align="center" width="90%" cellpadding=1 cellspacing=1 border=1>
+					<tr class=desc>
+					<td colspan=3 align="center"><span class=code>void swap( int *a, int *b )</span></td>
+					<td colspan=2 align="center"><span class=code>int main( )</span></td></tr>
+					<tr class=desc>
+					<td class=code align="center">int</td>
+					<td class=code align="center">int *</td>
+					<td class=code align="center">int *</td>
+					<td class=code align="center">int</td>
+					<td class=code align="center">int</td>
+					</tr>
+					<tr class=desc>
+					<td width="20%" class=code align="center">c</td>
+					<td width="20%" class=code align="center">a</td>
+					<td width="20%" class=code align="center">b</td>
+					<td width="20%" class=code align="center">inLeftHand</td>
+					<td width="20%" class=code align="center">inRightHand</td>
+					</tr>
+					<tr class=addre>
+					<td width="20%" class=code align="center">&nbsp;0x0012FF6C&nbsp;</td>
+					<td width="20%" class=code align="center">&nbsp;0x0012FF78&nbsp;</td>
+					<td width="20%" class=code align="center">&nbsp;0x0012FF7C&nbsp;</td>
+					<td width="20%" class=code align="center">&nbsp;0x0012FF88&nbsp;</td>
+					<td width="20%" class=code align="center">&nbsp;0x0012FF84&nbsp;</td>
+					</tr>
+					</table>
+					<hr width="90%">
+					<table align=center width="90%" cellpadding=1 cellspacing=1 border=1>
+					<tr class=value>
+					<td width="20%" class="white" align="center">?</td>
+					<td width="20%" class="white" align="center">?</td>
+					<td width="20%" class="white" align="center">?</td>
+					<td width="20%">5</td>
+					<td width="20%" align="center">6</td>
+					</tr>
+					<tr class=value><td align="center">?</td><td align="center">&nbsp;0x0012FF88&nbsp;</td><td align="center">&nbsp;0x0012FF84&nbsp;</td><td class="white" align="center">5</td><td class="white" align="center">6</td></tr>
+					<tr class=value><td align="center">5</td><td align="center">&nbsp;0x0012FF88&nbsp;</td><td align="center">&nbsp;0x0012FF84&nbsp;</td><td class="white" align="center">5</td><td class="white" align="center">6</td></tr>
+					<tr class=value><td align="center">5</td><td align="center">&nbsp;0x0012FF88&nbsp;</td><td align="center">&nbsp;0x0012FF84&nbsp;</td><td class="white" align="center">6</td><td class="white" align="center">6</td></tr>
+					<tr class=value><td align="center">5</td><td align="center">&nbsp;0x0012FF88&nbsp;</td><td align="center">&nbsp;0x0012FF84&nbsp;</td><td class="white" align="center">6</td><td class="white" align="center">5</td></tr>
+					<tr class=value><td class="white" align="center">5</td><td class="white" align="center">&nbsp;0x0012FF88&nbsp;</td><td class="white" align="center">&nbsp;0x0012FF84&nbsp;</td><td>6</td><td align="center">5</td></tr>
+					</table>
+					</p>
+					<br />
+
+					<p id=poi class="section">Pointer Data Types</p>
+					<p>
+					The C language defines a distinct pointer data type for each
+					primitive data type&nbsp; The pointer data types include:
+					</p>
+					<table align="center" cellpadding="2" cellspacing="1" border="1">
+					<tr class="desc"><td>Data Type</td><td>&nbsp;Pointer Data Type&nbsp;</td></tr>
+					<tr class=code><td>&nbsp;int</td><td>&nbsp;int *</td></tr>
+					<tr class=code><td>&nbsp;long</td><td>&nbsp;long *</td></tr>
+					<tr class=code><td>&nbsp;short</td><td>&nbsp;short *</td></tr>
+					<tr class=code><td>&nbsp;char</td><td>&nbsp;char *</td></tr>
+					<tr class=code><td>&nbsp;long long</td><td>&nbsp;long long *</td></tr>
+					<tr class=code><td>&nbsp;float</td><td>&nbsp;float *</td></tr>
+					<tr class=code><td>&nbsp;double</td><td>&nbsp;double *</td></tr>
+					<tr class=code><td>&nbsp;long double&nbsp;</td><td>&nbsp;long double *</td></tr>
+					</table>
+					<p>
+					Compilers store pointer values (addresses) as unsigned integers.&nbsp;
+					The sizes of the different pointer data types are not
+					necessarily the same and may vary from machine to machine.&nbsp;
+					</p>
+					<p class="ssection">Null Address</p>
+					<p>
+					Each pointer data type has a special value called a null value.&nbsp;
+					This null value is different from every possible valid address
+					and casts to the null value of any other pointer
+					data type.&nbsp;
+					<span class=code>NULL</span> is an implementation defined constant that
+					contains the value of the null pointer constant (typically, 0).&nbsp;
+					This constant is defined in <span class=code>&lt;stdio.h&gt;</span>
+					and <span class=code>&lt;stddef.h&gt;</span>.&nbsp;</p>
+					<p>
+					It is good style to set the value of a pointer to <span class=code>NULL</span>
+					whenever the pointer is not yet pointing to
+					a valid variable.&nbsp;
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ p = NULL;</pre><br /></td></tr></table>
+ 					</p>
+					<!--<p class="ssection">Undefined Pointers</p>
+					<p>
+					When a pointer is declared but not initialized,
+					its value is undefined.&nbsp;
+					Before the pointer holds a valid address, it
+					should not be dereferenced.&nbsp; For example, the
+					following code would place 23 in an arbitrary memory location
+					</p>
+					<pre>
+		int *p;
+		*p = 23;  /* bug: the address where 23
+		          should be stored has not been defined */</pre>
+					<p>
+					More appropriate code would be
+					<pre>
+		int i, *p;
+		p = &amp;i;
+		*p = 23;</pre>
+					<p>
+					Here, the variable <span class=code>i</span> contains 23.&nbsp;</p>-->
+					</p>
+					<br />
+
+					<p id="exa" class="section">In-Class Practice</p>
+					<p>
+					Try the walkthrough with pointers in <a href="h7.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/handouts/h7.html">Handout 7</a>.&nbsp;
+					</p>
+					<br />
+
+					<p id="exe" class="section">Exercises</p>
+					<p>
+					<ul>
+					<li>Read pages 51-55 from Evan Weaver's subject notes.</li>
+					<li>Try walkthrough <a href="walk7.txt.htm" tppabs="http://cs.senecac.on.ca/~btp100/pages/evans_walks/walk7.txt">7</a> on page 106 from Evan Weaver's subject notes.</li>
+					<li>Try walkthrough <a href="loops_3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/practice/loops_3.html">loops_3.c</a> on the Practice Pages <a href="index-5.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/practice/index.html">here</a></li>
+					</ul>
+					</p>
+					<br />
+					<br />
+					<br />
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+
+	<!-- Footer -->
+	<tr>
+		<td class="tbody">
+			<table cellpadding="1" width="90%" align="center">
+				<tr>
+					<td width="50%" class="text3">
+						<script language="javascript">
+						var lh = document.location.href;
+						document.write(lh)
+						</script>&nbsp;&nbsp;
+					</td>
+					<td width="50%" align="right" class="text3">
+						<script language="javascript">
+						var lm = document.lastModified.slice(0,-3);
+						document.write("Last Modified: " +lm)
+						</script>&nbsp;&nbsp;
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

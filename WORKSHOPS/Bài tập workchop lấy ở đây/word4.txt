@@ -1,0 +1,14 @@
+
+        4.  Write a C program that asks the user  to  enter  a  monetary
+            amount, and then gives the user the following choice:
+                1. Tax Exempt
+                2. PST only (8%)
+                3. GST only (7%)
+                4. Both PST and GST
+            If the user enters any number other than 1-4, he or  she  is
+            given an error message and is forced to choose again,  until
+            a proper choice is made.
+
+            The program displays the original amount, the  tax  on  that
+            amount (which depends on the  choice  they  made),  and  the
+            total including tax.

@@ -1,0 +1,414 @@
+
+<html lang="en-us" xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+   <title>Seneca | School of Computer Studies | Programming Fundamentals Using C</title>
+
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+   <meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+   <meta name="Copyright" content="(c) Copyright Seneca College 2004" />
+   <meta name="Description" content="Welcome to the Bachelors Degree of Software Development Program Web Site.  On this site you can find the introductory programming course.  Designed by Chris Szalwinski." />
+   <meta name="Abstract" content="This subject reviews the principles of procedural programming.  Students study the solution of problems using structured programming techniques with the C programming language.  The emphasis throughout is on the solution of small problems."/>
+   <meta name="Author" content="chris.szalwinski@senecac.on.ca"/>
+   <meta name="Keywords" content="sofware development, procedural programming, lecture notes"/>
+
+   <link rel="stylesheet" type="text/css" href="style.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/style.043.css">
+   <link rel="stylesheet" type="text/css" href="styleScreen.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleScreen.043.css" media="screen">
+   <link rel="stylesheet" type="text/css" href="styleSPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleSPrint.043.css" media="print">
+   <link rel="stylesheet" type="text/css" href="styleNav.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleNav.043.css">
+</head>
+
+<body>
+
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC
+    '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+
+<table id="top" width="850" cellspacing="0" cellpadding="0">
+
+   <!-- Banner -->
+   <tr height="120">
+      <td colspan="2" class="banner">
+      <table cellspacing="0" cellpadding="0">
+         <tr>
+            <td width="250" class="banner">
+               <center><span class="text0">&nbsp;&nbsp;Software&nbsp;&nbsp;<br />
+               &nbsp;&nbsp;Development&nbsp;&nbsp;</span></center>
+            </td>
+            <td class="tbanner">
+               <img src="Banner4.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Banner4.gif" height="120" width="500" alt="Software Development" />
+            </td>
+         </tr>
+      </table>
+      </td>
+   </tr>
+
+   <!-- Navigation Bar -->
+   <tr height="20">
+      <td class="panel1" align="left" valign="bottom">
+         <ul id="tabnav">         
+         <li><a href="timeline.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/timeline.html">Timeline</a></li>
+         <li><a class="active" href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+         <li><script type="text/javascript" src="classroom_a.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_a.js"></script></li>
+         <li><script type="text/javascript" src="classroom_b.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_b.js"></script></li>
+         <li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+         <li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+         <li><a href="index-3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/instructors/index.html">Instructor</a></li>
+         <li><a href="debug_p.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/debug_p.html"><img align="center" src="Printer.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Printer.gif" height=15 width=10 alt="Printer Friendly Version of this Page" /></a></li>
+         </ul>
+      </td>
+      <!-- Web Site Title -->
+      <td class="panel2" width="150" align="center">
+         <span class="text1"><script type="text/javascript" src="subject.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/subject.js"></script></span>
+      </td>
+   </tr>
+
+   <!-- Body Cells -->
+   <tr height="600">
+
+      <!-- Content Area -->
+      <td class="tbody" bgcolor="ffffff" valign="top">
+         <table cellpadding="10" width="100%">
+            <tr>
+               <td bgcolor="ffffff" valign="top">
+               <br />
+               <center><span class=texth>Module I - Design</span>
+               <br />
+               <br />
+               <span class=texthead>
+               Testing and Debugging Programs</span>
+               <br />
+               <br />
+               <span class=textagend>
+               Methodically test and debug C programs.<br />
+               <br />
+               </span>
+               <p class=quote></p>
+               <span class=textagend>
+               <a href="#tes">Testing</a> |
+               <a href="#syn">Synatical Errors</a> |
+               <a href="#sem">Semantic Errors</a> |
+               <a href="#exe">Exercises</a>
+               </span>
+               </center>
+               <br />
+               <br />
+               <br />
+
+               <p>
+               "Even professional programmers delude themselves.&nbsp;
+               In an experiment, 32 NASA programmers
+               applied 3 different testing techniques to a few
+               small programs.&nbsp; They were
+               asked to assess what proportion of bugs they
+               thought were found by each method.&nbsp; Their
+               intuitions turned out to be wrong.&nbsp; They
+               thought black-box testing based on specs was
+               the most effective, but in fact code reading
+               was more effective (even though the code
+               was uncommented).&nbsp; By reading code, they
+               found errors 50% faster!"<br /><br />
+               Victor R. Basili and Richard W. Selby.&nbsp;
+               Comparing the Effectiveness of Software Testing Strategies.&nbsp;
+               IEEE Transactions on Software Engineering. Vol. SE-13, No. 12, December 1987, pp.
+               1278-1296.&nbsp;
+               </p>
+               <br />
+
+               <p id="tes" class="section">Testing</p>
+               <p class="ssection">Black Box</p>
+               <p>
+               External factors are determinant.&nbsp; Internal structure is irrelevant.
+               <ul>
+               <li>testing to specifications</li>
+               <li>input-output driven</li>
+               <li>data driven</li>
+               </ul>
+               The number of possibilities to be tested
+               may be too great.&nbsp;
+               <p class="sssection">Equivalence Classes</p>
+               <p>
+               Develop a manageable set of test cases.&nbsp;
+               Create equivalence classes with boundary values.&nbsp;
+               An equivalence class is a set where testwise any member is
+               as good as any other (for example, &lt;1, 1...25, &gt;25).&nbsp;</p>
+               <p>
+               Experience suggests that faults frequently exist at and on
+               boundaries.&nbsp; Test either side of the boundaries
+               of the equivalence class as well as on the
+               boundary itself (for example, 0, 1, 2, 17, 24, 25, 26).&nbsp; </p>
+               <p>
+               Repeat for output equivalence classes.</p>
+               <p class="ssection">White Box</p>
+               <p>
+               Internal structure is determinant.
+               <ul>
+               <li>glass box</li>
+               <li>logic-driven</li>
+               <li>path-oriented</li>
+               </ul>
+               Each possible path through the code is executed at least
+               once.&nbsp; The number of paths may be too
+               great to test.&nbsp;
+               <p class="sssection">Flow Graphs</p>
+               <p>
+               Develop a control flow graph that represents the
+               sequences, selections and iterations in the
+               program.&nbsp; Each flow graph node represents
+               one or more sequence statements.&nbsp; The edges
+               (or arrows) between the nodes represent flow of
+               control.&nbsp; Consider the following code
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ /* Testing - Flow Graph
+ *  flowGraph.c
+ *  Nov 26 2004
+ *  BTP100
+ */
+ #include&lt;stdio.h&gt;
+
+ int main(void) {
+     int total, value, count;
+
+     /* Start Node 1 */
+     total = 0;
+     count = 0;
+     /* End   Node 1 */
+     do {
+         /* Start Node 2 */
+         scanf(&quot;%d&quot;, &amp;value);
+         /* End   Node 2 */
+         if (value &lt; 0) {
+             /* Start Node 3 */
+             total -= value;
+             count++;
+             /* End   Node 3 */
+         } else if (value &gt; 0) {
+             /* Start Node 4 */
+             total += value;
+             count++;
+             /* End   Node 4 */
+         }
+     /* Start Node 5 */
+     } while (value != 0);
+     /* End   Node 5 */
+     if (count &gt; 0)
+         /* Start Node 6 */
+         printf(&quot;The average value is %.2lf\n&quot;,&nbsp;
+                (double)total/count);
+         /* End   Node 6 */
+
+     /* Start Node 7 */
+     return 0;
+ }</pre><br /></td></tr></table>
+               The flow graph for this code is:
+               <p align="center"><img src="flowg.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/flowg.gif" width=200 height=150 /></p>
+               <p class="sssection">Criteria</p>
+               <p>
+               <ul>
+               <li>statement coverage - every elementary statement is
+               executed at least once</li>
+               <li>edge coverage - every edge is traversed at least once</li>
+               <li>condition coverage - all possible values of the
+               constituents of each compound condition are exercised
+               at least once</li>
+               <li>path coverage - all paths from initial node to
+               final node are traversed at least once.</li>
+               </ul>
+               <p class="sssection">Iterations</p>
+               <ul>
+               <li>skip the iteration entirely</li>
+               <li>pass through the iteration once</li>
+               <li>pass through the iteration less than the specified
+               number of times</li>
+               <li>pass through the iteration the specified number of times</li>
+               <li>pass through the iteration once more than the specified
+               number of times</li>
+               </ul>
+               <p class="sssection">Compound Conditions</p>
+               <ul>
+               <li>break into simple conditions</li>
+               </ul>
+               <br />
+
+               <p id="syn" class="section">Syntactical Errors</p>
+               <p>
+               <ul>
+               <li>manual tracing</li>
+               <li>using different compilers</li>
+               <li>common errors</li>
+               <ul>
+               <li>missing semi-colon</li>
+               <li>undeclared variable name</li>
+               <li>unmatched parentheses</li>
+               <li>left-side of assignment is not an l-value</li>
+               <li>return statement missing</li>
+               </ul>
+               </ul>
+               <br />
+
+               <p id="sem" class="section">Semantic Errors</p>
+               <p>
+               <ul>
+               <li>vocalization</li>
+               <li>manual tracing</li>
+               <li>intermediate output</li>
+               <li>interactive tracing</li>
+               <ul>
+               <li><a href="dbx_notes.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/dbx_notes.html" target="new">dbx</a></li>
+               <li>Visual Studio C++ 6.0</li>
+               <li>Visual Studio .net</li>
+               </ul>
+               <li>common errors</li>
+               <ul>
+               <li>= instead of ==</li>
+               <li>iteration has no body</li>
+               <li>uninitialized variable</li>
+               <li>infinite iteration</li>
+               <li>operator precedence</li>
+               <li>dangling else</li>
+               <li>off-by-one iteration</li>
+               <li>integer division</li>
+               <li>mismatched data types</li>
+               <li>&amp; instead of &amp;&amp;</li>
+               </ul>
+               </ul>
+               <br />
+
+               <p id="exe" class="section">Exercises</p>
+               <p>
+               <ul>
+               <li>Trace the values of the variables <span class="code">d, i, j, k, x</span>
+               in walkthrough <a href="compu_4.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/practice/compu_4.html">compu_4.c</a> using the
+               <a href="dbx_notes.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/dbx_notes.html">dbx</a> debugger.</li>
+               </ul>
+               <br />
+               <br />
+               <br />
+               </td>
+            </tr>
+         </table>
+      </td>
+
+      <!-- Detail Menu -->
+      <td class="panel1" width="150" valign="top" rowspan="2">
+         <ul id="mennav">
+         <li><a href="welco.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/welco.html">Welcome</a></li>
+         <li><a class="active" href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+         <li><a href="probl.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/probl.html">&nbsp;Programming</a></li>
+         <li><a href="compu.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/compu.html">&nbsp;Memory</a></li>
+         <li><a href="compi.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/compi.html">&nbsp;Compilers</a></li>
+         <li><a href="varia.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/varia.html">&nbsp;Variables</a></li>
+         <li><a href="input.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/input.html">&nbsp;Basic Oper</a></li>
+         <li><a href="expre.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/expre.html">&nbsp;Expressions</a></li>
+         <li><a href="const.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/const.html">&nbsp;Constructs</a></li>
+         <li><a href="style.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/style.html">&nbsp;Style</a></li>
+         <li><a href="walks.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/walks.html">&nbsp;Walkthrus</a></li>
+         <li><a href="modul.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/modul.html">&nbsp;Modularity</a></li>
+         <li><a href="scope.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/scope.html">&nbsp;Scope</a></li>
+         <li><a href="point.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/point.html">&nbsp;Pointers</a></li>
+         <li><a href="formi.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/formi.html">&nbsp;Input</a></li>
+         <li><a href="formo.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/formo.html">&nbsp;Form Output</a></li>
+         <li><a href="libra.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/libra.html">&nbsp;Libraries</a></li>
+         <li><a href="array.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/array.html">&nbsp;Arrays</a></li>
+         <li><a href="searc.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/searc.html">&nbsp;Searches</a></li>
+         <li><a href="sorts.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/sorts.html">&nbsp;Sorts</a></li>
+         <li><a href="strin.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/strin.html">&nbsp;Strings</a></li>
+         <li><a href="valid.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/valid.html">&nbsp;String Inp</a></li>
+         <li><a href="sfunc.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/sfunc.html">&nbsp;String Fns</a></li>
+         <li><a href="files.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/files.html">&nbsp;Files</a></li>
+         <li><a href="table.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/table.html">&nbsp;Records</a></li>
+         <li><a class="active" href="debug.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/debug.html">&nbsp;Debugging</a></li>
+         <li><a href="devel.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/devel.html">&nbsp;Development</a></li>
+         <li><a href="stand.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/stand.html">&nbsp;Standards</a></li>
+         <li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+         <li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+         <li><a href="index-4.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/handouts/index.html">Handouts</a></li>
+         <li><a href="index-5.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/practice/index.html">Practice</a></li>
+         <li><a href="index-6.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/index.html">Resources</a></li>
+         <li><a href="glossary.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/glossary.html">Glossary</a></li>
+         </ul>
+      </td>
+   </tr>
+
+   <!-- Content Area Footer -->
+   <tr height="20">
+      <td class="panel3" align="center">
+         <table class="panel2" width="95%">
+            <tr>
+               <td align="left">
+                  &nbsp;&nbsp;<a href="debug_p.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/debug_p.html" class="text3">
+                  <img src="Printer.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Printer.gif" height="15" width="10" alt="Printer Friendly Version of this Page" />&nbsp;print this page</a>&nbsp;&nbsp;
+               </td>
+               <td align="right">
+                  &nbsp;&nbsp;<a href="#top" class="text3">Top&nbsp;
+                  <img src="ArrowToT.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToT.gif" height="15" width="15" alt="Go Back to the Top of this Page" /></a>
+               </td>
+            </tr>
+         </table>
+      </td>
+   </tr>
+
+   <!-- Footer -->
+   <tr>
+      <!-- Left Panel -->
+      <td class="panel1" width="700" align="center">
+         <!-- Lateral Motion Control -->
+         <table width="90%" align="center">
+            <tr>
+               <td width="50%" align="left">
+                  <a href="table.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/table.html" class="text3">
+                  <img src="ArrowToL.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToL.gif" height="15" width="15" class="panel1" alt="Previous Reading" />&nbsp;&nbsp;Previous: Records, Fields, Tables</a>
+               </td>
+               <td width="50%" align="right">
+                  <a href="devel.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/devel.html" class="text3">Next: Development&nbsp;&nbsp;
+                  <img src="ArrowToR.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToR.gif" height="15" width="15" class="panel1" alt="Next Reading" /></a>
+               </td>
+            </tr>
+         </table>
+         <br />
+         <!-- Alternate Navigation Links -->
+         <ul id="altnav" align="center">        
+         <li><a href="timeline.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/timeline.html">Timeline&nbsp;</a></li>
+         </ul>
+         <ul id="altnav" align="center">
+         <li><a class="active" href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+         <li><script type="text/javascript" src="classroom_a.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_a.js"></script></li>
+         <li><script type="text/javascript" src="classroom_b.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_b.js"></script></li>
+         <li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+         <li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+         <li><a href="index-3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/instructors/index.html">Instructor</a></li>
+         </ul>
+         <br />
+         <!-- Bottom Line -->
+         <table cellpadding=1 width="90%">
+            <tr>
+               <td width="33%" class="text3">
+                  &nbsp;&nbsp;Designed by Chris Szalwinski&nbsp;&nbsp;
+               </td>
+               <td width="34%" align="center">
+                  <a href="copyright.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/copyright.html" class="text3">Copying From This Site</a>
+               </td>
+               <td width="33%" align="right" class="text3">
+                  <script language="javascript">
+                  var lm = document.lastModified.slice(0,-3);
+                  document.write("Last Modified: " +lm)
+                  </script>&nbsp;&nbsp;
+               </td>
+            </tr>
+         </table>
+      </td>
+
+      <!-- Logo - Right Bottom Corner -->
+      <td class=panel2 width="150" align="center">
+         <img src="Logo.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Logo.gif" height="73" width="85" />
+      </td>
+   </tr>
+</table>
+
+</body>
+</html>

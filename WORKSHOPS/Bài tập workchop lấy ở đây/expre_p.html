@@ -1,0 +1,1002 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC
+    '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html lang="en-us" xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+   <title>Seneca | School of Computer Studies | Programming Fundamentals Using C</title>
+
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+   <meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+   <meta name="Copyright" content="(c) Copyright Seneca College 2004" />
+   <meta name="Description" content="Welcome to the Bachelors Degree of Software Development Program Web Site.  On this site you can find the introductory programming course.  Designed by Chris Szalwinski." />
+   <meta name="Abstract" content="This subject reviews the principles of procedural programming.  Students study the solution of problems using structured programming techniques with the C programming language.  The emphasis throughout is on the solution of small problems."/>
+   <meta name="Author" content="chris.szalwinski@senecac.on.ca"/>
+   <meta name="Keywords" content="sofware development, procedural programming, lecture notes"/>
+
+   <link rel="stylesheet" type="text/css" href="style.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/style.043.css">
+   <link rel="stylesheet" type="text/css" href="styleSPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleSPrint.043.css" media="screen">
+   <link rel="stylesheet" type="text/css" href="stylePPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/stylePPrint.043.css" media="print">
+</head>
+
+<body>
+
+<table cellspacing="0" cellpadding="0">
+
+   <!-- Body Cell -->
+   <tr height="600">
+      <!-- Content Area -->
+      <td class="tbody" bgcolor="ffffff">
+         <table cellpadding="10" width="100%">
+            <tr>
+               <td bgcolor="ffffff" valign="top">
+               <br />
+               <center><span class=texth>Module B - Computations</span>
+               <br />
+               <br />
+               <span class=texthead>
+               Expressions</span>
+               <br />
+               <br />
+               <span class=textagend>
+               Choose an appropriate data type for each variable in a program, based on
+               knowledge of the features required of the variable and the internal
+               representation of the available data type<br /><br />
+               </span>
+               <p class=quote>"Errors using inadequate data are much less than those using no data at all." (Charles Babbage)</p>
+               <span class=textagend>
+               <a href="#ari">Arithmetic</a> |
+               <a href="#pro">In-Class Problem</a> |
+               <a href="#sta">Statistics</a> |
+               <a href="#rel">Relational</a> |
+               <a href="#log">Logical</a> |
+               <a href="#sho">Shorthand</a>
+               <br />
+               <a href="#mix">Mixing&nbsp;Data&nbsp;Types</a> |
+               <a href="#cas">Casting</a> |
+               <a href="#pre">Precedence</a> |
+               <a href="#exe">Exercises</a>
+               </span>
+               </center>
+               <br />
+               <br />
+               <br />
+
+               <p>
+               A simple expression consists of an operator and operand(s).&nbsp;
+               A compound expression consists of several operators and several operands.&nbsp;
+               The operands may be variables, constants and/or other expressions.&nbsp;
+               Any expression evaluates to a single value, to which we may refer on
+               the right side of an assignment.&nbsp;
+               </p>
+               <p>
+               The compiler translates all expressions into sets of simple
+               instructions that the Arithmetic Logic Unit (ALU) can process.&nbsp;
+               The ALU can only evaluate the simplest expression that
+               consist of an operator and one or two operands.&nbsp;
+               If there are two operands, they must be of identical
+               data type.&nbsp;
+               </p>
+               <p>
+               The ALU receives the operator from the Control Unit.&nbsp;
+               The operator may be
+               <ul>
+               <li>arithmetic, </li>
+               <li>relational or </li>
+               <li>logical.&nbsp;</li>
+               </ul>
+               The operands are data values stored in the
+               registers.&nbsp; The ALU places the result
+               of the operation in the accumulator (the AX register).&nbsp;
+               The data type of the result is the data type of the operand(s)
+               of the operation.&nbsp;
+               </p>
+               <p align="center"><img src="alu.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/alu.gif" /></p>
+               <p>
+               Compilers break our compound
+               expressions into sets of simpler expressions using
+               the rules of precedence (see below).&nbsp;
+               </p>
+               <br />
+
+               <p id="ari" class="section">Arithmetic Expressions</p>
+               <p class="ssection">Integral Data Types</p>
+               The <span class="code">int</span> and <span class="code">char</span> data types
+               accept 5 binary and 2 unary arithmetic operators.&nbsp;
+               Here, the term binary refers to two operands, not to binary representation.</p>
+               <p class="sssection">Binary</p>
+               <p>
+               The binary arithmetic operators for integral data types
+               are addition, subtraction, multiplication, division
+               and remainder.&nbsp; The form of a binary arithmetic
+               expression is</p>
+               <p>
+               <table align=center>
+               <tr class=desc><td align=center colspan=3><b>Arithmetic Expression</b></td><td><b>&nbsp;Meaning</b></td></tr>
+               <tr><td class=oper>variable, constant or expr&nbsp; </td><td align=center class=code>&nbsp; + &nbsp;</td><td align=left class=oper>&nbsp; variable, constant or expr&nbsp; </td><td>&nbsp;plus&nbsp;</td></tr>
+               <tr><td class=oper>variable, constant or expr&nbsp; </td><td align=center class=code>&nbsp; - &nbsp;</td><td align=left class=oper>&nbsp; variable, constant or expr&nbsp; </td><td>&nbsp;minus&nbsp;</td></tr>
+               <tr><td class=oper>variable, constant or expr&nbsp; </td><td align=center class=code>&nbsp; * &nbsp;</td><td align=left class=oper>&nbsp; variable, constant or expr&nbsp; </td><td>&nbsp;multiplied by&nbsp;</td></tr>
+               <tr><td class=oper>variable, constant or expr&nbsp; </td><td align=center class=code>&nbsp; / &nbsp;</td><td align=left class=oper>&nbsp; variable, constant or expr&nbsp; </td><td>&nbsp;divided by&nbsp;</td></tr>
+               <tr><td class=oper>variable, constant or expr&nbsp; </td><td align=center class=code>&nbsp; % &nbsp;</td><td align=left class=oper>&nbsp; variable, constant or expr&nbsp; </td><td>&nbsp;rem  of ?/?&nbsp;</td></tr>
+               </table></p>
+               <p>
+               The division operator { <span class=code>/</span> } yields a
+               truncated integer result.&nbsp;
+               That is, division of one integer by another yields
+               the whole value without the remainder.&nbsp;
+               For the remainder from an integer division, we
+               use the modulus operator, <span class=code>%</span>.&nbsp;
+               Consider a room full of 1034 people to be divided into groups
+               of 10:
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ 1034 / 10 /* yields 103 groups of 10     */
+ 1034 % 10 /* yields   4 people left over */</pre><br /></td></tr></table>
+               </p>
+               <p class="sssection">Unary</p>
+               <p>
+               The unary arithmetic operators for integral data types
+               are identity and negation.&nbsp;
+               The form of a unary arithmetic expression is</p>
+               <table align=center>
+               <tr class=desc><td align=center colspan=2><b>Arithmetic Expression</b></td><td><b>Meaning</b></td></tr>
+               <tr><td align=center class=code>&nbsp; + &nbsp;</td><td align=left class=oper>&nbsp; variable, constant or expr&nbsp; </td><td>&nbsp;preserve the sign&nbsp;</td></tr>
+               <tr><td align=center class=code>&nbsp; - &nbsp;</td><td align=left class=oper>&nbsp; variable, constant or expr&nbsp; </td><td>&nbsp;change the sign&nbsp;</td></tr>
+               </table>
+               <p>
+               The minus operator reverses the sign of the variable, constant or expression.&nbsp; The plus
+               operator leaves the variable, constant or expression
+               unchanged (and is present in the C language primarily
+               for symmetry).&nbsp; For example,
+               <ul>
+               <li>if <span class="code">velocity</span> has a value of -45, then <span class=code>-velocity</span> has a value of 45;
+               <li>if <span class="code">velocity</span> has a value of -45, then <span class=code>+velocity</span> has a value of -45;
+               <li>if <span class="code">velocity*5</span> has a value of -225, then <span class=code>-velocity*5</span> has a value of 225;
+               <li>if <span class="code">velocity*5</span> has a value of -225, then <span class=code>+velocity*5</span> has a value of -225;
+               </ul>
+               </p>
+               <p class="ssection">Floating-point Data Types</p>
+               The <span class="code">float</span> and <span class="code">double</span>
+               data types accept 4 binary and 2 unary arithmetic operators.&nbsp;</p>
+
+               <p class="sssection">Binary</p>
+               <p>
+               The binary arithmetic operators for floating-point data
+               types are addition, subtraction,
+               multiplication and division.&nbsp; The form of a binary arithmetic
+               expression is</p>
+               <p>
+               <table align=center>
+               <tr class=desc><td align=center colspan=3><b>Arithmetic Expression</b></td><td><b>&nbsp;Meaning</b></td></tr>
+               <tr><td class=oper>variable, constant or expr&nbsp; </td><td align=center class=code>&nbsp; + &nbsp;</td><td align=left class=oper>&nbsp; variable, constant or expr&nbsp; </td><td>&nbsp;plus&nbsp;</td></tr>
+               <tr><td class=oper>variable, constant or expr&nbsp; </td><td align=center class=code>&nbsp; - &nbsp;</td><td align=left class=oper>&nbsp; variable, constant or expr&nbsp; </td><td>&nbsp;minus&nbsp;</td></tr>
+               <tr><td class=oper>variable, constant or expr&nbsp; </td><td align=center class=code>&nbsp; * &nbsp;</td><td align=left class=oper>&nbsp; variable, constant or expr&nbsp; </td><td>&nbsp;multiplied by&nbsp;</td></tr>
+               <tr><td class=oper>variable, constant or expr&nbsp; </td><td align=center class=code>&nbsp; / &nbsp;</td><td align=left class=oper>&nbsp; variable, constant or expr&nbsp; </td><td>&nbsp;divided by&nbsp;</td></tr>
+               </table></p>
+               <p>
+               The division operator { <span class=code>/</span> } yields a
+               floating-point result.&nbsp;
+               Floating-point data types do not admit a remainder
+               operation.&nbsp;
+               </p>
+               <p class="sssection">Unary</p>
+               <p>
+               The unary operators for floating-point data types
+               are identity and negation.&nbsp;
+               The form of a unary arithmetic expression is</p>
+               <table align=center>
+               <tr class=desc><td align=center colspan=2><b>Arithmetic Expression</b></td><td><b>Meaning</b></td></tr>
+               <tr><td align=center class=code>&nbsp; + &nbsp;</td><td align=left class=oper>&nbsp; variable, constant or expr&nbsp; </td><td>&nbsp;preserve the sign&nbsp;</td></tr>
+               <tr><td align=center class=code>&nbsp; - &nbsp;</td><td align=left class=oper>&nbsp; variable, constant or expr&nbsp; </td><td>&nbsp;change the sign&nbsp;</td></tr>
+               </table>
+               <p>
+               The minus operator reverses the sign of the variable, constant or expression.&nbsp; The plus
+               operator leaves the variable, constant or expression unchanged (and is present in the C language primarily for reasons of
+               symmetry).&nbsp;
+               </p>
+               <br />
+
+               <p id="pro" class="section">In-Class Problem</p>
+               <p>
+               Let us write a short program to
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+/* Playing with Arithmetic Expressions
+ * limits.c
+ * BTP100
+ * Jan 21 2005
+ */
+
+ main() {
+     int intRight, intLeft, intResult;
+     double fptRight, fptLeft, fptResult;
+
+     /* Input */
+     printf("Enter an integer : ");
+     scanf("%d", &amp;intLeft);
+     printf("Enter an integer : ");
+     scanf("%d", &amp;intRight);
+     printf("Enter a floating-point number : ");
+     scanf("%lf", &amp;fptLeft);
+     printf("Enter a floating-point number : ");
+     scanf("%lf", &amp;fptRight);
+
+     /* Evaluations */
+     intResult = intLeft * intRight;
+     fptResult = fptLeft * fptRight;
+
+     /* Output */
+     printf("%d * %d = %d\n", intLeft, intRight, intResult);
+     printf("%le * %le = %le\n", fptLeft, fptRight, fptResult);&nbsp;
+ }</pre><br /></td></tr></table>
+               Try some very small numbers.&nbsp; Try some very large numbers.&nbsp;
+               When does this program give incorrect results?&nbsp; Why?
+               </p>
+               <br />
+
+               <p id="sta" class="section">Statistics</p>
+               <p>
+               Here are some timing statistics for different
+               platforms for 100M operations.</p>
+               <table width="90%" align="center">
+               <tr class=desc>
+               <td width="25%">Operation</td>
+               <td width="25%">Borland 5.5 XP Pentium III</td>
+               <td width="25%">.net 13.00 XP Pentium III</td>
+               <td width="25%">cc AIX 4 RS/6000</td>
+               </tr>
+               <tr class=value>
+               <td><span class=code>int + int</span></td>
+               <td>260</td><td>590</td><td>2500</td>
+               </tr>
+               <tr class=value>
+               <td><span class=code>int - int</span></td>
+               <td>180</td><td>571</td><td>2520</td>
+               </tr>
+               <tr class=value>
+               <td><span class=code>int * int</span></td>
+               <td>271</td><td>641</td><td>2560</td>
+               </tr>
+               <tr class=value>
+               <td><span class=code>int / int</span></td>
+               <td>280</td><td>3235</td><td>9230</td>
+               </tr>
+               <tr class=value>
+               <td><span class=code>int % int</span></td>
+               <td>180</td><td>3244</td><td>9130</td>
+               </tr>
+               <tr class=value>
+               <td><span class=code>double + double</span></td>
+               <td>1252</td><td>1803</td><td>2430</td>
+               </tr>
+               <tr class=value>
+               <td><span class=code>double - double</span></td>
+               <td>1262</td><td>1813</td><td>2630</td>
+               </tr>
+               <tr class=value>
+               <td><span class=code>double * double</span></td>
+               <td>1442</td><td>1942</td><td>2560</td>
+               </tr>
+               <tr class=value>
+               <td><span class=code>double / double</span></td>
+               <td>4416</td><td>4377</td><td>2480</td>
+               </tr>
+               </table>
+               <p>
+               Note that division typically uses more resources.&nbsp;
+               To avoid division, we multiply by 0.5 rather than
+               divide by 2.0.&nbsp; Moreover, we prefer integral
+               operations to floating-point ones.
+               </p>
+               <br />
+
+               <p id="rel" class="section">Relational Expressions</p>
+               <p>
+               Relational expressions
+               compare values and represent conditions with a true or false result.&nbsp;
+               Each primitive data type admits 6 relational operators for
+               comparing values of that data type to other values of the
+               same data type.&nbsp;
+               The form of a relational expression is</p>
+               <p>
+               <table align=center>
+               <tr class=desc><td align=center colspan=3><b>Relational Expression</b></td><td><b>Meaning</b></td></tr>
+               <tr><td class=oper>variable,&nbsp;constant&nbsp;or&nbsp;expr&nbsp;</td><td align=center class=code>&nbsp;==&nbsp;</td>   <td class=oper>&nbsp;variable,&nbsp;constant&nbsp;or&nbsp;expr&nbsp;</td><td>&nbsp;&nbsp;equal to&nbsp;</td></tr>
+               <tr><td class=oper>variable,&nbsp;constant&nbsp;or&nbsp;expr&nbsp;</td><td align=center class=code>&nbsp;&gt;&nbsp;</td> <td class=oper>&nbsp;variable,&nbsp;constant&nbsp;or&nbsp;expr&nbsp;</td><td>&nbsp;&nbsp;greater than&nbsp;</td></tr>
+               <tr><td class=oper>variable,&nbsp;constant&nbsp;or&nbsp;expr&nbsp;</td><td align=center class=code>&nbsp;&gt;=&nbsp;</td><td class=oper>&nbsp;variable,&nbsp;constant&nbsp;or&nbsp;expr&nbsp;</td><td>&nbsp;&nbsp;greater than or equal to &nbsp;</td></tr>
+               <tr><td class=oper>variable,&nbsp;constant&nbsp;or&nbsp;expr&nbsp;</td><td align=center class=code>&nbsp;&lt;&nbsp;</td> <td class=oper>&nbsp;variable,&nbsp;constant&nbsp;or&nbsp;expr&nbsp;</td><td>&nbsp;&nbsp;less than&nbsp;</td></tr>
+               <tr><td class=oper>variable,&nbsp;constant&nbsp;or&nbsp;expr&nbsp;</td><td align=center class=code>&nbsp;&lt;=&nbsp;</td><td class=oper>&nbsp;variable,&nbsp;constant&nbsp;or&nbsp;expr&nbsp;</td><td>&nbsp;&nbsp;less than or equal to&nbsp;</td></tr>
+               <tr><td class=oper>variable,&nbsp;constant&nbsp;or&nbsp;expr&nbsp;</td><td align=center class=code>&nbsp;!=&nbsp;</td>   <td class=oper>&nbsp;variable,&nbsp;constant&nbsp;or&nbsp;expr&nbsp;</td><td>&nbsp;&nbsp;not equal to&nbsp;</td></tr>
+               </table></p>
+               <p>
+               The equality operator <span class=code>==</span> compares
+               left and right operands for identity.&nbsp; This operator
+               is distinct from the assignment operator <span class=code>=</span>,
+               which assigns the value of the right operand to
+               the left operand.</p>
+               <p>
+               The result of a relational expression is a true or false value.&nbsp;
+               The C language interprets the value zero as false and any
+               other value as true.&nbsp;
+               For example,
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ /* Relational Expressions
+ *  relational.c
+ *  BTP100
+ *  Jan 21 2005
+ */
+
+ main( ) {
+     int age, childTicket, seniorTicket;
+
+     printf("What is your age ? ");
+     scanf("%d", &amp;age);
+
+     childTicket = age &lt;= 12;
+     seniorTicket = age &gt;= 65;
+
+     printf("You need a child  Ticket (1 for yes, 0 for no) : %d\n", childTicket);
+     printf("You need a senior Ticket (1 for yes, 0 for no) : %d\n", seniorTicket);&nbsp;
+ }</pre><br /></td></tr></table>
+               </p>
+               <br />
+
+               <p id="log" class="section">Logical Expressions</p>
+               <p>
+               Logical expressions compare conditions and yield true or false results.&nbsp;
+               We use logical operators to express compound conditions.&nbsp;
+               The C language has 2 binary logical operators
+               and 1 unary operator.&nbsp;
+               The form of a logical expression is</p>
+               <p>
+               <table align=center>
+               <tr class=desc><td colspan=3 align=center><b>Compound Expression</b></td align=center><td align=center><b>&nbsp; Meaning &nbsp;</b></td><td><b>Comment</b></td></tr>
+               <tr><td class=oper>condition&nbsp; </td><td align=center class=code>&nbsp; &amp;&amp; &nbsp;</td><td class=oper>&nbsp; condition &nbsp; </td><td align=center>and</td><td>&nbsp;not to be confused with &amp;&nbsp;</td></tr>
+               <tr><td class=oper>condition&nbsp; </td><td align=center class=code>&nbsp; || &nbsp;</td><td class=oper>&nbsp; condition &nbsp; </td><td align=center>or</td><td>&nbsp;not to be confused with |&nbsp;</td></tr>
+               <tr><td>&nbsp;          </td><td align=center class=code>&nbsp; ! &nbsp;</td><td class=oper>&nbsp; condition &nbsp; </td><td align=center>not</td><td>&nbsp;the opposite of&nbsp;</td></tr>
+               </table></p>
+               <p>
+               For example,
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ /* Logical Expressions
+ *  logical.c
+ *  BTP100
+ *  Jan 21 2005
+ */
+
+ main( ) {
+     int age, atSchool, childTicket, studentTicket, adultTicket, seniorTicket;
+
+     printf("What is your age ? ");
+     scanf("%d", &amp;age);
+     printf("Are you at school (1 for yes, 0 for no) ? ");
+     scanf("%d", &amp;atSchool);
+
+     childTicket = age &lt;= 12;
+     studentTicket = age &gt; 12 &amp;&amp; age &lt;= 19 &amp;&amp; atSchool == 1;
+     seniorTicket = age &gt;= 65;
+     adultTicket = !childTicket &amp;&amp; !studentTicket &amp;&amp; !seniorTicket;
+
+     printf("You need a child   Ticket (1 for yes, 0 for no) : %d\n", childTicket);
+     printf("You need a student Ticket (1 for yes, 0 for no) : %d\n", studentTicket);&nbsp;
+     printf("You need a senior  Ticket (1 for yes, 0 for no) : %d\n", seniorTicket);
+     printf("You need an adult  Ticket (1 for yes, 0 for no) : %d\n", adultTicket);
+ }</pre><br /></td></tr></table>
+               Consider the condition for an <span class=code>adultTicket</span>.&nbsp;
+               This condition is logically identical to
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ adultTicket = ! ( childTicket || studentTicket || seniorTicket );</pre><br /></td></tr></table>
+               This is an example of deMorgan's law which states that
+               <pre class=defin>
+ the opposite of a compound condition is the compound condition with all
+ sub-conditions reversed, all &amp;&amp;'s changed to ||'s and all ||'s to &amp;&amp;'s.</pre>
+               <a href="javascript:if(confirm('http://www-gap.dcs.st-and.ac.uk/~history/Mathematicians/De_Morgan.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www-gap.dcs.st-and.ac.uk/~history/Mathematicians/De_Morgan.html'" tppabs="http://www-gap.dcs.st-and.ac.uk/~history/Mathematicians/De_Morgan.html">Augustus deMorgan</a>
+               was Ada Lovelace's tutor and a family friend.&nbsp; Ada Lovelace
+               wrote the first computer program in 1842.&nbsp;
+               </p>
+               <p>
+               So, we can write
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ /* Logical Expressions
+ *  deMorgan.c
+ *  BTP100
+ *  Jan 21 2005
+ */
+
+ main( ) {
+     int age, atSchool, childTicket, studentTicket, adultTicket, seniorTicket;
+
+     printf("What is your age ? ");
+     scanf("%d", &amp;age);
+     printf("Are you at school (1 for yes, 0 for no) ? ");
+     scanf("%d", &amp;atSchool);
+
+     childTicket = age &lt;= 12;
+     studentTicket = age &gt; 12 &amp;&amp; age &lt;= 21 && atSchool == 1;
+     seniorTicket = age &gt;= 65;
+     <span class=high>adultTicket = adultTicket = ! ( childTicket || studentTicket || seniorTicket );</span>
+
+     printf("You need a child   Ticket (1 for yes, 0 for no) : %d\n", childTicket);
+     printf("You need a student Ticket (1 for yes, 0 for no) : %d\n", studentTicket);&nbsp;
+     printf("You need a senior  Ticket (1 for yes, 0 for no) : %d\n", seniorTicket);
+     printf("You need an adult  Ticket (1 for yes, 0 for no) : %d\n", adultTicket);
+ }</pre><br /></td></tr></table>
+               </p>
+               <br />
+
+               <p id="sho" class="section">Shorthand Assignment Operators</p>
+               <p>
+               The C language includes a set of shorthand assignment operators, which
+               combine arithmetic expressions with assignments.&nbsp;
+               We use these operators to simplify our coding.&nbsp;
+               </p>
+               <p class="ssection">Integral Data Types</p>
+               <p>
+               The <span class="code">int</span> and <span class="code">char</span> data types
+               have 5 binary and 2 unary shorthand assignment operators.&nbsp;
+               </p>
+               <p class="sssection">Binary</p>
+               <p>
+               The following binary shorthand expressions yield the same result
+               as the longhand expressions listed alongside:</p>
+               <table align=center width="80%">
+               <tr class=desc><td align=center><b>Operator</b></td><td align=center><b>Shorthand</b></td><td><b>Longhand</b></td>
+               <td width="40%"><b>Meaning</b></td></b></tr>
+               <tr><td align=center class=code>+=</td><td align=center class=code>age += 4</td><td class=code>&nbsp;&nbsp;age = age + 4</td><td>&nbsp;&nbsp;add 4 to age&nbsp;</td></tr>
+               <tr><td align=center class=code>-=</td><td align=center class=code>age -= 4</td><td class=code>&nbsp;&nbsp;age = age - 4</td><td>&nbsp;&nbsp;subtract 4 from age&nbsp;</td></tr>
+               <tr><td align=center class=code>*=</td><td align=center class=code>age *= 4</td><td class=code>&nbsp;&nbsp;age = age * 4</td><td>&nbsp;&nbsp;multiply age by 4&nbsp;</td></tr>
+               <tr><td align=center class=code>/=</td><td align=center class=code>age /= 4</td><td class=code>&nbsp;&nbsp;age = age / 4</td><td>&nbsp;&nbsp;divide age by 4&nbsp;</td></tr>
+               <tr><td align=center class=code>%=</td><td align=center class=code>age %= 4</td><td class=code>&nbsp;&nbsp;age = age % 4</td><td>&nbsp;&nbsp;remainder after age/4&nbsp;</td></tr>
+               </table>
+
+               <p class="sssection">Unary</p>
+               <p>
+               The following unary shorthand expressions yield the same result
+               as the longhand expressions listed alongside:
+               </p>
+               <table align=center width="80%">
+               <tr class=desc><td align=center><b>Operator</b></td><td align=center><b>Shorthand</b></td><td><b>Longhand</b></td>
+               <td><b>Meaning</b></td></b></tr>
+               <tr><td align=center class=code>++</td><td align=center class=code>&nbsp;age++ or ++age&nbsp;</td><td class=code>&nbsp;&nbsp;age = age + 1</td><td>&nbsp;&nbsp;increment age by 1&nbsp;</td></tr>
+               <tr><td align=center class=code>--</td><td align=center class=code>&nbsp;age-- or --age&nbsp;</td><td class=code>&nbsp;&nbsp;age = age - 1</td><td>&nbsp;&nbsp;decrement age by 1&nbsp;</td></tr>
+               </table>
+               <p>
+               The pre-fix operator precedes its operand while the post-fix
+               operator succeeds its operand.&nbsp;
+               The pre-fix operator changes the value of the operand
+               before the value is used, while the post-fix operator
+               changes the value of the operand after the
+               value has been used.&nbsp;
+               </p>
+
+               <p class="ssection">Floating-point Data Types</p>
+               <p>
+               The <span class="code">float</span> and <span class="code">double</span> data types
+               have 4 binary and 2 unary shorthand assignment operators.&nbsp;
+               Each operator combines an arithmetic operation with an assignment operation
+               in a more compact form.
+               </p>
+               <p class="sssection">Binary</p>
+               <p>
+               The following binary shorthand expressions yield the
+               same result as the longhand expression listed alongside:</p>
+               <table align=center width="100%">
+               <tr class=desc><td align=center><b>Operator</b></td><td align=center><b>Shorthand</b></td><td><b>Longhand</b></td>
+               <td width="40%"><b>Meaning</b></td></b></tr>
+               <tr><td align=center class=code>+=</td><td align=center class=code>fare += 4.0</td><td class=code>&nbsp;&nbsp;fare = fare + 4.0</td><td>&nbsp;&nbsp;add 4.0 to fare&nbsp;</td></tr>
+               <tr><td align=center class=code>-=</td><td align=center class=code>fare -= 4.0</td><td class=code>&nbsp;&nbsp;fare = fare - 4.0</td><td>&nbsp;&nbsp;subtract 4.0 from fare&nbsp;</td></tr>
+               <tr><td align=center class=code>*=</td><td align=center class=code>fare *= 4.0</td><td class=code>&nbsp;&nbsp;fare = fare * 4.0</td><td>&nbsp;&nbsp;multiply fare by 4.0&nbsp;</td></tr>
+               <tr><td align=center class=code>/=</td><td align=center class=code>fare /= 4.0</td><td class=code>&nbsp;&nbsp;fare = fare / 4.0</td><td>&nbsp;&nbsp;divide fare by 4.0&nbsp;</td></tr>
+               </table>
+
+               <p class="sssection">Unary</p>
+               <p>
+               The following unary shorthand expressions yield the same
+               result as the longhand expressions listed alongside:
+               </p>
+               <table align=center width="80%">
+               <tr class=desc><td align=center><b>Operator</b></td><td align=center><b>Shorthand</b></td><td><b>Longhand</b></td>
+               <td><b>Meaning</b></td></b></tr>
+               <tr><td align=center class=code>++</td><td align=center class=code>&nbsp;fare++ or ++fare&nbsp;</td><td class=code>&nbsp;&nbsp;fare = fare + 1.0</td><td>&nbsp;&nbsp;increment fare by 1&nbsp;</td></tr>
+               <tr><td align=center class=code>--</td><td align=center class=code>&nbsp;fare-- or --fare&nbsp;</td><td class=code>&nbsp;&nbsp;fare = fare - 1.0</td><td>&nbsp;&nbsp;decrement fare by 1&nbsp;</td></tr>
+               </table>
+               <p>
+               The pre-fix operator precedes its operand, while the post-fix operator
+               succeeds its operand.&nbsp;
+               The pre-fix operator changes the value of the operand
+               before the value is used, while the post-fix operators
+               change the value of the operand after the original value
+               has been used.&nbsp;
+               </p>
+
+               <p class="ssection">Caution</p>
+               <p>
+               We avoid using the pre/post-fix operators wherever there
+               is the slightest chance of ambiguity.&nbsp;
+               Consider the following statements,
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ int herAge = 5, hisAge;
+ hisAge = 5 + herAge++; /* hisAge has a value of 10 and herAge a value of 6 */
+ ...
+ int herAge = 5, hisAge;
+ hisAge = ++herAge + 5; /* hisAge has a value of 11 and herAge a value of 6 */</pre><br /></td></tr></table>
+               These statements are unambiguous.&nbsp; However, consider
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ int herAge = 5, hisAge;
+ hisAge = 5 + herAge++ + herAge;</pre><br /></td></tr></table>
+               Here, the value of the second <span class=code>herAge</span> depends
+               upon the compiler.&nbsp; One compiler may increment the first
+               <span class=code>herAge</span> before the second addition, while
+               another compiler may increment the first <span class=code>herAge</span>
+               after the second addition.&nbsp; The C language only stipulates that the
+               value must be incremented before the semi-colon.&nbsp;
+               </p>
+               <p>
+               It is best to decompose any ambiguous expression into several statements for clarity
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ hisAge = 5 + herAge++;  /* increment herAge before adding herAge 2nd time */
+ hisAge += herAge;
+
+ hisAge = 5 + herAge; /* add herAge before incrementing herAge */
+ hisAge += herAge++;  </pre><br /></td></tr></table>
+               </p>
+               <br />
+
+               <p id="mix" class="section">Mixing Data Types</p>
+               <p>
+               Although the ALU does not perform operations on operands of
+               differing data type directly, C compilers can interpret
+               expressions that contain operands of differing data type.&nbsp;
+               If a binary expression contains operands of differing type,
+               a C compiler changes the data type of one of the
+               operands to match the other.&nbsp;
+               </p>
+               <p>
+               The compiler uses the following data type hierarchy:
+               <p>
+               <table width="20%" align=center>
+               <tr><td width="50%" class=code>double</td><td width="50%">higher</td></tr>
+               <tr><td width="50%" class=code>float</td><td width="50%">...</td></tr>
+               <tr><td width="50%" class=code>long</td><td width="50%">...</td></tr>
+               <tr><td width="50%" class=code>int</td><td width="50%">...</td></tr>
+               <tr><td width="50%" class=code>char</td><td width="50%">lower</td></tr>
+               </table>
+               </p>
+               <p class="ssection">Assignment Expressions</p>
+               <p>
+               If the data type of the variable on the left side of
+               an assignment operator differs from the data type of
+               the right side operand, the compiler
+               <ul>
+               <li>promotes the right operand to the data type of
+               the left operand if the left operand is of a higher data type
+               than the right operand,</li>
+               <li>truncates the right operand to the data type of
+               the left operand if the left operand is of a lower data type
+               than the right operand.</li>
+               </ul>
+               For example,
+               <table width="95%">
+               <tr>
+               <td width="50%">
+               <br />
+               <pre>
+ /* Promotion with Assignment Operators
+ *  promotion.c
+ *  BTP100
+ *  Jan 21 2005
+ */
+
+ main( ) {
+     int loonies;
+     double money;
+
+     printf("How many loonies do you have ? ");
+     scanf("%d", &amp;loonies);
+
+     money = loonies;
+
+     printf("You have $%.2lf\n", money);
+ }</pre><br /></td><td width="50%">
+               <br />
+               <pre class="result">
+
+
+
+
+
+
+
+
+
+
+ How many loonies do you have ? 23&nbsp;
+ You have $23.00
+
+
+
+
+ </pre><br /></td></tr></table>
+               Alternatively,
+               <table width="95%">
+               <tr>
+               <td width="50%">
+               <br />
+               <pre>
+ /* Truncation with Assignment Operators
+ *  truncation.c
+ *  BTP100
+ *  Jan 21 2005
+ */
+
+ main( ) {
+     int loonies;
+     double money;
+
+     printf("How much money do you have ? ");
+     scanf("%lf", &amp;money);
+
+     loonies = money;
+
+     printf("You have %d loonies.\n", loonies);&nbsp;
+ }</pre><br /></td><td width="50%">
+               <br />
+               <pre class="result">
+
+
+
+
+
+
+
+
+
+
+ How much money do you have ? 23.45&nbsp;
+ You have 23 loonies.
+
+
+
+
+ </pre><br /></td></tr></table>
+               </p>
+               <p class="ssection">Arithmetic and Relational Expressions</p>
+               <p>
+               If the operands in an arithmetic or relational expression
+               differ in data type, the compiler promotes the value of
+               lower data type to a value of higher data type before
+               implementing the operation.&nbsp;
+               </p>
+               <p>
+               <table width="70%" align=center>
+               <tr>
+               <td width="20%"><b>&nbsp;</b></td>
+               <td class=desc align=center colspan=5 width="80%"><b>right operand</b></td>
+               </tr>
+               <tr class=desc>
+               <td width="20%"><b>left operand</b></td>
+               <td width="16%"><b>double</b></td><td width="16%"><b>float</b></td><td width="16%"><b>int</b></td><td width="16%"><b>char</b></td><td width="16%"><b>long</b></td>
+               </tr>
+               <tr>
+               <td width="20%" class=desc><b>double</b></td>
+               <td width="16%"><span class=code>&nbsp;double</span></td>
+               <td width="16%"><span class=code>&nbsp;double</span></td>
+               <td width="16%"><span class=code>&nbsp;double</span></td>
+               <td width="16%"><span class=code>&nbsp;double</span></td>
+               <td width="16%"><span class=code>&nbsp;double</span></td>
+               </tr>
+               <tr>
+               <td width="20%" class=desc><b>float</b></td>
+               <td width="16%"><span class=code>&nbsp;double</span></td>
+               <td width="16%"><span class=code>&nbsp;float</span></td>
+               <td width="16%"><span class=code>&nbsp;float</span></td>
+               <td width="16%"><span class=code>&nbsp;float</span></td>
+               <td width="16%"><span class=code>&nbsp;float</span></td>
+               </tr>
+               <tr>
+               <td width="20%" class=desc><b>int</b></td>
+               <td width="16%"><span class=code>&nbsp;double</span></td>
+               <td width="16%"><span class=code>&nbsp;float</span></td>
+               <td width="16%"><span class=code>&nbsp;int</span></td>
+               <td width="16%"><span class=code>&nbsp;int</span></td>
+               <td width="16%"><span class=code>&nbsp;long</span></td>
+               </tr>
+               <tr>
+               <td width="20%" class=desc><b>char</b></td>
+               <td width="16%"><span class=code>&nbsp;double</span></td>
+               <td width="16%"><span class=code>&nbsp;float</span></td>
+               <td width="16%"><span class=code>&nbsp;int</span></td>
+               <td width="16%"><span class=code>&nbsp;int</span></td>
+               <td width="16%"><span class=code>&nbsp;long</span></td>
+               </tr>
+               <tr>
+               <td width="20%" class=desc><b>long</b></td>
+               <td width="16%"><span class=code>&nbsp;double</span></td>
+               <td width="16%"><span class=code>&nbsp;float</span></td>
+               <td width="16%"><span class=code>&nbsp;long</span></td>
+               <td width="16%"><span class=code>&nbsp;long</span></td>
+               <td width="16%"><span class=code>&nbsp;long</span></td>
+               </tr>
+               <tr>
+               <td>&nbsp;</td>
+               <td align=center colspan=5 width="80%" class=desc><span class=code><center>Data Type of Promoted Operand</center></span></td>
+               </tr>
+               </table>
+               </p>
+               <p>
+               For example,
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ 1034 * 10   yields 10340    an int result
+ 1034 * 10.0 yields 10340.0  a double result
+ 1034 * 10L  yields 10340L   a long result&nbsp;
+ 1034 * 10.f yields 10340.0f a float result</pre><br /></td></tr></table>
+               The precise promotion rules are:
+               <ul>
+               <li>if either operand is long double, convert the other operand to long double
+               <li>otherwise, if either operand is double, convert the other operand to double
+               <li>otherwise, if either operand is float, convert the other operand to float
+               <li>otherwise, convert char and short to int
+               <li>then, if either operand is long, convert the other operand to long.
+               </ul>
+               <br />
+
+               <p id="cas" class="section">Casting</p>
+               <p>
+               We may temporarily change the data type of any operand
+               in any expression to obtain a result of a certain data
+               type.&nbsp;
+               </p>
+               <p>
+               To change the data type of any constant or variable, we
+               preceding the constant or variable with the desired data type
+               enclosed within parentheses.&nbsp; This is called <b>cast</b>ing.&nbsp;
+               The form of a cast is</p>
+               <p>
+               <table align=center>
+               <tr class=desc><td align=center colspan=2><b>Cast Expression</b></td><td><b>&nbsp;Meaning</b></td></tr>
+               <tr><td align=center><span class=code>&nbsp;( double )&nbsp;</span></td><td align=left class=oper>&nbsp;variable or constant&nbsp;</td><td>&nbsp;&nbsp;<span class=code>double</span> version of&nbsp;</td></tr>
+               <tr><td align=center><span class=code>&nbsp;( float )&nbsp;</span></td><td align=left class=oper>&nbsp;variable or constant&nbsp;</td><td>&nbsp;&nbsp;<span class=code>float</span> version of&nbsp;</td></tr>
+               <tr><td align=center><span class=code>&nbsp;( int )&nbsp;</span></td>  <td align=left class=oper>&nbsp;variable or constant&nbsp;</td><td>&nbsp;&nbsp;<span class=code>int</span> version of&nbsp;</td></tr>
+               <tr><td align=center><span class=code>&nbsp;( char )&nbsp;</span></td> <td align=left class=oper>&nbsp;variable or constant&nbsp;</td><td>&nbsp;&nbsp;<span class=code>char</span> version of&nbsp;</td></tr>
+               <tr><td align=center><span class=code>&nbsp;( long )&nbsp;</span></td> <td align=left class=oper>&nbsp;variable or constant&nbsp;</td><td>&nbsp;&nbsp;<span class=code>long</span> version of&nbsp;</td></tr>
+               </table>
+               <p>
+               For example
+               <table width="95%">
+               <tr>
+               <td width="50%">
+               <br />
+               <pre>
+ /* Casting to a Floating-Point Value
+ *  castToDouble.c
+ *  BTP100
+ *  Jan 21 2005
+ */
+
+ main( ) {
+     int pies, persons;
+     double piesPerPerson;
+
+     printf("How many pies do you have ? ");
+     scanf("%d", &amp;pies);
+     printf("How many persons are there ? ");
+     scanf("%d", &amp;persons);
+
+     <span class=high>piesPerPerson = (double) pies / persons;</span>
+
+     printf("Each person receives %.2lf pies.\n",&nbsp;
+            piesPerPerson);
+ }</pre><br /></td><td width="50%">
+               <br />
+               <pre class="result">
+
+
+
+
+
+
+
+
+
+
+ How many pies do you have ? 8&nbsp;
+ How many persons are there ? 6&nbsp;
+ Each person receives 1.33 pies.
+
+
+
+
+
+
+ </pre><br /></td></tr></table>
+               The result of the division here is a
+               <span class=code>double</span> and the assignment
+               places a double result (1.333333) into <span class=code>piesPerPerson</span>.&nbsp;
+               </p>
+               <p>
+               Another example
+               <table width="95%">
+               <tr>
+               <td width="50%">
+               <br />
+               <pre>
+ /* Casting to an Integral Value
+ *  castToInt.c
+ *  BTP100
+ *  Jan 21 2005
+ */
+
+ main( ) {
+     int twoonies;
+     double money;
+
+     printf("How much money do you have ? ");
+     scanf("%lf", &amp;money);
+
+     <span class=high>twoonies = (int) money / 2;</span>
+
+     printf("I'll give you %d twoonies + change.\n",&nbsp;
+            twoonies);
+ }</pre><br /></td><td width="50%">
+               <br />
+               <pre class="result">
+
+
+
+
+
+
+
+
+
+
+ How much money do you have ? 8.33
+ I'll give you 4 twoonies + change.&nbsp;
+
+
+
+
+
+ </pre><br /></td></tr></table>
+               <span class=code>twoonies</span> will
+               contain 4, because <span class=code>(int)money/2</span>
+               is an integer division.&nbsp;
+               </p>
+               <p>
+               Note, however, that
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ piesPerPerson = (double) (pies / persons); /* Warning - this
+                              preserves the integer division */</pre><br /></td></tr></table>
+                  <p>
+               places 1.0 into <span class=code>piesPerPerson</span>,
+               not 1.333333.&nbsp; Here, the result of the integer
+               division and not <span class=code>pies</span> itself
+               is cast to a <span class=code>double</span>.
+               </p>
+               <br />
+
+               <p id="pre" class="section">Precedence</p>
+               <p>
+               The  rules of
+               precedence define the order in which a compiler must
+               decompose a compound expression.&nbsp; The compiler
+               evaluates the first operation with the operator that
+               has highest precedence.&nbsp;
+               </p>
+               <p>
+               The operators, from highest to lowest precedence, and
+               their direction of evaluation are as follows:
+               </p>
+               <p>
+               <table align=center>
+               <tr class=desc><td width="50%" align=left><b>Operator</b></td><td align=center width="50%"><b>Evaluate From</b></td></tr>
+               <tr><td><span class=code>++ -- (post)</span></td><td align=center>left to right</td></tr>
+               <tr><td><span class=code>++ -- (pre) + - & ! (all unary)</span></td><td align=center>right to left</td></tr>
+               <tr><td><span class=code>(data type)</span></td><td align=center>right to left</td></tr>
+               <tr><td><span class=code>* / %</span></td><td align=center>left to right</td></tr>
+               <tr><td><span class=code>+ -</span></td><td align=center>left to right</td></tr>
+               <tr><td><span class=code>&lt; &lt;= &gt; &gt;=</span></td><td align=center>left to right</td></tr>
+               <tr><td><span class=code>== !=</span></td><td align=center>left to right</td></tr>
+               <tr><td><span class=code>&&</span></td><td align=center>left to right</td></tr>
+               <tr><td><span class=code>||</span></td><td align=center>left to right</td></tr>
+               <tr><td><span class=code>= += -= *= /= %=</span></td><td align=center>right to left</td></tr>
+               </table></p>
+               <p>
+               We use <span class=code>( )</span> to instruct the
+               compiler to evalute the expression within the parentheses
+               first.&nbsp;
+               For example,
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+   2 + 3   * 5 => 2 + 15 => 17
+ ( 2 + 3 ) * 5 => 5 * 5  => 25</pre><br /></td></tr></table>
+               </p>
+               <br />
+
+               <p id="exe" class="section">Exercises</p>
+               <p>
+               <ul>
+               <li>Complete <a href="w2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/w2.html">workshop 2</a> on Conversions, and</li>
+               <li>Read pages 14-19, 62 from Evan Weaver's subject notes.</li>
+               </ul>
+               </p>
+               <br />
+               <br />
+               <br />
+               </td>
+            </tr>
+         </table>
+      </td>
+   </tr>
+
+   <!-- Footer -->
+   <tr>
+      <td class="tbody">
+         <table cellpadding="1" width="90%" align="center">
+            <tr>
+               <td width="50%" class="text3">
+                  <script language="javascript">
+                  var lh = document.location.href;
+                  document.write(lh)
+                  </script>&nbsp;&nbsp;
+               </td>
+               <td width="50%" align="right" class="text3">
+                  <script language="javascript">
+                  var lm = document.lastModified.slice(0,-3);
+                  document.write("Last Modified: " +lm)
+                  </script>&nbsp;&nbsp;
+               </td>
+            </tr>
+         </table>
+      </td>
+   </tr>
+</table>
+
+</body>
+</html>

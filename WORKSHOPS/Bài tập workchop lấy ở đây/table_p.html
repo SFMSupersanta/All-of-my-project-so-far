@@ -1,0 +1,468 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC
+    '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html lang="en-us" xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+	<title>Seneca | School of Computer Studies | Programming Fundamentals Using C</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+	<meta name="Copyright" content="(c) Copyright Seneca College 2004" />
+	<meta name="Description" content="Welcome to the Bachelors Degree of Software Development Program Web Site.  On this site you can find the introductory programming course.  Designed by Chris Szalwinski." />
+	<meta name="Abstract" content="This subject reviews the principles of procedural programming.  Students study the solution of problems using structured programming techniques with the C programming language.  The emphasis throughout is on the solution of small problems."/>
+	<meta name="Author" content="chris.szalwinski@senecac.on.ca"/>
+	<meta name="Keywords" content="sofware development, procedural programming, lecture notes"/>
+
+	<link rel="stylesheet" type="text/css" href="style.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/style.043.css">
+	<link rel="stylesheet" type="text/css" href="styleSPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleSPrint.043.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="stylePPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/stylePPrint.043.css" media="print">
+</head>
+
+<body>
+
+<table cellspacing="0" cellpadding="0">
+
+	<!-- Body Cell -->
+	<tr height="600">
+		<!-- Content Area -->
+		<td class="tbody" bgcolor="ffffff">
+			<table cellpadding="10" width="100%">
+				<tr>
+					<td bgcolor="ffffff" valign="top">
+					<br />
+					<center><span class=texth>Module H - Files</span>
+					<br />
+					<br />
+					<span class=texthead>
+					Records, Fields and Tables</span>
+					<br />
+					<br />
+					<span class=textagend>
+					Create C programs to implement solutions using
+					sequential text files.<br />
+					<br />
+					</span>
+					<p class=quote></p>
+					<span class=textagend>
+					<a href="#rec">Records</a> |
+					<a href="#fie">Fields</a> |
+					<a href="#tab">Tables</a> |
+					<a href="#exa">In-Class Practice</a> |
+					<a href="#exe">Exercises</a>
+					</span>
+					</center>
+					<br />
+					<br />
+					<br />
+
+					<p>
+					A file consists of records.&nbsp; A record consists of
+					fields.&nbsp; A collection of records with equal numbers
+					of fields in each record constitutes a table.
+					</p>
+					<p align="center"><img src="tables.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/tables.gif" height="150" width="300" /></p>
+					<br />
+
+					<p id="rec" class=section>Records</p>
+					<p>
+					We call each line in a text file a record.&nbsp;
+					That is, a record is a sequence of characters that ends with a newline delimiter.&nbsp;
+					Typically, one record refers to one entity of information.&nbsp;
+					</p>
+					<p align="center"><img src="records.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/records.gif" height="150" width="300" /></p>
+					<p>
+					Consider a text file named <span class=code>winter.txt</span>
+					that contains the following information
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ 5 Pairs of Boots
+ 2 Coats
+ 3 Hats
+ 3 Pairs of Gloves</pre><br /></td></tr></table>
+ 					Each record in this file refers to a specific item
+ 					of clothing.
+ 					</p>
+ 					<p>
+					We can determine the number of records in this file
+					by counting the number of newline characters in the file:&nbsp;
+					<table width="95%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ /* Number of Records
+ *  records.c
+ *  Mar 22 2005
+ *  BTP100
+ */
+
+ #include &lt;stdio.h&gt;
+
+ int main( ) {
+     FILE *fp = NULL;
+     int c, nrecs;
+
+     fp = fopen("winter.txt","r");
+     if (fp != NULL) {
+         nrecs = 0;
+         do {
+             c = fgetc(fp);
+             if (c != EOF) {
+                 if ((char)c == '\n')
+                     nrecs++;
+             }
+         } while (!feof(fp));
+         printf("%d records on file\n",&nbsp;
+                nrecs);
+         fclose(fp);
+     }
+     return 0;
+ }</pre><br /></td>
+ 					<td>
+					<br />
+					<pre class=result>
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ 3 records on file
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+					</pre><br /></td></tr></table>
+					</p>
+					<br />
+
+					<p id="fie" class=section>Fields</p>
+					<p>
+					A field is one element of a record.&nbsp; A field holds an integral
+					piece of data.&nbsp; A field may be of any data type.&nbsp;
+					We separate any two adjacent fields in a record using a field delimiter.&nbsp;
+					</p>
+					<p align="center"><img src="fields.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/fields.gif" height="150" width="300" /></p>
+					<p>
+					Consider the file named <span class=code>winter.txt</span> (see above).&nbsp;
+					Each record in this file contains two fields: the first field
+					holds a quantity and the second field holds a string describing
+					the item.&nbsp;
+					The two fields are delimited by a blank character.&nbsp;
+					</p>
+					<p>
+					The following program reads the records on the file and displays
+					them in tabular format
+					<table width="95%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ /* Table of Items
+ *  simpleTable.c
+ *  Mar 22 2005
+ *  BTP100
+ */
+
+ #include &lt;stdio.h&gt;
+
+ int main( ) {
+     FILE *fp = NULL;
+     char label [21];
+     int n;
+
+     fp = fopen("winter.txt", "r");
+     if (fp != NULL) {
+         printf("        Winter Items\n"
+                "        ============\n\n"
+                "No Description       \n"
+                "---------------------\n");
+         while (fscanf(fp,"%d %20[^\n]%*c",
+                &amp;n, label) == 2)
+             printf("%6d %-20s\n", n, label);&nbsp;
+         fclose(fp);
+     }
+     return 0;
+ }</pre><br /></td><td>
+					<br />
+					<pre class=result>
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+          Winter Items
+          ============
+
+ No Description
+ -----------------------
+  5 Pairs of Boots
+  2 Coats
+  3 Hats
+  3 Pairs of Gloves
+ &nbsp;
+					</pre><br /></td></tr></table>
+					</p>
+					<br />
+
+					<p id="tab" class=section>Tables</p>
+					<p>
+					Consider a file named <span class=code>spring.txt</span>.&nbsp;
+					The contents of this file are listed below.&nbsp;
+					Each record contains three fields: the first field
+					holds a quantity, the second field holds a string describing
+					the item and the third field holds the unit price.&nbsp;
+					In this file, the fields are delimited by semi-colons:&nbsp;
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ 2;Light Jacket;95.89
+ 3;Long-Sleeved Shirts;67.89
+ 2;Large Skateboards;45.98</pre><br /></td></tr></table>
+					We use the semi-colon as a field delimiter here
+					because the semi-colon is not part of any data on the file.&nbsp;
+					We avoid the blank character as a delimiter since the second
+					field contains embedded
+					blanks.&nbsp;
+					</p>
+					<p>
+					The following program reads each record on the file
+					and displays the fields in a tabular format
+					<table width="95%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ /* Table of Items
+ *  table.c
+ *  Nov 17 2004
+ *  BTP100
+ */
+
+ #include &lt;stdio.h&gt;
+
+ int main( void ) {
+     FILE *fp = NULL;
+     char label [21];
+     int n;
+     double price;
+
+     fp = fopen("spring.txt","r");
+     if (fp != NULL) {
+         printf("        Spring Items\n"
+                "        ============\n\n"
+                "No Description       Price\n"
+                "--------------------------\n");&nbsp;
+         <span class=high>while (fscanf(fp,"%d;%20[^;];%lf%*c",
+                &amp;n, label, &amp;price) == 3)
+             printf("%2d %-20s%5.2lf\n",
+                      n, label, price);
+         }</span>
+         fclose(fp);
+     }
+     return 0;
+ }</pre><br /></td><td>
+					<br />
+					<pre class=result>
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+          Spring Items
+          ============
+
+ No Description         Price
+ ----------------------------
+  2 Light Jacket        95.89
+  3 Long-Sleeved Shirts 67.89
+  2 Large Skateboards   45.98
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+					</pre><br /></td></tr></table>
+					Note the field delimiters embedded within the <span class=code>fscanf</span>
+					format string.</p>
+					<p class="ssection">Oversized Strings</p>
+					<p>
+					The above program assumes that the labels on the file
+					do not exceed the amount of space allocated by the
+					program.&nbsp; Another file may however contain labels
+					that are too long to fit within the space allocated.&nbsp;
+					To accomodate such files, we upgrade our program
+					to skip in any label those characters that our
+					program cannot store.&nbsp; We do so by
+					reading each record in two separate parts:
+					<table width="95%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ /* Table of Items
+ *  tableBetter.c
+ *  Mar 22 2005
+ *  BTP100
+ */
+
+ #include &lt;stdio.h&gt;
+
+ int main( ) {
+     FILE *fp = NULL;
+     char label [21];
+     int n;
+     double price;
+     char c;
+
+     fp = fopen("spring.txt","r");
+     if (fp != NULL) {
+         printf("        Spring Items\n"
+                "        ============\n\n"
+                "No Description       Price\n"
+                "--------------------------\n");
+         while (fscanf(fp,"%d;%20[^;]%c",
+             &amp;n, label, &amp;c) == 3) {
+             <span class=high>if (c != ';')
+                 fscanf("%*[^;];%lf%*c", &amp;price);&nbsp;
+             else
+                 fscanf("%lf\n", &amp;price);
+             printf("%2d %-20s%5.2lf\n",
+                      n, label, price);
+         }</span>
+         fclose(fp);
+     }
+     return 0;
+ }</pre><br /></td><td>
+					<br />
+					<pre class=result>
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+          Spring Items
+          ============
+
+ No Description         Price
+ ----------------------------
+  2 Light Jacket        95.89
+  3 Long-Sleeved Shirts 67.89
+  2 Large Skateboards   45.98
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+					</pre><br /></td></tr></table>
+					Note how we stop reading the records as soon as we encounter
+					a return code other than 3.</p>
+					<br />
+
+					<p id="exa" class="section">In-Class Practice</p>
+					<p>
+					Try the practice problem in <a href="h19.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/handouts/h19.html">Handout 19</a>.&nbsp;
+					</p>
+					<br />
+
+					<p id="exe" class="section">Exercises</p>
+					<p>
+					<ul>
+					<li>Read pages 93-96 from Evan Weaver's subject notes,</li>
+					<li>Try walkthrough <a href="walk16.txt.htm" tppabs="http://cs.senecac.on.ca/~btp100/pages/evans_walks/walk16.txt">16</a> in Evan Weaver's notes and</li>
+					<li>Try word problems <a href="files-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/practice/files-2.html">sortByInitials</a>
+					and <a href="files-3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/practice/files-3.html">justComments</a>.</li>
+					</ul>
+					</p>
+					<br />
+					<br />
+					<br />
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+
+	<!-- Footer -->
+	<tr>
+		<td class="tbody">
+			<table cellpadding="1" width="90%" align="center">
+				<tr>
+					<td width="50%" class="text3">
+						<script language="javascript">
+						var lh = document.location.href;
+						document.write(lh)
+						</script>&nbsp;&nbsp;
+					</td>
+					<td width="50%" align="right" class="text3">
+						<script language="javascript">
+						var lm = document.lastModified.slice(0,-3);
+						document.write("Last Modified: " +lm)
+						</script>&nbsp;&nbsp;
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

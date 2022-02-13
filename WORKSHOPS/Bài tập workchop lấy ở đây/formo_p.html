@@ -1,0 +1,365 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC
+    '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html lang="en-us" xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+	<title>Seneca | School of Computer Studies | Programming Fundamentals Using C</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+	<meta name="Copyright" content="(c) Copyright Seneca College 2004" />
+	<meta name="Description" content="Welcome to the Bachelors Degree of Software Development Program Web Site.  On this site you can find the introductory programming course.  Designed by Chris Szalwinski." />
+	<meta name="Abstract" content="This subject reviews the principles of procedural programming.  Students study the solution of problems using structured programming techniques with the C programming language.  The emphasis throughout is on the solution of small problems."/>
+	<meta name="Author" content="chris.szalwinski@senecac.on.ca"/>
+	<meta name="Keywords" content="sofware development, procedural programming, lecture notes"/>
+
+	<link rel="stylesheet" type="text/css" href="style.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/style.043.css">
+	<link rel="stylesheet" type="text/css" href="styleSPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleSPrint.043.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="stylePPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/stylePPrint.043.css" media="print">
+</head>
+
+<body>
+
+<table cellspacing="0" cellpadding="0">
+
+	<!-- Body Cell -->
+	<tr height="600">
+		<!-- Content Area -->
+		<td class="tbody" bgcolor="ffffff">
+			<table cellpadding="10" width="100%">
+				<tr>
+					<td bgcolor="ffffff" valign="top">
+					<br />
+					<center><span class=texth>Module E - Standard Libraries</span>
+					<br />
+					<br />
+					<span class=texthead>
+					Formatted Output</span>
+					<br />
+					<br />
+					<span class=textagend>
+					Design algorithms to solve small problems using formatted
+					program output.
+					<br /><br />
+					</span>
+					<p class=quote></p>
+					<span class=textagend>
+					<a href="#put">putchar</a> |
+					<a href="#pri">printf</a> |
+					<a href="#exe">Exercises</a>
+					</span>
+					</center>
+					<br />
+					<br />
+
+					<p>
+					The standard C libraries include functions for sending
+					text output to the standard output stream (typically, the
+					monitor).&nbsp;
+					The system file <span class=code>&lt;stdio.h&gt;</span>
+					contains the prototypes for these functions.&nbsp;
+					</p>
+					<p>
+					Standard output is buffered.&nbsp; The
+					standard output buffer empties to the standard output
+					device whenever the buffer receives a newline character or
+					the buffer is full.&nbsp;
+					</p>
+					<p align="center"><img src="bufferout.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/bufferout.gif" height="150" width="300" /></p>
+					<p>
+					Buffering enables a program to continue executing without
+					waiting for the output device to finish displaying the most
+					recently received characters.
+					</p>
+					<p>
+					The two C functions that provide output facilities
+					for the standard output stream are
+					<ul>
+					<li class=code>putchar</li>
+					<li class=code>printf</li>
+					</ul>
+					</p>
+					<br />
+
+					<p id="put" class="section">putchar</p>
+					<p>
+					<span class=code>putchar</span> writes the character
+					received to the standard output stream buffer and returns
+					the character written or <span class=code>EOF</span> if an
+					error occured.&nbsp;
+					The prototype for <span class=code>putchar</span> is
+					<pre class=defin>
+ int putchar ( int );</pre>
+ 					For example, to send the character <span class=code>'a'</span>
+ 					to the display and to display it in character
+ 					format, we write
+					<table width="95%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ putchar('a');</pre><br /></td>
+					<td width="50%">
+					<br />
+					<pre class=result>
+ a</pre><br /></td></tr></table>
+					Note that <span class=code>putchar</span> can take <span class=code>EOF</span>
+					as an argument.</p>
+					<br />
+
+					<p id="pri" class="section">printf</p>
+					<p>
+					<span class=code>printf</span> sends data under
+					format control to the standard output stream buffer
+					and returns the number of characters sent.&nbsp;
+					The syntax of a call to <span class=code>printf</span> is
+					<pre class=defin>
+ printf ( format string , value, ..., value )</pre></p>
+					<p>
+					The format string is a literal string that consists of
+					characters interspersed with conversion specifiers.&nbsp;
+					The character are displayed as is.&nbsp; The conversion specifiers
+					describe how each value argument is to be displayed.&nbsp; There is
+					one specifier for each value argument in the function call.&nbsp;</p>
+					<p class="ssection">Conversion Specifiers</p>
+					<p>
+					A conversion specifier begins with a <span class=code>%</span>
+					and ends with a <span class=code>conversion character</span>.&nbsp;
+					The conversion character describes the data type of
+					the value to be displayed.&nbsp; </p>
+					<table align=center cellspacing=1 cellpadding=1 border=1>
+					<tr class=desc><td align=center><b>&nbsp;&nbsp;Specifier&nbsp;&nbsp;</b></td><td><b>Output As A</td><td align=left><b>&nbsp;&nbsp;Use With</td></tr>
+					<tr class=value><td align=center class=code>%c</td><td>character</td><td class=code align=left>&nbsp;&nbsp;char</td></tr>
+					<tr class=value><td align=center class=code>%d</td><td>decimal</td><td class=code align=left>&nbsp;&nbsp;char, int, short, long, long long</td></tr>
+					<tr class=value><td align=center class=code>%u</td><td>decimal</td><td class=code align=left>&nbsp;&nbsp;unsigned char, int, short, long, long long</td></tr>
+					<tr class=value><td align=center class=code>%o</td><td>octal</td><td class=code align=left>&nbsp;&nbsp;char, int, short, long, long long&nbsp;&nbsp;</td></tr>
+					<tr class=value><td align=center class=code>%x</td><td>hexadecimal</td><td class=code align=left>&nbsp;&nbsp;char, int, short, long, long long&nbsp;&nbsp;</td></tr>
+					<tr class=value><td align=center class=code>%f</td><td>&nbsp;floating-point&nbsp;</td><td class=code align=left>&nbsp;&nbsp;float, double, long double</td></tr>
+					<tr class=value><td align=center class=code>%g</td><td>general</td><td class=code align=left>&nbsp;&nbsp;float, double, long double</td></tr>
+					<tr class=value><td align=center class=code>%e</td><td>exponential</td><td class=code align=left>&nbsp;&nbsp;float, double, long double</td></tr>
+					</table>
+					<p>
+					For example, the following code yields the output on the right
+					<table width="95%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ int i = 15;
+ double x = 3.141592;
+ printf("i is %d; x is %lf\n", i, x);</pre><br /></td>
+					<td width="50%">
+					<br />
+					<pre class=result>
+ &nbsp;
+ &nbsp;
+ i is 15; x is 3.141592</pre><br /></td></tr></table>
+					Between the <span class=code>%</span> and the <span class=code>conversion
+					character</span>, there may be
+					<pre class=defin>
+ <span class=code>%</span> flags width . precision size <span class=code>conversion_character</span></pre>
+					<ul>
+					<li>flags</li>
+					<ul>
+					<li><span class=code>-</span> prescribes left justification of the converted value in its field</li>
+					<li><span class=code>0</span> pads the field width with leading zeros</li>
+					</ul>
+					<li><span class=code>width</span>&nbsp; sets the minimum field width within which to
+					display the converted value (overriding with a wider field only if necessary).&nbsp; The converted value
+					is padded on the left (or right, for left alignment).&nbsp; The padding character is
+					space or <span class=code>0</span> if the padding flag is on.</li>
+					<li><span class=code>.</span>&nbsp; separates the field width from the precision.</li>
+					<li><span class=code>precision</span>.&nbsp; sets the number of digits to be printed after
+					the decimal point for <span class=code>f</span> conversions and the minimum number of digits to be printed for an integer
+					(adding leading zeros if necessary).&nbsp; A value of <span class=code>0</span> suppresses the printing of the decimal point.</li>
+					<li><span class=code>size</span>&nbsp; identifies the
+					size of data type of the value passed.&nbsp;
+					<br />
+					For integers:
+					<br />
+					<table align=center cellspacing=1 cellpadding=1 border=1>
+					<tr class=desc><td align=center><b>&nbsp;&nbsp;Size Specifier&nbsp;&nbsp;</b></td><td align=left><b>&nbsp;&nbsp;Use With</td></tr>
+					<tr class=value><td align=center>none</td><td class=code align=left>&nbsp;&nbsp;int</td></tr>
+					<tr class=value><td align=center class=code>hh</td><td class=code align=left>&nbsp;&nbsp;char</td></tr>
+					<tr class=value><td align=center class=code>h</td><td class=code align=left>&nbsp;&nbsp;short</td></tr>
+					<tr class=value><td align=center class=code>l</td><td class=code align=left>&nbsp;&nbsp;long</td></tr>
+					<tr class=value><td align=center class=code>ll</td><td class=code align=left>&nbsp;&nbsp;long long&nbsp;&nbsp;</td></tr>
+					</table>
+					<br />
+					For floating-point values:
+					<br />
+					<table align=center cellspacing=1 cellpadding=1 border=1>
+					<tr class=desc><td align=center><b>&nbsp;&nbsp;Size Specifier&nbsp;&nbsp;</b></td><td align=left><b>&nbsp;&nbsp;Use With</td></tr>
+					<tr class=value><td align=center>none</td><td class=code align=left>&nbsp;&nbsp;float</td></tr>
+					<tr class=value><td align=center class=code>l</td><td class=code align=left>&nbsp;&nbsp;double</td></tr>
+					<tr class=value><td align=center class=code>L</td><td class=code align=left>&nbsp;&nbsp;long double&nbsp;&nbsp;</td></tr>
+					</table>
+					</ul>
+					We use escape sequences in the format string to represent the
+					<span class=code>%</span>, <span class=code>\</span>,
+					<span class=code>'</span> and <span class=code>"</span> characters.</p>
+					<p>
+					The following program produces the output on the right
+					<table width="95%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ /* Playing with printf formats
+ *  printf.c
+ *  Oct 8 2004
+ *  BTP100
+ *  Chris Szalwinski
+ */
+
+ int main( ) {
+     /* integers */
+     printf("\n* ints *\n");
+     printf("00000000011\n");
+     printf("12345678901\n");
+     printf("---------------------------\n");
+     printf("%d|&lt;--        %%d\n",4321);
+     printf("%10d|&lt;--  %%10d\n",4321);
+     printf("%010d|&lt;--  %%010d\n",4321);
+     printf("%-10d|&lt;--  %%-10d\n",4321);
+     /* floats */
+     printf("\n* floats *\n");
+     printf("00000000011\n");
+     printf("12345678901\n");
+     printf("---------------------------\n");
+     printf("%f|&lt;-- %%f\n",4321.9876546);
+     /* doubles */
+     printf("\n* doubles *\n");
+     printf("00000000011\n");
+     printf("12345678901\n");
+     printf("---------------------------\n");
+     printf("%lf|&lt;-- %%lf\n",4321.9876546);
+     printf("%10.3lf|&lt;--  %%10.3lf\n",4321.9876546);
+     printf("%010.3lf|&lt;--  %%010.3lf\n",4321.9876546);
+     printf("%-10.3lf|&lt;--  %%-10.3lf\n",4321.9876546);&nbsp;
+     /* characters */
+     printf("\n* chars *\n");
+     printf("00000000011\n");
+     printf("12345678901\n");
+     printf("---------------------------\n");
+     printf("%c|&lt;--           %%c\n",'d');
+     printf("%d|&lt;--         %%d\n",'d');
+     printf("%o|&lt;--         %%o\n",'d');
+     printf("%x|&lt;--          %%x\n",'d');
+     return 0;
+ }</pre><br /></td>
+					<td width="50%">
+					<br />
+					<pre class=result>
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ * ints *
+ 00000000011
+ 12345678901
+ ---------------------------
+ 4321|&lt;--        %d
+       4321|&lt;--  %10d
+ 0000004321|&lt;--  %010d
+ 4321      |&lt;--  %-10d
+
+ * floats *
+ 00000000011
+ 12345678901
+ ---------------------------
+ 4321.987655|&lt;-- %f
+
+ * doubles *
+ 00000000011
+ 12345678901
+ ---------------------------
+ 4321.987655|&lt;-- %lf
+   4321.988|&lt;--  %10.3lf
+ 004321.988|&lt;--  %010.3lf&nbsp;
+ 4321.988  |&lt;--  %-10.3lf
+
+ * chars *
+ 00000000011
+ 12345678901
+ ---------------------------
+ d|&lt;--           %c
+ 100|&lt;--         %d
+ 144|&lt;--         %o
+ 64|&lt;--          %x
+ &nbsp;
+ &nbsp;</pre><br /></td></tr></table>
+ 					Note that
+ 					<ul>
+					<li>doubles and floats round to the requested precision before being displayed;</li>
+					<li>double data may be displayed using <span class=code>%f</span> (<span class=code>printf</span>
+					converts float values to doubles for
+					compatibility with older programs);</li>
+					<li>character data displays in various formats including character, decimal, octal and
+					hexadecimal.&nbsp;</li>
+					<li>ASCII encoding is assumed for the character example.&nbsp;</li>
+					</ul>
+					</p>
+					<p>
+					On many machines, character data is encoded
+					under the <a href="javascript:if(confirm('http://cs.senecac.on.ca/~ipc144/ascii.txt  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://cs.senecac.on.ca/~ipc144/ascii.txt'" tppabs="http://cs.senecac.on.ca/~ipc144/ascii.txt"
+					target="new">ASCII</a> standard.&nbsp;
+					Since not all implementations  use ASCII encoding, it is more
+					portable to refer to character constants by their symbolic form (<span class=code>'A'</span>)
+					and special characters such as newline, tab, formfeed, etc. by their
+					escape sequences (<span class=code>\n</span>, <span class=code>\t</span>, <span class=code>\f</span>, etc.)
+					rather than their decimal or hexadecimal codes.&nbsp;
+					Systems that use other than ASCII encoding provide the appropriate conversions for the symbols and the escape
+					sequences.&nbsp;
+					</p>
+					<br />
+
+					<p id=exe class="section">Readings</p>
+					<p>
+					<ul>
+					<li>Experiment with the <span class=code>printf.c</span> program, trying
+					different flags, widths and precisions.</li>
+					<li>Read pages 70-72 from the Evan Weaver's C subject notes.</li>
+					</ul>
+					</p>
+					<br />
+					<br />
+					<br />
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+
+	<!-- Footer -->
+	<tr>
+		<td class="tbody">
+			<table cellpadding="1" width="90%" align="center">
+				<tr>
+					<td width="50%" class="text3">
+						<script language="javascript">
+						var lh = document.location.href;
+						document.write(lh)
+						</script>&nbsp;&nbsp;
+					</td>
+					<td width="50%" align="right" class="text3">
+						<script language="javascript">
+						var lm = document.lastModified.slice(0,-3);
+						document.write("Last Modified: " +lm)
+						</script>&nbsp;&nbsp;
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

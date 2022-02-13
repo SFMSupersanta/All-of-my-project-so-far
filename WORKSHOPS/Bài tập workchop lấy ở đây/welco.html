@@ -1,0 +1,831 @@
+
+<html lang="en-us" xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+   <title>Seneca | School of Computer Studies | Programming Fundamentals Using C</title>
+
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+   <meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+   <meta name="Copyright" content="(c) Copyright Seneca College 2005" />
+   <meta name="Description" content="Welcome to the Bachelors Degree of Software Development Program Web Site.  On this site you can find the introductory programming course.  Designed by Chris Szalwinski." />
+   <meta name="Abstract" content="This subject reviews the principles of procedural programming.  Students study the solution of problems using structured programming techniques with the C programming language.  The emphasis throughout is on the solution of small problems."/>
+   <meta name="Author" content="chris.szalwinski@senecac.on.ca"/>
+   <meta name="Keywords" content="sofware development, procedural programming, lecture notes"/>
+
+   <link rel="stylesheet" type="text/css" href="style.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/style.043.css">
+   <link rel="stylesheet" type="text/css" href="styleScreen.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleScreen.043.css" media="screen">
+   <link rel="stylesheet" type="text/css" href="styleSPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleSPrint.043.css" media="print">
+   <link rel="stylesheet" type="text/css" href="styleNav.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleNav.043.css">
+</head>
+
+<body>
+
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC
+    '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+
+<table id="top" width="850" cellspacing="0" cellpadding="0">
+
+   <!-- Banner -->
+   <tr height="120">
+      <td colspan="2" class="banner">
+      <table cellspacing="0" cellpadding="0">
+         <tr>
+            <td width="250" class="banner">
+               <center><span class="text0">&nbsp;&nbsp;Software&nbsp;&nbsp;<br />
+               &nbsp;&nbsp;Development&nbsp;&nbsp;</span></center>
+            </td>
+            <td class="tbanner">
+               <img src="Banner4.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Banner4.gif" height="120" width="500" alt="Software Development" />
+            </td>
+         </tr>
+      </table>
+      </td>
+   </tr>
+
+   <!-- Navigation Bar -->
+   <tr height="20">
+      <td class="panel1" align="left" valign="bottom">
+         <ul id="tabnav">         
+         <li><a href="timeline.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/timeline.html">Timeline</a></li>
+         <li><a href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+         <li><script type="text/javascript" src="classroom_a.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_a.js"></script></li>
+         <li><script type="text/javascript" src="classroom_b.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_b.js"></script></li>
+         <li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+         <li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+         <li><a href="index-3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/instructors/index.html">Instructor</a></li>
+         <li><a href="welco_p.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/welco_p.html"><img align="center" src="Printer.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Printer.gif" height=15 width=10 alt="Printer Friendly Version of this Page" /></a></li>
+         </ul>
+      </td>
+      <!-- Web Site Title -->
+      <td class="panel2" width="150" align="center">
+         <span class="text1"><script type="text/javascript" src="subject.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/subject.js"></script></span>
+      </td>
+   </tr>
+
+   <!-- Body Cells -->
+   <tr height="600">
+
+      <!-- Content Area -->
+      <td class="tbody" bgcolor="ffffff" valign="top">
+         <table cellpadding="10" width="100%">
+            <tr>
+               <td bgcolor="ffffff" valign="top">
+               <br />
+               <center><span class=texthead>
+               Welcome to BTP100</span>
+               <br />
+               <br />
+               <!--<a href="#ins">Instructor's Welcome</a> |-->
+               <a href="#gra">Grading</a> |
+               <a href="#web">Web Page Format</a> |
+               <a href="#con">Content</a> |
+               <a href="#exp">Expectations</a> |
+               <a href="#aca">Academic Policy</a>
+               </center>
+               <br />
+               <br />
+               <br />
+
+               <!--<p id="ins" class="section">Instructor's Welcome</p>-->
+               <p>
+               BTP100 covers the fundamentals of
+               computer programming.&nbsp; A comprehensive subset of the
+               C language is used as the programming language throughout
+               this subject.&nbsp; Upon successful completion, you will be able
+               to write command-line solutions to an unlimited number of small,
+               but nevertheless, real-world problems.
+               </p>
+               <p>
+               The subject web site contains all of the material that
+               you need to master.&nbsp; The complete URL of its home page
+               is
+               <ul>
+               <li><a href="javascript:if(confirm('http://cs.senecac.on.ca/~btp100  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://cs.senecac.on.ca/~btp100'" tppabs="http://cs.senecac.on.ca/~btp100">http://cs.senecac.on.ca/~btp100</a></li>
+               </ul>
+               The home page contains general information as well as day-to-day reminders
+               and notes.&nbsp;  Bookmark this page and check it regularly.
+               <p>
+               This web site was originally developed from a now superceded edition of the
+               supporting subject notes.&nbsp; You can obtain the most recent
+               edition of these notes at the Seneca@York Bookstore
+               <ul>
+               <li>Weaver, Evan (2003). "Foundations of Programming Using C".  Seneca College.
+               </li>
+               </ul>
+               The web site and the subject notes present just enough syntax
+               to cover the fundamentals of programming, yet not so much as to
+               distract you with advanced or obscure topics.&nbsp; If you use the
+               web site and the subject notes as your primary resources, you
+               should have enough time to read all of the material
+               without skipping parts and to practice solving a fair number of
+               problems throughout the semester.&nbsp;
+               <p>
+               You may find this subject quite demanding, especially if you have no
+               programming experience.&nbsp; But, you should be able to master
+               all of the material if you participate fully in the:
+               <ul>
+               <li>Lectures and Class Discussions: where we discuss the material
+               in the readings.</li>
+               <li>Workshops: where we solve small problems that implement concepts
+               introduced in the readings.</li>
+               <li>Assignments: where you work on projects that integrate the topics covered
+               in the readings.</li>
+               <li>Presentation: where you present the work of your team on a
+               problem of your choosing.</li>
+               </ul>
+               Keeping up with the readings, the workshops and the assignments is crucial
+               to success in this subject.&nbsp; Catching up may require substantial
+               if not massive effort.&nbsp; Those students who have done poorly
+               have often attributed their performance to having fallen behind
+               early in the semester.&nbsp; Heed their experience and keep up with
+               the schedule from the start.&nbsp;
+               <p>
+               This subject web site evolves.&nbsp; If you have any suggestions
+               on how it could be improved, please feel free to let your
+               instructor know.&nbsp; Many student suggestions have been incorporated
+               since the initial posting.
+               </p>
+               <br />
+
+               <p id="gra" class="section">Grading Policy</p>
+               <p>
+               You can find the official subject outline with the
+               approved outcomes <a href="javascript:if(confirm('http://cs.senecac.on.ca/curriculum/degree/BTP100.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://cs.senecac.on.ca/curriculum/degree/BTP100.html'" tppabs="http://cs.senecac.on.ca/curriculum/degree/BTP100.html">here</a>.
+               </p>
+               <p>
+               To pass this subject, you must:
+               <ul>
+               <li>pass the final exam,</li>
+               <li>pass the total of all assessments,</li>
+               <li>submit all assignments in working order, and</li>
+               <li>pass a weighted average of the tests and the final exam.</li>
+               </ul>
+               <p>
+               A pass is a mark of 60% or better.&nbsp; The total mark
+               is a weighted combination.&nbsp; The weights are:
+               <ul>
+               <li>Workshops  9%</li>
+               <li>Assignments   20%</li>
+               <li>Quizzes 6%</li>
+               <li>Tests   30%</li>
+               <li>Presentation  5%</li>
+               <li>Exam 30%</li>
+               </ul>
+               The workshop and presentation marks measure team
+               performance (14%).&nbsp; The other marks measure individual
+               performance (86%).
+               <p class="ssection">Workshops</p>
+               <p>
+               Your workshops will be graded according to the following rubric.
+               </p>
+               <table cellpadding=2 border=1>
+               <tr>
+               <td width="15%">
+               Grade
+               </td>
+               <td>
+               Description
+               </td>
+               <td width="25%">
+               Key Features
+               </td>
+               </tr>
+               <tr>
+               <td>
+               Pass (1.0)
+               </td>
+               <td>
+               Code solves the stated problem, the solution
+               is tested, a sample run is included and the
+               solution is submitted on time
+               </td>
+               <td width="25%">
+               Problem solved on time
+               </td>
+               </tr>
+               <tr>
+               <td>
+               Marginal (0.5)
+               </td>
+               <td>
+               Code solves the stated problem, the solution
+               is not tested or a sample run is not included
+               </td>
+               <td width="25%">
+               Problem solved on time, sample run missing
+               </td>
+               </tr>
+               <tr>
+               <td>
+               Fail (0)
+               </td>
+               <td>
+               No solution submitted on time or
+               the solution submitted does not solve the stated
+               problem, no tests, no sample run
+               </td>
+               <td>
+               Inadequate or late solution
+               </td>
+               </tr>
+               </table>
+
+               <p id="asn" class="ssection">Assignments</p>
+               <p>
+               Your assignments  will be graded to the
+               following detail standards and rubric.
+               <ul>
+               <li>Submission instructions on the
+               assignment specifications are followed
+               <li>There are no global variables
+               <li>There are no jump statements (goto, continue or
+               break except for break in switch statements)
+               <li>All variable and function
+               names are descriptive
+               <li>Source files begin with a header comment.&nbsp;
+               The comment includes
+               <ul>
+               <li>the assignment name and number
+               <li>a brief description of the assignment
+               <li>the name of the source file
+               <li>your name
+               <li>date last modified
+               </ul>
+               <li>The meaning of each variable, including its
+               units, constraints and other details is clarified
+               in inline comments.&nbsp; Only additional information
+               is provided here: the declaration is not repeated in words
+               <li>Code is indented consistently throughout to
+               reveal the structure of the logic
+               <li>There are no spelling errors in the comments,
+               names or strings
+               <li>There are no magic numbers: Name constants in
+               CAPITALS.&nbsp; (For example, use #define PI 3.14159
+               at the head of the code and use PI throughout
+               the code.)  Use _ between words in constant
+               names.
+               <li>Each function has a single entry point and
+               a single exit point
+               <li>Functions and blocks of code within them
+               are separated using blank lines
+               <li>The purpose of each function and its return
+               value, if any, is described
+               </ul>
+               You will receive a deduction of 0.5 for each
+               breach of these detail standards, within the limits
+               described below.
+               <p>
+               <table cellpadding=2 border=1>
+               <tr>
+               <td width="15%">
+               Grade
+               </td>
+               <td>
+               Description
+               </td>
+               <td width="25%">
+               Key Features
+               </td>
+               </tr>
+               <tr>
+               <td>
+               Excellent (10)
+               </td>
+               <td>
+               Complete solution without logic errors, well
+               documented and easy to read.&nbsp; Meets detail
+               standards
+               </td>
+               <td width="25%">
+               Ready to deploy to another programmer
+               </td>
+               </tr>
+               <tr>
+               <td>
+               Good (7)
+               </td>
+               <td>
+               Complete solution possibly with some minor logic
+               errors, self-documentation could be improved.&nbsp;
+               Fails to meet a few detail standards
+               </td>
+               <td>
+               Workable, but needs
+               noted corrections
+               </td>
+               </tr>
+               <tr>
+               <td>
+               Marginal (4)
+               </td>
+               <td>
+               Complete solution with major logic
+               errors, needs self-documentation.&nbsp;
+               Fails to meet detail standards
+               </td>
+               <td>
+               Workable, but needs major revisions
+               </td>
+               </tr>
+               <tr>
+               <td>
+               Fail (0)
+               </td>
+               <td>
+               No solution or partial solution with major flaws,
+               no documentation
+               </td>
+               <td>
+               Barely workable, if at all.&nbsp;
+               Does not meet specifications.
+               </td>
+               </tr>
+               </table>
+               <p>
+               A late penalty of 10% per school day
+               applies to submissions after the due date.&nbsp;
+               Each weekday during study week is a school day.
+               </p>
+
+               <p id="pre" class="ssection">Team Presentation</p>
+               <p>
+               Your presentation will be graded according to the following rubric.
+               </p>
+               <p>
+               <table cellpadding=2 border=1>
+               <tr>
+               <td width="15%">
+               Grade
+               </td>
+               <td>
+               Description
+               </td>
+               <td width="25%">
+               Key Features
+               </td>
+               </tr>
+               <tr>
+               <td>
+               Excellent (5)
+               </td>
+               <td>
+               Complete solution without errors,
+               well-documented and well-tested, issues noted
+               </td>
+               <td>
+               Ready to deploy to another team
+               </td>
+               </tr>
+               <tr>
+               <td>
+               Good (4)
+               </td>
+               <td>
+               Complete solution possibly with minor errors,
+               self-documentation could be improved, testing
+               could be more thorough
+               </td>
+               <td>
+               Needs some more work
+               before deployment
+               </td>
+               </tr>
+               <tr>
+               <td>
+               Marginal (2)
+               </td>
+               <td>
+               Complete solution with major errors, needs
+               self-documentation and thorough testing
+               </td>
+               <td>
+               Needs major work.&nbsp; Not ready for deployment
+               </td>
+               </tr>
+               <tr>
+               <td>
+               Poor (1)
+               </td>
+               <td>
+               Partial solution with major flaws, no documentation,
+               no testing
+               </td>
+               <td>
+               Inadequate effort
+               </td>
+               </tr>
+               </table>
+
+               <p class="ssection">Tests and Final Exam</p>
+               <p>
+               Your test and exam answers will be graded according to the following rubric.
+               </p>
+               <p>
+               <table cellpadding=2 border=1>
+               <tr>
+               <td width="15%">
+               Grade
+               </td>
+               <td>
+               Description
+               </td>
+               </tr>
+               <tr>
+               <td>
+               Excellent (10)
+               </td>
+               <td>
+               Complete solution without minor logic errors,
+               well-documented and easy to read
+               </td>
+               </tr>
+               <tr>
+               <td>
+               Good (8)
+               </td>
+               <td>
+               Complete solution with some logic minor
+               errors, documentation could be improved
+               </td>
+               </tr>
+               <tr>
+               <td>
+               Marginal (6)
+               </td>
+               <td>
+               Complete solution with major errors, needs
+               documentation
+               </td>
+               </tr>
+               <tr>
+               <td>
+               Inadequate (3)
+               </td>
+               <td>
+               Overview of solution structure in pseudocode
+               or flow charts
+               </td>
+               </tr>
+               <tr>
+               <td>
+               Fail (0)
+               </td>
+               <td>
+               No solution submitted
+               </td>
+               </tr>
+               </table>
+               <p>
+               You will receive a deduction of 0.5 marks for each minor
+               error and a deduction of 1 mark for each major error.
+               </p>
+               <br />
+
+               <p id="web" class="section">Web Page Format</p>
+               <p>
+               Each web page includes a banner, a navigation
+               bar immediately below the banner, a content area below the
+               navigation bar, a detail menu to the right of the content
+               area and a footer immediately below the content area.
+               </p>
+               <p align="center" class="texth">
+               <img src="webp.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/webp.gif" width="651" height="450" />
+               <img src="footw.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/footw.gif" width="619" height="200" />
+               <br />
+               <br />
+               Areas of a BTP100 Web Page<br />
+               Figure 1
+               <br />
+               </p>
+               <p>
+               The navigation bar provides tab access to the
+               different pages of this site
+               and, where available, a printer friendly version
+               of the current page.&nbsp;
+               </p>
+               <p align="center" class="texth">
+               <img src="navi.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/navi.gif" width="648" height="150" />
+               <br />
+               <br />
+               Navigation Bar<br />
+               Figure 2
+               <br />
+               </p>
+               <p>
+               <table>
+               <tr>
+               <td valign="top" width="60%">
+               The detail menu to the right of the content area
+               links directly to
+               <ul>
+               <li>this welcome page, </li>
+               <li>the list of readings, </li>
+               <li>the list of workshops, </li>
+               <li>the list of assignments, </li>
+               <li>the list of handouts, </li>
+               <li>the list of practice problems, </li>
+               <li>the list of resources, and</li>
+               <li>the glossary page. </li>
+               </ul>
+               This menu expands to reveal links
+               to subordinate pages.&nbsp; For example, if
+               you select readings, the detail menu shows
+               each of the readings; if you select workshops,
+               the detail menu shows each of the workshops.
+               </td>
+               <td align="center" class="texth">
+               <img src="menu.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/menu.gif" width="153" height="277" />
+               <br />
+               <br />
+               Detail Menu<br />
+               Figure 3
+               <br />
+               </td>
+               </tr>
+               </table>
+               <p>
+               The footer includes links for navigating laterally and
+               vertically through the site.&nbsp; The footer also includes
+               the date and time of the most recent modification
+               to the current page and a link to copyright information.
+               </p>
+               <p align="center" class="texth">
+               <img src="foot.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/foot.gif" width="629" height="200" />
+               <br />
+               <br />
+               Footer<br />
+               Figure 4
+               <br />
+               </p>
+
+               <p id="con" class="section">Content</p>
+               <p class="ssection">Readings</p>
+               <p>
+               The subject material appears on separate pages
+               called readings.&nbsp; Each reading has the
+               same format as shown in Figure 5 below.&nbsp; The learning
+               outcome appears directly below the title.&nbsp;
+               An appropriate quote may appear below the outcome.&nbsp;
+               Below these is a list of the sections in the reading.&nbsp;
+               Select a section to move directly to that part of the reading.&nbsp;
+               The exercise section lists, the
+               related workshop problem, if any,
+               the related pages in the
+               supporting subject notes and suggested exercises.&nbsp; If you need
+               another view of the material try one of the links on
+               the <a href="tutorials.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/tutorials.html">tutorials</a> page off the resources page.&nbsp;
+               <p align="center" class="texth">
+               <img src="read.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/read.gif" width="675" height="466" />
+               <br />
+               <br />
+               A Reading<br />
+               Figure 5
+               <br />
+               </p>
+               The readings are organized into nine (9)
+               distinct modules:
+               <ul>
+               <li>introduction</li>
+               <li>computation</li>
+               <li>logic</li>
+               <li>functions</li>
+               <li>libraries</li>
+               <li>arrays</li>
+               <li>strings</li>
+               <li>files</li>
+               <li>design</li>
+               </ul>
+               <p>
+               Each reading introduces one concept,
+               outlines the theory associated with that concept and
+               illustrates the concept using sample code.&nbsp;
+               Typically, one lecture covers one reading.&nbsp;
+               You might find it helpful to bring a printed
+               copy of the day's reading to class and to mark
+               it up during the discussions.
+               </p>
+
+               <p class="ssection">Workshops</p>
+               Each workshop contains a
+               selection of problems of varying difficulty.&nbsp;
+               These problems apply the concepts introduced in
+               the week's readings.&nbsp; Join a team and select
+               a problem that is different from those most chosen by
+               other teams.&nbsp; Submit your team's solution
+               to the workshop before the end of the weekend.
+
+               <p id="exp" class="section">Expectations</p>
+               <p>
+               You may:
+               <ul>
+               <li>ask any questions you have regarding
+               your own progress in the subject,
+               <li>have your opinion heard if you disagree with
+               the view of a student or your instructor, and
+               <li>correct the mistakes of your instructor
+               </ul>
+               You may expect to:
+               <ul>
+               <li>have access to up-to-date web pages on
+               the evening of the day before a scheduled lecture
+               or workshop</li>
+               <li>receive email replies from your instructor
+               within 24 hours except on weekends</li>
+               <li>have your marks posted no later than
+               two weeks after the submission date</li>
+               <li>be treated fairly in regard to any penalties</li>
+               <li>receive special consideration if you cannot write a
+               scheduled test or submit an assignment on time because of
+               a medical or extraordinary situation</li>
+               <li>receive additional help if you encounter difficulty</li>
+               <li>receive feedback regarding your assignment submissions within one week</li>
+               </ul>
+               If your instructor has not notified you about your submission
+               within a week, feel free to ask about it.&nbsp;
+               There are times when something happens in
+               the transmission and your instructor may need you to resubmit
+               your work.
+               <p>
+               If, in the view of your instructor, you
+               are having a problem, your instructor will ask you to arrange
+               a private meeting.&nbsp; Problems may involve marginal attendance,
+               missing assignments, or lack of communication with others.&nbsp; The
+               instructor will try to help you determine why you are having
+               difficulty and how you can improve your standing.
+               </p>
+               <br />
+
+               <p id="aca" class="section">ACADEMIC POLICY</p>
+               <p>
+               The Academic Policy of Seneca College
+               applies to the School of Computer Studies.&nbsp;
+               Cheating, plagiarism and breach of copyright
+               are serious offenses under this Policy.&nbsp; The official version of the
+               Cheating and Plagiarism Section is <a href="javascript:if(confirm('http://www.senecac.on.ca/home/academic_policy/cheat.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.senecac.on.ca/home/academic_policy/cheat.html'" tppabs="http://www.senecac.on.ca/home/academic_policy/cheat.html">here</a>.
+               </p>
+
+               <p class="ssection">Cheating</p>
+               <p>
+               Cheating during a test or exam is construed as
+               talking, peeking at another student’s
+               paper or any other clandestine method of
+               transmitting information.
+               </p>
+
+               <p class=ssection>Plagiarism</p>
+               <p>
+               Plagiarism is using the work of others without
+               citing it; that is, holding the work of others out as
+               your own work.
+               </p>
+               <p>
+               Do not submit an assignment that contains
+               material copied from another student, a
+               website, a textbook or any other published
+               source without identifying the material
+               that is not your own.&nbsp;
+               Simple rewording of someone else's submission
+               or changing the field names in their program
+               and presenting their work as your own may be
+               construed as plagiarism: you are still copying
+               the solution and submitting it as your own.&nbsp;
+               Plagiarism is not excusable by trivial differences
+               in the code or the wording.
+               </p>
+               <p>
+               Assignments
+               are individual work.&nbsp; If your instructor
+               notices that you have copied parts of your
+               submission from another student or external
+               source without citation, your instructor
+               may charge you with plagiarism.&nbsp;
+               </p>
+               <p>
+               Studying and improving others’ code is
+               a good way to learn.&nbsp; You may imitate and
+               dissect the sample code in the subject web
+               site and the printed subject notes.&nbsp; You
+               may use this code in your submissions,
+               including your assignments.&nbsp;
+               You do not need to cite the authors of
+               the code that you have copied
+               from the printed subject notes or this web site.&nbsp;
+               You may copy the workshop code of your peers provided
+               that you cite them as the authors.&nbsp; All other
+               code should be entirely your own.
+               </p>
+
+               <p class=sssection>How Not To Plagiarize</p>
+               <p>
+               To avoid plagiarizing:
+               <ul>
+               <li>If you are the helper, set aside
+               your notes, printouts and similar materials.&nbsp;
+               Study your colleague's screen or printout and
+               work with them on their problem using their
+               approach.&nbsp; Help them debug their code.&nbsp;
+               Do not show them how you did it.&nbsp;
+               <li>If you are the person being helped,
+               your objective is to understand the problem.&nbsp;
+               Don’t just ask for the answer or look
+               at your colleague's solution.&nbsp;
+               Remember, you will need a good level of
+               understanding to do well on the exam.
+               </ul>
+
+               <p class=ssection>Breach of Copyright</p>
+               <p>
+               If you photocopy a textbook without the copyright holder's permission,
+               you violate copyright law.&nbsp;
+               </p>
+               <br />
+               <br />
+               <br />
+               </td>
+            </tr>
+         </table>
+      </td>
+
+      <!-- Detail Menu -->
+      <td class="panel1" width="150" valign="top" rowspan="2">
+         <ul id="mennav">
+         <li><a class="active" href="welco.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/welco.html">Welcome</a></li>
+         <li><a href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+         <li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+         <li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+         <li><a href="index-4.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/handouts/index.html">Handouts</a></li>
+         <li><a href="index-5.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/practice/index.html">Practice</a></li>
+         <li><a href="index-6.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/index.html">Resources</a></li>
+         <li><a href="glossary.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/glossary.html">Glossary</a></li>
+         </ul>
+      </td>
+   </tr>
+
+   <!-- Content Area Footer -->
+   <tr height="20">
+      <td class="panel3" align="center">
+         <table class="panel2" width="95%">
+            <tr>
+               <td align="left">
+                  &nbsp;&nbsp;<a href="welco_p.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/welco_p.html" class="text3">
+                  <img src="Printer.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Printer.gif" height="15" width="10" alt="Printer Friendly Version of this Page" />&nbsp;print this page</a>&nbsp;&nbsp;
+               </td>
+               <td align="right">
+                  &nbsp;&nbsp;<a href="#top" class="text3">Top&nbsp;
+                  <img src="ArrowToT.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToT.gif" height="15" width="15" alt="Go Back to the Top of this Page" /></a>
+               </td>
+            </tr>
+         </table>
+      </td>
+   </tr>
+
+   <!-- Footer -->
+   <tr>
+      <!-- Left Panel -->
+      <td class="panel1" width="700" align="center">
+         <!-- Lateral Motion Control -->
+         <br />
+         <br />
+         <!-- Alternate Navigation Links -->
+         <ul id="altnav" align="center">         
+         <li><a href="timeline.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/timeline.html">Timeline&nbsp;</a></li>
+         </ul>
+         <ul id="altnav" align="center">
+         <li><a href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+         <li><script type="text/javascript" src="classroom_a.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_a.js"></script></li>
+         <li><script type="text/javascript" src="classroom_b.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_b.js"></script></li>
+         <li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+         <li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+         <li><a href="index-3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/instructors/index.html">Instructor</a></li>
+         </ul>
+         <br />
+         <!-- Bottom Line -->
+         <table cellpadding=1 width="90%">
+            <tr>
+               <td width="33%" class="text3">
+                  &nbsp;&nbsp;Designed by Chris Szalwinski&nbsp;&nbsp;
+               </td>
+               <td width="34%" align="center">
+                  <a href="copyright.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/copyright.html" class="text3">Copying From This Site</a>
+               </td>
+               <td width="33%" align="right" class="text3">
+                  <script language="javascript">
+                  var lm = document.lastModified.slice(0,-3);
+                  document.write("Last Modified: " +lm)
+                  </script>&nbsp;&nbsp;
+               </td>
+            </tr>
+         </table>
+      </td>
+
+      <!-- Logo - Right Bottom Corner -->
+      <td class=panel2 width="150" align="center">
+         <img src="Logo.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Logo.gif" height="73" width="85" />
+      </td>
+   </tr>
+</table>
+
+</body>
+</html>

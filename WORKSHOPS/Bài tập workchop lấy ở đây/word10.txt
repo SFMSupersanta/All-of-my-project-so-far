@@ -1,0 +1,16 @@
+
+        10. Write a function
+
+                int vanna(char str[], int consonant, int vowel)
+
+            that figures out the "cost" of the  word(s)  stored  in  the
+            null-terminated  string,  str,  assuming  that   "consonant"
+            contains the dollar value of each  consonant,  that  "vowel"
+            contains the dollar value of each vowel, and that non-letter
+            characters have a value of zero dollars. For example,
+
+                vanna("Wheel Of Fortune", 25, 50)
+
+            would return 500, because it has 8 consonants at  $25  each,
+            and 6 vowels at $50 each. (The vowels are: a, e,  i,  o  and
+            u).

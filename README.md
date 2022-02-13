@@ -12,7 +12,7 @@
 # Updates
 - Bài tập PE_PRF192 đã được thêm vào file PE_PRF192.
 - Welcome huynnt to our wonderful contributors team. We currently have 3 wich is SFMSupersanta,  and Huynnt.
-- Example exercises has been added for code clearance.
+- Example exercises has been added for code clearance. In Workshop exercises get the brower site and go to workshop. In PE the file is .docx
 - CodeRunner files has been added to .gitignore
 # Support
 - Tất cả bài sau đây được đưa lên với mục đích giúp các bạn học tại trường "you know what" chuyên ngành SE lấy ví dụ để hiểu bài tốt hơn. 

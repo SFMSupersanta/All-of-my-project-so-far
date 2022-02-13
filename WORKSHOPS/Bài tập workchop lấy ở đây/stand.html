@@ -1,0 +1,468 @@
+
+<html lang="en-us" xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+   <title>Seneca | School of Computer Studies | Programming Fundamentals Using C</title>
+
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+   <meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+   <meta name="Copyright" content="(c) Copyright Seneca College 2004" />
+   <meta name="Description" content="Welcome to the Bachelors Degree of Software Development Program Web Site.  On this site you can find the introductory programming course.  Designed by Chris Szalwinski." />
+   <meta name="Abstract" content="This subject reviews the principles of procedural programming.  Students study the solution of problems using structured programming techniques with the C programming language.  The emphasis throughout is on the solution of small problems."/>
+   <meta name="Author" content="chris.szalwinski@senecac.on.ca"/>
+   <meta name="Keywords" content="sofware development, procedural programming, lecture notes"/>
+
+   <link rel="stylesheet" type="text/css" href="style.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/style.043.css">
+   <link rel="stylesheet" type="text/css" href="styleScreen.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleScreen.043.css" media="screen">
+   <link rel="stylesheet" type="text/css" href="styleSPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleSPrint.043.css" media="print">
+   <link rel="stylesheet" type="text/css" href="styleNav.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleNav.043.css">
+</head>
+
+<body>
+
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC
+    '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+
+<table id="top" width="850" cellspacing="0" cellpadding="0">
+
+   <!-- Banner -->
+   <tr height="120">
+      <td colspan="2" class="banner">
+      <table cellspacing="0" cellpadding="0">
+         <tr>
+            <td width="250" class="banner">
+               <center><span class="text0">&nbsp;&nbsp;Software&nbsp;&nbsp;<br />
+               &nbsp;&nbsp;Development&nbsp;&nbsp;</span></center>
+            </td>
+            <td class="tbanner">
+               <img src="Banner4.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Banner4.gif" height="120" width="500" alt="Software Development" />
+            </td>
+         </tr>
+      </table>
+      </td>
+   </tr>
+
+   <!-- Navigation Bar -->
+   <tr height="20">
+      <td class="panel1" align="left" valign="bottom">
+         <ul id="tabnav">         
+         <li><a href="timeline.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/timeline.html">Timeline</a></li>
+         <li><a class="active" href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+         <li><script type="text/javascript" src="classroom_a.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_a.js"></script></li>
+         <li><script type="text/javascript" src="classroom_b.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_b.js"></script></li>
+         <li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+         <li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+         <li><a href="index-3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/instructors/index.html">Instructor</a></li>
+         <li><a href="stand_p.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/stand_p.html"><img align="center" src="Printer.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Printer.gif" height=15 width=10 alt="Printer Friendly Version of this Page" /></a></li>
+         </ul>
+      </td>
+      <!-- Web Site Title -->
+      <td class="panel2" width="150" align="center">
+         <span class="text1"><script type="text/javascript" src="subject.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/subject.js"></script></span>
+      </td>
+   </tr>
+
+   <!-- Body Cells -->
+   <tr height="600">
+
+      <!-- Content Area -->
+      <td class="tbody" bgcolor="ffffff" valign="top">
+         <table cellpadding="10" width="100%">
+            <tr>
+               <td bgcolor="ffffff" valign="top">
+               <br />
+               <center><span class=texth>Module I - Design</span>
+               <br />
+               <br />
+               <span class=texthead>
+               Portability and Standards</span>
+               <br />
+               <br />
+               <span class=textagend>
+               <br />
+               <br />
+               </span>
+               <p class=quote></p>
+               <span class=textagend>
+               <a href="#ans">Standard C89</a> |
+               <a href="#c99">Standard C99</a> |
+               <a href="#pro">Programming Style</a> |
+               <a href="#exe">Exercises</a>
+               </span>
+               </center>
+               <br />
+               <br />
+               <br />
+
+               <p>
+               We can compile and execute portable programs on different
+               hardware, operating systems or compilers either with no change
+               or with minor changes to the header file alone.&nbsp; For example,
+               we might change some <span class="code">#define</span>s in the
+               header file to suit a new platform, but leave the source file intact.
+               </p>
+               <p>
+               To enable portability, compiler writers agree from time to time
+               to provide a common subset of language standards.&nbsp; If we
+               restrict our use of the language to the standard subset, we may
+               expect to be able to port our programs from one platform
+               to another without any modification whatsoever.
+               </p>
+               <p>
+               The first edition of "The C Programming Language"
+               by Kernighan and Ritchie published in 1978 provided
+               the original description of the C language.&nbsp; Since then,
+               the C language has undergone several 'standard' definitions:
+               C89, C95 and C99.
+               </p>
+               <p align="center"><img src="standards.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/standards.gif" width="500" height="150" /></p>
+               <br />
+
+               <p id="ans" class=section>Standard C89</p>
+               <p>
+               In 1982, the American National Standards Institute
+               formed a committee (X3J11) to propose a standard for
+               C.&nbsp; An international group converted this standard
+               with minor modifications into the ISO/IEC 9899:1990
+               standard, which ANSI then adopted.&nbsp; This is
+               called Standard C.
+               </p>
+               <p>
+               Standard C introduced:
+               <ul>
+               <li>function prototypes</li>
+               <li>new keywords, including <span class=code>signed</span></li>
+               <li>a standard library</li>
+               <li>whitespace before <span class="code">#</span></li>
+               </ul>
+               In 1995, ANSI introduced some amendments to Standard C,
+               called C95, which included new conversion specifiers for
+               <span class=code>printf</span> and <span class=code>scanf</span>
+               and numerous new library functions.
+               <br />
+
+               <p id="c99" class=section>Standard C99</p>
+               <p>
+               ISO/IEC approved a new international standard in 1999: ISO/IEC 9899:1999 (C99).&nbsp;
+               Compiler vendors are gradually updating their compilers and libraries
+               to conform to this new standard.
+               </p>
+               <p>
+               C99 introduced the following features:
+               <ul>
+               <li><span class=code>long long</span> data type</li>
+               <li><span class=code>_Bool</span> data type</li>
+               <li><span class=code>_Complex</span> data type</li>
+               <li>complex arithmetic</li>
+               <li>variable-length arrays</li>
+               <li><span class=code>//</span> C++ style comments </li>
+               <li>better support for floating-point types, including
+               math functions for all types</li>
+               </ul>
+               Microsoft included the <span class=code>long long</span> features in its .net 2003 compiler (version 7.1).&nbsp;
+               <span class=code>long long</span> is available with the <span class=code>cc</span> compiler.&nbsp;
+               To include <span class=code>//</span>, we add the <span class=code>-qcpluscmt</span> option
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ cc -qcpluscmt source.c</pre><br /></td></tr></table>
+               <br />
+
+               <p id="pro" class=section>Portability Checks</p>
+               <p class="ssection">Programming Styles</p>
+               <p>
+               Adopting a popular standard may enable you to make
+               use of checking tools that support the standard.
+               </p>
+               <p>
+               Two frequently used programming standards:
+               <ul>
+               <li><a href="javascript:if(confirm('http://www.psgd.org/paul/docs/cstyle/cstyle.htm  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.psgd.org/paul/docs/cstyle/cstyle.htm'" tppabs="http://www.psgd.org/paul/docs/cstyle/cstyle.htm">Indian Hill Style</a></li>
+               <li><a href="javascript:if(confirm('http://www.misra.org.uk/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.misra.org.uk/'" tppabs="http://www.misra.org.uk/">MISRA</a></li>
+               </ul>
+               Some common standards include:
+               <ul>
+               <li><span class="code">#include</span>s should follow the header
+               comments.&nbsp; <span class="code">#define</span>s should follow
+               the <span class="code">#include</span>s.&nbsp;</li>
+               <li>constants should be of the same data type as the variables
+               that the constants initialize,</li>
+               <li>avoid declarations that shadow declarations at a higher level,</li>
+               <li>split compound conditions into one simple condition per line,</li>
+               <li>avoid defaulting a test condition to non-zero,</li>
+               <li>compare ot FALSE rather than TRUE,</li>
+               <li>comment each fall through in a <span class="code">switch</span>,</li>
+               <li>attach unary operators to their operand without spaces,</li>
+               <li><span class="code">#define</span> constants in all CAPS,</li>
+               <li>avoid names that differ in case only,</li>
+               <li>avoid names that look like each other,</li>
+               <li>compare a ointer to NULL instead of 0,</li>
+               <li>avoid assuming ASCII,</li>
+               <li>avoid assumptions about parameter passing and order of evaluation,</li>
+               <li>avoid possible side effects such as <span class="code">a[i] = b[i++];</span>,</li>
+               <li>use explicit casts when mixing <span class="code">signed</span> and <span class="code">unsigned</span>.&nbsp;</li>
+               </ul>
+               <p class="ssection">Lint Code Checkers</p>
+               <p>
+               <span class="code">lint</span> is a populer code checker that we
+               can use to identify portability problems (or semantic bugs).&nbsp;
+               </p>
+               <p>
+               Consider the followng program
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ /* Use lint for portability
+ *  lint.c
+ *  BTP100
+ *  Nov 30 2004
+ */
+ #include &lt;stdio.h&gt;
+
+ int main(void) {
+     char c;
+
+     c = getchar();
+
+     if (c == EOF)
+         printf(&quot;End of data\n&quot;);
+     else
+         printf(&quot;You entered %c\n&quot;, c);
+
+     return 0;
+ }</pre><br /></td></tr></table>
+               Under normal settings, the <span class="code">cc</span> and
+               <span class="code">cl .net</span> compilers compile this
+               source code without any warning or error messages.&nbsp;
+               <p>
+               If the user compiles and executes this program on
+               <span class="code">phobos</span> and enters "end
+               of data" (Ctrl-D), this program prints
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre class="result">
+ You entered ÿ</pre><br /></td></tr></table>
+               If the user compiles and executes this program on
+               <span class="code">cl</span> and enters "end of
+               data" (Ctrl-Z), this program prints
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre class="result">
+ End of data</pre><br /></td></tr></table>
+               The discrepancy arises because <span class="code">cc</span> on
+               <span class="code">phobos</span> stores <span class="code">char</span>
+               as <span class="code">unsigned char</span>, while
+               <span class="code">cl</span> stores <span class="code">char</span>
+               as <span class="code">signed char</span>.&nbsp;
+               To resolve the discrepancy, we declare the character
+               <span class="code">c</span> as <span class="code">signed char</span>.
+               <table width="45%">
+               <tr>
+               <td>
+               <br />
+               <pre>
+ /* Use lint for portability
+ *  lint.c
+ *  BTP100
+ *  Nov 30 2004
+ */
+ #include &lt;stdio.h&gt;
+
+ int main(void) {
+     <span class="high">signed</span> char c;
+
+     c = <span class="high">(signed char)</span> getchar();
+
+     if (c == EOF)
+         printf(&quot;End of data\n&quot;);
+     else
+         printf(&quot;You entered %c\n&quot;, c);
+
+     return 0;
+ }</pre><br /></td></tr></table>
+               To identify the portability problem on <span class="code">phobos</span>,
+               we can pass the source code through the <span class="code">lint</span>
+               code checker:
+               <table width="95%">
+               <tr>
+               <td width="50%">
+               <br />
+               <pre>
+ lint lint.c
+ </pre><br /></td>
+               <td width="50%">
+               <br />
+               <pre class="result">
+ &quot;lint.c&quot;, line 13: warning: comparison of
+           unsigned with negative constant</pre><br /></td></tr></table>
+               To identify the portability problem on <span class="code">cl .net</span>,
+               we change the compiler warning level options to <span class="code">/W4</span>
+               (warning level 4) and <span class="code">/WX</span> (treat all warnings as errors).
+               <table width="95%">
+               <tr>
+               <td width="50%">
+               <br />
+               <pre>
+ cl lint.c /W4 /WX
+
+
+
+ </pre><br /></td>
+               <td width="50%">
+               <br />
+               <pre class="result">
+ lint.c(11) : error C2220: warning treated as error&nbsp;
+              - no object file generated
+ lint.c(11) : warning C4244: '=' : conversion from
+              'int' to 'char', possible loss
+              of data</pre><br /></td></tr></table>
+               You can find documentation on lint code checkers
+               in the AIX <span class="code">man</span> pages
+               and here
+               <ul>
+               <li><a href="javascript:if(confirm('http://docs.sun.com/source/806-3567/lint.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://docs.sun.com/source/806-3567/lint.html'" tppabs="http://docs.sun.com/source/806-3567/lint.html">Lint</a></li>
+               <li><a href="javascript:if(confirm('http://lclint.cs.virginia.edu/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://lclint.cs.virginia.edu/'" tppabs="http://lclint.cs.virginia.edu/">LCLint/Splint</a></li>
+               </ul>
+               <br />
+
+               <p id="exe" class="section">Exercises</p>
+               <p>
+               <ul>
+               <li>Check your solution to assignment 4 for portability using a lint code checker.</li>
+               </ul>
+               <br />
+               <br />
+               <br />
+               </td>
+            </tr>
+         </table>
+      </td>
+
+      <!-- Detail Menu -->
+      <td class="panel1" width="150" valign="top" rowspan="2">
+         <ul id="mennav">
+         <li><a href="welco.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/welco.html">Welcome</a></li>
+         <li><a class="active" href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+         <li><a href="probl.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/probl.html">&nbsp;Programming</a></li>
+         <li><a href="compu.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/compu.html">&nbsp;Memory</a></li>
+         <li><a href="compi.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/compi.html">&nbsp;Compilers</a></li>
+         <li><a href="varia.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/varia.html">&nbsp;Variables</a></li>
+         <li><a href="input.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/input.html">&nbsp;Basic Oper</a></li>
+         <li><a href="expre.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/expre.html">&nbsp;Expressions</a></li>
+         <li><a href="const.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/const.html">&nbsp;Constructs</a></li>
+         <li><a href="style.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/style.html">&nbsp;Style</a></li>
+         <li><a href="walks.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/walks.html">&nbsp;Walkthrus</a></li>
+         <li><a href="modul.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/modul.html">&nbsp;Modularity</a></li>
+         <li><a href="scope.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/scope.html">&nbsp;Scope</a></li>
+         <li><a href="point.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/point.html">&nbsp;Pointers</a></li>
+         <li><a href="formi.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/formi.html">&nbsp;Input</a></li>
+         <li><a href="formo.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/formo.html">&nbsp;Form Output</a></li>
+         <li><a href="libra.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/libra.html">&nbsp;Libraries</a></li>
+         <li><a href="array.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/array.html">&nbsp;Arrays</a></li>
+         <li><a href="searc.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/searc.html">&nbsp;Searches</a></li>
+         <li><a href="sorts.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/sorts.html">&nbsp;Sorts</a></li>
+         <li><a href="strin.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/strin.html">&nbsp;Strings</a></li>
+         <li><a href="valid.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/valid.html">&nbsp;String Inp</a></li>
+         <li><a href="sfunc.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/sfunc.html">&nbsp;String Fns</a></li>
+         <li><a href="files.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/files.html">&nbsp;Files</a></li>
+         <li><a href="table.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/table.html">&nbsp;Records</a></li>
+         <li><a href="debug.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/debug.html">&nbsp;Debugging</a></li>
+         <li><a href="devel.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/devel.html">&nbsp;Development</a></li>
+         <li><a class="active" href="stand.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/stand.html">&nbsp;Standards</a></li>
+         <li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+         <li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+         <li><a href="index-4.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/handouts/index.html">Handouts</a></li>
+         <li><a href="index-5.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/practice/index.html">Practice</a></li>
+         <li><a href="index-6.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/resources/index.html">Resources</a></li>
+         <li><a href="glossary.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/glossary.html">Glossary</a></li>
+         </ul>
+      </td>
+   </tr>
+
+   <!-- Content Area Footer -->
+   <tr height="20">
+      <td class="panel3" align="center">
+         <table class="panel2" width="95%">
+            <tr>
+               <td align="left">
+                  &nbsp;&nbsp;<a href="stand_p.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/stand_p.html" class="text3">
+                  <img src="Printer.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Printer.gif" height="15" width="10" alt="Printer Friendly Version of this Page" />&nbsp;print this page</a>&nbsp;&nbsp;
+               </td>
+               <td align="right">
+                  &nbsp;&nbsp;<a href="#top" class="text3">Top&nbsp;
+                  <img src="ArrowToT.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToT.gif" height="15" width="15" alt="Go Back to the Top of this Page" /></a>
+               </td>
+            </tr>
+         </table>
+      </td>
+   </tr>
+
+   <!-- Footer -->
+   <tr>
+      <!-- Left Panel -->
+      <td class="panel1" width="700" align="center">
+         <!-- Lateral Motion Control -->
+         <table width="90%" align="center">
+            <tr>
+               <td width="50%" align="left">
+                  <a href="devel.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/devel.html" class="text3">
+                  <img src="ArrowToL.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToL.gif" height="15" width="15" class="panel1" alt="Previous Reading" />&nbsp;&nbsp;Previous: Software Development</a>
+               </td>
+               <td width="50%" align="right">
+                  <a href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html" class="text3">Next: Table of Contents&nbsp;&nbsp;
+                  <img src="ArrowToR.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/ArrowToR.gif" height="15" width="15" class="panel1" alt="Next Reading" /></a>
+               </td>
+            </tr>
+         </table>
+         <br />
+         <!-- Alternate Navigation Links -->
+         <ul id="altnav" align="center">         
+         <li><a href="timeline.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/timeline.html">Timeline&nbsp;</a></li>
+         </ul>
+         <ul id="altnav" align="center">
+         <li><a class="active" href="index.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/content/index.html">Readings</a></li>
+         <li><script type="text/javascript" src="classroom_a.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_a.js"></script></li>
+         <li><script type="text/javascript" src="classroom_b.js" tppabs="http://cs.senecac.on.ca/~btp100/pages/classroom_b.js"></script></li>
+         <li><a href="index-1.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/workshops/index.html">Workshops</a></li>
+         <li><a href="index-2.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/assignments/index.html">Assignments</a></li>
+         <li><a href="index-3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/instructors/index.html">Instructor</a></li>
+         </ul>
+         <br />
+         <!-- Bottom Line -->
+         <table cellpadding=1 width="90%">
+            <tr>
+               <td width="33%" class="text3">
+                  &nbsp;&nbsp;Designed by Chris Szalwinski&nbsp;&nbsp;
+               </td>
+               <td width="34%" align="center">
+                  <a href="copyright.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/copyright.html" class="text3">Copying From This Site</a>
+               </td>
+               <td width="33%" align="right" class="text3">
+                  <script language="javascript">
+                  var lm = document.lastModified.slice(0,-3);
+                  document.write("Last Modified: " +lm)
+                  </script>&nbsp;&nbsp;
+               </td>
+            </tr>
+         </table>
+      </td>
+
+      <!-- Logo - Right Bottom Corner -->
+      <td class=panel2 width="150" align="center">
+         <img src="Logo.gif" tppabs="http://cs.senecac.on.ca/~btp100/pages/images/Logo.gif" height="73" width="85" />
+      </td>
+   </tr>
+</table>
+
+</body>
+</html>

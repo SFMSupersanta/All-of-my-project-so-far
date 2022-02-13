@@ -1,0 +1,584 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC
+    '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html lang="en-us" xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+	<title>Seneca | School of Computer Studies | Programming Fundamentals Using C</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+	<meta name="Copyright" content="(c) Copyright Seneca College 2004" />
+	<meta name="Description" content="Welcome to the Bachelors Degree of Software Development Program Web Site.  On this site you can find the introductory programming course.  Designed by Chris Szalwinski." />
+	<meta name="Abstract" content="This subject reviews the principles of procedural programming.  Students study the solution of problems using structured programming techniques with the C programming language.  The emphasis throughout is on the solution of small problems."/>
+	<meta name="Author" content="chris.szalwinski@senecac.on.ca"/>
+	<meta name="Keywords" content="sofware development, procedural programming, lecture notes"/>
+
+	<link rel="stylesheet" type="text/css" href="style.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/style.043.css">
+	<link rel="stylesheet" type="text/css" href="styleSPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/styleSPrint.043.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="stylePPrint.043.css" tppabs="http://cs.senecac.on.ca/~btp100/pages/stylePPrint.043.css" media="print">
+</head>
+
+<body>
+
+<table cellspacing="0" cellpadding="0">
+
+	<!-- Body Cell -->
+	<tr height="600">
+		<!-- Content Area -->
+		<td class="tbody" bgcolor="ffffff">
+			<table cellpadding="10" width="100%">
+				<tr>
+					<td bgcolor="ffffff" valign=top>
+					<br />
+					<center><span class=texth>Module F - Arrays</span>
+					<br />
+					<br />
+					<span class=texthead>
+					Simple Data Structures</span><br />
+					<br />
+					<span class=textagend>
+					Apply structured programming principles, including
+					single-dimensional arrays, when writing C code<br />
+					<br />
+					</span>
+					<p class=quote></p>
+					<span class=textagend>
+					<a href="#pro">Class Problem</a> |
+					<a href="#def">Definition</a> |
+					<a href="#dec">Declaration</a> |
+					<a href="#ele">Elements</a>
+					<br />
+					<a href="#ini">Initialization</a> |
+					<a href="#pas">Passing to a Function</a> |
+					<a href="#sol">Solution</a> |
+					<a href="#exa">In-Class Practice</a> |
+					<a href="#exe">Exercises</a>
+					</span>
+					</center>
+					<br />
+					<br />
+					<br />
+
+					<p>
+					A data structure is a collection of data types designed to store information
+					in some optimal way.&nbsp; Data structures improve readability and simplify
+					coding considerably.&nbsp; The simplest example of a data structure is an
+					array.&nbsp; In an array, elements of the same data type are stored in
+					contiguous order.&nbsp; Arrays are particularily important because they
+					enable the use of iteration constructs on the elements of an array.
+					</p>
+					<br />
+
+					<p id="pro" class="section">Class Problem</p>
+					<p>
+					Design and code a program that displays the binary
+					equivalent of a positive integer less than 32767.&nbsp; The program
+					prompts the user for a positive whole number and uses iteration
+					constructs and array syntax.&nbsp; For an input value of 92, the
+					program displays
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre class="result">
+ 92 in binary is 00000000 01011100</pre><br /></td></tr></table>
+					.&nbsp;
+					</p>
+					<p>
+					The solution without array syntax might look something like
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ /* Decimal to Binary
+ *  decimal.c
+ *  BTP100
+ *  Feb 25 2005
+ */
+ #include &lt;stdio.h&gt;
+ void binary(int, int*, int*, int*, int*, int*, int*, int*, int*,
+             int*, int*, int*, int*, int*, int*, int*, int*);
+ void display(int, int, int, int, int, int, int, int, int,
+              int, int, int, int, int, int, int, int);
+
+ int main( ) {
+     int decimal, b0b0, b0b1, b0b2, b0b3, b0b4, b0b5, b0b6, b0b7,
+         b1b0, b1b1, b1b2, b1b3, b1b4, b1b5, b1b6, b1b7;
+
+     /* prompt the user for a positive integer value */
+     printf("Enter a positive integer value : ");
+     /* accept a user value */
+     scanf("%d", &amp;decimal);
+
+     binary(decimal,
+            &amp;b0b0, &amp;b0b1, &amp;b0b2, &amp;b0b3, &amp;b0b4, &amp;b0b5, &amp;b0b6, &amp;b0b7,
+            &amp;b1b0, &amp;b1b1, &amp;b1b2, &amp;b1b3, &amp;b1b4, &amp;b1b5, &amp;b1b6, &amp;b1b7);&nbsp;
+     display(decimal, b0b0, b0b1, b0b2, b0b3, b0b4, b0b5, b0b6, b0b7,
+             b1b0, b1b1, b1b2, b1b3, b1b4, b1b5, b1b6, b1b7);
+
+     return 0;
+ }
+
+ void binary(int decimal, int *b0b0, int *b0b1, int *b0b2, int *b0b3,&nbsp;
+             int *b0b4, int *b0b5, int *b0b6, int *b0b7, int *b1b0,
+             int *b1b1, int *b1b2, int *b1b3, int *b1b4, int *b1b5,
+             int *b1b6, int *b1b7) {
+
+     /* byte 0 */
+     *b0b0 = decimal%2;
+     decimal /= 2;
+     *b0b1 = decimal%2;
+     decimal /= 2;
+     *b0b2 = decimal%2;
+     decimal /= 2;
+     *b0b3 = decimal%2;
+     decimal /= 2;
+     *b0b4 = decimal%2;
+     decimal /= 2;
+     *b0b5 = decimal%2;
+     decimal /= 2;
+     *b0b6 = decimal%2;
+     decimal /= 2;
+     *b0b7 = decimal%2;
+     decimal /= 2;
+     /* byte 1 */
+     *b1b0 = decimal%2;
+     decimal /= 2;
+     *b1b1 = decimal%2;
+     decimal /= 2;
+     *b1b2 = decimal%2;
+     decimal /= 2;
+     *b1b3 = decimal%2;
+     decimal /= 2;
+     *b1b4 = decimal%2;
+     decimal /= 2;
+     *b1b5 = decimal%2;
+     decimal /= 2;
+     *b1b6 = decimal%2;
+     decimal /= 2;
+     *b1b7 = decimal%2;
+     decimal /= 2;
+ }
+
+ void display(int decimal, int b0b0, int b0b1, int b0b2, int b0b3,
+              int b0b4, int b0b5, int b0b6, int b0b7, int b1b0,
+              int b1b1, int b1b2, int b1b3, int b1b4, int b1b5,
+              int b1b6, int b1b7) {
+
+     printf("%d in binary is %d%d%d%d%d%d%d%d %d%d%d%d%d%d%d%d \n",
+            decimal, b1b7, b1b6, b1b5, b1b4, b1b3, b1b2, b1b1, b1b0,
+            b0b7, b0b6, b0b5, b0b4, b0b3, b0b2, b0b1, b0b0);
+ }</pre><br /></td></tr></table>
+ 					The variable names identify the different bytes and bits in the
+ 					binary representation.
+ 					</p>
+					<br />
+
+					<p id="def" class="section">Definition</p>
+					<p>
+					An array is an <u>ordered set</u> of <u>related elements</u> of <u>common data
+					type</u> that are <u>stored contiguously in memory</u>.&nbsp;</p>
+					<p>
+					Let us define an array of elements that holds binary digits
+					and let us call that array
+					<span class=code>digit</span>
+					<p>
+					<table width="90%" align=center cellspacing=1 cellpadding=1 border=1>
+					<tr class=desc>
+					<td class=code colspan=17>digit</td>
+					<tr class=desc>
+					<td>Byte #</td>
+					<td colspan="8">1</td><td colspan="8">0</td>
+					</tr>
+					<tr class=desc>
+					<td>Bit #</td>
+					<td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td>
+					<td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td>
+					</tr>
+					<tr class=desc>
+					<td>Elem&nbsp;#</td>
+					<td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
+					<td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td>
+					</tr>
+					<tr class=value>
+					<td>Value</td>
+					<td width="6%">0</td><td width="6%">0</td><td width="6%">0</td><td width="6%">0</td><td width="6%">0</td><td width="6%">0</td><td width="6%">0</td><td width="6%">0</td>
+					<td width="6%">0</td><td width="6%">1</td><td width="6%">0</td><td width="6%">1</td><td width="6%">1</td><td width="6%">1</td><td width="6%">0</td><td width="6%">0</td>
+					</tr>
+					</table>
+					</p>
+					<p>
+					<span class=code>digit</span> is
+					<ul>
+					<li>an ordered set - the order of the elements in <span class=code>digit</span> matters</li>
+					<li>of related elements - each element stores the value of a sinlge bit</li>
+					<li>of common data type - each element is an <span class=code>int</span></li>
+					<li>stored contiguously in memory - the second element is adjacent to the
+					first element, the third element is adjacent to the second element, etc.</li>
+					</ul>
+					The rules for selecting an array name are the same as those for selecting a variable or
+					a function name.&nbsp;</p>
+					<br />
+
+					<p id="dec" class="section">Declaration</p>
+					<p>
+					The syntax of an array declaration is
+					<pre class=defin>
+     dataType identifier [ size ];</pre>
+					<span class=defin>dataType</span> is the data type
+					of an array element,
+					<span class=defin>identifier</span> is the array name, the brackets
+					<span class=defin>[ ]</span> identify an array
+					structure, and
+					<span class=defin>size</span> is an integer constant
+					or integer constant expression that specifies the number
+					of elements in the array.&nbsp;</p>
+					<p>
+					For example,
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+     int digit[16];</pre><br /></td></tr></table>
+					allocates contiguous storage in primary memory for
+					an array named <span class=code>digit</span> of 16
+					<span class=code>int</span> elements.
+					</p>
+					<p>
+					We can specify the size of the array
+					as a <span class=code>#define</span>able constant
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+     #define BITS 16
+
+     int digit[BITS];
+
+     printf("The last element is %d\n", digit[BITS - 1]);
+     printf("The second last element is %d\n", digit[BITS - 2]);</pre><br /></td></tr></table>
+					This notation enhances modifiability where we refer to
+					the size of the array repeatedly throughout the code.
+					</p>
+					<br />
+
+					<p id="ele" class="section">Elements</p>
+					<p>
+					The fundamental unit of an array is an element.&nbsp;
+					Each element holds has an index and holds one data value.&nbsp;
+					Index numbering starts at 0 and extends to one less than the
+					size of the array.&nbsp; To refer to an element, we use
+					the array name followed by bracket notation around the
+					element index.&nbsp;
+					</p>
+					<p>
+					For example, we denote the 4-th element of <span class=code>digit</span>
+					by
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+     digit[3]</pre><br /></td></tr></table>
+					The index itself may be an integer variable, an
+					integer expression or an integer constant.
+					</p>
+					<p>
+					For example, to display all of the elements of <span class=code>digit</span>,
+					we write
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ for ( i = 0; i &lt; BITS; i++ )
+     printf("%d", digit[i]);</pre><br /></td></tr></table>
+					C compilers do not introduce code to check array bounds.&nbsp;
+					It is our responsibility as programmers to
+					ensure that a program does not use indeces
+					outside the memory allocated for an array.&nbsp;
+					(We may point to an element that is just beyond
+					the end of the array, but may not dereference
+					that address.&nbsp; For example, <span class=code>&amp;digit[BITS]</span>
+					is acceptable, but we should not refer to the value
+					stored in <span class=code>&amp;digit[BITS]</span>.)
+					</p>
+					<br />
+
+					<p id="ini" class="section">Initialization</p>
+					<p>
+					We initialize an array when we define it.&nbsp; To initialize an
+					array, we suffix its declaration with an assignment operator followed
+					by a set of comma-separated values enclosed within braces.&nbsp;
+					The syntax of an initialization is
+					<pre class=defin>
+     dataType arrayIdentifier[ size ] = { value, ... , value };</pre>
+					</p>
+					<p>
+					For example, to initialize <span class=code>digit</span> to the values
+					shown in the sample above, we write
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ int digit[BITS] = {0,0,0,0,0,0,0,0,0,1,0,1,1,1,0,0};</pre><br /></td></tr></table>
+					If the initialization encompasses all of the elements of an array, we do
+					not need to specify the size:
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ int digit[] = {0,0,0,0,0,0,0,0,0,1,0,1,1,1,0,0};</pre><br /></td></tr></table>
+					The compiler determines the size from
+					the number of initial values supplied.&nbsp; If
+					we specify a size greater than the number of
+					initial values, the compiler fills the uninitialized
+					elements with zero values.&nbsp; Hence,
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ int digit[BITS] = {0};</pre><br /></td></tr></table>
+ 					initializes all 16 elements of <span class=code>digit</span>
+ 					to zero.&nbsp; Specifying a size less than the number of
+ 					initial values generates a syntax error.&nbsp;
+ 					</p>
+					<br />
+
+					<p id="pas" class="section">Passing Arrays To Functions</p>
+					<p>
+					Because compilers store the elements of an array contiguously in
+					memory, passing the address of the array to a function is sufficient
+					to enable access to all of the elements of the array within the
+					function.&nbsp; The location of any element is simply the produce
+					of the offset from the address of the first element and the number
+					of bytes in a sinlge element.&nbsp;
+					</p>
+					<p>
+					By only passing the address of the array, we
+					avoid copying the array, which may be a
+					rather expensive operation.
+					</p>
+					<p class="ssection">Arguments</p>
+					<p>
+					The syntax of a function call that passes an array
+					is
+					<pre class=defin>
+ functionIdentifier ( arrayIdentifier, ... )</pre>
+					where <span class=code>functionIdentifier</span>
+					is the name of the function and <span class=code>arrayIdentifier</span>
+					is the array name without brackets.&nbsp;
+					For example
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ binary ( decimal, digit );</pre><br /></td></tr></table>
+					calls the function <span class=code>binary</span>
+					and passes to <span class=code>binary</span> the value
+					of the variable <span class=code>decimal</span>
+					along with the address of the array <span class=code>digit</span>.
+					</p>
+					<p class="ssection">Parameters</p>
+					<p>
+					The syntax of a function header that receives an
+					array address is
+					<pre class=defin>
+ dataType functionIdentifier ( dataType arrayIdentifier [ ], ... )</pre>
+					The brackets following
+					<span class=code>arrayIdentifier</span> inform the
+					compiler that the parameter holds the address of a
+					one-dimensional array.&nbsp;
+					For example
+					<table width="45%">
+					<tr>
+					<td>
+					<br />
+					<pre>
+ void binary ( int decimal, int digit [] );</pre><br /></td></tr></table>
+					saves a copy of an <span class=code>int</span> in
+					the first parameter named <span class=code>decimal</span>
+					and saves a copy of the address of an array in the second
+					parameter named <span class=code>digit</span>.&nbsp;
+					Because the compiler makes a copy of the address of
+					the array and not a copy of the array contents themselves,
+					any change to an array element within the function will appear as a
+					change to the array element outside the function itself.&nbsp;
+					</p>
+					<br />
+
+					<p id="sol" class="section">Solution</p>
+					<p>
+					<table width="45%">
+					<tr>
+					<td width="50%">
+					<br />
+					<pre>
+ /* Decimal to Binary
+ *  binary.c
+ *  Feb 25 2005
+ *  BTP100
+ */
+ #include &lt;stdio.h&gt;
+ void binary(int, int []);
+ void display(int digit[]);
+ #define BITS 16
+
+ int main ( ) {
+     int decimal, digit[BITS];
+
+     printf("Enter a positive integer value : ");&nbsp;
+     scanf("%d", &amp;decimal);
+     binary(decimal, digit);
+     display(decimal, digit);
+
+     return 0;
+ }
+
+ /* binary places the binary representation of
+ *  decimal in digit[BITS] with the first element
+ *  holding the most significant bit
+ */
+ void binary(int decimal, int digit[]){
+     int i;
+
+     i = BITS - 1;
+     while ( decimal != 0 &amp;&amp; i &gt;= 0) {
+         digit[i] = decimal % 2;
+         decimal /= 2;
+         i--;
+     }
+     for (; i &gt;= 0; i--)
+         digit[i] = 0;
+ }
+
+ /* display prints digit[BITS]
+ *  in 8-bit blocks
+ */
+ void display(int decimal, int digit[]){
+     int i;
+
+     printf("%d is binary is ", decimal);
+     for (i = 0; i &lt; BITS; i++) {
+         printf("%d", digit[i]);
+         if (i%8 == 7)
+             putchar(' ');
+     }
+ }</pre><br /></td><td width="50%"><br />
+					<pre class="result">
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Enter a positive integer value : 92&nbsp;
+ 92 in binary is
+ 00000000 01011100
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ </pre><br /></td></tr></table>
+					Note how <span class=code>binary</span> determines
+					the array elements in reverse order.</p>
+					</p>
+					<br />
+
+					<p id="exa" class="section">In-Class Practice</p>
+					<p>
+					Try the practice problem in <a href="h11.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/handouts/h11.html">Handout 11</a>.&nbsp;
+					</p>
+					<br />
+
+					<p id="exe" class="section">Exercises</p>
+					<p>
+					<ul>
+					<li>Read pages 73-77 from Evan Weaver's subject notes.</li>
+					<li>Try walkthroughs <a href="array_3.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/practice/array_3.html"><span class=code>array_3.c</span></a>,
+					<a href="array_4.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/practice/array_4.html"><span class=code>array_4.c</span></a>,
+					<a href="array_5.html" tppabs="http://cs.senecac.on.ca/~btp100/pages/practice/array_5.html"><span class=code>array_5.c</span></a> on the practice page,</li>
+					<li>Try walkthroughs <a href="walk8.txt.htm" tppabs="http://cs.senecac.on.ca/~btp100/pages/evans_walks/walk8.txt">8</a>, <a href="walk10.txt.htm" tppabs="http://cs.senecac.on.ca/~btp100/pages/evans_walks/walk10.txt">10</a>, <a href="walk11.txt.htm" tppabs="http://cs.senecac.on.ca/~btp100/pages/evans_walks/walk11.txt">11</a>, <a href="walk12.txt.htm" tppabs="http://cs.senecac.on.ca/~btp100/pages/evans_walks/walk12.txt">12</a> and <a href="walk15.txt.htm" tppabs="http://cs.senecac.on.ca/~btp100/pages/evans_walks/walk15.txt">15</a> on pages 107-113 in Evan
+					Weaver's subject notes.</li>
+					</ul>
+					</p>
+					<br />
+					<br />
+					<br />
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+
+	<!-- Footer -->
+	<tr>
+		<td class="tbody">
+			<table cellpadding="1" width="90%" align="center">
+				<tr>
+					<td width="50%" class="text3">
+						<script language="javascript">
+						var lh = document.location.href;
+						document.write(lh)
+						</script>&nbsp;&nbsp;
+					</td>
+					<td width="50%" align="right" class="text3">
+						<script language="javascript">
+						var lm = document.lastModified.slice(0,-3);
+						document.write("Last Modified: " +lm)
+						</script>&nbsp;&nbsp;
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

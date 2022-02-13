@@ -1,0 +1,11 @@
+
+        8.  Write a function
+
+                int deblank(char str1[])
+
+            that removes all spaces from the null-terminated  string  in
+            "str1" and returns the number of spaces removed.
+
+            Hint: Move through "str1" looking for spaces. Every time you
+            find one, copy everything  on  the  right  of  it  over  one
+            character to the left.

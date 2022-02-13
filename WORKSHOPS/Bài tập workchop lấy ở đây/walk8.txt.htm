@@ -1,0 +1,14 @@
+<html>/* w8.c */
+            #include <stdio.h>
+            #define SZ 10
+            main()
+            {
+                int x[SZ], i, j = 5;
+
+                for (i = 0; i < SZ; i++) {
+                    x[i] = (i + 1) * j;
+                    j--;
+                }
+                while (i > 0)
+                    printf("%4d", x[--i]);
+            }
