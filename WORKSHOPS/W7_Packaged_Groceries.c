@@ -10,6 +10,8 @@ version #
 #include <stdbool.h>
 #include <string.h>
 
+#define max_items  101                      //edit this statement to change the max item value
+
 long long demic_conv(char barc_arr[])
 {
   long long returnnum=0 ;
@@ -34,9 +36,61 @@ bool barc_val(char barc_arr[])
           barc_arr[i]!='8'&&barc_arr[i]!='9')
           return false;
     }
-    //check if the user tped a string more than 10
-    if (barc_arr[10]!='\0') return false;
-    else return true;
+    return true;
+}
+
+double scan_price(void)
+{
+    
+    double price;
+    char ovflow;
+    int rc;
+    while(true)
+    {
+      printf("Price    :  ");
+      rc = scanf("%lf%c",&price,&ovflow);
+      if(rc==0||rc==1)
+      {
+        printf("No input accepted!\n");
+        while(getchar()!='\n') ;
+      }else if(ovflow!='\n')
+      {
+        printf("Character overflow!\n");
+        while(getchar()!='\n') ;
+      }
+      else if(price<0)
+      {
+        printf("Out ranged!\n");
+      }else break;
+    }
+    return price;
+}
+
+int scan_quantity(void)
+{
+  
+    int price;
+    char ovflow;
+    int rc;
+    while(true)
+    {
+      printf("Quantity :  ");
+      rc = scanf("%d%c",&price,&ovflow);
+      if(rc==0||rc==1)
+      {
+        printf("No input accepted!\n");
+        while(getchar()!='\n') ;
+      }else if(ovflow!='\n')
+      {
+        printf("Character overflow!\n");
+        while(getchar()!='\n') ;
+      }
+      else if(price<0)
+      {
+        printf("Out ranged!\n");
+      }else break;
+    }
+    return price;
 }
 
 
@@ -45,7 +99,7 @@ int main()
   //program name
   printf("Packaged Goods Orgranizer\n");
   printf("-------------------------\n");
-  int max_items = 101;                  //edit this statement to change the max item value
+  
   char total_barc [max_items][11];
   double total_price [max_items];
   long long quantity[max_items];
@@ -62,16 +116,20 @@ int main()
       while (true)
       {
         char barc_arr[11];
-        printf("Barcode  :  ");
         barc_arr[10]='\0';
-        barc_arr[2]='\0';
+        printf("Barcode  :  ");
         scanf(" %[^\n]",&barc_arr);
+        
         if (barc_arr[0]=='0'&&barc_arr[1]=='\0')
         {
           status=false;
           break;
         }
-        if (barc_val(barc_arr)==true) 
+        else if(barc_arr[10]!='\0')
+        {
+          printf("Character overflow!\n");
+        }
+        else if (barc_val(barc_arr)==true) 
         {
           for (int i = 0; i <10;i++) 
           {
@@ -87,10 +145,13 @@ int main()
         }
       }
       if(status == false) break;
-      printf("Price    :  ");
-      scanf("%lf",&total_price[total_cnt]);
-      printf("Quantity :  ");
-      scanf("%lld",&quantity[total_cnt]);
+      //scan price
+      total_price[total_cnt]=scan_price();
+
+      //scan quantity
+      quantity[total_cnt] = scan_quantity();
+
+      //total value caculations
       value[total_cnt]=total_price[total_cnt]*quantity[total_cnt];
       total_cnt++;
     } 
