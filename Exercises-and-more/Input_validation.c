@@ -14,15 +14,15 @@ void clear (void)
 {
     while ( getchar() != '\n' );
 }
-
-double GetDouble(double min, double max)
+//getchar(str, min, max)
+double GetDouble(char msg[], double min, double max)
 {
     double value;
     int rc;
     char ovflow;
     while (true) 
     {
-        printf("Enter a whole number\n");
+        printf("%s\n", msg);
         printf("in the range [%.2lf,%.2lf] : ",min, max);
         rc = scanf("%lf%c",&value,&ovflow);
         if(rc == 0)
@@ -51,7 +51,7 @@ double GetDouble(double min, double max)
 
 int main()
 {
-    double input = GetDouble(10,20);
+    double input = GetDouble("Enter the number",10,20);
     printf("\nProgram accepted %.2lf\n",input);
     return 0;
 }
