@@ -11,6 +11,6 @@ version #
 
 int main()
 {
-  printf("%d", 0/5);
+  printf("%%");
   return 0;
 }
