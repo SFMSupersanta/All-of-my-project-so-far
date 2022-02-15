@@ -12,7 +12,7 @@ version #
 
 void clear (void) 
 {
-    while ( getchar() != '\n' );
+    while ( getchar() != '\n' && getchar() != EOF){}
 }
 //getchar(str, min, max)
 double GetDouble(char msg[], double min, double max)
@@ -28,20 +28,20 @@ double GetDouble(char msg[], double min, double max)
         if(rc == 0)
         {
             printf("**No input accepted!**\n\n");
-            printf("----Press Enter to continue----");
+            printf("----Press Enter to continue----\n");
             clear();
         }
         else if(ovflow != '\n')
         {
             printf("**Trailing characters!**\n\n");
             clear();
-            printf("----Press Enter to continue----");
+            printf("----Press Enter to continue----\n");
             clear();
         }
         else if(value < min || value > max)
         {
             printf("**Out of range!**\n\n");
-            printf("----Press Enter to continue----");
+            printf("----Press Enter to continue----\n");
             clear();
         }
         else break;
