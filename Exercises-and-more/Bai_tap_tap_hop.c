@@ -1,12 +1,7 @@
-/****************************************************************
-(▀̿Ĺ̯▀̿ ̿)
-Referring code made by SFMSupersanta.
-Program: Input validation
-version #
-****************************************************************/
+#include<stdio.h>
+#include<string.h>
+#include<stdbool.h>
 
-#include <stdio.h>
-#include <stdbool.h>
 
 //\input stream clear function\*
 void clear()
@@ -14,19 +9,17 @@ void clear()
     int c;
     while ((c = getchar()) != '\n' && c != EOF) {}
 }
-
-
-//GetDouble(char str[], double, double)  returns double from min to max
-double GetDouble(char msg[], double min, double max)
+//GetInt(char str[], long long min, long long max) returns long long from min to max
+long long  GetInti(char msg[], long long  min, long long max, int i)
 {
-    double value;
+    long long value;
     int rc;
 
     while (true) 
     {
-        printf("%s", msg);
-        printf("in the range [%.2lf,%.2lf] : ",min, max);
-        rc = scanf("%lf",&value);
+        printf("%s[%d] :", msg, i);
+        //printf("in the range [%lld,%lld] : ",min, max);
+        rc = scanf("%lld",&value);
         if(rc == 0)
         {
             printf("**No input accepted!**\n");
@@ -76,12 +69,50 @@ long long  GetInt(char msg[], long long  min, long long max)
     return value;
 }
 
-//GetChar
+bool checkval(int a, int arr[])
+{
+    int i=0;
+    while(arr[i] != '\0')
+    {
+        if(arr[i] == a)
+        {
+            return false;
+            break;
+        }
+    }
+    arr[i]=a;
+    return true;
+}
+
+int hop(int Ar[], int Br[], int checkarr[],int A,int B)
+{
+    int count=0;
+    for (int i = 0; i < Ar[0]; i++)
+    {
+        for (int j = 0; j < B; j++)
+        {
+            if(Ar[i]==Br[j])
+            {
+
+            }
+        }
+    }
+}
 
 int main()
 {
-    double input = GetDouble("Enter the number\n",10,20);
-    long long Int = GetInt("Enter the integer\n",1,10000000);
-    printf("\nProgram accepted %.2lf %lld\n",input,Int);
-    return 0;
+    int A,B;
+    A=GetInt("Nhap so phan tu mang A(n): ",1,20);
+    B=GetInt("Nhap so phan tu mang B(m): ",1,1000000);
+    int Ar[A], Br[B];
+    int checkar[A];
+    for (int i; i<A; i++)
+    {
+        Ar[i]=GetInti("Nhap so A",0,1000000,i);
+    }
+    for (int i; i<B; i++)
+    {
+        Br[i]=GetInti("Nhap so B",0,1000000,i);
+    }
+
 }

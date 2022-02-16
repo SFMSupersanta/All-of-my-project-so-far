@@ -11,12 +11,52 @@ version #
 #include <conio.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
+//\input stream clear function\*
+void clear()
+{
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF) {}
+}
+
+//GetInt(char str[], long long min, long long max) returns long long from min to max
+long long  GetInt(char msg[], long long  min, long long max)
+{
+    long long value;
+    int rc;
+
+    while (true) 
+    {
+        printf("%s", msg);
+        //printf("in the range [%lld,%lld] : ",min, max);
+        rc = scanf("%lld",&value);
+        if(rc == 0)
+        {
+            printf("**No input accepted!**\n");
+            clear();
+        }
+        else if(getchar() != '\n')
+        {
+            printf("**Trailing characters!**\n");
+            clear();
+        }
+        else if(value < min || value > max)
+        {
+            printf("**Out of range!**\n");
+        }
+        else break;
+    }
+    return value;
+}
+
+//\random number generator\* 
 int ran_gen()
 {  
     return rand()%6; //randnum 0-5
 }
 
+//\game function\*
 void game(int sought)
 {
     int x=1,count=0,first,second;
@@ -46,10 +86,9 @@ int main()
 
     srand(time(NULL));
 
-    printf("Total sought : ");
-    scanf("%lld",&sought);
-    if(sought>12||sought<0) printf("Invalid input");
-    else game(sought);
+    sought = GetInt("Total sought : ",2,12);
+    
+    game(sought);
 
     return 0;
 }

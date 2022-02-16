@@ -5,7 +5,7 @@ Referring code made by SFMSupersanta.
 Program: PRF101
 version #
 ****************************************************************/
-/*
+
 #include <stdio.h>
 #include <time.h>
 #include <conio.h>
@@ -14,87 +14,112 @@ version #
 #include <stdbool.h>
 #include <string.h>
 
-bool compare_arr(char a[], char b[])
+//\input stream clear function\*
+void bufc()
 {
-    for(int i = 0; i <2;i++)
-    {
-        if (a[i] != b[i]) return false;
-    }
-    return true;
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF) {}
 }
 
-char rank_gen()
-{  
-    int temp = (rand()%13) +1; //randnum 0-12
-    char rank;
-    if(temp == 1) rank = 'A';
-    else if (temp == 10) rank = '1';           //this function return a char and 10 is not a char so it returns 1
-    else if(temp ==11) rank = 'J';
-    else if(temp == 12) rank = 'Q';
-    else if(temp == 13) rank = 'K';
-    else rank = temp+'0';
-    return rank;
-    return '1';
-}
-
-char suit_gen()
+//Rank input validator
+char RankChar(char str[])
 {
-    int temp = (rand() % 4) + 1;
     char suit;
-    if(temp==1) suit='H';
-    else if(temp==2) suit='D';
-    else if(temp==3) suit = 'S';
-    else if(temp == 4) suit = 'C';
-    printf("suit: %d\n", temp);
+    while(true)
+    {
+        printf("%s", str);
+        suit=getchar();
+        if (suit=='A'||suit=='2'||suit=='4'||suit=='3'||suit=='5'||
+            suit=='6'||suit=='7'||suit=='8'||suit=='9'||suit=='1'||
+            suit=='J'||suit=='Q'||suit=='K') 
+        {
+            if(suit=='1')
+            {
+                if(getchar()=='0'&&getchar()=='\n') break;
+                else
+                {
+                    printf(" statement not regconized\n");
+                    bufc();
+                }
+            }
+            else if (getchar()=='\n') 
+            {
+                break;
+            }
+            else 
+            {
+                printf(" statement not regconized\n");
+                bufc();
+            }
+        }
+        else 
+        {
+            printf(" statement not regconized\n");
+            bufc();
+        }
+    }
     return suit;
 }
 
-void game(char suit,char rank[])
+//Suit input validator
+char SuitChar(char str[])
 {
-    printf("rank: %s\n",rank);
-    int count = 0;
-    char rank_draw[2];
-    char suit_draw;
+    char suit;
     while(true)
     {
-        count++;
-        char ranktemp=rank_gen();
-        if(ranktemp=='1')
+        printf("%s", str);
+        suit = getchar();
+        if (suit=='H'||suit=='S'||suit=='C'||suit=='D') 
         {
-            rank_draw[0] = '1';
-            rank_draw[1] = '0';
-            rank_draw[2] = '\0';
+            if(getchar()=='\n') break;
+            else bufc();
         }
-        else
+        else 
         {
-            rank_draw[0] = ranktemp;
-            rank_draw[1] = '\0';
+            printf(" statement not regconized\n");
+            bufc();
         }
-        printf("rankdraw: %s\n", rank_draw);
-        suit_draw = suit_gen();
-        printf("Result of draw %d : %s", count,rank_draw);
-        printf("%c\n",suit_draw);
-        if(compare_arr(rank,rank_draw)==true&&suit==suit_draw)
-        {
-            printf("You got your result in %d draws!",count);
-            break;
-        }
-        //if (count==30) break;
     }
+    return suit;
 }
 
+//random Rank (char) generator
+char rankgen() { return "A234567891JQK"[rand() % 13]; }
+
+//random Suit (char) generator
+char suitgen() { return "CHDS"[rand()%4]; }
+
+//game function
+void gamestart(char Suit, char Rank)
+{
+    char suit,rank;
+    int count=1;
+    while(Suit!=suit || Rank!=rank)
+    {
+        printf(" Result of draw  %d : ",count++);
+        suit=suitgen();
+        rank=rankgen();
+        printf("%c%c", suit, rank);
+        if(rank=='1') printf("%c",'0');
+        printf("\n");
+    }
+        
+    printf(" You got your result in %d draws!",--count);
+}
+
+//main function
 int main()
 {
     srand(time(NULL));
-    //print
-    printf("Dice Thrower\n");
-    printf("------------\n");
-    char suit, rank[2];
-    printf("Suit : ");
-    scanf("%c",&suit);
-    getchar();
-    printf("Rank : ");
-    scanf(" %[^\n]", rank);
-    game(suit,rank);
-}*/
-// FUCK THISI QUIT
+    printf(" Card Draw\n =========\n");
+
+    char suit =SuitChar(" Suit : ");
+
+    char rank =RankChar(" Rank : ");
+
+    gamestart(suit,rank);
+
+    return 0;
+}
+
+//I made it!!!

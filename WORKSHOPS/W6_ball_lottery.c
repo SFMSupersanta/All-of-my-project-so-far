@@ -11,22 +11,66 @@ version #
 #include <conio.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
-int ran_gen()
-{  
-    return rand()%10; //randnum 0-5
+//\input stream clear function\*
+void clear (void) 
+{
+    while ( getchar() != '\n' );
 }
 
+//GetInt(char str[], min, max)
+int GetInt(char msg[], int min, int max)
+{
+    int value;
+    int rc;
+    char ovflow;
+    while (true) 
+    {
+        printf("%s", msg);
+        rc = scanf("%d%c",&value,&ovflow);
+        if(rc == 0)
+        {
+            printf("**No input accepted!**\n\n");
+            clear();
+            printf("----Press Enter to continue----");
+            clear();
+        }
+        else if(ovflow != '\n')
+        {
+            printf("**Trailing characters!**\n\n");
+            clear();
+            printf("----Press Enter to continue----");
+            clear();
+        }
+        else if(value < min || value > max)
+        {
+            printf("**Out of range!**\n\n");
+            printf("----Press Enter to continue----");
+            clear();
+        }
+        else break;
+    }
+    return value;
+}
+
+//\random number generator\* 
+int ran_gen()
+{  
+    return rand()%10; //randnum 0-9
+}
+
+//\game function\*
 void game(int sought)
 {
-    int x=1,first,second,pickct=1;
+    int x=1,first,second,pickct=1;       //pick count
 
     while(x==1)
     {
-        first = ran_gen() +1;
-        second = ran_gen() +1;
-        printf("Result of picks %d and %d  : %d + %d\n",pickct,pickct + 1,first,second);
-        pickct+=2;
+        first = ran_gen() +1;                //so that first [1-6]
+        second = ran_gen() +1;              //so that second [1-6]
+        printf("Result of picks %d and %d  : %d + %d\n",pickct++,pickct,first,second);     
+        pickct++;
         if (first +second== sought)
         {
             printf("you got your total in %d picks!",pickct-1);
@@ -36,6 +80,7 @@ void game(int sought)
     }
 }
 
+//main function
 int main()
 {
     //print
@@ -46,10 +91,9 @@ int main()
 
     srand(time(NULL));
 
-    printf("Total sought : ");
-    scanf("%lld",&sought);
-    if(sought>20||sought<0) printf("Invalid input");
-    else game(sought);
+    sought = GetInt("Total sought : ",2,20);
+
+    game(sought);
 
     return 0;
 }
@@ -57,8 +101,6 @@ int main()
 ###################
 #   EXAMPLE:      #
 ###################
- Fraction Simplifier
- ===================
  Ball Lottery
  ============
  Total sought : 11
