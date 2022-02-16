@@ -118,8 +118,10 @@ int main()
     char rank =RankChar(" Rank : ");
 
     gamestart(suit,rank);
-
+    printf("\n");
+    system("pause");
     return 0;
 }
+
 
 //I made it!!!
