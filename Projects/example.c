@@ -5,26 +5,20 @@
 #include <stdbool.h>
 #include <string.h>
 
+bool checkdif(int arr[], int a, int b)
+{
+    for(int i = 0; i <b; i++) 
+    {
+        if(arr[i] == a)
+        return false;
+        break;
+    }
+    return true;
+}
+
 int main()
 {
-  srand(time(NULL));
-	int toss;
-	printf("How many time do you wanna toss? :");
-	scanf("%d", &toss);
-	printf("toss: %d\n", toss);
-	int hr=0, tr=0;
-
-	for (int i = 0; i < toss; i++)
-	{
-		if (rand() % 2 == 1)
-		{
-			hr ++;
-		}
-		else tr ++;
-	}
-	printf("\nNumber of head result: %d\n", hr);
-	printf("\nNumber of tail result: %d\n", tr);
-	
-	system("pause");
+	int arr[] = {3,4,5,6};
+	printf( "%d\n",checkdif(arr,6,4) );
 	return 0;
 }

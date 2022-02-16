@@ -48,7 +48,7 @@ long long  GetInt(char msg[], long long  min, long long max)
     while (true) 
     {
         printf("%s", msg);
-        printf("in the range [%lld,%lld] : ",min, max);
+        //printf("in the range [%lld,%lld] : ",min, max);
         rc = scanf("%lld",&value);
         if(rc == 0)
         {
@@ -69,50 +69,67 @@ long long  GetInt(char msg[], long long  min, long long max)
     return value;
 }
 
-bool checkval(int a, int arr[])
+bool checkdif(int arr[], int a, int b)
 {
-    int i=0;
-    while(arr[i] != '\0')
+    for(int i = 0; i <b; i++) 
     {
-        if(arr[i] == a)
+        if(a==arr[i])
         {
             return false;
             break;
         }
     }
-    arr[i]=a;
     return true;
 }
 
-int hop(int Ar[], int Br[], int checkarr[],int A,int B)
+int hamhop(int Ar[], int Br[],int hop[], int A,int B)
 {
+    int checkar[A];
     int count=0;
-    for (int i = 0; i < Ar[0]; i++)
-    {
-        for (int j = 0; j < B; j++)
-        {
-            if(Ar[i]==Br[j])
-            {
 
-            }
+    for (int i = 0; i < A; i++)
+    {
+        //printf("i: %d\n", i);
+        if(checkdif(Br,Ar[i],B)==true)
+        {
+            hop[count]=Ar[i];
+            //printf("Ar[i]:%d\n",Ar[i]);
+            count++;
         }
     }
+    return count;
 }
 
 int main()
 {
+    
+    
     int A,B;
     A=GetInt("Nhap so phan tu mang A(n): ",1,20);
-    B=GetInt("Nhap so phan tu mang B(m): ",1,1000000);
-    int Ar[A], Br[B];
-    int checkar[A];
+    int Ar[A];
+    int hop[A];
     for (int i; i<A; i++)
     {
-        Ar[i]=GetInti("Nhap so A",0,1000000,i);
+        Ar[i]=GetInti("Nhap so A",0,1000000,i+1);
     }
+    B=GetInt("Nhap so phan tu mang B(m): ",1,1000000);
+    int Br[B];
     for (int i; i<B; i++)
     {
-        Br[i]=GetInti("Nhap so B",0,1000000,i);
+        Br[i]=GetInti("Nhap so B",0,1000000,i+1);
     }
 
+    int so_hop = hamhop(Ar,Br,hop,A,B);
+    printf("so_hop = %d\n",so_hop);
+
+    printf("Ham tru cua A va B la:\n{");
+    {
+        for (int i = 0; i < so_hop; i++)
+        {
+            printf("%d", hop[i]);
+            if((i-1)!=so_hop)printf(",");
+        }
+    }
+    printf("}\n");
 }
+
