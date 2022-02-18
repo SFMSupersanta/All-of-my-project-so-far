@@ -14,7 +14,7 @@ version #
 //\input stream clear function\*
 void clear()
 {
-    int c;
+int c;
     while ((c = getchar()) != '\n' && c != EOF) {}
 }
 //GetInt(char str[], long long min, long long max) returns long long from min to max
