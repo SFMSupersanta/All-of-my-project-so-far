@@ -15,7 +15,6 @@ long long getInt(char msg[], long long min, long long max)
      do 
      {
          printf("%s ", msg);
-         printf("in the range [%lld,%lld] : ", min, max);
          rc = scanf("%lld%c", &value, &excess);
          if (rc == 0) 
          {
@@ -48,7 +47,6 @@ long long getInt(char msg[], long long min, long long max)
      do 
      {
          printf("%s ", msg);
-         printf("in the range [%.6g,%.6g] : ", min, max);
          rc = scanf("%lf%c", &value, &excess);
          if (rc == 0) 
          {
@@ -76,7 +74,6 @@ long long getInt(char msg[], long long min, long long max)
  {
 
      int keeptrying = 0;
-
      char value;
      do
      {

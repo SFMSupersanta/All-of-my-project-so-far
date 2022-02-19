@@ -8,8 +8,9 @@ int main()
 {   
     while(1)
     {
-        char c;
-        printf("Input char accepted: %c\n", c=getChar("Input char : ", "abcdefgABCDEFG"));
+        double c;
+        printf("Input accepted: %.3lf\n", c=getDouble("Input char : ", 1,10));
     }
+
     return 0;
 }
