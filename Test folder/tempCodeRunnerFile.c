@@ -1,1 +1,1 @@
- else clear_buffer();
+ing == 

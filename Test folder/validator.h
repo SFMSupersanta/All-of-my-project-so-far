@@ -77,7 +77,7 @@ long long getInt(char msg[], long long min, long long max)
      int count=0;
      while(limit[count] != '\0') count++; 
 
-     int keeptrying = 1;
+     int keeptrying = 0;
 
      char value;
      do
@@ -89,16 +89,16 @@ long long getInt(char msg[], long long min, long long max)
             {
                 if(value == limit[i])
                 {
-                    keeptrying==0;
-                }
-                if(keeptrying==0)
-                {
-                    if(getchar() != '\n') keeptrying=1;
-                    clear_buffer();
+                    if(getchar() == '\n') keeptrying = 1;
                 }
             }
+            if(keeptrying==0) 
+            {
+                clear_buffer();
+                printf("**Invalid character(s)!**\n");
+            }
         }
-     } while (keeptrying == 1);
+     } while (keeptrying == 0);
 
      return value;
  }

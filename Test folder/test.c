@@ -14,7 +14,7 @@ char getChar(char msg[], char limit[])
      int count=0;
      while(limit[count] != '\0') count++; 
 
-     int keeptrying = 1;
+     int keeptrying = 0;
 
      char value;
      do
@@ -26,19 +26,22 @@ char getChar(char msg[], char limit[])
             {
                 if(value == limit[i])
                 {
-                    if(getchar() == '\n') keeptrying==0;
-                    else clear_buffer();
+                    if(getchar() == '\n') keeptrying = 1;
                 }
             }
+            if(keeptrying==0) clear_buffer();
         }
-     } while (keeptrying == 1);
+     } while (keeptrying == 0);
 
      return value;
  }
 
 int main()
 {   
-    char c;
-    printf("Input char: %c", c=getChar("Input char: ", "abcdefgABCDEFG"));
+    while(1)
+    {
+        char c;
+        printf("Input char accepted: %c\n", c=getChar("Input char : ", "abcdefgABCDEFG"));
+    }
     return 0;
 }
