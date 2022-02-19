@@ -74,8 +74,6 @@ long long getInt(char msg[], long long min, long long max)
 
  char getChar(char msg[], char limit[])
  {
-     int count=0;
-     while(limit[count] != '\0') count++; 
 
      int keeptrying = 0;
 
@@ -85,7 +83,7 @@ long long getInt(char msg[], long long min, long long max)
         printf("%s", msg);
         value = getchar();
         {
-            for(int i=0; i<count; i++)
+            for(int i=0; limit[i]!='\0' ; i++)
             {
                 if(value == limit[i])
                 {
