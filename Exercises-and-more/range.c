@@ -15,8 +15,8 @@ long long  GetInt(char msg[], long long  min, long long max);
 int main()
 {
     long long min, max;
-    min = GetInt("Nhap So Nho: ",2,9);
-    max = GetInt("Nhap So Lon: ",min+1,9);
+    min = GetInt("Nhap So Nho: ",2,20);
+    max = GetInt("Nhap So Lon: ",min+1,20);
     int row, col;
     for(int i = min-1; i <=max; i++)
     {
@@ -25,7 +25,7 @@ int main()
         {
             printf("%6d ", i);
         }
-        if(i==max) printf("\n");
+        if(i==max) printf("\n\n");
     }
     for(int i = min; i <= max; i++)
     {
@@ -34,7 +34,7 @@ int main()
         {
             printf("%6d ", j*i);
         }
-        printf("\n");
+        printf("\n\n");
     }
 }
 
