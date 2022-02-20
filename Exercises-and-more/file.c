@@ -18,23 +18,11 @@ int main()
         {
                 char c;
                 printf("File content:\n");
-                do
+                while((c=fgetc(fi))!=EOF)
                 {
-                        c = fgetc(fi);
-                        //printf("%c",c);
-                } while (c!=EOF);
+                        printf("%c",c);
+                }
         }
         fclose(fi);
         return 0;
 }
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-                                                                                                                                                                                    29,1          All
