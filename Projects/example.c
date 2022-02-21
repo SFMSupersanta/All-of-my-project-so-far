@@ -1,16 +1,16 @@
-#include <stdlib.h>
-#include <time.h>
 #include <stdio.h>
-#include <math.h>
-#include <stdbool.h>
 #include <string.h>
 
-int main()
+#define BUFFERSIZE 100
+
+int main (int argc, char *argv[])
 {
-    while (true)
+    char buffer[BUFFERSIZE];
+    printf("Enter a message: \n");
+    if (fgets(buffer, BUFFERSIZE , stdin) != NULL)
     {
-	    printf("No coffe in cup\n");
-	    
-    }
+
+        printf("Your message is: \n%s\n", buffer);
+    } else printf("No message entered.\n");
     return 0;
 }
