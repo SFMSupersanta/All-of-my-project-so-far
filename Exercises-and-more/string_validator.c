@@ -20,11 +20,7 @@ int Cstringval(char arr[],char checkarr[])
     {
         for(int i=0;i<cnt;i++)
         {
-            if((arr[i])>96&&(arr[i])<123)
-            {
-                if(arr[i]!=checkarr[i]) return 1;
-            }
-            else if((arr[i])>64&&(arr[i])<91)
+            if((arr[i])>64&&(arr[i])<91)
             {
                 if((arr[i]+32)!=checkarr[i]) return 1;
             }
@@ -36,7 +32,7 @@ int Cstringval(char arr[],char checkarr[])
 
 int main()
 {
-    printf("result:%d\n",Cstringval("123ASF;","123asf;"));
+    printf("result:%d\n",Cstringval("123AsF;","123asf;"));
     char a='a',A='A';
     if((a-32)==A) printf("YES\n");
     return 0;
