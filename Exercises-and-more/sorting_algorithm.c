@@ -20,8 +20,6 @@ int partition(int arr[], int low,int high);
 //quick sort
 void quickSort(int arr[], int low, int high);
 
-//quick sort reversed
-void qsortR(int arr[], int low, int high);
 
 void print(int arr[], int size);
 
@@ -35,11 +33,8 @@ int main()
     print(sort,size);
 
     bubs(sort,size);
-    printf("\narr buble sort: ");
+    printf("\nbuble arr sort: ");
     print(sort,size);
-    quickSort(sort,0,size-1);//reverse arr
-
-    
 
     return 0;
 }
@@ -102,11 +97,6 @@ int partition(int arr[], int low,int high)
     swap(&arr[++i], &arr[high]);
 
     return i;
-}
-
-void qsortR(int arr[], int low, int high)
-{
-
 }
 
 //quick sort
