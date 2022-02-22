@@ -20,6 +20,8 @@ int partition(int arr[], int low,int high);
 //quick sort
 void quickSort(int arr[], int low, int high);
 
+//selection sort
+void selectionsort(int arr[], int size);
 
 void print(int arr[], int size);
 
@@ -28,15 +30,28 @@ int main()
 {
     int sort[] = {3,456,323,641,472,431,165,2347,36,346,445,24,2,34,3,4,5,6,7,8,9,10,1100,65};
     int size = sizeof(sort) / sizeof(int);
+
+    printf("\narray: ");
+    print(sort, size);
+
     quickSort(sort,0,size-1);
-    printf("sorted array: ");
+    printf("\nquick sorted arr: ");
     print(sort,size);
 
     bubs(sort,size);
     printf("\nbuble arr sort: ");
     print(sort,size);
 
-    return 0;
+    quickSort(sort,0,size-1);
+    printf("\nReversed array: ");
+    print(sort,size);
+
+    selectionsort(sort,size);
+    printf("\nselectionsort arr sort: ");
+    print(sort,size);
+    printf("\n");
+
+    return 0;           
 }
 
 void print(int arr[], int size)
@@ -46,6 +61,7 @@ void print(int arr[], int size)
         printf("%d",arr[i]);
         if(i!=size) printf(" ");
     }
+    printf("\n");
 }
 
 //swap function
@@ -54,6 +70,19 @@ void swap(int *a, int *b)
     int c=*a;
     *a=*b;
     *b=c;
+}
+
+void selectionsort(int arr[], int size)
+{
+    for(int i = 0; i < size; i++)
+    {
+        int *index = &arr[i];
+        for(int j = i+1; j < size; j++)
+        {
+            if(arr[j] > *index) index = &arr[j];
+        }
+        swap(&arr[i], &*index);
+    }
 }
 
 //bublesort
