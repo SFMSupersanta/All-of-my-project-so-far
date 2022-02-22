@@ -8,6 +8,9 @@ version #
 #include <stdio.h>
 #include <stdlib.h>
 
+//bublesort
+void bubs(int arr[], int size);
+
 //swap function 
 void swap(int *a, int *b);
 
@@ -17,6 +20,11 @@ int partition(int arr[], int low,int high);
 //quick sort
 void quickSort(int arr[], int low, int high);
 
+//quick sort reversed
+void qsortR(int arr[], int low, int high);
+
+void print(int arr[], int size);
+
 //main
 int main()
 {
@@ -24,12 +32,25 @@ int main()
     int size = sizeof(sort) / sizeof(int);
     quickSort(sort,0,size-1);
     printf("sorted array: ");
+    print(sort,size);
+
+    bubs(sort,size);
+    printf("\narr buble sort: ");
+    print(sort,size);
+    quickSort(sort,0,size-1);//reverse arr
+
+    
+
+    return 0;
+}
+
+void print(int arr[], int size)
+{
     for(int i = 0; i < size;i++)
     {
-        printf("%d",sort[i]);
+        printf("%d",arr[i]);
         if(i!=size) printf(" ");
     }
-    return 0;
 }
 
 //swap function
@@ -40,19 +61,40 @@ void swap(int *a, int *b)
     *b=c;
 }
 
+//bublesort
+void bubs(int arr[], int size)
+{
+    //printf("\n");
+    //print(arr,size);
+    //printf("\n%d\n",size);
+    for(int i = 0; i < size-1; i++)
+    {
+        //rintf(" %d ",i);
+        for (int j = size-1; j>i; j--)
+        {
+            //printf("%d ",j);
+            if(arr[j] > arr[j-1]) 
+            {
+                swap(&arr[j],&arr[j-1]);
+                //printf("swaped: %d,%d\n",arr[j], arr[j-1]);
+            }
+        }
+    }
+}
+
 //partitioning
 int partition(int arr[], int low,int high)
 {
-    printf("size: %d,%d\n",low,high);
+    //printf("size: %d,%d\n",low,high);
     int i=low-1, middle=arr[high];
-    printf("low,midle: %d, %d\n",i,middle);
+    //printf("low,midle: %d, %d\n",i,middle);
     for(int j = low; j < high; j++)
     {
         if(arr[j] < middle)
         {
             i++;
             swap(&arr[i], &arr[j]);
-            printf("swaped: %d,%d\n",arr[j], arr[i]);
+            //printf("swaped: %d,%d\n",arr[j], arr[i]);
         }
     }
 
@@ -60,6 +102,11 @@ int partition(int arr[], int low,int high)
     swap(&arr[++i], &arr[high]);
 
     return i;
+}
+
+void qsortR(int arr[], int low, int high)
+{
+
 }
 
 //quick sort
