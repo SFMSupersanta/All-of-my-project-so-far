@@ -1,7 +1,7 @@
 /****************************************************************
 ╰（‵□′）╯
 Referring code made by SFMSupersanta.
-Program: Binary converter
+Program: Quickshort
 version #
 ****************************************************************/
 
