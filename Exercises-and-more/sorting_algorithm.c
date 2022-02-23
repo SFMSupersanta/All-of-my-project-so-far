@@ -25,6 +25,7 @@ void selectionsort(int arr[], int size);
 
 void print(int arr[], int size);
 
+
 //main
 int main()
 {
@@ -76,31 +77,29 @@ void selectionsort(int arr[], int size)
 {
     for(int i = 0; i < size; i++)
     {
-        int *index = &arr[i];
+        int *jmin = &arr[i];
         for(int j = i+1; j < size; j++)
         {
-            if(arr[j] > *index) index = &arr[j];
+            if(arr[j] < *jmin) jmin = &arr[j];
         }
-        swap(&arr[i], &*index);
+        swap(&arr[i], &*jmin);
     }
 }
 
 //bublesort
 void bubs(int arr[], int size)
 {
-    //printf("\n");
-    //print(arr,size);
-    //printf("\n%d\n",size);
+
     for(int i = 0; i < size-1; i++)
     {
-        //rintf(" %d ",i);
+
         for (int j = size-1; j>i; j--)
         {
-            //printf("%d ",j);
-            if(arr[j] > arr[j-1]) 
+ 
+            if(arr[j] < arr[j-1]) 
             {
                 swap(&arr[j],&arr[j-1]);
-                //printf("swaped: %d,%d\n",arr[j], arr[j-1]);
+
             }
         }
     }
