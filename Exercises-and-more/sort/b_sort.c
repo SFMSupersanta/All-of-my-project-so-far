@@ -53,7 +53,7 @@ void selectionSort(int arr[], int items)
 void printArray(int arr[], int size)
 {
     int i;
-    for (i=0; i < size; i++)
+    for (i=size-1; i >= 0; i--)
         printf("%d ", arr[i]);
     printf("\n");
 }
