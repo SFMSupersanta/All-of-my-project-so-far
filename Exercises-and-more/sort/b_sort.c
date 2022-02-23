@@ -10,7 +10,6 @@ void swap(int *xp, int *yp)
     *yp = temp;
 }
   
-// An optimized version of Bubble Sort
 void bubbleSort(int arr[], int items)
 {
    int i, j;
