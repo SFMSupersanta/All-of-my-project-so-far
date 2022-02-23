@@ -60,7 +60,6 @@ void printArray(int arr[], int size)
     printf("\n");
 }
   
-// Driver program to test above functions
 int main()
 {
     int size;
