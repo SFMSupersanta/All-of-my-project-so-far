@@ -72,7 +72,7 @@ int main()
         clear_buffer();
     }
     char algorithm;
-    getChar("Select sort algorithm: ", "BbSs");
+    getChar("Select sort algorithm (B/b for bubble sort, S/s for selection sort) : ", "BbSs");
     if(algorithm == 'B' || algorithm == 'b')
     {
         bubbleSort(arr, size);
