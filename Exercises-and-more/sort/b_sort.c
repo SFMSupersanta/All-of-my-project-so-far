@@ -50,7 +50,7 @@ void selectionSort(int arr[], int items)
 }
   
 /* Function to print an array */
-void printArray(int arr[], int size)
+void printArray_rev(int arr[], int size)
 {
     int i;
     for (i=size-1; i >= 0; i--)
@@ -58,6 +58,14 @@ void printArray(int arr[], int size)
     printf("\n");
 }
   
+  void printArray(int arr[], int size)
+{
+    int i;
+    for (i=0; i < size; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+}
+
 int main()
 {
     int size;
@@ -70,8 +78,8 @@ int main()
         scanf("%d", &arr[i]);
         clear_buffer();
     }
-    char algorithm;
-    getChar("Select sort algorithm (B/b for bubble sort, S/s for selection sort) : ", "BbSs");
+    char algorithm, rev;
+    algorithm = getChar("Select sort algorithm (B/b for bubble sort, S/s for selection sort) : ", "BbSs");
     if(algorithm == 'B' || algorithm == 'b')
     {
         bubbleSort(arr, size);
@@ -80,7 +88,18 @@ int main()
     {
         selectionSort(arr, size);
     }
-    printf("\nSorted array: ");
-    printArray(arr, size);
+    rev = getChar("Do you want to reverse sort? (High to low), (Y/y for yes, N/n for no) : ", "YyNn");
+    if (rev == 'Y' || rev == 'y')
+    {
+        printf("\n****************************");
+        printf("\n\nSorted reverse array: ");
+        printArray_rev(arr, size);
+    }
+    else
+    {
+        printf("\n****************************");
+        printf("\n\nSorted array: ");
+        printArray(arr, size);
+    }
     return 0;
 }
