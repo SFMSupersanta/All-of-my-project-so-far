@@ -125,8 +125,7 @@ int main()
         printf("\nWhat is the age of your car in months ? ");
         int age;
         scanf("%d",&age);
-        printf("You can expect a stopping distance of ");
-        //SEND HELP
+        printf("You can expect a stopping distance of %.2lf meters", (t*age)+(My-t*Mx));
 
         fclose(fileP);
     }
