@@ -34,11 +34,11 @@ void console_dump(long long num) //code để in số product code, company code
     printf("\n"); ****************/
 }
 
-int check_num(long long num)                  //function để check xem có hợp lệ không 
+int check_num(long long num)                  //067800001019function để check xem có hợp lệ không 
 {
     int check_digit = num % 10;
     num /= 10;
-    int odd_sum, even_sum, weighted_sum;
+    int odd_sum=0, even_sum=0, weighted_sum;
     for(int i = 1; i <= 11; i++)
     {
         int digit = num % 10;
@@ -53,6 +53,7 @@ int check_num(long long num)                  //function để check xem có h�
         }
     }
     weighted_sum = odd_sum*3 + even_sum + check_digit;
+    //printf("weighted_sumL %d\noddsum: %d \nevensum: %d\ncheck digit:%d\n", weighted_sum,odd_sum,even_sum,check_digit);
     if(weighted_sum % 10 == 0) 
         return 1; 
     return 0;

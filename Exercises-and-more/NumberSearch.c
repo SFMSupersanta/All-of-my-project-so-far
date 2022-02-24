@@ -1,47 +1,70 @@
 /****************************************************************
 (〃￣︶￣)人(￣︶￣〃))
 Referring code made by SFMSupersanta.
-Program: EAN
+Program: Number of digit occurrence
 version #
 ****************************************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 void clear_buffer (void);
 
 long long getInt(char msg[], long long min, long long max) ;
 
-int check_digit(long long ean);
+int noOfDigits(char arr[], char checkarr[]);
+
+long long randnumgen();
 
 int main()
 {
-    long long isbn = getInt("Enter the ISBN:",0,9999999999);
-    long long EAN = 9780000000000 + isbn;
-    printf("EAN: %lld\n",(EAN-(EAN%10))+check_digit(EAN));
+    srand(time(NULL));
+    char checkarr[100];
+    char arr[100];
+    long long checkarrnum = getInt("Enter the check number: ",-9999999999,9999999999);
+    sprintf(checkarr, "%lld", checkarrnum);
+    for (int i = 0; i<10;i++)
+    { 
+        long long randnum = randnumgen();
+        printf("The number #%d is %lld\n",i+1,randnum);
+        sprintf(arr, "%lld", randnum);
+        printf("The number of occurrence id %d\n", noOfDigits(arr,checkarr));
+    }
     return 0;
 }
 
-int check_digit(long long ean)
+long long randnumgen()
 {
-    ean/=10;
-    int sum=0;  
-    for(int i=0; i<13;i++)
+    return rand() % 30000;
+}
+
+int noOfDigits(char arr[], char checkarr[])
+{
+    int width=0;
+    int arrwidth = 0;
+    int count=0;
+
+    while(checkarr[width]!='\0') width++;
+    while(arr[arrwidth]!='\0') arrwidth++;
+
+    for(int i=0; i< arrwidth-width; i++)
     {
-        if(i%2==0) 
+        if(arr[i]==checkarr[0])
         {
-            sum += (ean%10)*3;
-            ean /=10;
+            if(width==1) count++;
+            else
+            {
+                int rc = 0;
+                for(int j=1; j < width; j++)
+                { 
+                    if (arr[i+j] != checkarr[j]) rc = 1;
+                }
+                if(rc==0) count++;
+            }
         }
-        else
-        {
-            sum += ean %10;
-            ean/=10;
-        }
-        //printf("sum: %d\n",sum);
     }
-    //printf("%d\n",sum);
-    return 10-(sum%10);
+    return count;
 }
 
  /* clear empties input buffer */ 
