@@ -1,12 +1,14 @@
 /****************************************************************
 d=====(￣▽￣*)b
 Referring code made by SFMSupersanta.
-Program: String validator
+Program: validator
 version #
 ****************************************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
+
+
 
 //syntax Cstringval(arr[],checkarr[]) checkarr always must not be a cap character
 //As Cstringval compare arr to checkarr, arr can be capped and still return true.

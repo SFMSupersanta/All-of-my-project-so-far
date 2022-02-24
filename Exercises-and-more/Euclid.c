@@ -12,29 +12,32 @@ void clear_buffer (void);
 
 double getDouble(char msg[], double min, double max);
 
+double euclid(double num, double *estimate);
+
 int main()
 {
-    double num = getDouble("Find the square root of : ",0,100000)
-          ,err = getDouble("Acceptable Error : ",0,100000);
-        
+    double num = getDouble("Find the square root of : ",0,100000);
+    double err = getDouble("Acceptable Error : ",0,100000);     
     double iestimate = num/2;
     int i=1;
-    printf(" Iteration            Estimate");
-    printf("%10d,%.20lf",i++,iestimate);
+    printf(" Iteration            Estimate\n");
+    printf("%10d%*.12lf\n",i++,20,iestimate);
     if((iestimate-2)>err)
     {
-        while(err<=euclid(num,&iestimate))
-        printf("%10d,%7.12lf",i++,iestimate);
+        while(err<=euclid(num,&iestimate)) printf("%10d%*.12lf\n",i++,20,iestimate);
     }
-    printf("The approximate square root after %d iterations is %.6lf",i,iestimate);
+    printf("The approximate square root after %d iterations is %.6lf\n",--i,iestimate);
     return 0;
 }
 
 double euclid(double num, double *estimate)
 {
-    double quotient = *estimate;
-    *estimate = num / quotient;
-    return quotient - *estimate;
+    
+    double quotient;
+    quotient = num / *estimate ;
+    *estimate = (quotient+*estimate)/2;
+    //printf("estimate-quotient= %lf\n",*estimate-quotient);
+    return *estimate-quotient;
 }
 
  /* clear empties input buffer */ 
@@ -76,3 +79,10 @@ double euclid(double num, double *estimate)
      
      return value;
  }
+
+//testcase:
+/*
+34567.0
+0.000000001
+
+*/

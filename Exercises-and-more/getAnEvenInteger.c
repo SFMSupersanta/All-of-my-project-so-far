@@ -1,3 +1,20 @@
+/****************************************************************
+d=====(￣▽￣*)b
+Referring code made by SFMSupersanta.
+Program: validator
+version #
+****************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+ /* clear empties input buffer */ 
+ void clear_buffer (void)
+ {
+     char c;
+     while ((c=getchar()) != '\n'&&c!=EOF);
+ }
+
 //even val
 int getAnEvenInteger(char arr[],int min, int max)
 {
@@ -40,4 +57,11 @@ int getAnEvenInteger(char arr[],int min, int max)
             }else printf("**OUT OF RANGE**\n");
         } else printf("**No input**\n");
     }
+}
+
+int main()
+{
+    int even = getAnEvenInteger("Enter the enven number : ",-1000,1000);
+    printf("Even number accepted: %d\n",even);
+    return 0;
 }
