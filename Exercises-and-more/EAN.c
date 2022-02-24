@@ -1,14 +1,22 @@
 /****************************************************************
-(▀̿Ĺ̯▀̿ ̿)
+(〃￣︶￣)人(￣︶￣〃))
 Referring code made by SFMSupersanta.
-Program: PRF101
+Program: sin
 version #
 ****************************************************************/
+
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
-#include <stdbool.h>
-#include <string.h>
+
+void clear_buffer (void);
+
+long long getInt(char msg[], long long min, long long max) ;
+
+int main()
+{
+    
+    return 0;
+}
 
  /* clear empties input buffer */ 
  void clear_buffer (void)
@@ -17,7 +25,7 @@ version #
      while ((c=getchar()) != '\n'&&c!=EOF);
  }
 
-long long getInt(char msg[], long long min, long long max) 
+ long long getInt(char msg[], long long min, long long max) 
 {
      char val[20];           //input value
      long long intval;
@@ -28,7 +36,7 @@ long long getInt(char msg[], long long min, long long max)
          count = 0;
          rc =0;
          fgets(val,20,stdin);
-         //printf("%s\n", val);
+
          if(val[0]!='\n')
          {
              if(0<max&&0>min) if(val[0]=='0' && val[1] == '\n') return 0;
@@ -42,19 +50,15 @@ long long getInt(char msg[], long long min, long long max)
              intval = strtoll(val,&ovf,10);
              
  
-             printf("intval: %lld\n", intval);
- 
              if(intval<=0) count++;
+
+             long long intvaldup = intval;
  
-             while(intval!=0)
+             while(intvaldup!=0)
              {
-                 intval/=10;
+                 intvaldup/=10;
                  count++;
              }
- 
-             printf("%d\n", count);
- 
-             intval = strtoll(val,&ovf,10);
 
              if (val[count] != '\n')  printf("**Trailing Character(s)**\n");
              else if(min<intval&&intval<max)
@@ -64,9 +68,3 @@ long long getInt(char msg[], long long min, long long max)
          } else printf("**No input**\n");
      }
  }
-
-int main()
-{
-  printf("%lld \n", getInt("number:",-9999999999999,9999999999999));
-  return 0;
-}
