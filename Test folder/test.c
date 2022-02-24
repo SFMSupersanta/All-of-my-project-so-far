@@ -1,13 +1,12 @@
 
 #include<stdio.h>
-#include<stdlib.h>
 #include "validator.h"
 
 
 
 int main()
 {   
-    printf("%d\n",-12/10);
-
+    int i = getEven("TYPE: ",-100,1000);
+    printf("i: %d\n", i); 
     return 0;
 }
