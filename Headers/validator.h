@@ -9,10 +9,11 @@
  }
 
  //odd val
- int getOdd(char arr[],int min, int max)
+ long long getOdd(char arr[],long long min, long long max)
 {
     char val[20];           //input value
-    int intval,count,rc;      //int value and count value
+    long long intval;
+    int count,rc;      //int value and count value
     while(1)
     {
         printf("%s", arr);
@@ -53,10 +54,11 @@
 }
 
  //even val
- int getEven(char arr[],int min, int max)
+ long long getEven(char arr[],long long min, long long max)
  {
+     long long intval;
+     int count,rc;      //int value and count value
      char val[20];           //input value
-     int intval,count,rc;      //int value and count value
      while(1)
      {
          printf("%s", arr);
@@ -99,7 +101,8 @@
 long long getInt(char msg[], long long min, long long max) 
 {
      char val[20];           //input value
-     int intval,count,rc;      //int value and count value
+     long long intval;
+     long long count,rc;      //int value and count value
      while(1)
      {
          printf("%s", msg);
