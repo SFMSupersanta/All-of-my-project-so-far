@@ -4,7 +4,7 @@ Referring code made by SFMSupersanta.
 Program: Number of digit occurrence
 version #
 ****************************************************************/
-
+ 
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
