@@ -10,6 +10,8 @@
 - Tui sẵn sàng giải đáp các thắc mắc trong khả năng của tui nhưng sẽ không thể vào từng bài của từng người để sửa code như những workshop trước được nên mong lần tới tất cả tự chuẩn bị được compiler và khả năng HIỂU code.
 - Đây là code mà tôi đã mất rất nhiều thời gian làm và đã hoàn thành vào ngày 24/1 nên bất cứ ai dùng nó vào mục đích lấy điểm (trước tôi) thì cứ đợi đấy, có nghĩa là dùng sau tôi còn làm bài kiểm tra workshop thì cứ dùng.
 # Updates
+- Welcome to our new contributor: Reis-Aprositus
+- ASM folder has been added.
 - Headers file has been added.
 - W7 đã được thêm validation cho tất cả input
 - CodeRunner files has been added to .gitignore- Welcome huynnt to our wonderful contributors team. We currently have 3 wich is SFMSupersanta, Arcahv and Huynnt.
