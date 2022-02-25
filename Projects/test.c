@@ -67,6 +67,12 @@ long long getInt(char msg[], long long min, long long max)
 
 int main()
 {
-  printf("%lld \n", getInt("number:",-9999999999999,9999999999999));
+  //printf("%lld \n", getInt("number:",-9999999999999,9999999999999));
+  bool a = true ;
+  a = !a;
+  bool b = (true)%2 ;
+  int d = 1/2;
+  int c = a+b;
+  printf("%d\n",a);
   return 0;
 }
