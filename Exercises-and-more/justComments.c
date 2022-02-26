@@ -18,6 +18,7 @@ int main()
 { 
     char filename[1024];
     getString("Enter the file name: ",filename,1024);
+    printf("filename: %s\n",filename);
     int i=justComments(filename);
     printf("i: %d\n",i);
     return 0;
@@ -83,8 +84,13 @@ int justComments ( char filename[ ] )
         int rc=1;
         for(int i=0;i<size;i++)
         {
-            if(arr[i]=='\n') rc = 0;
-            arr[i]= '\0';
+            if(arr[i]=='\n') 
+            {
+                rc = 0;
+                printf("i: %d\n",i);
+                arr[i]= '\0';
+                i=size;
+            }
         }
         if(rc!=0) 
         {
