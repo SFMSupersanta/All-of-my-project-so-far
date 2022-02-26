@@ -135,8 +135,8 @@ long long getInt(char msg[], long long min, long long max)
 
          if(val[0]!='\n')
          {
-             if(0<max&&0>min) if(val[0]=='0' && val[1] == '\n') return 0;
-             for(int i=0; i< 20; i++) 
+             if(0<=max&&0>=min) if(val[0]=='0' && val[1] == '\n') return 0;
+             for(int i=0; i < 20; i++) 
              {
                  if(val[i]=='\n') rc = 1;
              } 
@@ -157,7 +157,7 @@ long long getInt(char msg[], long long min, long long max)
              }
 
              if (val[count] != '\n')  printf("**Trailing Character(s)**\n");
-             else if(min<intval&&intval<max)
+             else if(min<=intval&&intval<=max)
              {
                  return intval;
              }else printf("**OUT OF RANGE**\n");
