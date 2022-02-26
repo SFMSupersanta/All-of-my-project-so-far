@@ -1,7 +1,7 @@
 /****************************************************************
 (〃￣︶￣)人(￣︶￣〃))
 Referring code made by SFMSupersanta.
-Program: Number array occurrence
+Program: Print all the comments in a .c file
 version #
 ****************************************************************/
 
@@ -18,23 +18,24 @@ int main()
 { 
     char filename[1024];
     getString("Enter the file name: ",filename,1024);
-    printf("filename: %s\n",filename);
+    //printf("filename: %s\n",filename);
     int i=justComments(filename);
-    printf("i: %d\n",i);
+    printf("\ni: %d\n",i);
     return 0;
 }
 
 int justComments ( char filename[ ] )
 {
-    printf("filename: %s\n",filename);
+    //printf("filename: %s\n",filename);
     FILE *fi = NULL;
     
     fi = fopen(filename,"r");
-    printf("fi: %s\n",fi);
+    //printf("fi: %s\n",fi);
     if(fi != NULL)
     {
         do
         {
+            char buffer[512];
             char c = fgetc(fi),d;
             if(c=='/')
             { 
@@ -51,15 +52,29 @@ int justComments ( char filename[ ] )
                             d = fgetc(fi);
                             if(d=='/')
                             {
-                                printf("%c%c",c,d);
+                                printf("%c",d);
+                                c = fgetc(fi);
+                                if(c=='\n'||c==EOF) printf("%c",'\n');
+                                else printf("%c",c);
                                 break;
                             }
+                            else printf("%c",d);
+                        }else if (c == '/' && d == '*') 
+                        {
+                            if(fgetc(fi)=='\n'||fgetc(fi)==EOF) printf("\n");
+                            break;
                         }
+
                     }
+                }else if (d=='/')
+                {
+                    printf("//");
+                    fgets(buffer,512,fi);
+                    printf("%s",buffer);
                 }
             }
         } while (!feof(fi));
-        
+        fclose(fi);
     }else 
     {
         printf("Failed to open file: %s\n",filename);
@@ -87,7 +102,6 @@ int justComments ( char filename[ ] )
             if(arr[i]=='\n') 
             {
                 rc = 0;
-                printf("i: %d\n",i);
                 arr[i]= '\0';
                 i=size;
             }
