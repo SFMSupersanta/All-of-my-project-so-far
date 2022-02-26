@@ -25,17 +25,46 @@ int main()
 
 int justComments ( char filename[ ] )
 {
+    printf("filename: %s\n",filename);
     FILE *fi = NULL;
+    
     fi = fopen(filename,"r");
+    printf("fi: %s\n",fi);
     if(fi != NULL)
     {
         do
         {
-            char c = fgetc(fi);
-            
+            char c = fgetc(fi),d;
+            if(c=='/')
+            { 
+                d=fgetc(fi);
+                if(d=='*')
+                {
+                    printf("%c%c",c,d);
+                    while(1)
+                    {
+                        c= fgetc(fi);
+                        printf("%c",c); 
+                        if(c=='*')
+                        {
+                            d = fgetc(fi);
+                            if(d=='/')
+                            {
+                                printf("%c%c",c,d);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
         } while (!feof(fi));
         
-    }else printf("Failed to open file: %s\n",filename);
+    }else 
+    {
+        printf("Failed to open file: %s\n",filename);
+        return 1;
+    }
+    return 0;
 }
 
  /* clear empties input buffer */ 
@@ -55,6 +84,7 @@ int justComments ( char filename[ ] )
         for(int i=0;i<size;i++)
         {
             if(arr[i]=='\n') rc = 0;
+            arr[i]= '\0';
         }
         if(rc!=0) 
         {

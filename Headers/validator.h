@@ -18,6 +18,7 @@
         for(int i=0;i<size;i++)
         {
             if(arr[i]=='\n') rc = 0;
+            arr[i]= '\0';
         }
         if(rc!=0) 
         {
@@ -46,7 +47,7 @@
         fgets(val,20,stdin);
         if(val[0]!='\n')
         {
-            if(0<max&&0>min) if(val[0]=='0' && val[1] == '\n') return 0;
+            if(0<=max&&0>=min) if(val[0]=='0' && val[1] == '\n') return 0;
             for(int i=0; i< 20; i++) 
             {
                 if(val[i]=='\n') rc = 1;
@@ -90,7 +91,7 @@
          fgets(val,20,stdin);
          if(val[0]!='\n')
          {
-             if(0<max&&0>min) if(val[0]=='0' && val[1] == '\n') return 0;
+             if(0<=max&&0>=min) if(val[0]=='0' && val[1] == '\n') return 0;
              for(int i=0; i< 20; i++) 
              {
                  if(val[i]=='\n') rc = 1;
