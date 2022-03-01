@@ -38,7 +38,7 @@ int wordwrap(char wrapstring[], int fieldwidth)                        //This fu
           {
               track--;
           }
-          printf("\ntrack:%d\n",track);
+          //printf("\ntrack:%d\n",track);
           wrapstring[track]='\n';
           //track++;
           status= 0;
@@ -53,7 +53,7 @@ int wordwrap(char wrapstring[], int fieldwidth)                        //This fu
           wrapstring[track]='\n';
           //track++;
           status = 0;
-          printf("\ntrack:%d\n",track);
+          //printf("\ntrack:%d\n",track);
       }
       //bug
       else if (count==fieldwidth&&wrapstring[track]==' '&&wrapstring[track+1]==' '&&wrapstring[track-1]==' ')   //4th probability
@@ -66,11 +66,11 @@ int wordwrap(char wrapstring[], int fieldwidth)                        //This fu
           wrapstring[track]='\n';
           //track++;
           status = 0;
-          printf("\ntrack:%d\n",track);
+          //printf("\ntrack:%d\n",track);
       }
-      printf("status:%d\n",status);
-      printf("track(out):%d\n",track);
-      printf("count:%d\n\n",count);
+      //printf("status:%d\n",status);
+      //printf("track(out):%d\n",track);
+      //printf("count:%d\n\n",count);
       if(status == 0) count=0;
       else count++;
       track++;
@@ -81,8 +81,8 @@ int wordwrap(char wrapstring[], int fieldwidth)                        //This fu
 
 int main()
 {
-    char string[] ={"This is week 13 of BTP100     i like ho tdog too"};
-    int with=10;
+    char string[] ={"My home is in Toronto    Ontario"};
+    int with=7;
     int lines = wordwrap(string, with);
     printf("\n%s\n",string);
     printf("\nNumber of lines required: %d\n", lines);
