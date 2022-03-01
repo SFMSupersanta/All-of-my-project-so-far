@@ -25,9 +25,9 @@ Section1: ; this section is made to process with n =< 2
 
 
 Section2:
-    mov z, ax ; because the divisor domain is from 2 to n-1
-    dec z     ; so decrease n by 1 to make the maximum value of the divisor (MAX) 
-    mov y, ax ; assign n = y
+    mov c, ax ; because the divisor domain is from 2 to n-1
+    dec c     ; so decrease n by 1 to make the maximum value of the divisor (MAX) 
+    mov b, ax ; assign n = b
     mov bx, 1 ; assign 1 to bx    
 
 
@@ -36,15 +36,15 @@ Section3:
     mov ax, y ; assign y = n to ax
     mov dx, 0 ; clear dx
     inc bx    ; add divisor by 1, and after each loop it will be added until it reach n-1 
-    mov x, bx ; assign divisor value to x
-    div x
+    mov a, bx ; assign divisor value to a
+    div a
     cmp dx, 0 ; compare dx - 0
     je False      ; dx is where the remainer is stored if dx = 0 it also mean n is a prime
     jne Section4    ; , otherwise it continue the loop.
 
 
 Section4:
-    mov ax, z ; assign ax = MAX
+    mov ax, c ; assign ax = MAX
     cmp bx, ax; compare bx - ax, the divisor with MAX
     je True      ; if the divisor=MAX, the loop end and result in n is a prime number
     jne Section3    ; if not, it return to the beginning of the loop and keep processing until it reach MAX or have a remainer.
@@ -76,7 +76,7 @@ DEFINE_PRINT_NUM_UNS
 DEFINE_PRINT_NUM
 DEFINE_CLEAR_SCREEN
 
-z dw 2 ; random var
-x dw 1 ; random var
-y dw 0 ; random var
+c dw 0 ; random var
+a dw 0 ; random var
+b dw 0 ; random var
 ret
