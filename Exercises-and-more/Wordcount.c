@@ -1,7 +1,7 @@
 /****************************************************************
 ╰（‵□′）╯ THIS MIGHT BE THE MOST USELESS PROGRAM EVER.
 Referring code made by SFMSupersanta.
-Program: PRF101
+Program: Word count
 version #
 ****************************************************************/
 #include <stdio.h>
@@ -26,7 +26,7 @@ version #
             if(arr[i]=='\n') 
             {
                 rc = 0;
-
+                //printf("i: %d\n",i);
                 arr[i]= '\0';
                 i=size;
             }
@@ -70,25 +70,39 @@ long long word_cnt(char str[], int size)
     return word;
 }
 
+void print_words(char str[], int size)
+{ 
+    printf("\nResult printting...\n");
+
+    for(int i=0; i<size; i++)
+    {
+        printf("\n%d",i);
+        if(str[i]==' ')
+        {
+            do
+            {
+               ++i;
+            } while (str[i]==' ' && str[i]!='\0');    
+        }
+        printf("\n");
+        do
+        {
+            printf("%c", str[i]);
+            i++;
+        } while (str[i]!=' ' && str[i]!='\0');   
+    }
+}
+
 int main()
 {
-    printf("Word Counter");
-    printf("\n============\n");
+    printf("Word Counter\n============\n");
+
     char str[101];
     getString("String to be counted :",str,sizeof(str)/sizeof(str[0]));
+
     printf("Number of words in the string : %d",word_cnt(str,strlen(str)));
+
+    print_words(str, strlen(str));
+
     return 0;
 }
-/*###########################################################
-###################
-#TEST CASE(ctrc+v)#
-###################
-   BTP100   is not    that  hard!
-###################
-#   EXAMPLE:      #
-###################
- Word Counter
- ============
- String to be counted :   BTP100   is not    that  hard!
- Number of words in the string : 5
-###########################################################*/

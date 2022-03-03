@@ -41,8 +41,10 @@
 int main()
 {
     
-    char str[256];
-    getString("Type in the string: ",str,256);
-    printf("%s\n",str);
+    int a=10;
+    int b=10;
+    printf("%d\n",++a + ++b);
+    printf("%d\n",a++ + b++);
+    printf("%d\n",a + b);
     return 0;
 }
