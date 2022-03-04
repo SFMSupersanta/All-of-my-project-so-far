@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /* clear empties input buffer */ 
  void clear_buffer (void)
@@ -37,14 +38,18 @@
      }
  }
 
+void as(char word[100][255])
+{ 
+    strcpy(word[0], "Hello");
+    
+}
 
 int main()
 {
+    char word[6][255];
     
-    int a=10;
-    int b=10;
-    printf("%d\n",++a + ++b);
-    printf("%d\n",a++ + b++);
-    printf("%d\n",a + b);
+    
+    as(word);
+    printf("%s\n",word[0]);
     return 0;
 }
