@@ -8,6 +8,40 @@ version #
 #include <stdlib.h>
 #include <string.h>
 
+ void clear_buffer (void);
+
+ void getString(char msg[], char arr[],int size);
+
+ long long word_cnt(char str[], int size);
+
+ void clear_buffer (void);
+
+ void conv_words(char str[], int size, char word[][255]);
+
+
+
+int main()
+{
+    printf("Word Counter\n============\n");
+
+    char str[101];
+    getString("String to be counted :",str,sizeof(str)/sizeof(str[0]));
+
+    int wnum = word_cnt(str,strlen(str));
+    printf("Number of words in the string : %d\n",wnum);
+
+    char word[wnum][255];
+
+    conv_words(str, strlen(str), word);
+
+    for(int i=0; i<wnum; i++)
+    { 
+        printf("%s\n",word[i]);
+    }
+
+    return 0;
+}
+
  void clear_buffer (void)
  {
      char c;
@@ -71,7 +105,7 @@ long long word_cnt(char str[], int size)
 }
 
 //convert every word in arr string to (size) substring in word 2d array
-void conv_words(char str[], int size, char word[100][255])
+void conv_words(char str[], int size, char word[][255])
 { 
     //printf("\nResult printting...\n");
     char temp[255];
@@ -97,26 +131,4 @@ void conv_words(char str[], int size, char word[100][255])
         temp[++tempi]='\0';  
         strcpy(word[temps++],temp);
     }
-}
-
-int main()
-{
-    printf("Word Counter\n============\n");
-
-    char str[101];
-    getString("String to be counted :",str,sizeof(str)/sizeof(str[0]));
-
-    int wnum = word_cnt(str,strlen(str));
-    printf("Number of words in the string : %d\n",wnum);
-
-    char word[wnum][255];
-
-    conv_words(str, strlen(str), word);
-
-    for(int i=0; i<wnum; i++)
-    { 
-        printf("%s\n",word[i]);
-    }
-
-    return 0;
 }
