@@ -10,6 +10,7 @@
 - Tui sẵn sàng giải đáp các thắc mắc trong khả năng của tui nhưng sẽ không thể vào từng bài của từng người để sửa code như những workshop trước được nên mong lần tới tất cả tự chuẩn bị được compiler và khả năng HIỂU code.
 - Đây là code mà tôi đã mất rất nhiều thời gian làm và đã hoàn thành vào ngày 24/1 nên bất cứ ai dùng nó vào mục đích lấy điểm (trước tôi) thì cứ đợi đấy, có nghĩa là dùng sau tôi còn làm bài kiểm tra workshop thì cứ dùng.
 # Updates
+- Added PE-2021 tests to PE-PRF folder.
 - Welcome to our new contributor: Ank298
 - We now have assembly language codes. In the ASM(CEA) folder.
 - Welcome to our new contributor: Reis-Aprositus
