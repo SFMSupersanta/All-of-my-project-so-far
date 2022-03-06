@@ -33,7 +33,7 @@ Section2:
 
 ; begin of the loop
 Section3:
-    mov ax, y ; assign y = n to ax
+    mov ax, b ; assign b = n to ax
     mov dx, 0 ; clear dx
     inc bx    ; add divisor by 1, and after each loop it will be added until it reach n-1 
     mov a, bx ; assign divisor value to a
