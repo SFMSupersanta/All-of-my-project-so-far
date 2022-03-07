@@ -1,1 +1,1 @@
-r s[ ] = "abcdef"
+Enter the number: 

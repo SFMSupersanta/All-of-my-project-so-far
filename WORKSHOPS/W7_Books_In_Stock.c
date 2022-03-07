@@ -11,10 +11,19 @@ version #
 #include <stdbool.h>
 #include <string.h>
 
-#define max_items  101                      //edit this statement to change the max item value
+#define MAXITEM  101                      //edit this statement to change the max item value
+
+//Stuct defined for
+struct item 
+{
+    long long isbn;
+    double price;
+    int quantity;
+    double value;
+};
 
 //isbn validator
-bool  numcheck(long long num)
+bool isbnValidator(long long num)
 {
     long long  check_digit = num % 10;
     num /= 10;
@@ -33,206 +42,179 @@ bool  numcheck(long long num)
     else
         return false;
 }
-long long demic_conv(char barc_arr[])                         //string to int magic
+
+ /* clear empties input buffer */ 
+ void clear_buffer (void)
+ {
+     char c;
+     while ((c=getchar()) != '\n'&&c!=EOF);
+ }
+
+//Getint validator
+long long getInt(char msg[], long long min, long long max) 
 {
-  long long returnnum=0 ;
-  for (int i = 0; i <= 9; i++)
-  {
-    returnnum *=10;
-    returnnum += barc_arr[i]-'0'; 
-    //printf("returnnum:%lld\n",returnnum);
-  }
-  return returnnum;
+     char val[20];           //input value
+     long long intval;
+     int count,rc;      //int value and count value
+     while(1)
+     {
+         printf("%s", msg);
+         count = 0;
+         rc = 0;
+         fgets(val,20,stdin);
+
+         if(val[0]!='\n')
+         {
+             if(0<=max&&0>=min) if(val[0]=='0' && val[1] == '\n') return 0;
+             for(int i=0; i< 20; i++) 
+             {
+                 if(val[i]=='\n') 
+                 {
+                     rc = 1;
+                     i=20;
+                 }
+             } 
+             if(rc==0) 
+             {
+
+                 clear_buffer();
+             }
+             val[strcspn(val,"\n")] = '\0';
+             
+             if(val[count]=='0') 
+             {
+
+                 while(val[count]=='0')
+                 {
+                     count++;
+                 }
+             }             
+             char *ovf;
+             intval = strtoll(val,&ovf,10);
+             
+             if(intval<=0) count++;
+
+             long long intvaldup = intval;
+ 
+             while(intvaldup!=0)
+             {
+                 intvaldup/=10;
+                 count++;
+             }
+             if (val[count] != '\0')  printf("**Trailing Character(s)**\n");
+             else if(min<=intval&&intval<=max)
+             {
+                 return intval;
+             }else printf("**OUT OF RANGE**\n");
+         } else printf("**No input**\n");
+     }
+ }
+
+//Getdouble validator
+ double getDouble(char msg[], double min, double max) 
+{
+     double value, rc;
+     int keeptrying = 1;
+     char excess;
+
+     do 
+     {
+         printf("%s ", msg);
+         rc = scanf("%lf%c", &value, &excess);
+         if (rc == 0) 
+         {
+             printf("**No input accepted!**\n\n");
+             clear_buffer();
+         } 
+         else if (excess != '\n') 
+         {
+             printf("**Trailing characters!**\n\n"); 
+             clear_buffer();
+         } 
+         else if (value < min || value > max) 
+         {
+             printf("**Out of range!**\n\n");
+         } 
+         else
+             keeptrying = 0;
+     } 
+     while (keeptrying == 1);
+     
+     return value;
+ }
+
+
+//swap swap struct function
+void swapstruct(struct item *a, struct item *b)
+{
+    struct item c= *a;
+    *a=*b;
+    *b=c;
 }
 
-//barcode validator
-bool barc_val(char barc_arr[])
+//Struck sorting function
+void structsort(struct item arr[], int size)
 {
-    //check if the first 10 value is a Number
-    for (int i=0;i<10;i++)
-    {
-      if (barc_arr[i]!='0'&&barc_arr[i]!='1'&&
-          barc_arr[i]!='2'&&barc_arr[i]!='3'&&
-          barc_arr[i]!='4'&&barc_arr[i]!='5'&&
-          barc_arr[i]!='6'&&barc_arr[i]!='7'&&
-          barc_arr[i]!='8'&&barc_arr[i]!='9')
-          return false;
-    }
-    return true;
-}
-
-double scan_price(void)
-{
-    
-    double price;
-    char ovflow;
-    int rc;
-    while(true)
-    {
-      printf("Price    :  ");
-      rc = scanf("%lf%c",&price,&ovflow);
-      if(rc==0||rc==1)
+    int tracker;
+    for(int i = 0; i < size; i++)
       {
-        printf("No input accepted!\n");
-        while(getchar()!='\n') ;
-      }else if(ovflow!='\n')
-      {
-        printf("Character overflow!\n");
-        while(getchar()!='\n') ;
+          long long *jmin = &arr[i].isbn;
+          for(int j = i+1; j < size; j++)
+          {
+              if(arr[j].isbn < *jmin) 
+              {
+                jmin = &arr[j].isbn;
+                tracker = j;
+              }
+          }
+          swapstruct(&arr[i], &arr[tracker]);
       }
-      else if(price<0)
-      {
-        printf("Out ranged!\n");
-      }else break;
-    }
-    return price;
-}
-
-int scan_quantity(void)
-{
-  
-    int price;
-    char ovflow;
-    int rc;
-    while(true)
-    {
-      printf("Quantity :  ");
-      rc = scanf("%d%c",&price,&ovflow);
-      if(rc==0||rc==1)
-      {
-        printf("No input accepted!\n");
-        while(getchar()!='\n') ;
-      }else if(ovflow!='\n')
-      {
-        printf("Character overflow!\n");
-        while(getchar()!='\n') ;
-      }
-      else if(price<0)
-      {
-        printf("Out ranged!\n");
-      }else break;
-    }
-    return price;
 }
 
 int main()
 {
-  //program name
-  printf("Books in Stock Organizer\n");
-  printf("========================\n");  
-  
-  char total_barc [max_items][11];
-  double total_price [max_items];
-  long long quantity[max_items];
-  double value[max_items];
-
-  int total_cnt = 0;
-  //input code
-  bool status = true;
-  while (true)
-  {
-    //barcode array input
-    while (true)
+    //program name
+    printf(" Books in Stock Organizer\n");
+    printf(" ========================\n");  
+    struct item bookArr[MAXITEM];
+    long long tempISBN=1;
+    int itemnum=0;
+    double totalValue=0;   
+    //Input section
+    do
     {
-      //scan and check for ISBN loop
-      while (true)
-      {
-        char barc_arr[11];
-        barc_arr[10]='\0';
-        printf("ISBN     :  ");      
-        scanf(" %[^\n]",&barc_arr);
-
-        if (barc_arr[0]=='0'&&barc_arr[1]=='\0')
+        //check if isbn = 0
+        do
         {
-          status=false;
-          break;
-        }
-        else if(barc_arr[10]!='\0')
-        {
-          printf("Character overflow!\n");
-        }
-        else if (barc_val(barc_arr)==true&&numcheck(demic_conv(barc_arr))) 
-        {
-          for (int i = 0; i <10;i++) 
-          {
-            total_barc[total_cnt][i]= barc_arr[i];
-          }
-          break;
-          //total_cnt++;
-        }
-        else 
-        {
-            printf("INVALID INPUT or this is not an ISBN number\n");
-            continue;
-        }
-      }
-      if(status == false) break;   //first break out of second loop
+          tempISBN=getInt(" ISBN     :  ",0,9999999999);
+          if(tempISBN==0) break;
+        } while(isbnValidator(tempISBN)!=true);
+        if(tempISBN==0) continue;        //skip to the while part
+        bookArr[itemnum].isbn = tempISBN;    
+        //Get other data      
+        bookArr[itemnum].price = getDouble(" Price    : ",1,1000000000);
+        bookArr[itemnum].quantity = getInt(" Quantity :  ",1,1000000000);
+        bookArr[itemnum].value = bookArr[itemnum].price * bookArr[itemnum].quantity;
+        totalValue += bookArr[itemnum].value;
+        itemnum++;
+    }
+    while(tempISBN!=0);                 //the while part
 
-      //scan price
-      total_price[total_cnt]=scan_price();
+    //sorting section 
+    structsort(bookArr,itemnum);
 
-      //scan quantity
-      quantity[total_cnt] = scan_quantity();
-
-      //total value caculations
-      value[total_cnt]=total_price[total_cnt]*quantity[total_cnt];
-      total_cnt++;
-    } 
-    if (status==false) break;     //second break out of first loop
-  }
-//print results
-  printf("\n            Books in Stock\n            ==============\nISBN        Price   Quantity   Value");
-  printf("\n-----------------------------------\n");
-  
-  for (int i=0; i< total_cnt; i++)
-  {
-    int max_index;
-    long long max_value=9999999999;
-    for (int l=0; l < total_cnt; l++)
+    //printing section
+    printf("            Books in Stock\n            ==============\n ISBN        Price   Quantity   Value \n --------------------------------------\n");
+    for(int i=0; i < itemnum; i++)
     {
-      char temp_barc[10];
-      //get a temo string "temp_barc"
-      for (int k = 0; k < 10; k++)
-      {
-        temp_barc[k]=total_barc[l][k];
-      }
-      //turn string into demical value
-      long long barc_dem = demic_conv(temp_barc);
-      //get the smallest value out of three
-      if (max_value>barc_dem)
-      {
-        max_value=barc_dem;
-        max_index=l;
-      }
+        printf(" %010lld%7.2lf%11d",bookArr[i].isbn,bookArr[i].price,bookArr[i].quantity);
+        printf("%10.2lf\n",bookArr[i].value);
     }
-    //Print barcode
-    for (int j = 0; j < 10; j++)
-    { 
-      printf("%c", total_barc[max_index][j]);
-    }
-    for (int h = 0; h < 10; h++)
-    {
-      total_barc[max_index][h]='9';
-    }
-    //print price
-    printf("%6.2lf",total_price[max_index]);
-    //print quantity
-    printf("%11lld",quantity[max_index]);
-    //print value
-    printf("%8.2lf",value[max_index]);
-    printf("\n");
-  }
-  
-//toal value print
-  printf("                             ------\nTotal value books in stock");
-  double total_value;
-  for(int i = 0; i <total_cnt;i++)
-  {
-      total_value+=value[i];
-  }
-  printf("%9.2lf",total_value);
-  return 0;
+    printf("                                -------\n Total value books in stock");
+    printf("%12.2lf",totalValue);
+    return 0;
 }
+
 /*###########################################################
 ###################
 #TEST CASE(ctrc+v)#
@@ -273,3 +255,4 @@ int main()
                                 -------
  Total value books in stock     2198.50
 ###########################################################*/
+

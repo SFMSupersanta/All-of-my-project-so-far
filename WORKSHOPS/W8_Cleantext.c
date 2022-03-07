@@ -44,42 +44,30 @@ version #
      }
  }
 
-/*
-function to make the text "clean"
-take a string, size of the string and a string pointer as input and assing value to the string pointer
-*/
-void cl_text(char str[], int size, char *out_str)
+
+void cl_text(char str[], int size)
 {
-    for (int i = 0; i <= size-1; i++)
-    {
-        if(str[i] == ' '&& i==0)
+    char substr[255];
+    int count=0;
+    for(int i=0;i<size;i++)
+    { 
+        if(str[i]==' '&&i==0)
         {
-            while(str[i+1] == ' ')
-            {
-                i++;
-            }
+            i++;
         }
-
-        else if(str[i] == ' ')
+        else if(str[i]==' '&&i!=0)
         {
-            while(str[i+1] == ' ')
-            {
-                i++;
-            }
-            *out_str++ = str[i];
+            substr[count++]=' ';
+            while(str[i+1]==' ') i++;
         }
-
-        else if (str[i] < 32 || str[i] == 127)
+        else
         {
-           *out_str++ = '_';
-        }
-
-        else 
-        {
-            *out_str++ = str[i];
+            substr[count++]=str[i];
         }
     }
+    strcpy(str,substr);
 }
+
 
 int main()
 {
@@ -87,9 +75,9 @@ int main()
     printf("\n==============\nString to be cleaned : ");
     char str[101];
     getString("String to be cleaned :",str,sizeof(str)/sizeof(str[0]));
-    char cl_str[101];
-    cl_text(str,/*return length value*/strlen(str),cl_str);
-    printf("Cleaned string       : %s", cl_str);
+
+    cl_text(str,/*return length value*/strlen(str));
+    printf("Cleaned string       : %s", str);
 }
 /*###########################################################
 ###################
