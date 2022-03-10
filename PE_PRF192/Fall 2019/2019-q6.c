@@ -15,11 +15,16 @@ int main() {
   //INPUT - @STUDENT:ADD YOUR CODE FOR INPUT HERE:
 
   char l[100],s[100];
-  gets(l);
-  gets(s);
-  int shorts=0;
-  while(s[shorts]!='\0') {shorts++;}
+  //gets l
+  fgets(l,100,stdin);
+  l[strcspn(l,"\n")] = '\0';
+  //gets s
+  fgets(s,100,stdin);
+  s[strcspn(s,"\n")] = '\0';
+
+  int shorts = strlen(s);
   int index=0;
+  
   while(l[index]!='\0')
   {
       if(l[index]==s[0])
@@ -57,3 +62,9 @@ int main() {
   system ("pause");
   return(0);
 }
+
+/*------------------------------------------------
+ccbadefgba
+ba
+
+------------------------------------------------*/

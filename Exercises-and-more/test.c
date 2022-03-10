@@ -1,75 +1,72 @@
-
 #include <stdio.h>
- 
-int MAXSIZE = 20;                         // bien khong thay doi
-int stack[20];                            // mang stack 
-int top = -1;                             // so dem phan tu trong mang
-
-//ham kiem tra stack rong
-int isempty()  
-{
-   if(top == -1)                          
-      return 1;
-   else
-      return 0;
-}
+#include <stdlib.h>
 
 
-//ham kiem tra stack day
-int isfull() 
-{
+int main() {	
 
-   if(top == MAXSIZE)
-      return 1;
-   else
-      return 0;
-}
+	int arr[7];
+	for (int i = 0; i < 7; i++)
+	{
+		scanf("%d", &arr[i]);
+	}
+	int mask[7] = {0};
 
-//ham pop
-int pop() 
-{
+	//first mask eliminaton
+	for (int i = 0; i < 7; i++)
+	{ 
+		if(arr[i]<10) mask [i] = -1;
+	}
+
+	//second mask eliminaton and count
+	for (int i = 0; i < 7; i++)
+	{ 
+		if(mask[i]==0)
+		{ 
+			mask[i] ++;
+			for (int j = i+1; j < 7; j++)
+			{ 
+				if(mask[j]==0)
+				{
+					if(arr[j]==arr[i]) 
+					{
+						mask[i] ++;
+						mask[j] = -1;
+					}
+				}
+			}
+		}
+	}
 	
-   if(!isempty())                                 //kiem tra stack
-   {
-      top = top - 1;
-      return stack[top+1];
-   }
-   return 0;
+	for(int i = 0; i < 7; i++)
+	{ 
+		if(mask[i]>0) printf("%d", arr[i]);
+	}
+
+    return(0);
 }
+/*
+1
+3
+5
+7
+12
+12
+12
 
-//ham push
-int push(int data) 
-{
-   if(!isfull()) 
-   {
-      top = top + 1;   
-      stack[top] = data;
-   } else 
-   {
-      printf("Could not insert data, Stack is full.\n");
-   }
-}
+1
+3
+5
+7
+9
+1
+2
 
-//main function
-int main()
-{
-   int num;                             //so dung de xu ly
-   printf("Enter the number: ");        //in ra ngoai console
-   scanf("%d", &num);                   //lay du lieu tu ban phim
+10
+10
+1
+2
+3
+12
+12
 
-   while(num!=0)                        //vong while de lay phan tu vao stack
-   {
-       push(num%10);                    //push phan tu vao stack
-       num/=10;                         //giam num di 1 hang don vi
-   }
-
-   while(!isempty())                    //thuc hien cho den khi stack empty
-   {
-       num += pop();                    //cong ket qua
-   }   
-   
-   printf("Sum of all digits: %d",num); //in ket qua
-
-   return 0;
-}
-
+*/

@@ -12,13 +12,12 @@ version #
 
 int pc(int i)
 {
-    for (int j = 2; j < i/2; j++)
+    if(i<2) return 0;
+    for (int j = 2; j <= sqrt(i); j++)
     {
         if(i%j==0)
         {
-        //printf("i: %d\n", i);
-        return 0;
-        break;
+          return 0;
         }
     } return 1;
 }

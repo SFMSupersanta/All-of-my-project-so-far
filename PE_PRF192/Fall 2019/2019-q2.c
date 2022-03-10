@@ -12,16 +12,17 @@ int main()
     //INPUT - @STUDENT:ADD YOUR CODE FOR INPUT HERE:
     long long a;
     long long b=1;
-    scanf("%ld", &a);
-    for(long long i = 2; i <= a/2 ; i+=2)
-    {
-        b=b*i;
-        //printf("b: %ld\n", b);
+    scanf("%lld", &a);
+    
+    for(long long i = 2; i <= a/2 ; i++)
+    { 
+        if(i % 2 == 0) b *= i;
     }
+
     // OUTPUT for marking:
     printf("\nOUTPUT:\n");
 
-    printf("%ld", b);
+    printf("%lld", b);
 
     //--FIXED PART - DO NOT EDIT ANY THINGS HERE
     printf("\n");

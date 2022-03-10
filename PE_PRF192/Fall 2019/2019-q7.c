@@ -26,91 +26,85 @@ int main() {
   system("cls");
   //INPUT - @STUDENT:ADD YOUR CODE FOR INPUT HERE:
 
-
-  int a[7];
+  int arr[7];
   for (int i = 0; i < 7; i++)
   {
-      scanf("%d", &a[i]);
+  	scanf("%d", &arr[i]);
   }
-  int maxdig = NULL, maxdig2 = NULL, maxcnt=0, maxcnt2=0;
-  int dupe[7];
-  for (int i = 0; i < 7; i++)
-  {
-      dupe[i] = NULL;
-  }
-  
+  int mask[7] = {0};   
 
-  for(int i = 0; i < 7; i++)
-  {
-      if(a[i] > 9)
-      {
-        if(dupecheck(a[i], dupe)==true)
-        { 
-            int cnt = 0;
-            for (int j = i+1; j < 7; j++)
-            {
-                if(a[i]==a[j]) cnt++;
-            }
-            if(maxdig == NULL)
-            {
-                maxcnt = cnt;
-                maxdig = a[i];
-            }
-            else if(maxdig2 == NULL)
-            {
-                if(cnt>maxcnt) 
-                {
-                    maxdig2=maxdig;
-                    maxdig = a[i];
-                    maxcnt2 = maxcnt;
-                    maxcnt = cnt;
-                }else
-                {
-                    maxdig2 = a[i];
-                }
-            }
-            else if(cnt>maxcnt)
-            {
-                maxcnt2=maxcnt;
-                maxcnt = cnt;
-                maxdig2=maxdig;
-                maxdig = a[i];
-            }
-            else if(cnt>maxcnt2)
-            {
-                maxdig2=a[i];
-                maxcnt2=cnt;
-            }
-            else if(cnt==maxcnt)
-            {
-                maxdig2=maxdig;
-                maxdig=a[i];
-                maxcnt2=maxcnt;
-            }
-        }
-      }
+  //first mask eliminaton
+  for (int i = 0; i < 7; i++)
+  { 
+  	if(arr[i]<10||arr[i]>99) mask [i] = -1;
+  }    
+
+  //second mask eliminaton and count
+  for (int i = 0; i < 7; i++)
+  { 
+  	if(mask[i]==0)
+  	{ 
+  		mask[i] ++;
+  		for (int j = i+1; j < 7; j++)
+  		{ 
+  			if(mask[j]==0)
+  			{
+  				if(arr[j]==arr[i]) 
+  				{
+  					mask[i] ++;
+  					mask[j] = -1;
+  				}
+  			}
+  		}
+  	}
   }
-  
-  
+	  
    // OUTPUT for marking:
    printf("\nOUTPUT:\n");
    //@STUDENT: WRITE YOUR OUTPUT HERE:
-   printf("%d,%d\n",maxdig,maxdig2);
   
-    if(maxdig!= NULL&&maxdig2==NULL)
-    {
-        printf("%ld",maxdig);
-    }
-    else if(maxdig!= NULL&&maxdig2!=NULL)
-    {
-        printf("%ld  %ld", maxdig,maxdig2);
-    }
-    else printf("no two-digit number");
+   int status=0;
 
+   for(int i = 0; i < 7; i++)
+   { 
+   	 if(mask[i]>0)
+        {
+            printf("%d ", arr[i]);
+            if(status == 0) status = 1;
+        }
+   }
 
-
+   if(status == 0) printf("no two-digit number");
+  
    //--FIXED PART - DO NOT EDIT ANY THINGS HERE
   printf("\n");
   system ("pause");
   return(0);
 }
+
+/*
+1
+3
+5
+7
+12
+12
+12
+
+1
+3
+5
+7
+9
+1
+2
+
+10
+10
+1
+2
+3
+12
+12
+
+*/
