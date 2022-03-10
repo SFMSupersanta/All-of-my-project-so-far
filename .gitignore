@@ -14,3 +14,4 @@ Headers/test.c
 Projects/test.c
 Exercises-and-more/test.c
 Headers/tempCodeRunnerFile.c
+*.c
