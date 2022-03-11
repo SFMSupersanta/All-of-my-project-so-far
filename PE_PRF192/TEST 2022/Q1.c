@@ -3,7 +3,12 @@ d=====(￣▽￣*)b
 Referring code made by SFMSupersanta.
 Program: PRF192
 version #
+////////////////////////////////////////////////////////////////
+nguoi dung nhap vao 2 số float a va b
+neu a nho hon b in ra :a<b  
+neu a lon hon hoac bang b in:a>=b
 ****************************************************************/
+
 #include <stdio.h>
  
 int main()

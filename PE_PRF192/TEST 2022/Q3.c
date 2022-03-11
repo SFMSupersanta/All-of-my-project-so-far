@@ -3,6 +3,10 @@ d=====(￣▽￣*)b
 Referring code made by SFMSupersanta.
 Program: PRF192
 version #
+////////////////////////////////////////////////////////////////
+nguoi dung nhap vao 4 chu cai
+in ra cac chu cai sap xep theo alphabelt tren 1 dong va cach 
+nhau bang 1 space
 ****************************************************************/
 #include <stdio.h>
 

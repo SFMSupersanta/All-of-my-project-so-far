@@ -3,6 +3,9 @@ d=====(￣▽￣*)b
 Referring code made by SFMSupersanta.
 Program: PRF192
 version #
+////////////////////////////////////////////////////////////////
+nguoi dung nhap vao so int n
+in ra tong ba so chan cuoi cung tu 0 den n
 ****************************************************************/
 #include <stdio.h>
 
