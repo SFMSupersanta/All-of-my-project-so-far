@@ -42,6 +42,7 @@ int main()
                      ,"FG      Fred Goofoff"
                      ,"GF      Gary Flintstone"};
     StringSelectionSort(str,4);
+    printf("String sort:\n");
     for (int i=0; i<4; i++)
     { 
         printf("%s\n", str[i]);

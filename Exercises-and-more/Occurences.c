@@ -3,6 +3,34 @@
 Referring code made by SFMSupersanta.
 Program: Number array occurrence
 version #
+////////////////////////////////////////////////////////////////
+Design and code a function named occurences that returns the 
+number of times that a search string appears within a reference 
+string.  The search string is the first parameter of your 
+function.  The reference string is the second parameter. 
+
+For example, the statements
+
+ int i;
+
+ i = occurences( "BT", "BTP100 BTO120" );
+ printf("%d\n", i );
+
+display
+
+ 2
+
+The statements
+
+ int i;
+
+ i = occurences( "BB", "BBBXCBBb" );
+ printf("%d\n", i );
+
+display
+
+ 3 
+
 ****************************************************************/
 
 #include <stdio.h>

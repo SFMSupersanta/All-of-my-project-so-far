@@ -1,3 +1,12 @@
+/****************************************************************
+(╯▔皿▔)╯)
+Referring code made by SFMSupersanta.
+Program: PRF192
+version #
+////////////////////////////////////////////////////////////////
+Generate 20 case of 2 diffirent bi color
+****************************************************************/
+
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>

@@ -3,6 +3,8 @@
 Referring code made by SFMSupersanta.
 Program: Word count
 version #
+////////////////////////////////////////////////////////////////
+count words in an array
 ****************************************************************/
 #include <stdio.h>
 #include <stdlib.h>

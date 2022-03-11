@@ -2,6 +2,8 @@
 #include<string.h>
 #include<stdbool.h>
 
+//Toi cung cha nho de bai la gi
+
 
 //\input stream clear function\*
 void clear()

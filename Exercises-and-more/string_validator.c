@@ -3,6 +3,8 @@ d=====(￣▽￣*)b
 Referring code made by SFMSupersanta.
 Program: validator
 version #
+////////////////////////////////////////////////////////////////
+Yet another validator
 ****************************************************************/
 
 #include <stdio.h>

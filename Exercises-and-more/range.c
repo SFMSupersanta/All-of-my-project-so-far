@@ -3,6 +3,8 @@
 Referring code made by SFMSupersanta.
 Program: range
 version #
+////////////////////////////////////////////////////////////////
+this does cool stuff, just run the program
 ****************************************************************/
 #include <stdlib.h>
 #include <stdbool.h>

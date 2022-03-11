@@ -3,6 +3,46 @@
 Referring code made by SFMSupersanta.
 Program: EAN
 version #
+////////////////////////////////////////////////////////////////
+Design and code a function named EAN that receives an 
+International Standard Book Number (ISBN) and returns the 
+equivalent European Article Number (EAN).  The ISBN consists 
+of up to 10 digits.  The equivalent EAN consists of 13 digits 
+where the leftmost 3 digits are 978 and the rightmost digit is
+a check digit.  The remaining 9 digits are the same as the 
+corresponding ISBN digits.  For example,
+
+ ISBN:    321197186
+          ||||||||
+ EAN: 9780321197184 
+The statement
+
+ printf("??\n", EAN( 321197186 ));
+
+where ?? is to be replaced by the appropriate conversion 
+specifier, displays
+
+ 9780321197184 
+
+The check digit for an EAN is the digit that adds to the weighted
+sum of the other digits to produce a total that is divisible by 10. 
+The weighted sum is from the left:
+the sum of the 1st, 3rd, etc. digits (excluding the check digit), plus
+the sum of the 2nd, 4th, etc. digits each multiplied by 3.
+That is,
+
+                          EAN 978032119718?
+                                          |
+                           check digit is ?
+
+   9  7  8  0  3  2  1  1  9  7  1  8
+ x 1  3  1  3  1  3  1  3  1  3  1  3
+ = 9 21  8  0  3  6  1  3  9 21  1 24 = 106
+ remainder after division by 10           6 A 
+ check digit is difference 10 - A         4
+
+ Therefore, the EAN is        9780321197184
+
 ****************************************************************/
 
 #include <stdio.h>

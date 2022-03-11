@@ -3,6 +3,23 @@
 Referring code made by SFMSupersanta.
 Program: sin
 version #
+////////////////////////////////////////////////////////////////
+The trigonometric function sin(x) may be calculated using the 
+infinite series formula
+
+ sin(x) = x - x3/3! + x5/5! - x7/7! + ...
+
+where x is in radians.  1 radian is 180 degrees/p.
+
+Write a function with the header
+
+ double sin ( double x, int nterms )
+
+that receives as parameters the value of x in radians and the 
+number of terms to be used in calculating the approximation and 
+returns the approximate value.
+
+Finally, write a main program to test your function.
 ****************************************************************/
 
 #include <stdio.h>

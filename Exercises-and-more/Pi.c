@@ -3,6 +3,35 @@
 Referring code made by SFMSupersanta.
 Program: exercise
 version #
+////////////////////////////////////////////////////////////////
+The mathematical constant p may be calculated using the series 
+formula
+
+ p = 4 ( 1 - 1/3 + 1/5 - 1/7 + ... )
+
+Write a function with the header
+
+ double pi ( int nterms )
+
+that receives as a parameter the number of terms to be used in 
+calculating the approximate value of p and returns that value.
+
+The mathematical constant p may also be calculated using the 
+Wallis product
+
+ p = 2 [ (2/1) * (2/3) * (4/3) * (4/5) * (6/5) * (6/7) ... ]
+
+Write a second function with the header
+
+ double pi_wallis ( int nterms )
+
+that receives as a parameter the number of terms to be used 
+in calculating the approximate value of p and returns that value.
+
+Finally, write a main program that evaluates p for an increasing 
+number of terms and displays the results returned from both 
+functions so as to show the relative rate of convergence of each 
+method of approximation.
 ****************************************************************/
 
 #include <stdio.h>

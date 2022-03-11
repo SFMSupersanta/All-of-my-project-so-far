@@ -3,6 +3,31 @@
 Referring code made by SFMSupersanta.
 Program: String compress
 version #
+////////////////////////////////////////////////////////////////
+Write a function with the header
+
+ int compress ( char str[ ] )
+
+that receives a null-terminated string str[], removes any leading 
+blanks in str[], any extra blanks between the words in str[] and 
+any trailing blanks in str[] and returns the number of characters
+in the compressed string (excluding the null byte).  A word is 
+any set of consecutive non-whitespace characters.  Any two 
+consecutive words are separated from one another by whitespace 
+characters. 
+
+For example, the statements
+
+ int i;
+ char str[ ] = "   This is    a     test.      ";
+
+ i = compress(str);
+ printf ("'%s' contains %d characters.\n", str, i);
+
+display
+
+ 'This is a test.' contains 15 characters.
+
 ****************************************************************/
 
 #include <stdio.h>

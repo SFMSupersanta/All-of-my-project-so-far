@@ -3,6 +3,67 @@
 Referring code made by SFMSupersanta.
 Program: Print all the comments in a .c file
 version #
+////////////////////////////////////////////////////////////////
+Design and code a function named justComments with the header
+
+ int justComments ( char filename[ ] )
+
+Your function displays all of the C-style comments in a text file.
+filename[ ] is a null-terminated string that contains the name 
+of the file.  Your function displays multi-line comments as they 
+appear in the source file, but with the first line starting in 
+the first column.  Your function returns 0 if successful, 1 
+if the file is not found. 
+
+You may assume that each comment appears on a separate line 
+and starts in the first column of that line. You may also assume 
+that there are no input errors while reading the file. 
+
+Consider a file named source.c consisting of the following 
+statements
+
+ /* Sample File
+ *  source.c
+ 
+
+ int main(void){
+     int i;
+     char s[100];
+
+     /* prompt for input 
+     printf("Enter a string : ");
+     /* accept a string 
+     scanf("%s", s);
+     /* display the string entered *
+     printf("%s\n", s);
+
+     return 0;
+ }
+
+The statements
+
+ int i;
+ i = justComments("source.c");
+
+display
+
+ /* Sample File
+ *  source.c
+ */
+ /* prompt for input 
+ /* accept a string 
+ /* display the string entered 
+
+and assign a value of 0 to i.  The statements
+
+ int i;
+ i = justComments("");
+
+display nothing and assign a value of 1 to i.
+
+As an additional challenge, upgrade your function so that each comment displays in the same position as the comment appears in the source file.  That is, if a comment starts in column 8 and ends in column 16 in the source file, your upgraded function displays the comment in columns 8 through 16 inclusive.  You may assume that each tab character in the source file expands to 8 spaces on display. 
+
+
 ****************************************************************/
 
 #include <stdio.h>

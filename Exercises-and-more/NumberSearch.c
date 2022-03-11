@@ -3,6 +3,25 @@
 Referring code made by SFMSupersanta.
 Program: Number of digit occurrence
 version #
+////////////////////////////////////////////////////////////////
+Design and code a program that reports the number of occurrences 
+of an integer value in each of ten random numbers between 0 and 
+30,000 inclusive.  Your program prompts for and accepts from the 
+user the search value. 
+
+Do not assume that the input is valid.  If the value entered 
+contains any non-numeric characters, your program asks for another 
+value.  Do not ignore any trailing characters to an otherwise 
+valid entry. 
+
+Your program generates the ten random numbers by calling a 
+standard library function and does not necessarily generate 
+the same set of random numbers for each run.
+
+You may call the noOfDigits function to determine the number 
+of occurrences of the search value in each random number.  
+You may assume that the function works as specified, even 
+if you have not written the function. 
 ****************************************************************/
  
 #include <stdio.h>

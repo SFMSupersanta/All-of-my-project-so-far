@@ -3,6 +3,55 @@
 Referring code made by SFMSupersanta.
 Program: Binary array
 version #
+////////////////////////////////////////////////////////////////
+Design and code a function named binary with the header
+
+ int binary(int number, int b[ ], int size)
+
+that stores in b[ ] the binary representation of number.  Your function handles positive and negative numbers and uses two's complement notation to represent a negative number.  size is the maximum number of elements in b[ ].  Your function returns 0 if successful, 1 if unsuccessful. 
+
+For example, the statements
+
+ int b[32] = {0};
+ int i;
+
+ i = binary( 1025, b, 32 );
+ printf("%d ", i);
+ for ( k = 0; k < 32; k++ )
+     printf("%1d", b[k]);
+ printf("\n");
+
+display
+
+ 0 00000000000000000000010000000001
+
+while the statements
+
+ int b[32] = {0};
+ int i;
+
+ i = binary( -1025, b, 32 );
+ printf("%d ", i);
+ for ( k = 0; k < 32; k++ )
+     printf("%1d", b[k]);
+ printf("\n");
+
+display
+
+ 0 11111111111111111111101111111111
+
+The statements
+
+ int b[32] = {0};
+ int i;
+
+ i = binary( 0, b, -10 );
+ printf("%d ", i);
+ printf("\n");
+
+display
+
+ 1 
 ****************************************************************/
 
 #include <stdio.h>

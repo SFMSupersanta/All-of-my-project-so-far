@@ -3,6 +3,27 @@
 Referring code made by SFMSupersanta.
 Program: No of digit
 version #
+////////////////////////////////////////////////////////////////
+Design and code a function named noOfDigits that receives two 
+int's - a number to be analyzed and a search value - and returns 
+the number of times that the search value appears in the number.  
+If the search value is negative, your function returns -1.  If 
+the search value is positive or 0, your function returns a 
+non-negative number.
+
+For example, the call
+
+ noOfDigits( 3125535, 5 )
+
+returns the value 3, because 5 appears 3 times in 3125535. 
+
+If the search value is greater than 9, your function returns 
+the number of times that the set of digits appears in the number.  
+For example, the call 
+
+ noOfDigits( 3155535, 55 )
+
+returns the value 2, because 55 appears twice in 3155535. 
 ****************************************************************/
 
 #include <stdio.h>

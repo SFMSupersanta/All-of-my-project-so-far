@@ -3,6 +3,8 @@
 Referring code made by SFMSupersanta.
 Program: Coin toss
 version #
+////////////////////////////////////////////////////////////////
+simulate n times of tossing coins
 ****************************************************************/
 #include <stdlib.h>
 #include <time.h>

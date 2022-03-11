@@ -3,6 +3,32 @@
 Referring code made by SFMSupersanta.
 Program: Cyclelic right sift of an array
 version #
+////////////////////////////////////////////////////////////////
+Write a function with the header
+
+ void cyclicRightShift ( char s[ ], int n )
+
+that shifts each character in the null-terminated string s[ ] by 
+n elements to the right and moves each character that shifts 
+beyond the end of the string to the beginning of the string.  
+The character immediately to the right of element i is element 
+i+1.
+
+For example, the following calls
+
+ char s[ ] = "abcdef";
+ cyclicRightShift( s, 1 );
+ printf("%s\n", s );
+ cyclicRightShift( s, 2 );
+ printf("%s\n", s );
+ cyclicRightShift( s, 3 );
+ printf("%s\n", s );
+
+display
+
+ fabcde
+ defabc
+ abcdef
 ****************************************************************/
 
 #include <stdio.h>

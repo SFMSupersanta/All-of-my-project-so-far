@@ -4,6 +4,7 @@ Referring code made by SFMSupersanta.
 Program: validator
 version #
 ****************************************************************/
+//Again, homework
 
 #include <stdio.h>
 #include <stdlib.h>

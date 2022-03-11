@@ -1,3 +1,4 @@
+//This is a homework excercise that the ******* teacher made us do
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>

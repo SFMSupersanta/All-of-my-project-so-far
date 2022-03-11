@@ -1,8 +1,6 @@
 /****************************************************************
-╰（‵□′）╯ THIS MIGHT BE THE MOST USELESS PROGRAM EVER.
-Referring code made by SFMSupersanta.
-Program: Dunno
-version #
+This is a commissioned workshop from my friend. Use for reference 
+purposes only.
 ****************************************************************/
 
 #include <stdio.h>

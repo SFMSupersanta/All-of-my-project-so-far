@@ -3,6 +3,8 @@
 Referring code made by SFMSupersanta.
 Program: Binary converter
 version #
+////////////////////////////////////////////////////////////////
+convert binary to demical
 ****************************************************************/
 #include <stdlib.h>
 #include <stdbool.h>
