@@ -1,12 +1,13 @@
 /****************************************************************
 ╰（‵□′）╯
 Referring code made by SFMSupersanta.
-Program: Quickshort
+Program: Sorting algorithms
 version #
 ****************************************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 //bublesort
 void bubs(int arr[], int size);
@@ -25,12 +26,26 @@ void selectionsort(int arr[], int size);
 
 void print(int arr[], int size);
 
+void StringSelectionSort(char input[][255], int size);
+
+void swaparr(char arr1[], char arr2[]);
+
 
 //main
 int main()
 {
     int sort[] = {3,456,323,641,472,431,165,2347,36,346,445,24,2,34,3,4,5,6,7,8,9,10,1100,65};
     int size = sizeof(sort) / sizeof(int);
+
+    char str[4][255]={"AB      Albert Bumble"
+                     ,"DD      Donald Duck"
+                     ,"FG      Fred Goofoff"
+                     ,"GF      Gary Flintstone"};
+    StringSelectionSort(str,4);
+    for (int i=0; i<4; i++)
+    { 
+        printf("%s\n", str[i]);
+    }
 
     printf("\narray: ");
     print(sort, size);
@@ -53,6 +68,31 @@ int main()
     printf("\n");
 
     return 0;           
+}
+
+void swaparr(char arr1[], char arr2[])
+{ 
+    char arr3[255];
+    strcpy(arr3,arr1);
+    strcpy(arr1,arr2);
+    strcpy(arr2,arr3);
+}
+
+void StringSelectionSort(char input[][255], int size)
+{
+    int index;
+    for(int i=0; i<size; i++)
+    { 
+        index = i;
+        for(int j=i+1; j<size; j++)
+        { 
+            if(strcmp(input[index], input[j])>0)
+            { 
+                index = j;
+            }
+        }
+    swaparr(input[index],input[i]);
+    }
 }
 
 void print(int arr[], int size)

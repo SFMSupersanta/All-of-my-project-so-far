@@ -25,18 +25,16 @@ int main()
     }
     
     int index;
-    char maxchar;
+
     char temp[255];
 
     for(int i=0; i<5; i++)
     { 
-        maxchar = input[i][0];
         index = i;
         for(int j=i+1; j<5; j++)
         { 
-            if(input[j][0] < maxchar)
+            if(strcmp(input[index], input[j])>0)
             { 
-                maxchar = input[j][0];
                 index = j;
             }
         }
@@ -66,8 +64,9 @@ int main()
 }
 
 /*
-John
+
 Joe
+John
 Due
 Long
 Ming
