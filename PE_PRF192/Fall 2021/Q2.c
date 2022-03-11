@@ -18,10 +18,10 @@ int check(int n) // Xay dung ham kiem tra nam nhuan
 int main() {
   system("cls");
   //INPUT - @STUDENT:ADD YOUR CODE FOR INPUT HERE:
-  int n=5;
+  int n=5; 
   int a[n],i;
   for(i=0; i<n; i++)
-  	scanf("%d",&a[i]); // Nhap vao 4 nam
+  	scsanf("%d",&a[i]); // Nhap vao 4 nam
   
   
   
