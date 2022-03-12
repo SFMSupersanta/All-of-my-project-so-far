@@ -30,19 +30,19 @@ int GetInt(char msg[], int min, int max)
     {
         printf("%s", msg);
         rc = scanf("%d%c",&value,&ovflow);
-        if(rc == 0)
+        if( rc == 0)
         {
             printf("**No input accepted!**\n\n");
-            clear();
+            clear ();
         }
-        else if(ovflow != '\n')
+        else if (ovflow != '\n')
         {
             printf("**Trailing characters!**\n\n");
-            clear();
+            clear ();
         }
-        else if(value < min || value > max)
+        else if (value < min || value > max)
         {
-            printf("**Out of range!**\n\n");
+            printf ("**Out of range!**\n\n");
         }
         else break;
     }
@@ -60,15 +60,15 @@ void game(int sought)
 {
     int first,second,pickct=1;       //pick count
 
-    while(true)
+    while (true)
     {
         first = ran_gen() +1;                //so that first [1-6]
         second = ran_gen() +1;              //so that second [1-6]
-        printf("Result of picks %d and %d  : %d + %d\n",pickct++,pickct,first,second);     
+        printf ("Result of picks %d and %d  : %d + %d\n",pickct++,pickct,first,second);     
         pickct++;
-        if (first +second== sought)
+        if (first + second == sought)
         {
-            printf("you got your total in %d picks!",pickct-1);
+            printf ("you got your total in %d picks!",pickct-1);
             break;
         }
     }
@@ -78,24 +78,31 @@ void game(int sought)
 int main()
 {
     //print
-    printf("Ball lottery\n");
-    printf("------------\n");
+    printf ("Ball lottery\n");
+    printf ("------------\n");
     
     //main code
     long long sought,num;
 
-    srand(time(NULL));                       //time seed
+    srand (time (NULL));                       //time seed
 
-    sought = GetInt("Total sought : ",2,20); //the range is from 2 to 20
+    sought = GetInt ("Total sought : ",2,20); //the range is from 2 to 20
 
-    game(sought);                            //game function
+    game (sought);                            //game function
 
     return 0;
 }
 /*
 ###################
-#   EXAMPLE:      #
-###################
+////////////////////////////////////////////////////////////////
+Design and code a program that keeps picking two balls at a time from a basket of ten until the values on the pair of picked balls totals a specified number.  The value on each balls lies between one and ten inclusive.  Your program prompts for and accepts the total number sought, includes input validation and uses your own and standard library functions. 
+
+Design your program according to structured design principles and write the functions so that you can readily use them in other applications. 
+
+Preface your function headers with comprehensive descriptions of function purpose, function parameters and function return value.
+
+The output from your program looks something like: 
+
  Ball Lottery
  ============
  Total sought : 11
@@ -104,5 +111,6 @@ int main()
  Result of picks 5 and 6 : 6 + 3
  Result of picks 7 and 8 : 5 + 6
  You got your total in 8 picks!
- NOTICE: the result is differ every test
-#########################*/
+
+
+****************************************************************/

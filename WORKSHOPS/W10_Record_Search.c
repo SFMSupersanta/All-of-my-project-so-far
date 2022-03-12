@@ -43,59 +43,65 @@ int mygrep(char filename[],char searchstring[])      //find and print lines that
             {
                 //printf("data[j] = '%c'\n", data[j]);
                 char foundarr[searchsize];
-                for(int k = 0;k<searchsize;k++)
+                for (int k = 0;k<searchsize;k++)
                 {
-                    foundarr[k] = data[j+k];
+                    foundarr[k] = data[j + k];
                 }
                 if (compare_arr(foundarr, searchstring,searchsize)==0)
                 {
                     status=0;
-                    int foundj=j;
+                    int foundj = j;
                     while (data[foundj] != '\n'&& foundj != 0)
                     {
                         foundj--;
                     }
-                    if (foundj == 0) printf("%c",data[foundj]); //in the case of foundj =0 the first character will not be printed of not for this codeline
+                    if (foundj == 0) printf ("%c",data[foundj]); //in the case of foundj =0 the first character will not be printed of not for this codeline
                     foundj++;//to skip the \n or the '0' value
-                    while (data[foundj] != '\n'&&data[foundj] != EOF) //while one of the two condition does not meat, the code will stop executing
+                    while (data[foundj] != '\n' && data[foundj] != EOF) //while one of the two condition does not meat, the code will stop executing
                     {
                         printf("%c",data[foundj]);
                         foundj++;
-                    }printf("\n");
+                    }printf ("\n");
                 }
             }
         }
     }
-    else printf("Error opening file %s\n", filename);
+    else printf ("Error opening file %s\n", filename);
     return status;
 }
 
 int main()
 {
-    printf(" BTP100 grep\n ===========\n File name : ");
+    printf (" BTP100 grep\n ===========\n File name : ");
     char filename[max_string_val];
-    scanf(" %[^\n]s",filename);            //scaning a ling will never be this hard
-    printf(" Search string : ");
+    scanf (" %[^\n]s",filename);            //scaning a ling will never be this hard
+    printf (" Search string : ");
     char string[max_string_val];
-    scanf(" %[^\n]s",string);              //this mean scaning a string until the \n value is found and then discard it  
-    printf(" Lines that contain '%s'\n",string);
-    if(mygrep(filename,string)==1) printf(" Found no line that contains '%s'",string);
+    scanf (" %[^\n]s",string);              //this mean scaning a string until the \n value is found and then discard it  
+    printf (" Lines that contain '%s'\n",string);
+    if (mygrep (filename,string) == 1) printf(" Found no line that contains '%s'",string);
     return 0;
 }
 
 /*#######################
-###################
-#TEST CASE(file)  #
-###################
-Filename:problems.txt
+////////////////////////////////////////////////////////////////
+Design and code a function that searches for the presence of a particular string within a file and displays each record that contains the search string.  It should also return a value of 0 if the search string was found in one or more lines, and 1 of the search string was not found in the file at all.  This is similar to a simplified version of the "grep" command, working with a search string instead of a regular expression. 
+
+The function prototype should look like this:
+
+ int mygrep(char filename[], char searchstring[]);
+
+Write a main program to test your function. 
+
+For example, if a file named problems.txt contains
 
  Design and code a function that searches
  for the presence of a particular string
  within a file and displays each record
  that contains the search string.
-###################
-#   EXAMPLE:      #
-###################
+
+then a function call mygrep("problems.txt", "string") would return the value 0 and display:
+
  BTP100 grep
  ===========
  File name : problems.txt
@@ -103,4 +109,4 @@ Filename:problems.txt
  Lines that contain 'string'
  for the presence of a particular string
  that contains the search string.
-#########################*/
+****************************************************************/

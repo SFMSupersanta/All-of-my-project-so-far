@@ -3,102 +3,106 @@
 Referring code made by SFMSupersanta.
 Program: PRF101
 version #
+////////////////////////////////////////////////////////////////
+We use word-wrapping in text-editing programs and text-presentation programs such as web browsers.
+
+Design and code a function that converts a null-terminated string into word-wrapped format of specified width.  The converted string, when displayed, fits into a field of the specified width.  Your word-wrap function receives a null-terminated string and the field width and returns the number of lines needed to display the wrapped string.  Your function also returns the wrapped string through the same parameter as the original string.  You may assume that
+
+a word is a set of consecutive non-whitespace characters,
+no word in the string is longer than the field width, and
+any two consecutive words are separated by whitespace characters.
+The function prototype should look like this:
+
+ int wordwrap(char wrapstring[], int fieldwidth);
+
+Write a main program to test your function.  Include strings with leading, trailing, multiple embedded whitespace and multiple-whitespace only in your set of test cases.
+
+For example, consider the following string and a field width of 10
+
+ This is week 13 of BTP100 
+
+For this, your program should display:
+
+ This is
+ week 13 of
+ BTP100
+
 ****************************************************************/
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-int wordwrap(char wrapstring[], int fieldwidth)                        //This function returns a required lines value AND modify the string
+int wordWrap(char arr[], int wrapline)
 {
-  fieldwidth --;
-  int count = 0;
-  int track = 0;
-  int reqline = 1;
-  //bug
-  while(wrapstring[track]!='\0')
-  {
-      int status = 1;
-      //printf("%c", wrapstring[track]);
-      if (count==fieldwidth&&wrapstring[track]==' '&&wrapstring[track-1]!=' '&&wrapstring[track+1]!= ' ')      //1st probability                  
+   int i = 0;
+   int count = 0;
+   int linecount = 1;
+   while (i < (strlen(arr)))
+   { 
+      if (count == wrapline)
       {
-          reqline++;
-          wrapstring[track] = '\n';
-          //track++;
-          status = 0;
+         count = 0;
+         if (arr[i] == ' ')
+         { 
+            while (arr[i+1] == ' ') i++;
+            if (arr[i] != '\0') arr[i] = '\n';
+            i++;
+            linecount++;
+         }
+         else if (arr[i] != ' ')
+         {
+
+            while (arr[i] != ' ') 
+            {
+               i--;
+            }
+            if (arr[i] != '\0') arr[i] = '\n';
+            i++;
+            linecount++;
+         }
       }
-      else if (count==fieldwidth&&wrapstring[track]!=' '&&wrapstring[track+1]!=' ')                            //2nd probability
-      {
-          reqline++;
-          while(wrapstring[track-1]!=' ')
-          {
-              track--;
-          }
-          while(wrapstring[track-1]==' ')
-          {
-              track--;
-          }
-          //printf("\ntrack:%d\n",track);
-          wrapstring[track]='\n';
-          //track++;
-          status= 0;
-      }
-      else if (count==fieldwidth&&wrapstring[track]!=' '&&wrapstring[track+1]==' ')                  //3rd probability
-      {
-          reqline++;
-          while(wrapstring[track+1]== ' ')
-          {
-              track++;
-          }
-          wrapstring[track]='\n';
-          //track++;
-          status = 0;
-          //printf("\ntrack:%d\n",track);
-      }
-      //bug
-      else if (count==fieldwidth&&wrapstring[track]==' '&&wrapstring[track+1]==' '&&wrapstring[track-1]==' ')   //4th probability
-      {
-          reqline++;
-          while (wrapstring[track+1]==' ')
-          {
-              track++;
-          }
-          wrapstring[track]='\n';
-          //track++;
-          status = 0;
-          //printf("\ntrack:%d\n",track);
-      }
-      //printf("status:%d\n",status);
-      //printf("track(out):%d\n",track);
-      //printf("count:%d\n\n",count);
-      if(status == 0) count=0;
-      else count++;
-      track++;
-  }
-  //printf("\n%s\n",wrapstring);
-  return reqline;
+
+      count++;
+      i++;
+   }
+   return linecount;
 }
 
 int main()
 {
-    char string[] ={"My home is in Toronto    Ontario"};
-    int with=7;
-    int lines = wordwrap(string, with);
-    printf("\n%s\n",string);
-    printf("\nNumber of lines required: %d\n", lines);
+    char string[] = {"This is week 13 of BTP100 "};
+    int with = 10;
+    int lines = wordWrap(string, with);
+    printf ("\n%s\n",string);
+    printf ("\nNumber of lines required: %d\n", lines);
     return 0;
 }
 
 
 /*#######################
-###################
-#TEST CASE(ctrc+v)#
-###################
-This is week 13 of BTP100 
-###################
-#   EXAMPLE:      #
-###################
+ ////////////////////////////////////////////////////////////////
+We use word-wrapping in text-editing programs and text-presentation programs such as web browsers.
+
+Design and code a function that converts a null-terminated string into word-wrapped format of specified width.  The converted string, when displayed, fits into a field of the specified width.  Your word-wrap function receives a null-terminated string and the field width and returns the number of lines needed to display the wrapped string.  Your function also returns the wrapped string through the same parameter as the original string.  You may assume that
+
+a word is a set of consecutive non-whitespace characters,
+no word in the string is longer than the field width, and
+any two consecutive words are separated by whitespace characters.
+The function prototype should look like this:
+
+ int wordwrap(char wrapstring[], int fieldwidth);
+
+Write a main program to test your function.  Include strings with leading, trailing, multiple embedded whitespace and multiple-whitespace only in your set of test cases.
+
+For example, consider the following string and a field width of 10
+
+ This is week 13 of BTP100 
+
+For this, your program should display:
+
  This is
  week 13 of
  BTP100
-#########################*/
+
+****************************************************************/

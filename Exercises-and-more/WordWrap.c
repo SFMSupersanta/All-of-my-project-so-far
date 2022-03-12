@@ -40,53 +40,54 @@ display
  Toronto
  Ontario
 ****************************************************************/
-
+//This thing run as long as a word's length does not excees the line length
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-void wordWrap(char arr[], int wrapline)
+int wordWrap(char arr[], int wrapline)
 {
    int i = 0;
    int count = 0;
-   while(i < (strlen(arr)))
+   int linecount = 1;
+   while (i < (strlen(arr)))
    { 
-      if(count == wrapline)
+      if (count == wrapline)
       {
-         count=0;
-         if(arr[i]==' ')
+         count = 0;
+         if (arr[i] == ' ')
          { 
-            while(arr[i+1]==' ') 
-            {
-               i++;
-               if(arr[i]=='\0')break;
-            }
-            if(arr[i]!='\0') arr[i] = '\n';
+            while (arr[i+1] == ' ') i++;
+            if (arr[i] != '\0') arr[i] = '\n';
             i++;
+            linecount++;
          }
-         else if (arr[i]!=' ')
+         else if (arr[i] != ' ')
          {
-            while(arr[i]!=' ') i--;
-            if(arr[i]!='\0') arr[i] = '\n';
+
+            while (arr[i] != ' ') 
+            {
+               i--;
+            }
+            if (arr[i] != '\0') arr[i] = '\n';
+            i++;
+            linecount++;
          }
       }
-      printf("count:%d\ni:%d\n", count, i);
+
       count++;
       i++;
    }
-   
-
+   return linecount;
 }
 
 int main()
 {
-    char s[ ] = "My home is in Toronto    Ontario";
+    char s[] = "aaaa aaa aaa a";
     
-    wordWrap(s, 7);
+    int n = wordWrap(s, 7);
     
-    for(int i = 0; i <strlen(s); i++) printf("%c", s[i]);
-
+    printf("line required: %d\n%s",n,s);
 
     return 0;
 }
-

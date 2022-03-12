@@ -28,22 +28,22 @@ long long  GetInt(char msg[], long long  min, long long max)
 
     while (true) 
     {
-        printf("%s", msg);
+        printf ("%s", msg);
         //printf("in the range [%lld,%lld] : ",min, max);
-        rc = scanf("%lld",&value);
-        if(rc == 0)
+        rc = scanf ("%lld",&value);
+        if (rc == 0)
         {
-            printf("**No input accepted!**\n");
-            clear();
+            printf ("**No input accepted!**\n");
+            clear ();
         }
-        else if(getchar() != '\n')
+        else if (getchar() != '\n')
         {
-            printf("**Trailing characters!**\n");
-            clear();
+            printf( "**Trailing characters!**\n");
+            clear ();
         }
-        else if(value < min || value > max)
+        else if (value < min || value > max)
         {
-            printf("**Out of range!**\n");
+            printf ("**Out of range!**\n");
         }
         else break;
     }
@@ -57,20 +57,20 @@ int ran_gen()
 }
 
 //\game function\*
-void game(int sought)
+void game (int sought)
 {
-    int x=1,count=0,first,second;
+    int x = 1,count = 0,first,second;
 
-    while(x==1)
+    while(x == 1)
     {
         count ++;
         first = ran_gen() +1;
         second = ran_gen() +1;
-        printf("Result of throw  %d : %d + %d\n", count,first,second);
-        if (first +second== sought)
+        printf ("Result of throw  %d : %d + %d\n", count,first,second);
+        if (first + second == sought)
         {
-            printf("you got your total in %d throw!",count);
-            x=0;
+            printf ("you got your total in %d throw!",count);
+            x = 0;
             break;
         }
     }
@@ -79,26 +79,29 @@ void game(int sought)
 int main()
 {
     //print
-    printf("Dice Thrower\n");
-    printf("------------\n");
+    printf ("Dice Thrower\n");
+    printf ("------------\n");
     //main code
     long long sought,num;
 
-    srand(time(NULL));
+    srand (time(NULL));
 
-    sought = GetInt("Total sought : ",2,12);
+    sought = GetInt ("Total sought : ",2,12);
     
-    game(sought);
+    game (sought);
 
     return 0;
 }
 /*###################
-#   EXAMPLE:      #
-###################
- Fraction Simplifier
- ===================
- Ball Lottery
- ============
+////////////////////////////////////////////////////////////////
+Design and code a program that throws two dice until the top faces of the two dice total to a specified number.  The values on each die range from one to six inclusive.  Your program prompts for and accepts the total number sought, includes input validation and uses both your own and standard library functions. 
+
+Design your program according to structured design principles and write your own functions so that you can readily use them in other applications. 
+
+Preface your function headers with comprehensive descriptions of function purpose, function parameters and function return value.
+
+The output from your program looks something like: 
+
  Dice Thrower
  ============
  Total sought : 11
@@ -107,5 +110,4 @@ int main()
  Result of throw  3 : 6 + 2
  Result of throw  4 : 5 + 6
  You got your total in 4 throws!
-NOTICE: the result is differ every test
-#########################*/
+****************************************************************/

@@ -1,12 +1,9 @@
 /****************************************************************
- A valid SIN number is the number that the last number is a check number.
- Double the first, third, and so forth,...number leftwise.
- The first sum is the sum of every doubled number's digit. EX: 16=1+6.
- The second sum is the sum of every secon, fourth, and so forth.
- Add the two sum and if the total sum plus the check number is devisible to 10, that number is a valid SIN.\n
- Coder: Supersanta.
- Date:14/01/2021 DD/MM/YYYY
- ****************************************************************/
+d=====(￣▽￣*)b
+Referring code made by SFMSupersanta.
+Program: PRF101
+version #
+****************************************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -28,16 +25,14 @@ int numcheck(int num)
         }
         else if (i % 2 == 0)
         {
-            //printf("%d\n", even_sum);
+
             even_sum += digit;
-            //printf("%d\n", digit);
+
         }
     }
     total_sum = odd_sum + even_sum + check_digit;
-    //printf("%d\n", total_sum);
-    //printf("%d\n", odd_sum);
-    //printf("%d\n", even_sum);
-    if(total_sum %10==0)
+
+    if(total_sum % 10 == 0)
         return 1;
     else return 0;
 
@@ -46,17 +41,17 @@ int numcheck(int num)
 int main()
 {
     int num;
-    printf("SIN Validator\n=============\n");
+    printf ("SIN Validator\n=============\n");
     do
     {
-        printf("SIN (0 to quit): ");
-        scanf("%d", &num);
+        printf ("SIN (0 to quit): ");
+        scanf ("%d", &num);
         if(num == 0)
         { 
-            printf("Have a Nice Day!");
+            printf ("Have a Nice Day!");
             break;                           //thoát khỏi vòng do-for
         }
-        if(numcheck(num)==1)
+        if (numcheck (num) == 1)
         { 
             printf("This is a valid SIN.\n");
         }
@@ -64,3 +59,40 @@ int main()
     }
     while(num != 0);
 }
+/***************************************************************
+////////////////////////////////////////////////////////////////
+A Canadian SIN has nine digits.  The right-most digit is a check digit that enables validation.  For the whole number to be a valid SIN, a weighted sum of the other digits plus this check digit must be divisible by 10. 
+
+To obtain the weighted sum, take the digit to the left of the check digit and then every second digit leftwards.  Add each of these digits to itself.  Then, add each digit of each sum to form the weighted sum of the even positioned digits.  Add each of the remaining SIN digits (except the check digit) to form the sum of the odd positioned digits.  Add the two sums and subtract the next highest number ending in zero from their total.  If this number is the check digit, the whole number is a valid SIN; otherwise, the whole number is not a valid SIN.
+
+Consider the following example:
+
+ SIN  193 456 787
+                |
+ check digit is 7
+ add first set of alternates to themselves 
+   9  4  6  8
+   9  4  6  8
+  18  8 12 16
+ add the digits of each sum 1+8+8+1+2+1+6 = 27
+ add the other alternates   1+3+5+7       = 16
+ total                                    = 43
+ Next highest integer multiple of 10      = 50
+ Difference                               =  7
+ Matches the check digit, therefore this SIN is valid 
+
+Specifications
+
+Design a program that validates a Canadian Social Insurance Number (SIN).  Your program keeps accepting a whole number and determining if that whole number is a valid SIN.  Your program terminates when the user enters 0 as the whole number.  The output from your program looks something like:
+
+ SIN Validator
+ =============
+ SIN (0 to quit): 193456787
+ This is a valid SIN.
+ SIN (0 to quit): 193456788
+ This is not a valid SIN.
+ SIN (0 to quit): 0
+ Have a Nice Day!
+
+
+****************************************************************/

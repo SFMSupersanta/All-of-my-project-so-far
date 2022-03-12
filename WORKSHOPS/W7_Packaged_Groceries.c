@@ -201,11 +201,20 @@ int main()
 3.95
 10
 0
-##############################################
-#    CTR+PASTE THE ABOVE LINES FOR INPUT     #
-##############################################
-#     EXAMPLE FOR SUCCESS CODE:              #
-##############################################
+
+////////////////////////////////////////////////////////////////
+Design and code a program that lists the inventory in a packaged goods grocery store in barcode order.  Your program prompts for and accepts
+
+a barcode,
+a price, and
+a quantity in stock
+for each item. 
+Design your program according to structured design principles.  Your program uses parallel arrays and includes functions to validate the input and to sort the items by barcode.  You may assume that there are no more than 100 items to process, but write your code so that you can change this limit by editing a single statement.
+
+Preface each function header with a comprehensive description of the function purpose, the function parameters and the function return value.
+
+The output from your program looks something like:
+
  Packaged Goods Organizer
  ========================
  Barcode  :  6300090801
@@ -219,8 +228,6 @@ int main()
  Quantity :  10
  Barcode  :  0
 
--OUTPUT: 
-
              Goods in Stock
              ==============
  Barcode    Price   Quantity   Value 
@@ -230,6 +237,6 @@ int main()
  6380613916  4.45         15   66.75
                               ------
  Total value goods in stock   122.50
-##############################################
-*/
+
+****************************************************************/
 

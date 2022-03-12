@@ -204,10 +204,19 @@ int main()
 75
 0
 ##############################################
-#    CTR+PASTE THE ABOVE LINES FOR INPUT     #
-##############################################
-#     EXAMPLE FOR SUCCESS CODE:              #
-##############################################
+////////////////////////////////////////////////////////////////
+Design and code a program that lists the work in progress in a consulting company in project order.  Your program prompts for and accepts
+
+a project number,
+a service rate and
+the hours spent
+for each project being worked on. 
+Design your program according to structured design principles.  Your program uses parallel arrays and includes functions to validate the input and to sort the project information by project number.  You may assume that there are no more than 100 projects to process, but write your code so that you can change this limit by editing a single statement.
+
+Preface each function header with a comprehensive description of the function purpose, the function parameters and the function return value.
+
+The output from your program looks something like:
+
  Work in Progress Organizer
  ==========================
  Project     :  3289
@@ -230,5 +239,6 @@ int main()
  3289    120.00     35    4200.00
                          --------
  Total Work in Progress  13712.50
-##############################################
-*/
+
+
+****************************************************************/
