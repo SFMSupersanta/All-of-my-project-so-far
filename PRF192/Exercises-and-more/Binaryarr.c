@@ -8,7 +8,11 @@ Design and code a function named binary with the header
 
  int binary(int number, int b[ ], int size)
 
-that stores in b[ ] the binary representation of number.  Your function handles positive and negative numbers and uses two's complement notation to represent a negative number.  size is the maximum number of elements in b[ ].  Your function returns 0 if successful, 1 if unsuccessful. 
+that stores in b[ ] the binary representation of number.  Your 
+function handles positive and negative numbers and uses two's 
+complement notation to represent a negative number.  size is the 
+maximum number of elements in b[ ].  Your function returns 0 if 
+successful, 1 if unsuccessful. 
 
 For example, the statements
 
@@ -87,33 +91,32 @@ int main()
 
 int binary(int number, bool b[ ], int size)
 {
-    if(number ==0 || size<=0) return 1;
+    if (number == 0 || size <= 0) return 1;
     bool sign = false;
-    if(number < 0) sign = true;
+    if (number < 0) sign = true;
     int count = 0;
-    while(number!=0)
-    {
-        b[count++] = number%2;
-        number/=2;
+    while (number != 0)
+    { 
+        b[count++] = number % 2;
+        number /= 2;
     }
-    if(sign == true) two_complement(b,size);
+    if (sign == true) two_complement( b,size);
     return 0;
 }
 
 void two_complement(bool arr[],int size)
 {
-    for(int i=size-1; i>=0; i--)
+    for (int i=size-1; i>=0; i--)
     {
         arr[i] = ! arr[i];
-        //printf("%d",arr[i]);
     }
-    //printf("\n");
-    bool carry=true;
+
+    bool carry = true;
     int count = 0;
     while (carry != false)
     {
-        arr[count] = (arr[count]+1)%2;
-        if(arr[count]==true) carry = false;
+        arr[count] = (arr[count] + 1) % 2;
+        if (arr[count] == true) carry = false;
         count++; 
     }
 }

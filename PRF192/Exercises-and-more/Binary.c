@@ -4,7 +4,7 @@ Referring code made by SFMSupersanta.
 Program: Binary converter
 version #
 ////////////////////////////////////////////////////////////////
-convert binary to demical
+convert demical to binary
 ****************************************************************/
 #include <stdlib.h>
 #include <stdbool.h>
@@ -25,7 +25,6 @@ int main()
 
     caculate(result, cvn);
     
-    printf("the nineth bit is %d\n", result[8]);
     printf("The binary equivelent binary is: ");
     for(int i=15; i>=0; i--)
     {
@@ -79,7 +78,7 @@ void caculate(bool result[], long long num)
     while(num != 0)
     {
         result[cnt++] = num%2;
-        //printf("%d %d\n", num%2, num/2);
+
         num/=2;
     }
 }

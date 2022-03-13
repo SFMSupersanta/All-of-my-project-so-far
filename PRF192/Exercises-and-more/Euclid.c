@@ -16,12 +16,12 @@ double euclid(double num, double *estimate);
 
 int main()
 {
-    double num = getDouble("Find the square root of : ",0,100000);
-    double err = getDouble("Acceptable Error : ",0,100000);     
-    double iestimate = num/2;
-    int i=1;
+    double num = getDouble ("Find the square root of : ", 0, 100000);
+    double err = getDouble ("Acceptable Error : ", 0, 100000);     
+    double iestimate = num / 2;
+    int i = 1;
     printf(" Iteration            Estimate\n");
-    printf("%10d%*.12lf\n",i++,20,iestimate);
+    printf("%10d%*.12lf\n", i++, 20, iestimate);
     if((iestimate-2)>err)
     {
         while(err<=euclid(num,&iestimate)) printf("%10d%*.12lf\n",i++,20,iestimate);
@@ -35,9 +35,8 @@ double euclid(double num, double *estimate)
     
     double quotient;
     quotient = num / *estimate ;
-    *estimate = (quotient+*estimate)/2;
-    //printf("estimate-quotient= %lf\n",*estimate-quotient);
-    return *estimate-quotient;
+    *estimate = (quotient + *estimate) / 2;
+    return *estimate - quotient;
 }
 
  /* clear empties input buffer */ 

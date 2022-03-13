@@ -56,31 +56,29 @@ int check_digit(long long ean);
 
 int main()
 {
-    long long isbn = getInt("Enter the ISBN:",0,9999999999);
+    long long isbn = getInt ("Enter the ISBN:", 0, 9999999999);
     long long EAN = 9780000000000 + isbn;
-    printf("EAN: %lld\n",(EAN-(EAN%10))+check_digit(EAN));
+    printf ("EAN: %lld\n", (EAN - (EAN % 10)) + check_digit (EAN));
     return 0;
 }
 
 int check_digit(long long ean)
 {
-    ean/=10;
-    int sum=0;  
-    for(int i=0; i<13;i++)
+    ean /= 10;
+    int sum = 0;  
+    for(int i = 0; i < 13;i++)
     {
-        if(i%2==0) 
+        if(i % 2 == 0) 
         {
-            sum += (ean%10)*3;
-            ean /=10;
+            sum += (ean % 10) * 3;
+            ean /= 10;
         }
         else
         {
-            sum += ean %10;
-            ean/=10;
+            sum += ean % 10;
+            ean /= 10;
         }
-        //printf("sum: %d\n",sum);
     }
-    //printf("%d\n",sum);
     return 10-(sum%10);
 }
 

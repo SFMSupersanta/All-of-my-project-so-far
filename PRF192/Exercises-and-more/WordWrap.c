@@ -85,9 +85,9 @@ int main()
 {
     char s[] = "aaaa aaa aaa a";
     
-    int n = wordWrap(s, 7);
+    int n = wordWrap (s, 7);
     
-    printf("line required: %d\n%s",n,s);
+    printf ("line required: %d\n%s",n,s);
 
     return 0;
 }

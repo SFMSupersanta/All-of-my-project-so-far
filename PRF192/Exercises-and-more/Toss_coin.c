@@ -17,7 +17,7 @@ simulate n times of tossing coins
 void clear()
 {
 int c;
-    while ((c = getchar()) != '\n' && c != EOF) {}
+    while ( (c = getchar ()) != '\n' && c != EOF) {}
 }
 //GetInt(char str[], long long min, long long max) returns long long from min to max
 long long  GetInt(char msg[], long long  min, long long max)
@@ -62,45 +62,45 @@ char GetChar(char str[])
             if(getchar() == '\n')break;
             else 
             {
-                printf("Invalid input!\n");
-                clear();
+                printf ("Invalid input!\n");
+                clear ();
             }
         }
         else 
         {
-            printf("Invalid input!\n");
-            clear();
+            printf ("Invalid input!\n");
+            clear ();
         }
     }
     return choice;
 }
 
 //\result array print function\*
-void coindump(bool data[],int times)
+void coindump(bool data[], int times)
 {
     int count = 0;
     for(int i = 0; i < times; i++)
     {
-        if(data[i] == true)      //0
+        if (data[i] == true)      //0
         {
-            printf("Head\t");
+            printf ("Head\t");
             count++;
         }
-        else if(data[i] == false)//1
+        else if (data[i] == false)//1
         {
-            printf("Tail\t");
+            printf ("Tail\t");
             count++;
         }
         if (count%10==0&&count!=0)//newline for every n output, change n for difference output
         {
-            printf("\n");
+            printf ("\n");
         }
     }
-    printf("\n");
+    printf ("\n");
 }
 
 //\coin toss simulation funtion\  gamestart(&value,&value,bool arr[])
-void gamestart(int *head, int *tail, long long times, bool data[])
+void gamestart (int *head, int *tail, long long times, bool data[])
 {
     for (int i = 0; i < times; i++)     //simulation loop
     {
@@ -108,39 +108,39 @@ void gamestart(int *head, int *tail, long long times, bool data[])
         if (coin == true)
         {
             data[i] = coin;            //result array assign
-            *head=*head+1;             //pointer value accending
+            *head = *head + 1;             //pointer value accending
         }else
         {
             data[i] = coin;
-            *tail=*tail+1;
+            *tail = *tail + 1;
         }
     }
-    printf("Ingame head,tail,times: %d %d %lld", *head, *tail, times);
+    printf ("Ingame head,tail,times: %d %d %lld", *head, *tail, times);
 }
 
 //main function
 int main()
 {
-    srand(time(NULL));                               //time seed 
-    int head=0, tail=0;
-    while(true)
+    srand (time (NULL));                               //time seed 
+    int head = 0, tail = 0;
+    while (true)
     {
         //get toss time
         long long times = GetInt("Input toss times\n",0,1000000);
-        printf("times: %d\n",times);
+        printf ("times: %d\n",times);
     
         //toss data array
         bool data[times];  
     
         //game function                                 
-        gamestart(&head, &tail, times, data);
+        gamestart (&head, &tail, times, data);
     
         //result print
-        printf("The percentage of head result is %.2lf%%\n",(double)head*100/times);
-        printf("The percentage of tail result is %.2lf%%\n",(double)tail*100/times);
+        printf ("The percentage of head result is %.2lf%%\n",(double)head * 100 / times);
+        printf ("The percentage of tail result is %.2lf%%\n",(double)tail * 100 / times);
     
         //result sheet print
-        char ans = GetChar("Do you want to see the results sheet? (y/Y for yes, n/N for no): ");
+        char ans = GetChar ("Do you want to see the results sheet? (y/Y for yes, n/N for no): ");
         
         //print data array
         if(ans == 'Y' || ans == 'y')
