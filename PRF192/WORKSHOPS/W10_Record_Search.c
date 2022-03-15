@@ -2,71 +2,61 @@
 `(*>﹏<*)′
 Referring code made by SFMSupersanta.
 Program: PRF101
-version #
+version 2d array
 ****************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#define max_string_val  1000
+#define max_string_val  400
 
-int compare_arr(char arr1[], char arr2[], int size)  //compairing strings
+
+int compare_arr(char arr1[], char arr2[], int index)  //compairing strings
 {
-    for(int i = 0; i <size; i++)
+    for(int i = 0; i < strlen (arr2); i++)
     {
-        if (arr1[i] != arr2[i]) return 1;
+        if (arr1[index+i] != arr2[i]) return 1;
     } return 0;
 }
 
-int mygrep(char filename[],char searchstring[])      //find and print lines that contain search string
+int mygrep(char filename[],char searchstring[])     // find and print lines that contain search string
 {
-    FILE *fileP = NULL;
-    fileP = fopen(filename, "r");
-    int status = 1;
+    FILE *fileP = NULL;                             // filer pointer
+    fileP = fopen(filename, "r");                   // read the file
+    int status = 1;                                 // return status
     if (fileP != NULL)
-    {
-        int searchsize = 0;
-        while (searchstring[searchsize]!='\0') searchsize++; //since array decays into pointer, this is the only way
-        int i =0;
-
-        char data[max_string_val];
+    {              
+        int count = 0;                              // number of strings in the file
+        char tempnuffer [max_string_val];           // temporary buffer
+        char data[max_string_val][max_string_val];  // 2d data array
+        // get string untill reach end of file and put it into data
         do
         {
-            data[i] = fgetc(fileP);
-            i++;
-        }while(!feof(fileP));           //while the program did not encounter the EOF value
-
-        for(int j = 0; j < i-1; j++)    //i-1 because data[i]='EOF'
-        {
-
-            if (data[j] == searchstring[0])
-            {
-                //printf("data[j] = '%c'\n", data[j]);
-                char foundarr[searchsize];
-                for (int k = 0;k<searchsize;k++)
-                {
-                    foundarr[k] = data[j + k];
-                }
-                if (compare_arr(foundarr, searchstring,searchsize)==0)
-                {
-                    status=0;
-                    int foundj = j;
-                    while (data[foundj] != '\n'&& foundj != 0)
+            //get the string
+            fgets (tempnuffer, sizeof (tempnuffer) / sizeof (tempnuffer[0]), fileP);
+            tempnuffer[strcspn (tempnuffer, "\n")] = '\0';
+            strcpy (data[count++], tempnuffer);      // cpy the string into data array
+        } while (! feof (fileP));                    //stop if reached the end of file
+        // for each string in data, find the searchstring in it and print the string in data if found
+        for(int i = 0; i < count; i++)
+        { 
+            for(int j = 0; j < strlen(data[i]); j++)
+            { 
+                int Sstatus = 1;                     //break status
+                if (data[i][j] == searchstring[0])   //found the shared first element of both string
+                {    
+                    if (compare_arr (data[i], searchstring, j) == 0) //check if that the string we need
                     {
-                        foundj--;
+                        printf ("%s\n", data[i]);
+                        status = 0;                 // Set the return status
+                        Sstatus = 0;                // Status to break the inner for loop
                     }
-                    if (foundj == 0) printf ("%c",data[foundj]); //in the case of foundj =0 the first character will not be printed of not for this codeline
-                    foundj++;//to skip the \n or the '0' value
-                    while (data[foundj] != '\n' && data[foundj] != EOF) //while one of the two condition does not meat, the code will stop executing
-                    {
-                        printf("%c",data[foundj]);
-                        foundj++;
-                    }printf ("\n");
                 }
+                if (Sstatus == 0) j = strlen(data[i]); // break the inner for loop
             }
         }
-    }
-    else printf ("Error opening file %s\n", filename);
+    }      
+    else printf ("Error opening file %s\n", filename);           // can't open the file for some reason
     return status;
 }
 
@@ -74,10 +64,10 @@ int main()
 {
     printf (" BTP100 grep\n ===========\n File name : ");
     char filename[max_string_val];
-    scanf (" %[^\n]s",filename);            //scaning a ling will never be this hard
+    scanf (" %[^\n]s",filename);            // scaning a ling will never be this hard
     printf (" Search string : ");
     char string[max_string_val];
-    scanf (" %[^\n]s",string);              //this mean scaning a string until the \n value is found and then discard it  
+    scanf (" %[^\n]s",string);      // scaning a string until the \n value is found and then discard it  
     printf (" Lines that contain '%s'\n",string);
     if (mygrep (filename,string) == 1) printf(" Found no line that contains '%s'",string);
     return 0;

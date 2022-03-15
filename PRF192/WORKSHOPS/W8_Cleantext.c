@@ -53,12 +53,12 @@ void cl_text(char str[], int size)
     { 
         if(str[i] == ' ' && i == 0)
         {
-            i++;
+            while (str[i + 1] == ' ') i++;
         }
-        else if(str[i] == ' '&&i!=0)
+        else if(str[i] == ' ' && i != 0)
         {
             substr[count++] = ' ';
-            while(str[i+1] == ' ') i++;
+            while (str[i + 1] == ' ') i++;
         }
         else
         {
@@ -72,9 +72,9 @@ void cl_text(char str[], int size)
 int main()
 {
     printf("String Cleaner");
-    printf("\n==============\nString to be cleaned : ");
+    printf("\n==============\n");
     char str[101];
-    getString ("String to be cleaned :", str, sizeof(str) / sizeof(str[0]));
+    getString ("String to be cleaned : ", str, sizeof(str) / sizeof(str[0]));
 
     cl_text (str,/*return length value*/strlen(str));
     printf ("Cleaned string       : %s", str);

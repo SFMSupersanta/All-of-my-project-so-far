@@ -1,1 +1,1 @@
-printf("\n%s\n",string);
+size

@@ -6,18 +6,15 @@
 int main() 
 {
     char *s = (char*)malloc(sizeof(char) * 17);
-	s = "bruhbruhlmaolmao";
-    //printf("%d\n", strlen(s));
-    char *temps = (char*)malloc(sizeof(char) * strlen(s));
-    memcpy(temps, s+8, 9);
-    //printf("%s\n",temps);
-    
-    s = (char*)realloc(s, sizeof(char) * 18);  
-    printf("%s\n",s);
-    
-    s[8] = '\n';
+	do
+    {
+        fgets(s, sizeof(s), stdin);
+        s[strcspn(s, "\n")] = '\0';
+        printf("%s\n", s);
+        free(s);
+    }while (s[0] != '\0');
 
-    memcpy(s+10, temps, strlen(temps));
+
     
     return(0);
 }

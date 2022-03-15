@@ -12,15 +12,13 @@ convert words into an 2d char arr
 
 void conv_words(char str[], int size, char word[][255])
 { 
-    //printf("\nResult printting...\n");
-    
     int tempi;
     int temps = 0;
     for(int i = 0; i < size; i++)
     {
         char *temp = (char*)malloc(sizeof(char)*255);
         tempi=0;
-        //printf("\n%d",i);
+
         if (str[i]==' ')
         {
             do
@@ -34,7 +32,7 @@ void conv_words(char str[], int size, char word[][255])
             tempi++;
             i++;
         } while (str[i] != ' ' && str[i]!='\0');
-        temp [++tempi]='\0';  
+        temp [tempi]='\0';  
         strcpy (word[temps++], temp);
     }
 }

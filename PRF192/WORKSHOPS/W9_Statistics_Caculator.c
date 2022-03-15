@@ -9,7 +9,7 @@ version #
 #include <stdlib.h>
 #include <string.h>
 
-double mean (double data[], int size)               //this funtion is "mean"
+double mean (double data[], int size)                 //this funtion is "mean"
 {
     double sum;
     for (int i = 0; i < size; i++)
@@ -22,7 +22,7 @@ double mean (double data[], int size)               //this funtion is "mean"
 
 double dev(double data[], int size, double m)         //deviation caculation hell
 {
-    double Ssum = 0;                        //squared sum variable
+    double Ssum = 0;                                  //squared sum variable
     for (int i = 0; i < size; i++)
     {
         Ssum += data[i] * data[i];
@@ -36,13 +36,13 @@ int main()
     char filename[100];
     printf("Statistics Calculator\n=====================\nEnter the name of the data file : ");
     gets (filename);
-    FILE *fileP = NULL;                                                      //initialize file pointer variable
+    FILE *fileP = NULL;                                     //initialize file pointer variable
     double data[100];
     fileP = fopen (filename,"r");
     if (fileP != NULL)
     {
-        int count = 0;                                                           //seprate variable to count in while function
-        while (fscanf (fileP, "%lf", &data[count]) !=EOF)                         //fscanf funtion return value "EOF" than terminate the loop
+        int count = 0;                                      //seprate variable to count in while function
+        while (fscanf (fileP, "%lf", &data[count]) != EOF)//fscanf funtion return value "EOF" than terminate the loop
         {
             count++;
         }
