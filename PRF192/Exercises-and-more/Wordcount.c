@@ -110,11 +110,12 @@ long long word_cnt(char str[], int size)
 void conv_words(char str[], int size, char word[][255])
 { 
     //printf("\nResult printting...\n");
-    char temp[255];
+    
     int tempi;
     int temps = 0;
     for(int i = 0; i < size; i++)
     {
+        char *temp = (char*)malloc(sizeof(char)*255);
         tempi=0;
         //printf("\n%d",i);
         if (str[i]==' ')
@@ -129,7 +130,7 @@ void conv_words(char str[], int size, char word[][255])
             temp[tempi]=str[i];
             tempi++;
             i++;
-        } while (str[i]!=' ' && str[i]!='\0');
+        } while (str[i] != ' ' && str[i]!='\0');
         temp [++tempi]='\0';  
         strcpy (word[temps++], temp);
     }

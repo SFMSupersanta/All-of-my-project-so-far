@@ -23,6 +23,7 @@ int main()
         fgets(input[i], 255, stdin);
         input[i][strcspn(input[i],"\n")] = '\0';
     }
+
     
     int index;
 
