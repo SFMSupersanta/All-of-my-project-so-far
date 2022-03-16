@@ -41,11 +41,9 @@ void * PreverseStr (char str[])
     char *returnstr = (char *)malloc (size * sizeof(char));
     for (int i = size - 1; i >= 0 ; i--)
     { 
-        *returnstr = str[i];
-        returnstr ++;
+        returnstr[size - i - 1] = str[i];
     }
-    returnstr = 0;
-    returnstr -= size * sizeof (char);
+    returnstr[size - 1] = '\0';
 
     return returnstr ;
 }
