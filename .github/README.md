@@ -13,6 +13,7 @@
 - Tui sẵn sàng giải đáp các thắc mắc trong khả năng của tui nhưng sẽ không thể vào từng bài của từng người để sửa code như những workshop trước được nên mong lần tới tất cả tự chuẩn bị được compiler và khả năng HIỂU code.
 - Đây là code mà tôi đã mất rất nhiều thời gian làm và đã hoàn thành vào ngày 24/1 nên bất cứ ai dùng nó vào mục đích lấy điểm (trước tôi) thì cứ đợi đấy, có nghĩa là dùng sau tôi còn làm bài kiểm tra workshop thì cứ dùng.
 # Updates
+- New header file: "reverse.h" has been added to headers in projects
 - All PRF192-realated stuff has been moved to PRF192 folder
 - Added mock test in PE-PRF folder
 - Added questions in Excercises and more folder
