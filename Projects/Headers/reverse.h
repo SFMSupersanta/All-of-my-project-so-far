@@ -13,7 +13,7 @@ void reverseInt (int arr[], int size)
 }
 
 //
-void * PreverseInt (int arr[], int size)
+int * PreverseInt (int arr[], int size)
 { 
     int *returnarr = (int *)malloc(size * sizeof(int) + 1 );
     for (int i = size - 1; i >= 0; i--)
@@ -35,15 +35,15 @@ void reverseStr (char str[])
     }
 }
 
-void * PreverseStr (char str[]) 
+char * PreverseStr (char str[]) 
 {
     int size = strlen (str);
-    char *returnstr = (char *)malloc (size * sizeof(char));
+    char *returnstr = (char *)malloc ((size + 1) * sizeof(char));
     for (int i = size - 1; i >= 0 ; i--)
     { 
         returnstr[size - i - 1] = str[i];
     }
-    returnstr[size - 1] = '\0';
+    returnstr[size] = '\0';
 
     return returnstr ;
 }
