@@ -10,7 +10,7 @@ Generate 20 case of 2 diffirent bi color
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
-#include <math.h>
+#include <math.h>  
 #include <stdbool.h>
 #include <string.h>
 

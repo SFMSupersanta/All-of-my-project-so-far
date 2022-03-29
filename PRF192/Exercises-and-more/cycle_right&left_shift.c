@@ -36,6 +36,7 @@ display
 #include <string.h>
 
 void cyclicRightShift ( char s[ ], int n );
+void cyclicLeftShift ( char s[ ], int n );
 
 int main()
 { 
@@ -46,24 +47,42 @@ int main()
     printf ("%s\n", s );
     cyclicRightShift ( s, 3 );
     printf ("%s\n", s );
+
+    cyclicLeftShift ( s, 1 );
+    printf ("%s\n", s );
+    cyclicLeftShift ( s, 2 );
+    printf ("%s\n", s );
+    cyclicLeftShift ( s, 3 );
+    printf ("%s\n", s );
     return 0;
+}
+
+void cyclicLeftShift ( char s[ ], int n )
+{
+    int len = strlen( s ), cnt = 0;
+    char buffer[len];
+    strncpy(buffer, s, len);
+    for(int i = n; i < len; i++)
+    {
+        s[cnt++] = buffer[i];
+    }
+    for(int i = 0; i < n; i++)
+    {
+        s[cnt++] = buffer[i];
+    }
 }
 
 void cyclicRightShift ( char s[ ], int n )
 {
-    char buffer[strlen (s) + 1];
-    int count = 0;
-    while (s[count] != '\0') count++;
-    for(int i = 0; i < count; i++)
+    int len = strlen( s ), cnt = 0;
+    char buffer[len];
+    strncpy(buffer, s, len);
+    for(int i = len - n; i < len; i++)
     {
-        if ( (i + n) >= count) 
-        {
-            buffer[ (i + n) - count] = s[i];
-        }
-        else 
-        {
-            buffer[i + n] =s [i];
-        }
+        s[cnt++] = buffer[i];
     }
-    strcpy (s, buffer);
+    for(int i = 0; i < len - n; i++)
+    {
+        s[cnt++] = buffer[i];
+    }
 }
