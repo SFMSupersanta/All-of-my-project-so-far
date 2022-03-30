@@ -62,7 +62,6 @@ long long getInt (char msg[], long long min, long long max)
          count = 0;
          rc = 0;
          fgets(val,20,stdin);
-
          if(val[0]!='\n')
          {
              if(0 <= max && 0 >= min) if (val[0] == '0' && val[1] == '\n') return 0;
@@ -76,11 +75,9 @@ long long getInt (char msg[], long long min, long long max)
              } 
              if(rc == 0) 
              {
-
                  clear_buffer();
              }
-             val[strcspn (val,"\n")] = '\0';
-             
+             val[strcspn (val,"\n")] = '\0';            
              if (val[count] == '0') 
              {
 
@@ -90,12 +87,9 @@ long long getInt (char msg[], long long min, long long max)
                  }
              }             
              char *ovf;
-             intval = strtoll (val,&ovf,10);
-             
+             intval = strtoll (val,&ovf,10);         
              if (intval <= 0) count++;
-
              long long intvaldup = intval;
- 
              while (intvaldup != 0)
              {
                  intvaldup /= 10;
@@ -147,7 +141,7 @@ long long getInt (char msg[], long long min, long long max)
 //swap swap struct function
 void swapstruct(struct item *a, struct item *b)
 {
-    struct item c= *a;
+    struct item c = *a;
     *a = *b;
     *b = c;
 }

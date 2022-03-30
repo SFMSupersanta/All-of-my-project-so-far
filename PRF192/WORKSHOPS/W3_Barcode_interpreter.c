@@ -10,13 +10,13 @@ version #
 void console_dump(long long num) //code để in số product code, company code ra console.
 {
     num /= 10;
-    long temp_num = num / 100000;              //bỏ 5 số cuối
-    long another_temp_num = num % 100000;      //lấy 5 số cuối
+    long temp_num = num / 100000;              // bỏ 5 số cuối
+    long another_temp_num = num % 100000;      // lấy 5 số cuối
     printf("The company code is %06d",temp_num);
     printf("\nThe product code is %05d\n" ,another_temp_num);
 }
 
-int check_num(long long num)                  //067800001019function để check xem có hợp lệ không 
+int check_num(long long num)                  // function để check xem có hợp lệ không 
 {
     int check_digit = num % 10;
     num /= 10;
@@ -51,7 +51,7 @@ int main()
         scanf ("%lld", &num);
         if (num == 0)
         { 
-            break;                           //thoát khỏi vòng do-for
+            break;                           // thoát khỏi vòng do-for
             printf("Have a Nice Day!");
         }
         if(check_num (num)==1)
@@ -60,7 +60,7 @@ int main()
             console_dump (num);
         }
         else printf("This is not a valid UPC.\n");
-    } while (num != 0);                           //để vòng không lặp lại
+    } while (num != 0);                           // để vòng không lặp lại
     
 }
 /***************************************************************

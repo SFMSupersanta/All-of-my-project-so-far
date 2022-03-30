@@ -12,7 +12,7 @@ int numcheck(int num)
 {
     int check_digit = num % 10;
     num /= 10;
-    int odd_sum, even_sum=0, total_sum;     //tôi không hiểu sao không cho even_sum=0 thì nó thành 34 :)
+    int odd_sum = 0, even_sum=0, total_sum = 0;     
     for (int i = 1; i <= 8; i++)
     {
         int digit = num % 10;
@@ -38,26 +38,37 @@ int numcheck(int num)
 
 }
 
-int main()
-{
+int main(int argc, char **argv)
+{   
     int num;
-    printf ("SIN Validator\n=============\n");
-    do
-    {
-        printf ("SIN (0 to quit): ");
-        scanf ("%d", &num);
-        if(num == 0)
-        { 
-            printf ("Have a Nice Day!");
-            break;                           //thoát khỏi vòng do-for
-        }
+    if(argc == 2)
+    { 
+        num = atoi(argv[1]);
         if (numcheck (num) == 1)
         { 
             printf("This is a valid SIN.\n");
         }
-        else printf("This is not a valid SIN.\n");
     }
-    while(num != 0);
+    else
+    {
+        printf ("SIN Validator\n=============\n");
+        do
+        {
+            printf ("SIN (0 to quit): ");
+            scanf ("%d", &num);
+            if(num == 0)
+            { 
+                printf ("Have a Nice Day!");
+                break;                           //thoát khỏi vòng do-for
+            }
+            if (numcheck (num) == 1)
+            { 
+                printf("This is a valid SIN.\n");
+            }
+            else printf("This is not a valid SIN.\n");
+        }
+        while(num != 0);
+    }
 }
 /***************************************************************
 ////////////////////////////////////////////////////////////////

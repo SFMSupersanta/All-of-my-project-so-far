@@ -62,7 +62,6 @@ int wordWrap(char arr[], int wrapline)
             linecount++;
          }
       }
-
       count++;
       i++;
    }
