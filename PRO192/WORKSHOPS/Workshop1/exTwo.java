@@ -1,3 +1,12 @@
+/*Part 2: [3 points]
+Write a Java program that will accept two float numbers and an operator (+-* //) then the program will print out the result of the specified expression that bases on the inputted operator.
+The user interface may be
+Input the number 1 4
+Input the number 2 5
+Input the operator +
+the result of 4+5=9
+*/
+
 import java.util.Scanner;
 public class exTwo {
 

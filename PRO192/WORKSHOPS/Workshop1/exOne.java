@@ -1,3 +1,25 @@
+/*Part1: [3 points]
+
+Write a Java program that will accept a matrix of integers then this matrix will be printed out and sum of values and average of values are printed also.
+
+The user interface may be:
+Enter number of rows: 2
+Enter number of columns: 3
+Enter the matrix
+m[0][0]=1
+m[0][1]=2
+m[0][2]=3
+m[1][0]=4
+m[1][1]=5
+m[1][2]=6
+Matrix inputted:
+1 2 3
+4 5 6
+Sum: 21
+Average: 3.5
+
+Hint: Use System.out.format("%3d", n);*/
+
 import java.util.Scanner;
 
 public class exOne {
