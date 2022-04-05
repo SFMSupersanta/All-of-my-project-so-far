@@ -1,21 +1,12 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-typedef struct {
-	char name[256];
-	int point;
-} player;
-
 
 
 int main()
 {
-	FILE *fP = fopen("test.txt","a+");
-	char string[] = "supersanta;44\n";
-	char buffer[256];
-	fwrite(string, strlen(string), 1, fP);
-	player player1;
-
-	return 0;
+    int a,b=0;
+    int c[10] = {1,2,3,4,5,6,7,8,9,0};
+    for(a=0; a<10; a++)
+    if((a%2)==0) b += c[a];
+    printf("%d\n",b);
+    return 0;
 }
