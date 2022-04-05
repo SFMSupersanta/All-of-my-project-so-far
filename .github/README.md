@@ -6,6 +6,7 @@
 - Feel free to contribute or use any of these... Things.
 - This repo now contain all of my collage "workshop" and "PE" mock test example and some assembly code.
  # Dành cho tất cả những bạn trong lớp SE1704 
+- Chúng ta đã kết thúc mùa xuân năm 2021 và tiếp theo là mùa hè đầy gian nan và thử thách cùng với toán rời rạc và lập trình hướng đối tượng. Repo này vẫn sẽ hoạt động để giúp các bạn nắm rõ hơn về khoản OOP. Break a leg everyone!
 - Đây là nơi tui lưu tất cả những code trong workshop mà tui đã làm, và bây giờ là cả CEA và PE
 - Code của tui làm không phải là code tối giản nhất. Đó là code tui làm khi tui tự tìm hiểu và học hỏi. Nên code này không phải của chuyên gia mà là của một sinh viên.
 - Lỗi là thứ không thể tránh khỏi. Đặc biệt là lỗi chính tả vì các bạn biết đó MỊ LÀ THÁNH QUÊ.
@@ -13,6 +14,8 @@
 - Tui sẵn sàng giải đáp các thắc mắc trong khả năng của tui nhưng sẽ không thể vào từng bài của từng người để sửa code như những workshop trước được nên mong lần tới tất cả tự chuẩn bị được compiler và khả năng HIỂU code.
 - Đây là code mà tôi đã mất rất nhiều thời gian làm và đã hoàn thành vào ngày 24/1 nên bất cứ ai dùng nó vào mục đích lấy điểm (trước tôi) thì cứ đợi đấy, có nghĩa là dùng sau tôi còn làm bài kiểm tra workshop thì cứ dùng.
 # Updates
+- Added Workshops folder in PRF192 folder
+- Added PRO192 folder
 - New header file: "reverse.h" has been added to headers in projects
 - All PRF192-realated stuff has been moved to PRF192 folder
 - Added mock test in PE-PRF folder
