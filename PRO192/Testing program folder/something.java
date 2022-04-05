@@ -18,5 +18,6 @@ public class something{
         String typedInPassword = scan.nextLine();
         if(userA.password.equals(typedInPassword) == true) System.out.println("You guessed it!!");
         else System.out.println("BOO, worng password!"); 
+        
     }
 }
