@@ -1,7 +1,0 @@
-
-        12. Write a function that is passed (1) an array of doubles  and
-            (2) an int containing the number of elements in  the  array,
-            and has no return value. The function  should  increase  (by
-            15%) every element of the  array  that  is  4.0  or  larger,
-            leaving untouched all the elements  that  are  smaller  than
-            4.0.

@@ -1,6 +1,0 @@
-
-        18. Write a program that asks the user to enter a file name  and
-            then tells the user (1) how many characters are in the file,
-            and (2) how many of those characters are spaces. If the user
-            gives a bad file name, then  an  appropriate  error  message
-            should be displayed instead.
