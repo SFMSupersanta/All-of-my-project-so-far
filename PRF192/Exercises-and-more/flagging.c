@@ -1,14 +1,13 @@
-//This is a homework excercise that the ******* teacher made us do
+// This is a homework excercise that the ******* teacher made us do
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #define SIZE 10
 
-
 int main()
 {
-    int sku[SIZE] = {1,2,1,4,9,6,10,8,9,10};
-    int unit[SIZE]= {10,3,6,3,7,12,54,12,7,5};
+    int sku[SIZE] = {1, 2, 1, 4, 9, 6, 10, 8, 9, 10};
+    int unit[SIZE] = {10, 3, 6, 3, 7, 12, 54, 12, 7, 5};
     bool flag[SIZE] = {0};
     int i, j, total, code;
     for (i = 0; i < SIZE; i++)
@@ -26,7 +25,7 @@ int main()
                     flag[j] = true;
                 }
             }
-            printf ("Code: %d, Total: %d\n", code, total);
+            printf("Code: %d, Total: %d\n", code, total);
         }
     }
 

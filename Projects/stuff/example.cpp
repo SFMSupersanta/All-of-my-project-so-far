@@ -1,7 +1,8 @@
-#include<stdio.h>
-#include<string.h>
+#include <stdio.h>
+#include <string.h>
 
-int main() {
+int main()
+{
     char c;
     char s[100];
     scanf("%c", &c);
@@ -12,10 +13,12 @@ int main() {
     int length = strlen(s);
     int index = -1;
 
-    for (int i = 0; i < length; i++) {
-        if (s[i] == c) {
+    for (int i = 0; i < length; i++)
+    {
+        if (s[i] == c)
+        {
             index = i;
-            i=length;
+            i = length;
         }
     }
 

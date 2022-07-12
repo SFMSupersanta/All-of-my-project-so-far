@@ -8,10 +8,10 @@ int main()
     printf("Type in the number :");
     scanf("%d", &number);
     int lastdigit = number % 10, count = 1;
-    number/=10;
-    while(number!=0)
+    number /= 10;
+    while (number != 0)
     {
-        if(number % 10 == lastdigit)
+        if (number % 10 == lastdigit)
         {
             count++;
         }

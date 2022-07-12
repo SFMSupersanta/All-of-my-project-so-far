@@ -16,35 +16,38 @@ simulate n times of tossing coins
 //\input stream clear function\*
 void clear()
 {
-int c;
-    while ( (c = getchar ()) != '\n' && c != EOF) {}
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF)
+    {
+    }
 }
-//GetInt(char str[], long long min, long long max) returns long long from min to max
-long long  GetInt(char msg[], long long  min, long long max)
+// GetInt(char str[], long long min, long long max) returns long long from min to max
+long long GetInt(char msg[], long long min, long long max)
 {
     long long value;
     int rc;
 
-    while (true) 
+    while (true)
     {
         printf("%s", msg);
-        printf("in the range [%lld,%lld] : ",min, max);
-        rc = scanf("%lld",&value);
-        if(rc == 0)
+        printf("in the range [%lld,%lld] : ", min, max);
+        rc = scanf("%lld", &value);
+        if (rc == 0)
         {
             printf("**No input accepted!**\n");
             clear();
         }
-        else if(getchar() != '\n')
+        else if (getchar() != '\n')
         {
             printf("**Trailing characters!**\n");
             clear();
         }
-        else if(value < min || value > max)
+        else if (value < min || value > max)
         {
             printf("**Out of range!**\n");
         }
-        else break;
+        else
+            break;
     }
     return value;
 }
@@ -52,24 +55,25 @@ long long  GetInt(char msg[], long long  min, long long max)
 //\choice validation\    getchar(char str[])
 char GetChar(char str[])
 {
-    char choice;                             
-    while(true)
+    char choice;
+    while (true)
     {
         printf("%s", str);
-        choice=getchar();
-        if (choice == 'y'||choice == 'Y'||choice =='n'||choice == 'N') 
+        choice = getchar();
+        if (choice == 'y' || choice == 'Y' || choice == 'n' || choice == 'N')
         {
-            if(getchar() == '\n')break;
-            else 
+            if (getchar() == '\n')
+                break;
+            else
             {
-                printf ("Invalid input!\n");
-                clear ();
+                printf("Invalid input!\n");
+                clear();
             }
         }
-        else 
+        else
         {
-            printf ("Invalid input!\n");
-            clear ();
+            printf("Invalid input!\n");
+            clear();
         }
     }
     return choice;
@@ -79,77 +83,79 @@ char GetChar(char str[])
 void coindump(bool data[], int times)
 {
     int count = 0;
-    for(int i = 0; i < times; i++)
+    for (int i = 0; i < times; i++)
     {
-        if (data[i] == true)      //0
+        if (data[i] == true) // 0
         {
-            printf ("Head\t");
+            printf("Head\t");
             count++;
         }
-        else if (data[i] == false)//1
+        else if (data[i] == false) // 1
         {
-            printf ("Tail\t");
+            printf("Tail\t");
             count++;
         }
-        if (count%10==0&&count!=0)//newline for every n output, change n for difference output
+        if (count % 10 == 0 && count != 0) // newline for every n output, change n for difference output
         {
-            printf ("\n");
+            printf("\n");
         }
     }
-    printf ("\n");
+    printf("\n");
 }
 
 //\coin toss simulation funtion\  gamestart(&value,&value,bool arr[])
-void gamestart (int *head, int *tail, long long times, bool data[])
+void gamestart(int *head, int *tail, long long times, bool data[])
 {
-    for (int i = 0; i < times; i++)     //simulation loop
+    for (int i = 0; i < times; i++) // simulation loop
     {
-        bool coin = rand() % 2;         //value is either 0 or 1
+        bool coin = rand() % 2; // value is either 0 or 1
         if (coin == true)
         {
-            data[i] = coin;            //result array assign
-            *head = *head + 1;             //pointer value accending
-        }else
+            data[i] = coin;    // result array assign
+            *head = *head + 1; // pointer value accending
+        }
+        else
         {
             data[i] = coin;
             *tail = *tail + 1;
         }
     }
-    printf ("Ingame head,tail,times: %d %d %lld", *head, *tail, times);
+    printf("Ingame head,tail,times: %d %d %lld", *head, *tail, times);
 }
 
-//main function
+// main function
 int main()
 {
-    srand (time (NULL));                               //time seed 
+    srand(time(NULL)); // time seed
     int head = 0, tail = 0;
     while (true)
     {
-        //get toss time
-        long long times = GetInt("Input toss times\n",0,1000000);
-        printf ("times: %d\n",times);
-    
-        //toss data array
-        bool data[times];  
-    
-        //game function                                 
-        gamestart (&head, &tail, times, data);
-    
-        //result print
-        printf ("The percentage of head result is %.2lf%%\n",(double)head * 100 / times);
-        printf ("The percentage of tail result is %.2lf%%\n",(double)tail * 100 / times);
-    
-        //result sheet print
-        char ans = GetChar ("Do you want to see the results sheet? (y/Y for yes, n/N for no): ");
-        
-        //print data array
-        if(ans == 'Y' || ans == 'y')
+        // get toss time
+        long long times = GetInt("Input toss times\n", 0, 1000000);
+        printf("times: %d\n", times);
+
+        // toss data array
+        bool data[times];
+
+        // game function
+        gamestart(&head, &tail, times, data);
+
+        // result print
+        printf("The percentage of head result is %.2lf%%\n", (double)head * 100 / times);
+        printf("The percentage of tail result is %.2lf%%\n", (double)tail * 100 / times);
+
+        // result sheet print
+        char ans = GetChar("Do you want to see the results sheet? (y/Y for yes, n/N for no): ");
+
+        // print data array
+        if (ans == 'Y' || ans == 'y')
         {
             coindump(data, times);
-            printf("Number of head toss: %d\nNumber of tail toss: %d\n",head,tail);
+            printf("Number of head toss: %d\nNumber of tail toss: %d\n", head, tail);
         }
         char choice = GetChar("\nDo you want to Replay? (y/Y for yes, n/N for no): ");
-        if(choice == 'N' || choice == 'n') break;  
+        if (choice == 'N' || choice == 'n')
+            break;
     }
 
     return 0;

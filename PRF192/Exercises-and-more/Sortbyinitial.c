@@ -4,7 +4,7 @@ Referring code made by SFMSupersanta.
 Program: PRF192
 version #
 ////////////////////////////////////////////////////////////////
-From the c learning website: 
+From the c learning website:
 You have received a file named text.dat containing a set of client records.  Each client record is delimited by a newline character and consists of two initials in its first 2 character positions and the full client name in the remaining positions.
 
 Write a complete program that
@@ -37,61 +37,61 @@ the output of your program looks something like
 #include <string.h>
 
 void swaparr(char arr1[], char arr2[])
-{ 
+{
     char arr3[255];
-    strcpy(arr3,arr1);
-    strcpy(arr1,arr2);
-    strcpy(arr2,arr3);
+    strcpy(arr3, arr1);
+    strcpy(arr1, arr2);
+    strcpy(arr2, arr3);
 }
 
 void sortinitial(char input[][255], int size)
 {
     int index;
-    for(int i=0; i<size; i++)
-    { 
+    for (int i = 0; i < size; i++)
+    {
         index = i;
-        for(int j=i+1; j<size; j++)
-        { 
-            if(strcmp(input[index], input[j])>0)
-            { 
+        for (int j = i + 1; j < size; j++)
+        {
+            if (strcmp(input[index], input[j]) > 0)
+            {
                 index = j;
             }
         }
-    swaparr(input[index],input[i]);
+        swaparr(input[index], input[i]);
     }
 }
 
 int main()
-{ 
+{
     char strf[255];
     printf("Enter the file name: ");
-    fgets(strf,255,stdin);
-    strf[strcspn(strf,"\n")] = '\0';
-    FILE* fi = NULL;
+    fgets(strf, 255, stdin);
+    strf[strcspn(strf, "\n")] = '\0';
+    FILE *fi = NULL;
     fi = fopen(strf, "r");
-    if(fi != NULL)
+    if (fi != NULL)
     {
         char str[500][255];
         int count = 0;
 
         do
         {
-            fgets(str[count],80,fi);
-            str[count][strcspn(str[count],"\n")] = '\0';
+            fgets(str[count], 80, fi);
+            str[count][strcspn(str[count], "\n")] = '\0';
             count++;
-        }while(!feof(fi));
+        } while (!feof(fi));
 
-        
-        sortinitial(str,count+1);
+        sortinitial(str, count + 1);
 
-        for(int i = 0; i<=count; i++)
+        for (int i = 0; i <= count; i++)
         {
-            printf("%s\n",str[i]);
+            printf("%s\n", str[i]);
         }
 
-
         fclose(fi);
-    }else printf("FAILED TO OPEN FILE!!!\n");
-    
+    }
+    else
+        printf("FAILED TO OPEN FILE!!!\n");
+
     return 0;
 }

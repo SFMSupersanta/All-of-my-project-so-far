@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-
-int main() {
+int main()
+{
 	printf("%d", atoi("1234"));
 	return 0;
 }
