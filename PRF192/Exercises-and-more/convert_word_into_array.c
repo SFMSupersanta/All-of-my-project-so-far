@@ -62,12 +62,14 @@ long long word_cnt(char str[], int size)
 
     return word;
 }
-
+//      hello      world   i    am    san
 int main()
 {
     char arr[2000];
-    fgets(arr, sizeof(arr) / sizeof(arr[0]), stdin);
+
+    fgets(arr, 2000, stdin);
     arr[strcspn(arr, "\n")] = '\0';
+
     int wordnum = word_cnt(arr, strlen(arr));
     char word[wordnum][255];
     conv_words(arr, strlen(arr), word);
