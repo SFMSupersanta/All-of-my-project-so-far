@@ -86,7 +86,7 @@ int wordWrap(char arr[], int wrapline)
 
 int main()
 {
-   char s[] = "aaaa aaa aaa a";
+   char s[] = "   This    is    week    13    of    BTP100 ";
 
    int n = wordWrap(s, 7);
 

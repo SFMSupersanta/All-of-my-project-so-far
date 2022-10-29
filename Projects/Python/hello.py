@@ -1,2 +1,3 @@
-something =  ["asd", "somehtingaa", "a lot of things"]
-print(something)
+a = "http://lmao.com"
+mySlice = slice(7, -4)
+print(a[mySlice])

@@ -11,12 +11,10 @@ in ra 5 chu o giua
 #include <stdlib.h>
 #include <string.h>
 
-
 int main()
 {
     system("cls");
-    //INPUT - @STUDENT:ADD YOUR CODE FOR INPUT HERE:
-
+    // INPUT - @STUDENT:ADD YOUR CODE FOR INPUT HERE:
 
     char input[21];
     fgets(input, 21, stdin);
@@ -28,20 +26,16 @@ int main()
     printf("\nOUTPUT:\n");
     //@STUDENT: WRITE YOUR OUTPUT HERE:
 
-
-    for(int i = (n-5)/2; i < ((n-5)/2)+5; i++)
+    // abcdefg
+    // abcdefghikl
+    for (int i = (n - 5) / 2; i < ((n - 5) / 2) + 5; i++)
     {
-
         printf("%c", input[i]);
     }
 
-
-    
-    
-
     //--FIXED PART - DO NOT EDIT ANY THINGS HERE
     printf("\n");
-    system ("pause");
+    system("pause");
     return 0;
 }
 
