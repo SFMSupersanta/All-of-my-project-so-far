@@ -1,0 +1,15 @@
+D:\A Github things\cpp_projects\All-of-my-project-so-far\Projects\FirstDotConsole\FirstDotConsole\bin\Debug\net6.0\FirstDotConsole.exe
+D:\A Github things\cpp_projects\All-of-my-project-so-far\Projects\FirstDotConsole\FirstDotConsole\bin\Debug\net6.0\FirstDotConsole.deps.json
+D:\A Github things\cpp_projects\All-of-my-project-so-far\Projects\FirstDotConsole\FirstDotConsole\bin\Debug\net6.0\FirstDotConsole.runtimeconfig.json
+D:\A Github things\cpp_projects\All-of-my-project-so-far\Projects\FirstDotConsole\FirstDotConsole\bin\Debug\net6.0\FirstDotConsole.dll
+D:\A Github things\cpp_projects\All-of-my-project-so-far\Projects\FirstDotConsole\FirstDotConsole\bin\Debug\net6.0\FirstDotConsole.pdb
+D:\A Github things\cpp_projects\All-of-my-project-so-far\Projects\FirstDotConsole\FirstDotConsole\obj\Debug\net6.0\FirstDotConsole.csproj.AssemblyReference.cache
+D:\A Github things\cpp_projects\All-of-my-project-so-far\Projects\FirstDotConsole\FirstDotConsole\obj\Debug\net6.0\FirstDotConsole.GeneratedMSBuildEditorConfig.editorconfig
+D:\A Github things\cpp_projects\All-of-my-project-so-far\Projects\FirstDotConsole\FirstDotConsole\obj\Debug\net6.0\FirstDotConsole.AssemblyInfoInputs.cache
+D:\A Github things\cpp_projects\All-of-my-project-so-far\Projects\FirstDotConsole\FirstDotConsole\obj\Debug\net6.0\FirstDotConsole.AssemblyInfo.cs
+D:\A Github things\cpp_projects\All-of-my-project-so-far\Projects\FirstDotConsole\FirstDotConsole\obj\Debug\net6.0\FirstDotConsole.csproj.CoreCompileInputs.cache
+D:\A Github things\cpp_projects\All-of-my-project-so-far\Projects\FirstDotConsole\FirstDotConsole\obj\Debug\net6.0\FirstDotConsole.dll
+D:\A Github things\cpp_projects\All-of-my-project-so-far\Projects\FirstDotConsole\FirstDotConsole\obj\Debug\net6.0\refint\FirstDotConsole.dll
+D:\A Github things\cpp_projects\All-of-my-project-so-far\Projects\FirstDotConsole\FirstDotConsole\obj\Debug\net6.0\FirstDotConsole.pdb
+D:\A Github things\cpp_projects\All-of-my-project-so-far\Projects\FirstDotConsole\FirstDotConsole\obj\Debug\net6.0\FirstDotConsole.genruntimeconfig.cache
+D:\A Github things\cpp_projects\All-of-my-project-so-far\Projects\FirstDotConsole\FirstDotConsole\obj\Debug\net6.0\ref\FirstDotConsole.dll
